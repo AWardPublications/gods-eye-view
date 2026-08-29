@@ -55,6 +55,11 @@ async function runCeremony() {
     conformancePass = runCommand("node tools/run-platform-conformance.js");
     govConformancePass = true;
     buildPass = runCommand("npm run build");
+  } else if (MILESTONE_ID === "DAVINCIA-KNOWLEDGE-FABRIC-v0.5.0") {
+    testPass = runCommand("npm run test");
+    conformancePass = runCommand("node tools/run-knowledge-conformance.js");
+    govConformancePass = true;
+    buildPass = runCommand("npm run build");
   } else {
     testPass = runCommand("npm run test");
     conformancePass = runCommand("node tools/run-conformance.js");

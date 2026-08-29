@@ -7,29 +7,28 @@ const __dirname = path.dirname(__filename);
 
 const GOVERNED_DIR = path.join(__dirname, '../../data/GOVERNED');
 
-export function listDiscoverableAssets() {
+export function listRegisteredAssets() {
   if (!fs.existsSync(GOVERNED_DIR)) return [];
   const files = fs.readdirSync(GOVERNED_DIR).filter(f => f.endsWith('.json'));
   return files.map(file => {
     const fullPath = path.join(GOVERNED_DIR, file);
     const asset = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
-    // Filter payload to protect restricted contents
+    // Return discoverable catalog entry, omitting actual facts / payloads
     return {
       asset_id: asset.asset_id,
       title: asset.title,
       domain: asset.domain,
       owner: asset.owner,
-      verification_state: asset.verification.state,
-      sensitivity: asset.sensitivity.classification,
+      issuer: asset.issuer,
+      verification_state: asset.verification?.state || "UNVERIFIED",
       licensing: asset.licensing,
       lifecycle_state: asset.lifecycle_state,
-      // Omit payload and sensitive details
       discoverable: true
     };
   });
 }
 
-export function getAssetById(assetId) {
+export function lookupAssetById(assetId) {
   if (!fs.existsSync(GOVERNED_DIR)) return null;
   const files = fs.readdirSync(GOVERNED_DIR).filter(f => f.endsWith('.json'));
   for (const file of files) {

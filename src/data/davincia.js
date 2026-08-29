@@ -87,49 +87,13 @@ ACTIONS REQUIRED:
     const panel = document.getElementById('davincia-panel');
     if (!panel) return;
 
-    // Reset Commerce outcome states
     const btn = panel.querySelector('#dv-request-access-btn');
     const outcome = panel.querySelector('#dv-commerce-outcome');
     const txIdSpan = panel.querySelector('#dv-tx-id');
 
-    if (btn && outcome) {
-      outcome.style.display = 'none';
-      btn.style.display = 'block';
-
-      // Re-bind click event
-      const newBtn = btn.cloneNode(true);
-      btn.parentNode.replaceChild(newBtn, btn);
-
-      newBtn.addEventListener('click', async () => {
-        try {
-          // Ingest/refine raw record first
-          await fetch('/api/davincia/knowledge/refine');
-
-          const cleanPhrase = record.payload.phrase.toLowerCase().replace(/\s+/g, '-');
-          const response = await fetch('/api/davincia/knowledge/request', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              requester: { id: "urn:davincia:identity:user:david", class: "HUMAN" },
-              assetId: `urn:davincia:knowledge:asset:${cleanPhrase}`,
-              action: "TRANSLATE",
-              purpose: "LICENSED_GEOSPATIAL_VIEW"
-            })
-          });
-          const result = await response.json();
-          if (result.commerce_event) {
-            txIdSpan.textContent = result.commerce_event.transaction_id;
-            outcome.style.display = 'block';
-            newBtn.style.display = 'none';
-          }
-        } catch (e) {
-          console.error("Embassy request failed:", e);
-        }
-      });
-    }
-
     // Dynamic Passport Admission update
     (async () => {
+      let activePassport = null;
       try {
         const passRes = await fetch('/api/davincia/passport/issue', {
           method: 'POST',
@@ -141,15 +105,52 @@ ACTIONS REQUIRED:
         });
         const passData = await passRes.json();
         if (passData.passport) {
-          const passport = passData.passport;
-          panel.querySelector('#dv-pass-id').textContent = passport.passport_id;
-          panel.querySelector('#dv-pass-holder-type').textContent = passport.identity.type;
-          panel.querySelector('#dv-pass-expiry').textContent = new Date(passport.expires_at).toLocaleDateString();
-          panel.querySelector('#dv-pass-capabilities').textContent = passport.capabilities.join(', ');
-          panel.querySelector('#dv-pass-signature').textContent = passport.signature;
+          activePassport = passData.passport;
+          panel.querySelector('#dv-pass-id').textContent = activePassport.passport_id;
+          panel.querySelector('#dv-pass-holder-type').textContent = activePassport.participant_type || "HUMAN";
+          panel.querySelector('#dv-pass-expiry').textContent = new Date(activePassport.expires_at).toLocaleDateString();
+          panel.querySelector('#dv-pass-capabilities').textContent = activePassport.declared_capabilities.join(', ');
+          panel.querySelector('#dv-pass-signature').textContent = activePassport.signature;
         }
       } catch (err) {
         console.error("Failed to load active passport HUD:", err);
+      }
+
+      if (btn && outcome) {
+        outcome.style.display = 'none';
+        btn.style.display = 'block';
+
+        // Re-bind click event
+        const newBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(newBtn, btn);
+
+        newBtn.addEventListener('click', async () => {
+          try {
+            // Ingest/refine raw record first
+            await fetch('/api/davincia/knowledge/refine');
+
+            const cleanPhrase = record.payload.phrase.toLowerCase().replace(/\s+/g, '-');
+            const response = await fetch('/api/davincia/knowledge/request', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                passport: activePassport,
+                actor: { id: "urn:davincia:identity:user:david", class: "HUMAN" },
+                assetId: `urn:davincia:knowledge:asset:${cleanPhrase}`,
+                action: "TRANSLATE",
+                purpose: "LICENSED_GEOSPATIAL_VIEW"
+              })
+            });
+            const result = await response.json();
+            if (result.commerce_event) {
+              txIdSpan.textContent = result.commerce_event.transaction_id;
+              outcome.style.display = 'block';
+              newBtn.style.display = 'none';
+            }
+          } catch (e) {
+            console.error("Embassy request failed:", e);
+          }
+        });
       }
     })();
 

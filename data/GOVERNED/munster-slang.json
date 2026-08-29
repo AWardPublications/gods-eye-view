@@ -1,0 +1,57 @@
+{
+  "asset_id": "urn:davincia:knowledge:asset:munster-slang",
+  "asset_type": "knowledge_asset_governed",
+  "title": "Munster Slang Slips",
+  "domain": "corklan",
+  "owner": "urn:davincia:identity:organization:award_publications",
+  "source": "urn:davincia:raw:munster-slang",
+  "provenance": {
+    "source_type": "COMMUNITY_ARCHIVE",
+    "collected_at": "2026-08-29T10:00:00Z",
+    "source_reference": "CorkLan Community Dictionary",
+    "geographic_origin": {
+      "latitude": 51.8985,
+      "longitude": -8.4756
+    },
+    "source_urn": "urn:davincia:raw:munster-slang",
+    "extracted_at": "2026-08-29T22:09:12.785Z",
+    "checksum": "sha256-derived-munster-slang"
+  },
+  "facts": [
+    {
+      "id": "F1",
+      "statement": "Munster Slang Slips outlines core concepts of domain corklan."
+    },
+    {
+      "id": "F2",
+      "statement": "The asset is owned by the organization: urn:davincia:identity:organization:award_publications."
+    }
+  ],
+  "licensing": {
+    "commercial_available": true,
+    "pricing": {
+      "model": "USAGE_BASED",
+      "price": 0.02,
+      "currency": "USD"
+    },
+    "permitted_actions": [
+      "SEARCH",
+      "READ"
+    ],
+    "prohibited_actions": [
+      "TRANSFORM"
+    ]
+  },
+  "lifecycle_state": "AUTHORIZED",
+  "issuer": "urn:davincia:identity:organization:brehon_ai",
+  "verification": {
+    "state": "VERIFIED",
+    "reviewer_role": "SYSTEM_GOVERNOR",
+    "verified_at": "2026-08-29T22:09:12.787Z",
+    "evidence_ref": "urn:davincia:evidence:refinery:munster-slang"
+  },
+  "governance_passport": {
+    "authorized_at": "2026-08-29T22:09:12.788Z",
+    "decision_ref": "urn:davincia:decision:x9nc372e53r"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "asset_id": "urn:davincia:derived:brehon-ip",
+  "asset_type": "knowledge_asset_derived",
+  "title": "Brehon Decentralized Governance IP Model",
+  "domain": "corklan",
+  "owner": "urn:davincia:identity:organization:brehon_ai",
+  "source": "urn:davincia:raw:brehon-ip",
+  "provenance": {
+    "source_type": "RESEARCH_NOTE",
+    "collected_at": "2026-08-28T12:00:00Z",
+    "source_reference": "A. Ward Research Archive Vol 4",
+    "geographic_origin": {
+      "latitude": 51.8985,
+      "longitude": -8.4756
+    },
+    "source_urn": "urn:davincia:raw:brehon-ip",
+    "extracted_at": "2026-08-29T22:09:12.778Z",
+    "checksum": "sha256-derived-brehon-ip"
+  },
+  "facts": [
+    {
+      "id": "F1",
+      "statement": "Brehon Decentralized Governance IP Model outlines core concepts of domain corklan."
+    },
+    {
+      "id": "F2",
+      "statement": "The asset is owned by the organization: urn:davincia:identity:organization:brehon_ai."
+    }
+  ],
+  "licensing": {
+    "commercial_available": true,
+    "pricing": {
+      "model": "USAGE_BASED",
+      "price": 0.02,
+      "currency": "USD"
+    },
+    "permitted_actions": [
+      "SEARCH",
+      "READ"
+    ],
+    "prohibited_actions": [
+      "TRANSFORM"
+    ]
+  },
+  "lifecycle_state": "PROFILED"
+}

@@ -7349,8 +7349,8 @@ function davinciaProxy() {
 
     middlewares.use('/api/davincia/knowledge/assets', async (req, res) => {
       try {
-        const { listDiscoverableAssets } = await import('./src/knowledge/registry.js');
-        const assets = listDiscoverableAssets();
+        const { listRegisteredAssets } = await import('./src/knowledge/registry.js');
+        const assets = listRegisteredAssets();
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json; charset=utf-8');
         res.setHeader('Cache-Control', 'no-store');
@@ -7364,19 +7364,12 @@ function davinciaProxy() {
 
     middlewares.use('/api/davincia/knowledge/refine', async (req, res) => {
       try {
-        const recordsPath = path.join(__dirname, 'public/corklan_records.json');
-        const rawRecords = JSON.parse(fs.readFileSync(recordsPath, 'utf8'));
-        const targetRaw = rawRecords[0]; // First real asset: "Acting the gowl"
-
-        const { runRefinery, promoteToGoverned } = await import('./src/knowledge/refinery.js');
-        const { derivedRecord } = runRefinery(targetRaw);
-        
-        const actor = { id: "urn:davincia:identity:user:david", class: "HUMAN" };
-        const { governedRecord } = await promoteToGoverned(derivedRecord, actor);
+        const { runEntireRefinery } = await import('./src/knowledge/refinery.js');
+        const results = await runEntireRefinery();
 
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json; charset=utf-8');
-        res.end(JSON.stringify({ status: "SUCCESS", asset: governedRecord }));
+        res.end(JSON.stringify({ status: "SUCCESS", assets: results }));
       } catch (error) {
         res.statusCode = 500;
         res.setHeader('Content-Type', 'application/json');
