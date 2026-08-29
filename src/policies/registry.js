@@ -3,6 +3,7 @@ import corklanPolicy from './corklan.policy.json' with { type: 'json' };
 import ariosPolicy from './arios.policy.json' with { type: 'json' };
 import alexWengerPolicy from './alex-wenger.policy.json' with { type: 'json' };
 import davidOsPolicy from './david-os.policy.json' with { type: 'json' };
+import fixtureOsPolicy from './fixture-os.policy.json' with { type: 'json' };
 
 export class PolicyResolver {
   async resolvePolicy(policyId) {
@@ -21,7 +22,8 @@ export class LocalPolicyResolver extends PolicyResolver {
       [corklanPolicy.policy_id, corklanPolicy],
       [ariosPolicy.policy_id, ariosPolicy],
       [alexWengerPolicy.policy_id, alexWengerPolicy],
-      [davidOsPolicy.policy_id, davidOsPolicy]
+      [davidOsPolicy.policy_id, davidOsPolicy],
+      [fixtureOsPolicy.policy_id, fixtureOsPolicy]
     ]);
   }
 

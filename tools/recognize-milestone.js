@@ -46,6 +46,7 @@ async function runCeremony() {
   // 1. Run required validation suites
   const testPass = runCommand("npm run test");
   const conformancePass = runCommand("node tools/run-conformance.js");
+  const govConformancePass = runCommand("node tools/run-governance-conformance.js");
   const buildPass = runCommand("npm run build");
 
   // 2. Verify required constitutional documentation exists
@@ -61,7 +62,7 @@ async function runCeremony() {
   assert(registerExists, "DAVINCIA_MILESTONE_REGISTER.md exists");
   assert(manifestExists, "davincia.manifest.json exists");
 
-  const everythingPassed = testPass && conformancePass && buildPass && specExists && registerExists && manifestExists;
+  const everythingPassed = testPass && conformancePass && govConformancePass && buildPass && specExists && registerExists && manifestExists;
 
   const status = everythingPassed ? "RECOGNIZED" : "REJECTED";
 

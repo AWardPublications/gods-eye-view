@@ -1,0 +1,39 @@
+{
+  "policy_id": "DAVINCIA-SPORTS-005",
+  "name": "FixtureOS Sports Scheduling Rules",
+  "version": "1.0.0",
+  "domain": "fixture-os",
+  "rules": [
+    {
+      "id": "RULE-SPORTS-SCHEDULE-HUMAN",
+      "target": {
+        "actor_class": "HUMAN"
+      },
+      "conditions": {
+        "action": ["SCHEDULE"]
+      },
+      "outcome": "ALLOW",
+      "reason_code": "APPROVED"
+    },
+    {
+      "id": "RULE-SPORTS-SCHEDULE-AGENT",
+      "target": {
+        "actor_class": "AI_AGENT"
+      },
+      "conditions": {
+        "action": ["SCHEDULE"]
+      },
+      "outcome": "REVIEW_REQUIRED",
+      "reason_code": "UNVERIFIED"
+    },
+    {
+      "id": "RULE-SPORTS-READ-ALLOW",
+      "target": {},
+      "conditions": {
+        "action": ["READ"]
+      },
+      "outcome": "ALLOW",
+      "reason_code": "APPROVED"
+    }
+  ]
+}
