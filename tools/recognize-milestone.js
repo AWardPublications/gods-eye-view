@@ -6,8 +6,8 @@ import { execSync } from 'child_process';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const MILESTONE_ID = "DAVINCIA-KERNEL-CONFORMANCE-v0.1.0";
-const MILESTONE_NAME = "DaVinciA+ Kernel Ecosystem Conformance v0.1.0";
+const MILESTONE_ID = process.argv[2] || "DAVINCIA-KERNEL-CONFORMANCE-v0.1.0";
+const MILESTONE_NAME = process.argv[3] || "DaVinciA+ Kernel Ecosystem Conformance v0.1.0";
 
 const milestonesDir = path.join(__dirname, '../milestones');
 if (!fs.existsSync(milestonesDir)) {
@@ -118,7 +118,8 @@ async function runCeremony() {
   console.log("\nSTATUS:");
   console.log(everythingPassed ? "★ MILESTONE RECOGNIZED ★" : "❌ MILESTONE REJECTED");
   console.log(`\nCOMMIT:\n${commitSha}`);
-  console.log(`\nTAG:\ndavincia-kernel-conformance-v0.1.0`);
+  const tagName = MILESTONE_ID.toLowerCase();
+  console.log(`\nTAG:\n${tagName}`);
   console.log("===============================================");
 
   process.exit(everythingPassed ? 0 : 1);
