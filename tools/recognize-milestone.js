@@ -60,6 +60,11 @@ async function runCeremony() {
     conformancePass = runCommand("node tools/run-knowledge-conformance.js");
     govConformancePass = true;
     buildPass = runCommand("npm run build");
+  } else if (MILESTONE_ID === "DAVINCIA-AGENT-ECONOMY-v0.6.0") {
+    testPass = runCommand("npm run test");
+    conformancePass = runCommand("node tools/run-agent-conformance.js");
+    govConformancePass = true;
+    buildPass = runCommand("npm run build");
   } else {
     testPass = runCommand("npm run test");
     conformancePass = runCommand("node tools/run-conformance.js");

@@ -91,10 +91,14 @@ ACTIONS REQUIRED:
     const outcome = panel.querySelector('#dv-commerce-outcome');
     const txIdSpan = panel.querySelector('#dv-tx-id');
 
-    // Dynamic Passport Admission update
+    // Dynamic Passport & Delegation Admission update
     (async () => {
       let activePassport = null;
+      let agentPassport = null;
+      let delegationToken = null;
+
       try {
+        // 1. Issue Human Passport
         const passRes = await fetch('/api/davincia/passport/issue', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -112,8 +116,42 @@ ACTIONS REQUIRED:
           panel.querySelector('#dv-pass-capabilities').textContent = activePassport.declared_capabilities.join(', ');
           panel.querySelector('#dv-pass-signature').textContent = activePassport.signature;
         }
+
+        // 2. Issue Agent Passport
+        const agentRes = await fetch('/api/davincia/passport/issue', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            identity: { id: "urn:davincia:identity:agent:slang-bot", name: "Slang Bot", type: "AI_AGENT" },
+            capabilities: ["READ", "TRANSLATE"]
+          })
+        });
+        const agentData = await agentRes.json();
+        if (agentData.passport) {
+          agentPassport = { ...agentData.passport, participant_type: "AI_AGENT" };
+          panel.querySelector('#dv-agent-urn').textContent = agentPassport.passport_id;
+        }
+
+        // 3. Issue Delegation Token
+        if (activePassport && agentPassport) {
+          const delegRes = await fetch('/api/davincia/agent/delegate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              humanPassport: activePassport,
+              agentPassport: agentPassport,
+              scopes: ["READ", "TRANSLATE"],
+              durationSecs: 3600
+            })
+          });
+          const delegData = await delegRes.json();
+          if (delegData.token) {
+            delegationToken = delegData.token;
+            panel.querySelector('#dv-agent-token').textContent = delegationToken.token_id;
+          }
+        }
       } catch (err) {
-        console.error("Failed to load active passport HUD:", err);
+        console.error("Failed to load active passport or delegation HUD:", err);
       }
 
       if (btn && outcome) {
@@ -130,15 +168,19 @@ ACTIONS REQUIRED:
             await fetch('/api/davincia/knowledge/refine');
 
             const cleanPhrase = record.payload.phrase.toLowerCase().replace(/\s+/g, '-');
-            const response = await fetch('/api/davincia/knowledge/request', {
+            const response = await fetch('/api/davincia/agent/execute', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
-                passport: activePassport,
-                actor: { id: "urn:davincia:identity:user:david", class: "HUMAN" },
+                agentPassport,
+                humanPassport: activePassport,
+                delegationToken,
                 assetId: `urn:davincia:knowledge:asset:${cleanPhrase}`,
                 action: "TRANSLATE",
-                purpose: "LICENSED_GEOSPATIAL_VIEW"
+                purpose: "DELEGATED_GEOSPATIAL_VIEW",
+                modelTier: "MINI",
+                inputTokens: 12000,
+                outputTokens: 35000
               })
             });
             const result = await response.json();
@@ -146,9 +188,13 @@ ACTIONS REQUIRED:
               txIdSpan.textContent = result.commerce_event.transaction_id;
               outcome.style.display = 'block';
               newBtn.style.display = 'none';
+              
+              // Update dynamic cost readout
+              const costVal = result.commerce_event.price;
+              panel.querySelector('#dv-agent-cost').textContent = `$${costVal.toFixed(6)} USD`;
             }
           } catch (e) {
-            console.error("Embassy request failed:", e);
+            console.error("Agent gateway execution failed:", e);
           }
         });
       }

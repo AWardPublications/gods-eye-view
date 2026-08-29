@@ -7433,6 +7433,44 @@ function davinciaProxy() {
         }
       });
     });
+
+    middlewares.use('/api/davincia/agent/delegate', (req, res) => {
+      let body = '';
+      req.on('data', chunk => { body += chunk; });
+      req.on('end', async () => {
+        try {
+          const { humanPassport, agentPassport, scopes, durationSecs } = JSON.parse(body || '{}');
+          const { issueDelegationToken } = await import('./src/agent-economy/delegation.js');
+          const token = issueDelegationToken(humanPassport, agentPassport, scopes, durationSecs);
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/json; charset=utf-8');
+          res.end(JSON.stringify({ token }));
+        } catch (error) {
+          res.statusCode = 500;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({ error: error.message }));
+        }
+      });
+    });
+
+    middlewares.use('/api/davincia/agent/execute', (req, res) => {
+      let body = '';
+      req.on('data', chunk => { body += chunk; });
+      req.on('end', async () => {
+        try {
+          const request = JSON.parse(body || '{}');
+          const { processAgentRequest } = await import('./src/agent-economy/api.js');
+          const result = await processAgentRequest(request);
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/json; charset=utf-8');
+          res.end(JSON.stringify(result));
+        } catch (error) {
+          res.statusCode = 500;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({ error: error.message }));
+        }
+      });
+    });
   }
 
   return {
