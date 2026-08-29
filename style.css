@@ -9161,3 +9161,150 @@ body.scene-playback-mode #first-run-launcher {
   /* Scrolling a tile into view must not animate either. */
   .first-run-choices { scroll-behavior: auto; }
 }
+
+/* ==========================================================================
+   DaVinciA+ / CorkLan Governance Panel Styles
+   ========================================================================== */
+
+#davincia-panel {
+  width: 360px;
+  background: rgba(15, 12, 10, 0.88);
+  border: 1px solid rgba(58, 48, 41, 0.6);
+  border-left: 3px solid #d31d36;
+}
+
+.davincia-panel-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.dv-scroll-container {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.dv-scroll-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.dv-scroll-container::-webkit-scrollbar-thumb {
+  background: #3a3029;
+  border-radius: 2px;
+}
+
+.dv-card-primary {
+  background: rgba(25, 21, 18, 0.7);
+  border: 1px solid rgba(58, 48, 41, 0.4);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.dv-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dv-term {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.25rem;
+  color: #f7f2ea;
+  margin: 0;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(247, 242, 234, 0.2);
+}
+
+.dv-subtitle {
+  font-size: 0.75rem;
+  color: #a89f91;
+  margin: 4px 0 0 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.dv-badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dv-badge.confirmed {
+  background: rgba(47, 143, 91, 0.2);
+  color: #2f8f5b;
+  border: 1px solid #2f8f5b;
+}
+
+.dv-badge.pending-review {
+  background: rgba(200, 167, 93, 0.2);
+  color: #c8a75d;
+  border: 1px solid #c8a75d;
+}
+
+.dv-badge.sensitive-hold {
+  background: rgba(211, 29, 54, 0.2);
+  color: #d31d36;
+  border: 1px solid #d31d36;
+}
+
+.dv-section {
+  margin-bottom: 16px;
+}
+
+.dv-section-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #c8a75d;
+  border-bottom: 1px solid rgba(200, 167, 93, 0.3);
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.dv-detail-grid {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 6px 12px;
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+
+.dv-detail-label {
+  color: #a89f91;
+  font-weight: 500;
+}
+
+.dv-detail-value {
+  color: #f7f2ea;
+}
+
+.dv-audio-meta {
+  font-size: 0.75rem;
+  color: #a89f91;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.dv-prompt-box {
+  background: #090807;
+  color: #39ff14;
+  border: 1px solid rgba(58, 48, 41, 0.6);
+  border-radius: 6px;
+  padding: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  white-space: pre-wrap;
+  word-break: break-all;
+  overflow-x: auto;
+  max-height: 250px;
+  margin: 4px 0 0 0;
+  line-height: 1.4;
+}

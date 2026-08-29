@@ -1,0 +1,161 @@
+[
+  {
+    "phrase": "Acting the gowl",
+    "language_lane": "Cork Slang",
+    "status": "CONFIRMED",
+    "cultural_context": {
+      "meaning": "behaving foolishly or irritatingly",
+      "region": "Cork City & County",
+      "when_to_use": "informal humour / calling out nonsense",
+      "when_not_to_use": "formal or professional settings",
+      "note": "CorkLan rule: humour is allowed; mockery of culture is not.",
+      "cultural_context_required": true
+    },
+    "machine_translation_bridge": {
+      "allowed_use": "informal humour",
+      "prohibited_use": "formal judgement or clinical profiling",
+      "tone": "comic",
+      "severity": "low",
+      "behaviour_tag": "foolish",
+      "routing_rule": "casual_context_only"
+    },
+    "governance": {
+      "confidence_score": 0.96,
+      "audit_chain": [
+        "SUBMITTED",
+        "REVIEWED",
+        "VERIFIED",
+        "PUBLISHED"
+      ],
+      "speaker_verified": true
+    },
+    "audio_mapping": {
+      "audio_uuid": "c35bd28b-9d41-4c6e-8a2b-ef792a549db6",
+      "archive_source": "CorkLan Community Archive",
+      "file_url": "https://s3.eu-west-1.wasabisys.com/corklan-audio/cork-slang/gowl-ref.mp3",
+      "speaker_metadata": {
+        "speaker_name": "Tadhg O'Connor",
+        "birth_year": 1984,
+        "dialect_variant": "Cork Flat"
+      }
+    }
+  },
+  {
+    "phrase": "Langer",
+    "language_lane": "Cork Slang",
+    "status": "PENDING_REVIEW",
+    "cultural_context": {
+      "meaning": "a foolish, annoying, or highly disagreeable person; also used as 'langers' to mean heavily intoxicated.",
+      "region": "Cork City & East Cork",
+      "when_to_use": "informal speech, bantering with friends, expressing annoyance.",
+      "when_not_to_use": "professional, academic, or formal communication. Can be considered mildly offensive to outsiders.",
+      "note": "Etymology debated; heavily associated with Cork identity. Double-meaning requires context-aware routing.",
+      "cultural_context_required": true
+    },
+    "machine_translation_bridge": {
+      "allowed_use": "casual dialogue representation only",
+      "prohibited_use": "official translations, corporate training materials, legal contexts.",
+      "tone": "sarcastic",
+      "severity": "medium",
+      "behaviour_tag": "annoyance",
+      "routing_rule": "human_in_the_loop"
+    },
+    "governance": {
+      "confidence_score": 0.72,
+      "audit_chain": [
+        "SUBMITTED",
+        "REVIEWED"
+      ],
+      "speaker_verified": false
+    },
+    "audio_mapping": {
+      "audio_uuid": "d472a19b-6d33-4f1e-aa4a-ff19c35d9ef2",
+      "archive_source": "Cork City Field recordings",
+      "file_url": "https://s3.eu-west-1.wasabisys.com/corklan-audio/cork-slang/langer-ref.mp3",
+      "speaker_metadata": {
+        "speaker_name": "Naoise McCarthy",
+        "birth_year": 2001,
+        "dialect_variant": "Northside Cork"
+      }
+    }
+  },
+  {
+    "phrase": "Dúnfaimid",
+    "language_lane": "Gaeilge",
+    "status": "CONFIRMED",
+    "cultural_context": {
+      "meaning": "We will close (Munster synthetic verb form)",
+      "region": "Muskerry Gaeltacht (Cúil Aodha / Ballyvourney)",
+      "when_to_use": "Standard speech in Munster Irish. Used instead of 'dúnfaidh muid'.",
+      "when_not_to_use": "Standardised official documents (where Caighdeán forms are preferred), although fully grammatically correct.",
+      "note": "Synthetic verbal forms are highly characteristic of Munster Irish. Generic translators often overwrite this to standardized analytical forms.",
+      "cultural_context_required": false
+    },
+    "machine_translation_bridge": {
+      "allowed_use": "unrestricted dialetical writing",
+      "prohibited_use": "forced standardisation checks",
+      "tone": "neutral",
+      "severity": "low",
+      "behaviour_tag": "greeting",
+      "routing_rule": "unrestricted"
+    },
+    "governance": {
+      "confidence_score": 1.0,
+      "audit_chain": [
+        "SUBMITTED",
+        "REVIEWED",
+        "VERIFIED",
+        "PUBLISHED"
+      ],
+      "speaker_verified": true
+    },
+    "audio_mapping": {
+      "audio_uuid": "a18be29d-4e9b-4b2a-89a1-cb9287ac6128",
+      "archive_source": "Dúchas.ie Heritage Project",
+      "file_url": "https://s3.eu-west-1.wasabisys.com/corklan-audio/gaeilge/dunfaimid-ref.mp3",
+      "speaker_metadata": {
+        "speaker_name": "Máire Ní Shúilleabháin",
+        "birth_year": 1948,
+        "dialect_variant": "Múscraí Gaeilge"
+      }
+    }
+  },
+  {
+    "phrase": "Gami graw",
+    "language_lane": "Cant / Shelta",
+    "status": "SENSITIVE_HOLD",
+    "cultural_context": {
+      "meaning": "bad talk or hostile speech (Cant vocabulary)",
+      "region": "Munster Traveller Community",
+      "when_to_use": "Lexical archive mapping only.",
+      "when_not_to_use": "Any public AI text generation, entertainment, or gaming applications. Must be protected from exposure.",
+      "note": "Shelta/Cant is community-restricted. This record is held secure to prevent commercial/machine exploitation.",
+      "cultural_context_required": true
+    },
+    "machine_translation_bridge": {
+      "allowed_use": "strictly prohibited for machine generation",
+      "prohibited_use": "all generative outputs, automated routing, public sentiment evaluations.",
+      "tone": "serious",
+      "severity": "critical",
+      "behaviour_tag": "greeting",
+      "routing_rule": "restricted_use"
+    },
+    "governance": {
+      "confidence_score": 0.88,
+      "audit_chain": [
+        "SUBMITTED"
+      ],
+      "speaker_verified": false
+    },
+    "audio_mapping": {
+      "audio_uuid": "f284e910-bc2d-4b82-990a-241c8d76e4ef",
+      "archive_source": "Ethnographic Heritage Archive",
+      "file_url": "https://s3.eu-west-1.wasabisys.com/corklan-audio/cant/gami-graw.mp3",
+      "speaker_metadata": {
+        "speaker_name": "Anonymous",
+        "birth_year": 1965,
+        "dialect_variant": "Munster Gammon"
+      }
+    }
+  }
+]

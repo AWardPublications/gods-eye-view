@@ -7323,6 +7323,42 @@ function normalizeAisTimestamp(value) {
   return Number.isNaN(date.getTime()) ? new Date().toISOString() : date.toISOString();
 }
 
+function davinciaProxy() {
+  function install(middlewares) {
+    middlewares.use('/api/davincia/records', async (req, res) => {
+      try {
+        const recordsPath = path.join(__dirname, 'public/corklan_records.json');
+        if (!fs.existsSync(recordsPath)) {
+          res.statusCode = 404;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({ error: 'Records file not found' }));
+          return;
+        }
+        
+        const data = fs.readFileSync(recordsPath, 'utf8');
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json; charset=utf-8');
+        res.setHeader('Cache-Control', 'no-store');
+        res.end(data);
+      } catch (error) {
+        res.statusCode = 500;
+        res.setHeader('Content-Type', 'application/json');
+        res.end(JSON.stringify({ error: error.message || 'Server error reading records' }));
+      }
+    });
+  }
+
+  return {
+    name: 'davincia-records-proxy',
+    configureServer(server) {
+      install(server.middlewares);
+    },
+    configurePreviewServer(server) {
+      install(server.middlewares);
+    },
+  };
+}
+
 /**
  * Main Vite configuration factory.
  *
@@ -7360,6 +7396,7 @@ export default defineConfig(({ mode }) => {
       trackBackfillProxies(),
       openAiRealtimeProxy(),
       googlePlacesContextProxy(),
+      davinciaProxy(),
     ],
     server: {
       host: env.HOST || 'localhost',

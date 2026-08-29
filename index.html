@@ -643,6 +643,92 @@
     </div>
   </div>
 
+  <!-- DaVinciA+ Governance Panel -->
+  <div id="davincia-panel" class="panel-collapsible collapsed" data-panel-id="davincia-panel">
+    <div class="panel-glow"></div>
+    <div class="davincia-panel-inner">
+      <div class="panel-header">
+        <span class="panel-title">DAVINCIA⁺ GOVERNANCE</span>
+        <span class="panel-divider"></span>
+        <button class="panel-collapse-btn" data-collapse-target="davincia-panel" title="Collapse panel">+</button>
+      </div>
+      
+      <div class="dv-scroll-container">
+        <!-- Selected Phrase Card -->
+        <div class="dv-card-primary">
+          <div class="dv-card-row">
+            <h2 id="dv-phrase" class="dv-term">Select a node</h2>
+            <span id="dv-status-badge" class="dv-badge">PENDING</span>
+          </div>
+          <p id="dv-lane" class="dv-subtitle">Language Lane</p>
+        </div>
+
+        <!-- Section: Cultural Context -->
+        <div class="dv-section">
+          <div class="dv-section-title">CULTURAL CUSTODY CONTEXT</div>
+          <div class="dv-detail-grid">
+            <div class="dv-detail-label">Definition:</div>
+            <div id="dv-meaning" class="dv-detail-value">meaning</div>
+            <div class="dv-detail-label">Region:</div>
+            <div id="dv-region" class="dv-detail-value">region</div>
+            <div class="dv-detail-label">When to Use:</div>
+            <div id="dv-when-use" class="dv-detail-value">when to use</div>
+            <div class="dv-detail-label">When NOT to Use:</div>
+            <div id="dv-when-not-use" class="dv-detail-value">when not to use</div>
+            <div class="dv-detail-label">Nuances:</div>
+            <div id="dv-nuances" class="dv-detail-value">nuances</div>
+          </div>
+        </div>
+
+        <!-- Section: Machine Translation Bridge -->
+        <div class="dv-section">
+          <div class="dv-section-title">MACHINE TRANSLATION BRIDGE</div>
+          <div class="dv-detail-grid">
+            <div class="dv-detail-label">Allowed Use:</div>
+            <div id="dv-allowed" class="dv-detail-value">allowed</div>
+            <div class="dv-detail-label">Prohibited Use:</div>
+            <div id="dv-prohibited" class="dv-detail-value">prohibited</div>
+            <div class="dv-detail-label">Tone Preference:</div>
+            <div id="dv-tone" class="dv-detail-value">tone</div>
+            <div class="dv-detail-label">Sensitivity:</div>
+            <div id="dv-severity" class="dv-detail-value">severity</div>
+            <div class="dv-detail-label">Routing Rule:</div>
+            <div id="dv-routing" class="dv-detail-value">routing</div>
+          </div>
+        </div>
+
+        <!-- Section: Governance Audit Trail -->
+        <div class="dv-section">
+          <div class="dv-section-title">GOVERNANCE & TRUST METRICS</div>
+          <div class="dv-detail-grid">
+            <div class="dv-detail-label">Consensus Score:</div>
+            <div id="dv-confidence" class="dv-detail-value">--</div>
+            <div class="dv-detail-label">Speaker Verified:</div>
+            <div id="dv-verified" class="dv-detail-value">--</div>
+            <div class="dv-detail-label">Audit Path:</div>
+            <div id="dv-audit-chain" class="dv-detail-value">audit chain</div>
+          </div>
+        </div>
+
+        <!-- Section: Audio Archive -->
+        <div id="dv-audio-wrap" class="dv-section" style="display:none;">
+          <div class="dv-section-title">AUDIO PROVENANCE ARCHIVE</div>
+          <div class="dv-audio-meta">
+            <div><strong>Source:</strong> <span id="dv-audio-source">source</span></div>
+            <div><strong>Speaker:</strong> <span id="dv-audio-speaker">speaker</span></div>
+          </div>
+          <audio id="dv-audio-player" controls style="width:100%; margin-top:8px;"></audio>
+        </div>
+
+        <!-- Section: Compiled System Prompt -->
+        <div class="dv-section">
+          <div class="dv-section-title">COMPILED SYSTEM INSTRUCTION (LLM GATE)</div>
+          <pre id="dv-prompt-output" class="dv-prompt-box">Compiled system prompt output will render here.</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Scene Director Panel -->
   <div id="scene-panel" class="panel-collapsible collapsed" data-panel-id="scene-panel">
     <div class="panel-glow"></div>

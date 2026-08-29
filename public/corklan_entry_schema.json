@@ -1,0 +1,134 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CorkLanEntry",
+  "description": "Schema for CorkLan database entries, bridging cultural language elements with machine-readable specifications.",
+  "type": "object",
+  "properties": {
+    "phrase": {
+      "type": "string",
+      "description": "The word, phrase, or term in the local language, slang, or dialect."
+    },
+    "language_lane": {
+      "type": "string",
+      "enum": ["Cork Slang", "Gaeilge", "West Cork Dialect", "Cant / Shelta", "Other Celtic"],
+      "description": "The specific cultural/linguistic category the entry belongs to."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["PENDING_REVIEW", "CONFIRMED", "SENSITIVE_HOLD"],
+      "description": "Governance status of the phrase entry."
+    },
+    "cultural_context": {
+      "type": "object",
+      "properties": {
+        "meaning": {
+          "type": "string",
+          "description": "Core definition or semantic meaning."
+        },
+        "region": {
+          "type": "string",
+          "description": "Specific geographic region or locality of usage (e.g. Cork City, West Cork)."
+        },
+        "when_to_use": {
+          "type": "string",
+          "description": "Guidelines on appropriate usage contexts (e.g. informal humour)."
+        },
+        "when_not_to_use": {
+          "type": "string",
+          "description": "Contexts where usage is inappropriate, offensive, or inaccurate."
+        },
+        "note": {
+          "type": "string",
+          "description": "Historical, socio-linguistic, or usage nuance notes."
+        },
+        "cultural_context_required": {
+          "type": "boolean",
+          "description": "Flag indicating if LLMs must inject explicit context before serving this phrase."
+        }
+      },
+      "required": ["meaning", "region", "when_to_use", "when_not_to_use", "cultural_context_required"]
+    },
+    "machine_translation_bridge": {
+      "type": "object",
+      "properties": {
+        "allowed_use": {
+          "type": "string",
+          "description": "Permitted machine translation/generation contexts."
+        },
+        "prohibited_use": {
+          "type": "string",
+          "description": "Forbidden generation or interpretation contexts (e.g. formal judgment, professional profiling)."
+        },
+        "tone": {
+          "type": "string",
+          "enum": ["neutral", "comic", "sarcastic", "affectionate", "derogatory", "serious"],
+          "description": "Inherent emotional tone or framing."
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["low", "medium", "high", "critical"],
+          "description": "The sensitivity level or social impact rating."
+        },
+        "behaviour_tag": {
+          "type": "string",
+          "description": "Machine-readable behavioral annotation (e.g., foolish, greeting, exclamation)."
+        },
+        "routing_rule": {
+          "type": "string",
+          "enum": ["casual_context_only", "human_in_the_loop", "unrestricted", "restricted_use"],
+          "description": "Deterministic instruction routing category for AI models."
+        }
+      },
+      "required": ["allowed_use", "prohibited_use", "tone", "severity", "behaviour_tag", "routing_rule"]
+    },
+    "governance": {
+      "type": "object",
+      "properties": {
+        "confidence_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1.0,
+          "description": "Calculated consensus score from community and speakers."
+        },
+        "audit_chain": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Sequential steps taken (e.g. submitted, reviewed, verified, published)."
+        },
+        "speaker_verified": {
+          "type": "boolean",
+          "description": "Indicates if a verified native/heritage speaker has reviewed the entry."
+        }
+      },
+      "required": ["confidence_score", "audit_chain", "speaker_verified"]
+    },
+    "audio_mapping": {
+      "type": "object",
+      "properties": {
+        "audio_uuid": {
+          "type": "string",
+          "description": "Unique UUID for the audio asset."
+        },
+        "archive_source": {
+          "type": "string",
+          "description": "Original archive (e.g., ITMA, Dúchas.ie, Local Recording)."
+        },
+        "file_url": {
+          "type": "string",
+          "description": "URI to the audio asset hosted in cloud storage (e.g., AWS S3 or Wasabi)."
+        },
+        "speaker_metadata": {
+          "type": "object",
+          "properties": {
+            "speaker_name": { "type": "string" },
+            "birth_year": { "type": "integer" },
+            "dialect_variant": { "type": "string" }
+          }
+        }
+      }
+    }
+  },
+  "required": ["phrase", "language_lane", "status", "cultural_context", "machine_translation_bridge", "governance"]
+}
