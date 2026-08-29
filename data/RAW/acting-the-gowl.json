@@ -1,26 +1,21 @@
 {
-  "$schema": "https://davincia.awardpublications.com/schemas/envelope-v1.1.json",
   "object_id": "urn:davincia:corklan:linguistic_record:acting-the-gowl",
-  "object_type": "linguistic_record",
   "domain": "corklan",
   "version": "1.1.0",
   "lifecycle_state": "VERIFIED",
   "provenance": {
     "source_type": "COMMUNITY",
-    "source_reference": "CorkLan Community Archive",
+    "source_reference": "Archive",
     "geographic_origin": {
       "latitude": 51.8985,
       "longitude": -8.4756
     },
-    "collected_at": "2026-08-28T12:00:00Z",
-    "provenance_confidence": "HIGH"
+    "collected_at": "2026-08-28T12:00:00Z"
   },
   "verification": {
     "state": "VERIFIED",
-    "method": "COMMUNITY_REVIEW",
     "reviewer_role": "NATIVE_SPEAKER",
-    "verified_at": "2026-08-29T10:00:00Z",
-    "evidence_ref": "urn:davincia:evidence:corklan:c35bd28b-9d41-4c6e-8a2b-ef792a549db6"
+    "evidence_ref": "urn:evidence:ref"
   },
   "sensitivity": {
     "classification": "PUBLIC"
@@ -29,30 +24,10 @@
     "phrase": "Acting the gowl",
     "language_lane": "Cork Slang",
     "cultural_context": {
-      "meaning": "behaving foolishly or irritatingly",
-      "region": "Cork City & County",
-      "when_to_use": "informal humour / calling out nonsense",
-      "when_not_to_use": "formal or professional settings",
-      "note": "CorkLan rule: humour is allowed; mockery of culture is not.",
-      "cultural_context_required": true
+      "meaning": "behaving foolishly"
     },
     "machine_translation_bridge": {
-      "allowed_use": "informal humour",
-      "prohibited_use": "formal judgement or clinical profiling",
-      "tone": "comic",
-      "severity": "low",
-      "behaviour_tag": "foolish",
       "routing_rule": "casual_context_only"
-    },
-    "audio_mapping": {
-      "audio_uuid": "c35bd28b-9d41-4c6e-8a2b-ef792a549db6",
-      "archive_source": "CorkLan Community Archive",
-      "file_url": "https://s3.eu-west-1.wasabisys.com/corklan-audio/cork-slang/gowl-ref.mp3",
-      "speaker_metadata": {
-        "speaker_name": "Tadhg O'Connor",
-        "birth_year": 1984,
-        "dialect_variant": "Cork Flat"
-      }
     }
   }
 }

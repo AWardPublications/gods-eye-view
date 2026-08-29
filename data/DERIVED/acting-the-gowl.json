@@ -9,7 +9,7 @@
   "provenance": {
     "source_urn": "urn:davincia:corklan:linguistic_record:acting-the-gowl",
     "checksum": "sha256-mock-checksum",
-    "extracted_at": "2026-08-29T20:47:14.023Z",
+    "extracted_at": "2026-08-29T21:18:53.906Z",
     "source_type": "COMMUNITY",
     "collected_at": "2026-08-28T12:00:00Z",
     "geographic_origin": {
@@ -20,28 +20,18 @@
   "verification": {
     "state": "VERIFIED",
     "reviewer_role": "NATIVE_SPEAKER",
-    "evidence_ref": "urn:davincia:evidence:corklan:c35bd28b-9d41-4c6e-8a2b-ef792a549db6"
+    "evidence_ref": "urn:evidence:ref"
   },
   "sensitivity": {
     "classification": "PUBLIC"
   },
   "payload": {
-    "claim": "The phrase \"Acting the gowl\" means \"behaving foolishly or irritatingly\" in Cork Slang.",
+    "claim": "The phrase \"Acting the gowl\" means \"behaving foolishly\" in Cork Slang.",
     "details": {
-      "meaning": "behaving foolishly or irritatingly",
-      "region": "Cork City & County",
-      "when_to_use": "informal humour / calling out nonsense",
-      "when_not_to_use": "formal or professional settings",
-      "note": "CorkLan rule: humour is allowed; mockery of culture is not.",
-      "cultural_context_required": true
+      "meaning": "behaving foolishly"
     },
     "language_lane": "Cork Slang",
     "machine_translation_bridge": {
-      "allowed_use": "informal humour",
-      "prohibited_use": "formal judgement or clinical profiling",
-      "tone": "comic",
-      "severity": "low",
-      "behaviour_tag": "foolish",
       "routing_rule": "casual_context_only"
     }
   },

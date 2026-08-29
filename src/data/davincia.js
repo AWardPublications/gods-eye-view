@@ -128,6 +128,31 @@ ACTIONS REQUIRED:
       });
     }
 
+    // Dynamic Passport Admission update
+    (async () => {
+      try {
+        const passRes = await fetch('/api/davincia/passport/issue', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            identity: { id: "urn:davincia:identity:user:david", name: "David O'Connor", type: "HUMAN" },
+            capabilities: ["READ", "TRANSLATE", "DOWNLOAD"]
+          })
+        });
+        const passData = await passRes.json();
+        if (passData.passport) {
+          const passport = passData.passport;
+          panel.querySelector('#dv-pass-id').textContent = passport.passport_id;
+          panel.querySelector('#dv-pass-holder-type').textContent = passport.identity.type;
+          panel.querySelector('#dv-pass-expiry').textContent = new Date(passport.expires_at).toLocaleDateString();
+          panel.querySelector('#dv-pass-capabilities').textContent = passport.capabilities.join(', ');
+          panel.querySelector('#dv-pass-signature').textContent = passport.signature;
+        }
+      } catch (err) {
+        console.error("Failed to load active passport HUD:", err);
+      }
+    })();
+
     const payload = record.payload || {};
     const translateDecision = record.decisions?.translate;
     const publishDecision = record.decisions?.publish;

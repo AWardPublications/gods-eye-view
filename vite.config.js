@@ -7402,6 +7402,44 @@ function davinciaProxy() {
         }
       });
     });
+
+    middlewares.use('/api/davincia/passport/issue', (req, res) => {
+      let body = '';
+      req.on('data', chunk => { body += chunk; });
+      req.on('end', async () => {
+        try {
+          const { identity, capabilities, provenance, verificationState } = JSON.parse(body || '{}');
+          const { issuePassport } = await import('./src/platform/client.js');
+          const passport = issuePassport(identity, capabilities, provenance, verificationState);
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/json; charset=utf-8');
+          res.end(JSON.stringify({ passport }));
+        } catch (error) {
+          res.statusCode = 500;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({ error: error.message }));
+        }
+      });
+    });
+
+    middlewares.use('/api/davincia/passport/verify', (req, res) => {
+      let body = '';
+      req.on('data', chunk => { body += chunk; });
+      req.on('end', async () => {
+        try {
+          const { passport, action, actor } = JSON.parse(body || '{}');
+          const { verifyPassport } = await import('./src/platform/client.js');
+          const decision = await verifyPassport(passport, action, actor);
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/json; charset=utf-8');
+          res.end(JSON.stringify(decision));
+        } catch (error) {
+          res.statusCode = 500;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({ error: error.message }));
+        }
+      });
+    });
   }
 
   return {
