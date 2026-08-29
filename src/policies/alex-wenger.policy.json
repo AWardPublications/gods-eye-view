@@ -1,0 +1,39 @@
+{
+  "policy_id": "DAVINCIA-GOLF-004",
+  "name": "Golf OS Telemetry Rules",
+  "version": "1.0.0",
+  "domain": "alex-wenger",
+  "rules": [
+    {
+      "id": "RULE-GOLF-PUBLISH-CONSENTED",
+      "target": {
+        "athlete_consent": true
+      },
+      "conditions": {
+        "action": ["PUBLISH"]
+      },
+      "outcome": "ALLOW",
+      "reason_code": "APPROVED"
+    },
+    {
+      "id": "RULE-GOLF-PUBLISH-NO-CONSENT",
+      "target": {
+        "athlete_consent": false
+      },
+      "conditions": {
+        "action": ["PUBLISH"]
+      },
+      "outcome": "DENY",
+      "reason_code": "CUSTODY_PROTECTED"
+    },
+    {
+      "id": "RULE-GOLF-ANALYSE-COACH",
+      "target": {},
+      "conditions": {
+        "action": ["ANALYSE", "COACH"]
+      },
+      "outcome": "ALLOW",
+      "reason_code": "APPROVED"
+    }
+  ]
+}

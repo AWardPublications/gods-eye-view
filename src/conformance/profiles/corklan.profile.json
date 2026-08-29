@@ -1,0 +1,21 @@
+{
+  "system": "corklan",
+  "required_capabilities": [
+    "cultural_data",
+    "geospatial",
+    "public_restricted"
+  ],
+  "required_actions": [
+    "TRANSLATE",
+    "PUBLISH"
+  ],
+  "required_controls": [
+    "provenance_audit",
+    "evidence_verification"
+  ],
+  "minimum_conformance": [
+    "fail_closed",
+    "audit",
+    "policy_precedence"
+  ]
+}

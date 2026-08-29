@@ -9227,6 +9227,14 @@ body.scene-playback-mode #first-run-launcher {
   letter-spacing: 1px;
 }
 
+.dv-urn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: #7a6e60;
+  margin-top: 6px;
+  word-break: break-all;
+}
+
 .dv-badge {
   font-size: 0.65rem;
   font-weight: 800;
@@ -9234,24 +9242,31 @@ body.scene-playback-mode #first-run-launcher {
   border-radius: 999px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  display: inline-block;
 }
 
-.dv-badge.confirmed {
+.dv-badge.confirmed, .dv-badge.badge-allow {
   background: rgba(47, 143, 91, 0.2);
   color: #2f8f5b;
   border: 1px solid #2f8f5b;
 }
 
-.dv-badge.pending-review {
+.dv-badge.pending-review, .dv-badge.badge-review {
   background: rgba(200, 167, 93, 0.2);
   color: #c8a75d;
   border: 1px solid #c8a75d;
 }
 
-.dv-badge.sensitive-hold {
+.dv-badge.sensitive-hold, .dv-badge.badge-deny {
   background: rgba(211, 29, 54, 0.2);
   color: #d31d36;
   border: 1px solid #d31d36;
+}
+
+.dv-badge.badge-constraints {
+  background: rgba(230, 126, 34, 0.2);
+  color: #e67e22;
+  border: 1px solid #e67e22;
 }
 
 .dv-section {

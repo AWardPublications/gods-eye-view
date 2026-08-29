@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DaVinciA Conformance Profile Schema",
+  "type": "object",
+  "properties": {
+    "system": {
+      "type": "string"
+    },
+    "required_capabilities": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "required_actions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "required_controls": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "minimum_conformance": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "required": ["system", "required_capabilities", "required_actions", "required_controls", "minimum_conformance"]
+}

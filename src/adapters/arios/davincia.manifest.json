@@ -1,0 +1,23 @@
+{
+  "$schema": "https://davincia.awardpublications.com/schemas/manifest-v1.json",
+  "system": "arios",
+  "version": "1.0.0",
+  "domain": ["regulatory"],
+  "governance_profile": ["regulated", "evidence_critical"],
+  "objects": [
+    {
+      "name": "regulatory_filing",
+      "sensitivity": "SENSITIVE_PROTECTED"
+    }
+  ],
+  "actions": [
+    { "name": "READ", "impact": "LOW" },
+    { "name": "INFER", "impact": "MODERATE" },
+    { "name": "EXPORT", "impact": "HIGH" },
+    { "name": "EXECUTE", "impact": "CRITICAL" }
+  ],
+  "required_controls": [
+    "auditor_sig",
+    "immutable_ledger"
+  ]
+}

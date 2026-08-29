@@ -1,0 +1,19 @@
+{
+  "system": "Universal Core Profile",
+  "required_capabilities": [
+    "provenance",
+    "verification",
+    "fail_closed"
+  ],
+  "required_actions": [
+    "READ"
+  ],
+  "required_controls": [
+    "evidence_verification"
+  ],
+  "minimum_conformance": [
+    "fail_closed",
+    "audit",
+    "policy_precedence"
+  ]
+}

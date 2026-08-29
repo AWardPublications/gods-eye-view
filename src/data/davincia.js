@@ -1,12 +1,5 @@
 import * as Cesium from 'cesium';
-
-// Geographic presets for CorkLan regions in Southwest Ireland (Munster)
-const REGION_COORDINATES = {
-  "Cork City & County": { lat: 51.8985, lon: -8.4756 },
-  "Cork City & East Cork": { lat: 51.9022, lon: -8.4055 }, // Slightly shifted East
-  "Muskerry Gaeltacht (Cúil Aodha / Ballyvourney)": { lat: 51.9366, lon: -9.1706 },
-  "Munster Traveller Community": { lat: 51.9036, lon: -8.5204 }
-};
+import { evaluatePolicy } from '../governance/evaluate.js';
 
 const DEFAULT_COORDS = { lat: 51.8985, lon: -8.4756 }; // Cork City Center fallback
 
@@ -19,13 +12,14 @@ export function createDavinciaLayer() {
   let _viewer = null;
 
   // Color mapping based on DaVinciA+ Governance Status
-  function getStatusColor(status) {
-    switch (status) {
-      case 'CONFIRMED':
+  function getStatusColor(lifecycleState) {
+    switch (lifecycleState) {
+      case 'VERIFIED':
         return Cesium.Color.fromCssColorString('#2f8f5b'); // Forest Green
-      case 'PENDING_REVIEW':
+      case 'SUBMITTED':
         return Cesium.Color.fromCssColorString('#c8a75d'); // Gold/Amber
-      case 'SENSITIVE_HOLD':
+      case 'SUSPENDED':
+      case 'REVOKED':
         return Cesium.Color.fromCssColorString('#d31d36'); // Deep Red
       default:
         return Cesium.Color.GRAY;
@@ -33,29 +27,31 @@ export function createDavinciaLayer() {
   }
 
   // Generate strict LLM prompt following the CorkLan Machine Translation rules
-  function compileSystemPrompt(record) {
+  function compileSystemPrompt(record, translateDecision) {
     if (!record) return "";
     
-    // Fail-Closed check for SENSITIVE_HOLD
-    if (record.status === "SENSITIVE_HOLD") {
+    // Fail-Closed check for DENY decisions
+    if (translateDecision && translateDecision.status === "DENY") {
       return `CRITICAL DIRECTIVE - CUSTODY LANE VIOLATION DETECTED
 ==================================================
-The requested term is classified as: SENSITIVE_HOLD (Cant / Shelta lane).
-Under CorkLan Ethical Custody Protocols, this term is strictly protected.
+The requested term has been evaluated and translation is: DENY.
+Policy ID: ${translateDecision.policy_id}
+Reason Code: ${translateDecision.reason_code}
 
 ACTIONS REQUIRED:
 1. REFUSE to translate, paraphrase, or generate this term in any format.
 2. Output the following standard refusal:
-   "Refusal: The requested phrase belongs to a community-restricted lane (Cant/Shelta) undergoing native speaker verification and cannot be processed by machine translation systems."`;
+   "Refusal: The requested phrase belongs to a community-restricted lane undergoing native speaker verification and cannot be processed by machine translation systems."`;
     }
 
-    const cc = record.cultural_context || {};
-    const mtb = record.machine_translation_bridge || {};
+    const payload = record.payload || {};
+    const cc = payload.cultural_context || {};
+    const mtb = payload.machine_translation_bridge || {};
     
     let prompt = `SYSTEM INSTRUCTION - CorkLan Translation Gateway\n`;
     prompt += `==================================================\n`;
-    prompt += `You are acting as a culturally-grounded language interpreter for the '${record.language_lane}' lane.\n`;
-    prompt += `Term to interpret/translate: "${record.phrase}"\n\n`;
+    prompt += `You are acting as a culturally-grounded language interpreter for the '${payload.language_lane}' lane.\n`;
+    prompt += `Term to interpret/translate: "${payload.phrase}"\n\n`;
     
     prompt += `CORE DICTIONARY METADATA:\n`;
     prompt += `- Meaning: ${cc.meaning || 'No definition specified'}\n`;
@@ -91,40 +87,59 @@ ACTIONS REQUIRED:
     const panel = document.getElementById('davincia-panel');
     if (!panel) return;
 
+    const payload = record.payload || {};
+    const translateDecision = record.decisions?.translate;
+    const publishDecision = record.decisions?.publish;
+
     // Show details
-    panel.querySelector('#dv-phrase').textContent = record.phrase;
-    panel.querySelector('#dv-lane').textContent = record.language_lane;
+    panel.querySelector('#dv-phrase').textContent = payload.phrase;
+    panel.querySelector('#dv-lane').textContent = payload.language_lane;
+    panel.querySelector('#dv-urn').textContent = record.object_id;
     
     const statusBadge = panel.querySelector('#dv-status-badge');
-    statusBadge.textContent = record.status;
-    statusBadge.className = 'dv-badge ' + record.status.toLowerCase().replace('_', '-');
+    statusBadge.textContent = record.lifecycle_state;
+    statusBadge.className = 'dv-badge ' + record.lifecycle_state.toLowerCase().replace('_', '-');
 
-    const cc = record.cultural_context || {};
+    const cc = payload.cultural_context || {};
     panel.querySelector('#dv-meaning').textContent = cc.meaning || 'N/A';
     panel.querySelector('#dv-region').textContent = cc.region || 'N/A';
     panel.querySelector('#dv-when-use').textContent = cc.when_to_use || 'N/A';
     panel.querySelector('#dv-when-not-use').textContent = cc.when_not_to_use || 'N/A';
     panel.querySelector('#dv-nuances').textContent = cc.note || 'None';
 
-    const mtb = record.machine_translation_bridge || {};
+    const mtb = payload.machine_translation_bridge || {};
     panel.querySelector('#dv-allowed').textContent = mtb.allowed_use || 'N/A';
     panel.querySelector('#dv-prohibited').textContent = mtb.prohibited_use || 'N/A';
     panel.querySelector('#dv-tone').textContent = mtb.tone || 'N/A';
     panel.querySelector('#dv-severity').textContent = mtb.severity || 'N/A';
     panel.querySelector('#dv-routing').textContent = mtb.routing_rule || 'N/A';
 
-    const gov = record.governance || {};
-    panel.querySelector('#dv-confidence').textContent = `${(gov.confidence_score * 100).toFixed(0)}%`;
-    panel.querySelector('#dv-verified').textContent = gov.speaker_verified ? 'YES' : 'NO';
-    panel.querySelector('#dv-audit-chain').textContent = (gov.audit_chain || []).join(' → ');
+    // Decisions display
+    if (translateDecision) {
+      const tb = panel.querySelector('#dv-auth-translate');
+      tb.textContent = translateDecision.status;
+      tb.className = `dv-badge badge-${translateDecision.status.toLowerCase().replace(/_/g, '-')}`;
+      panel.querySelector('#dv-policy-id').textContent = translateDecision.policy_id || 'N/A';
+      panel.querySelector('#dv-reason-code').textContent = translateDecision.reason_code || 'N/A';
+    }
+    if (publishDecision) {
+      const pb = panel.querySelector('#dv-auth-publish');
+      pb.textContent = publishDecision.status;
+      pb.className = `dv-badge badge-${publishDecision.status.toLowerCase().replace(/_/g, '-')}`;
+    }
+
+    // Evidence details
+    const ver = record.verification || {};
+    panel.querySelector('#dv-evidence-ref').textContent = ver.evidence_ref || 'N/A';
+    panel.querySelector('#dv-reviewer-role').textContent = ver.reviewer_role || 'N/A';
 
     // Compile system prompt
-    const promptText = compileSystemPrompt(record);
+    const promptText = compileSystemPrompt(record, translateDecision);
     panel.querySelector('#dv-prompt-output').textContent = promptText;
 
     // Audio Mapping
     const audioWrap = panel.querySelector('#dv-audio-wrap');
-    const audio = record.audio_mapping || {};
+    const audio = payload.audio_mapping || {};
     if (audio.file_url) {
       audioWrap.style.display = 'block';
       panel.querySelector('#dv-audio-source').textContent = audio.archive_source || 'Unknown Archive';
@@ -186,15 +201,15 @@ ACTIONS REQUIRED:
         const picked = viewer.scene.pick(click.position);
         if (picked && picked.id && typeof picked.id.id === 'string' && picked.id.id.startsWith('davincia:')) {
           const phrase = picked.id.id.split(':')[1];
-          const record = _records.find(r => r.phrase === phrase);
+          const record = _records.find(r => r.payload?.phrase === phrase);
           if (record) {
             _selectedPhrase = phrase;
             updateUiPanel(record);
             
             // Fly/zoom onto the clicked node
-            const coords = REGION_COORDINATES[record.cultural_context.region] || DEFAULT_COORDS;
+            const coords = record.provenance?.geographic_origin || DEFAULT_COORDS;
             viewer.camera.flyTo({
-              destination: Cesium.Cartesian3.fromDegrees(coords.lon, coords.lat, 2500),
+              destination: Cesium.Cartesian3.fromDegrees(coords.longitude, coords.latitude, 2500),
               duration: 1.5
             });
           }
@@ -235,17 +250,26 @@ ACTIONS REQUIRED:
           return false;
         }
 
+        const actor = { id: "urn:davincia:identity:user:david", class: "HUMAN" };
+        
+        // Pre-compute decisions for each record
+        for (const record of data) {
+          const translate = await evaluatePolicy(record, "TRANSLATE", actor);
+          const publish = await evaluatePolicy(record, "PUBLISH", actor);
+          record.decisions = { translate, publish };
+        }
+
         _records = data;
         _dataSource.entities.removeAll();
 
         _records.forEach((record) => {
-          const region = record.cultural_context?.region || "";
-          const coords = REGION_COORDINATES[region] || DEFAULT_COORDS;
-          const position = Cesium.Cartesian3.fromDegrees(coords.lon, coords.lat);
-          const color = getStatusColor(record.status);
+          const payload = record.payload || {};
+          const coords = record.provenance?.geographic_origin || DEFAULT_COORDS;
+          const position = Cesium.Cartesian3.fromDegrees(coords.longitude, coords.latitude);
+          const color = getStatusColor(record.lifecycle_state);
 
           _dataSource.entities.add({
-            id: `davincia:${record.phrase}`,
+            id: `davincia:${payload.phrase}`,
             position,
             point: {
               pixelSize: 16,
@@ -255,7 +279,7 @@ ACTIONS REQUIRED:
               heightReference: Cesium.HeightReference.CLAMP_TO_GROUND
             },
             label: {
-              text: record.phrase,
+              text: payload.phrase,
               font: 'bold 13px JetBrains Mono, monospace',
               fillColor: Cesium.Color.WHITE,
               outlineColor: Cesium.Color.BLACK,
@@ -270,10 +294,10 @@ ACTIONS REQUIRED:
 
         // Update UI with first record if nothing is selected yet
         if (_records.length > 0 && !_selectedPhrase) {
-          _selectedPhrase = _records[0].phrase;
+          _selectedPhrase = _records[0].payload?.phrase;
           updateUiPanel(_records[0]);
         } else if (_selectedPhrase) {
-          const current = _records.find(r => r.phrase === _selectedPhrase);
+          const current = _records.find(r => r.payload?.phrase === _selectedPhrase);
           if (current) updateUiPanel(current);
         }
 

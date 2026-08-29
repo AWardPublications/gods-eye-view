@@ -1,0 +1,57 @@
+{
+  "policy_id": "DAVINCIA-CULTURAL-003",
+  "name": "Munster Slang and Cant Custody Rules",
+  "version": "1.2.0",
+  "domain": "corklan",
+  "rules": [
+    {
+      "id": "RULE-CANT-FAIL-CLOSED",
+      "target": {
+        "language_lane": "Cant / Shelta"
+      },
+      "conditions": {
+        "action": ["TRANSLATE", "PUBLISH"]
+      },
+      "outcome": "DENY",
+      "reason_code": "CUSTODY_PROTECTED"
+    },
+    {
+      "id": "RULE-SLANG-CASUAL-ONLY",
+      "target": {
+        "language_lane": "Cork Slang"
+      },
+      "conditions": {
+        "action": ["TRANSLATE"],
+        "context_attributes": {
+          "routing_rule": "casual_context_only"
+        }
+      },
+      "outcome": "ALLOW_WITH_CONSTRAINTS",
+      "reason_code": "CASUAL_CONTEXT_ONLY"
+    },
+    {
+      "id": "RULE-SLANG-HUMAN-REVIEW",
+      "target": {
+        "language_lane": "Cork Slang",
+        "lifecycle_state": "SUBMITTED"
+      },
+      "conditions": {
+        "action": ["PUBLISH"]
+      },
+      "outcome": "REVIEW_REQUIRED",
+      "reason_code": "UNVERIFIED"
+    },
+    {
+      "id": "RULE-GAEILGE-UNRESTRICTED",
+      "target": {
+        "language_lane": "Gaeilge",
+        "lifecycle_state": "VERIFIED"
+      },
+      "conditions": {
+        "action": ["TRANSLATE", "PUBLISH"]
+      },
+      "outcome": "ALLOW",
+      "reason_code": "APPROVED"
+    }
+  ]
+}
