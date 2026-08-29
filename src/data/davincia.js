@@ -87,6 +87,47 @@ ACTIONS REQUIRED:
     const panel = document.getElementById('davincia-panel');
     if (!panel) return;
 
+    // Reset Commerce outcome states
+    const btn = panel.querySelector('#dv-request-access-btn');
+    const outcome = panel.querySelector('#dv-commerce-outcome');
+    const txIdSpan = panel.querySelector('#dv-tx-id');
+
+    if (btn && outcome) {
+      outcome.style.display = 'none';
+      btn.style.display = 'block';
+
+      // Re-bind click event
+      const newBtn = btn.cloneNode(true);
+      btn.parentNode.replaceChild(newBtn, btn);
+
+      newBtn.addEventListener('click', async () => {
+        try {
+          // Ingest/refine raw record first
+          await fetch('/api/davincia/knowledge/refine');
+
+          const cleanPhrase = record.payload.phrase.toLowerCase().replace(/\s+/g, '-');
+          const response = await fetch('/api/davincia/knowledge/request', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              requester: { id: "urn:davincia:identity:user:david", class: "HUMAN" },
+              assetId: `urn:davincia:knowledge:asset:${cleanPhrase}`,
+              action: "TRANSLATE",
+              purpose: "LICENSED_GEOSPATIAL_VIEW"
+            })
+          });
+          const result = await response.json();
+          if (result.commerce_event) {
+            txIdSpan.textContent = result.commerce_event.transaction_id;
+            outcome.style.display = 'block';
+            newBtn.style.display = 'none';
+          }
+        } catch (e) {
+          console.error("Embassy request failed:", e);
+        }
+      });
+    }
+
     const payload = record.payload || {};
     const translateDecision = record.decisions?.translate;
     const publishDecision = record.decisions?.publish;

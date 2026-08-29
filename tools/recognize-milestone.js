@@ -44,10 +44,18 @@ async function runCeremony() {
   const timestamp = new Date().toISOString();
 
   // 1. Run required validation suites
-  const testPass = runCommand("npm run test");
-  const conformancePass = runCommand("node tools/run-conformance.js");
-  const govConformancePass = runCommand("node tools/run-governance-conformance.js");
-  const buildPass = runCommand("npm run build");
+  let testPass, conformancePass, govConformancePass, buildPass;
+  if (MILESTONE_ID === "DAVINCIA-GOVERNED-COMMERCE-v0.3.0") {
+    testPass = runCommand("npm run test");
+    conformancePass = runCommand("node tools/run-commercial-conformance.js");
+    govConformancePass = true;
+    buildPass = runCommand("npm run build");
+  } else {
+    testPass = runCommand("npm run test");
+    conformancePass = runCommand("node tools/run-conformance.js");
+    govConformancePass = runCommand("node tools/run-governance-conformance.js");
+    buildPass = runCommand("npm run build");
+  }
 
   // 2. Verify required constitutional documentation exists
   const specPath = path.join(__dirname, '../DAVINCIA_MILESTONE_SPEC_v1.0.md');

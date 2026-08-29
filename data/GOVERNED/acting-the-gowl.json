@@ -1,0 +1,76 @@
+{
+  "asset_id": "urn:davincia:knowledge:asset:acting-the-gowl",
+  "asset_type": "knowledge_asset",
+  "title": "Acting the gowl",
+  "domain": "corklan",
+  "owner": "urn:davincia:identity:organization:brehon_ai",
+  "creator": "urn:davincia:identity:user:native_speaker_tadhg",
+  "source": "corklan_records.json",
+  "provenance": {
+    "source_urn": "urn:davincia:corklan:linguistic_record:acting-the-gowl",
+    "checksum": "sha256-mock-checksum",
+    "extracted_at": "2026-08-29T20:47:14.023Z",
+    "source_type": "COMMUNITY",
+    "collected_at": "2026-08-28T12:00:00Z",
+    "geographic_origin": {
+      "latitude": 51.8985,
+      "longitude": -8.4756
+    }
+  },
+  "verification": {
+    "state": "VERIFIED",
+    "reviewer_role": "NATIVE_SPEAKER",
+    "evidence_ref": "urn:davincia:evidence:corklan:c35bd28b-9d41-4c6e-8a2b-ef792a549db6"
+  },
+  "sensitivity": {
+    "classification": "PUBLIC"
+  },
+  "payload": {
+    "claim": "The phrase \"Acting the gowl\" means \"behaving foolishly or irritatingly\" in Cork Slang.",
+    "details": {
+      "meaning": "behaving foolishly or irritatingly",
+      "region": "Cork City & County",
+      "when_to_use": "informal humour / calling out nonsense",
+      "when_not_to_use": "formal or professional settings",
+      "note": "CorkLan rule: humour is allowed; mockery of culture is not.",
+      "cultural_context_required": true
+    },
+    "language_lane": "Cork Slang",
+    "machine_translation_bridge": {
+      "allowed_use": "informal humour",
+      "prohibited_use": "formal judgement or clinical profiling",
+      "tone": "comic",
+      "severity": "low",
+      "behaviour_tag": "foolish",
+      "routing_rule": "casual_context_only"
+    }
+  },
+  "licensing": {
+    "commercial_available": true,
+    "pricing": {
+      "model": "USAGE_BASED",
+      "price": 0.05,
+      "currency": "USD"
+    },
+    "permitted_actions": [
+      "DISCOVER",
+      "VIEW",
+      "QUERY",
+      "TRANSLATE",
+      "DOWNLOAD",
+      "COMMERCIAL_USE",
+      "AGENT_USE"
+    ],
+    "prohibited_actions": [
+      "TRANSFORM",
+      "PUBLISH"
+    ]
+  },
+  "version": "1.1.0",
+  "lifecycle_state": "AUTHORIZED",
+  "governance_passport": {
+    "manifest_hash": "sha256-passport-hash",
+    "authorized_at": "2026-08-29T20:47:14.031Z",
+    "decision_ref": "urn:davincia:decision:anu1d4vix1e"
+  }
+}

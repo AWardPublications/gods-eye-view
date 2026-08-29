@@ -7346,6 +7346,62 @@ function davinciaProxy() {
         res.end(JSON.stringify({ error: error.message || 'Server error reading records' }));
       }
     });
+
+    middlewares.use('/api/davincia/knowledge/assets', async (req, res) => {
+      try {
+        const { listDiscoverableAssets } = await import('./src/knowledge/registry.js');
+        const assets = listDiscoverableAssets();
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json; charset=utf-8');
+        res.setHeader('Cache-Control', 'no-store');
+        res.end(JSON.stringify(assets));
+      } catch (error) {
+        res.statusCode = 500;
+        res.setHeader('Content-Type', 'application/json');
+        res.end(JSON.stringify({ error: error.message }));
+      }
+    });
+
+    middlewares.use('/api/davincia/knowledge/refine', async (req, res) => {
+      try {
+        const recordsPath = path.join(__dirname, 'public/corklan_records.json');
+        const rawRecords = JSON.parse(fs.readFileSync(recordsPath, 'utf8'));
+        const targetRaw = rawRecords[0]; // First real asset: "Acting the gowl"
+
+        const { runRefinery, promoteToGoverned } = await import('./src/knowledge/refinery.js');
+        const { derivedRecord } = runRefinery(targetRaw);
+        
+        const actor = { id: "urn:davincia:identity:user:david", class: "HUMAN" };
+        const { governedRecord } = await promoteToGoverned(derivedRecord, actor);
+
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json; charset=utf-8');
+        res.end(JSON.stringify({ status: "SUCCESS", asset: governedRecord }));
+      } catch (error) {
+        res.statusCode = 500;
+        res.setHeader('Content-Type', 'application/json');
+        res.end(JSON.stringify({ error: error.message }));
+      }
+    });
+
+    middlewares.use('/api/davincia/knowledge/request', (req, res) => {
+      let body = '';
+      req.on('data', chunk => { body += chunk; });
+      req.on('end', async () => {
+        try {
+          const request = JSON.parse(body || '{}');
+          const { processAccessRequest } = await import('./src/knowledge/api.js');
+          const result = await processAccessRequest(request);
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/json; charset=utf-8');
+          res.end(JSON.stringify(result));
+        } catch (error) {
+          res.statusCode = 500;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({ error: error.message }));
+        }
+      });
+    });
   }
 
   return {

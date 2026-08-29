@@ -727,6 +727,31 @@
           <audio id="dv-audio-player" controls style="width:100%; margin-top:8px;"></audio>
         </div>
 
+        <!-- Section: Governed AI Embassy & Commerce Registry -->
+        <div class="dv-section" id="dv-commerce-section" style="border: 1px solid #c8a75d; padding: 12px; border-radius: 6px; background: rgba(200, 167, 93, 0.05); margin-top: 16px;">
+          <div class="dv-section-title" style="color: #c8a75d; font-weight: bold; margin-bottom: 8px;">GOVERNED AI EMBASSY EXCHANGE</div>
+          <div class="dv-detail-grid">
+            <div class="dv-detail-label">Asset URN:</div>
+            <div id="dv-comm-urn" class="dv-detail-value" style="font-family: monospace; font-size: 11px;">urn:davincia:knowledge:asset:acting-the-gowl</div>
+            <div class="dv-detail-label">Price:</div>
+            <div id="dv-comm-price" class="dv-detail-value" style="color: #c8a75d; font-weight: bold;">$0.05 USD</div>
+            <div class="dv-detail-label">Commercial Status:</div>
+            <div id="dv-comm-status" class="dv-detail-value"><span class="dv-badge" style="background: #2f8f5b; color: white;">SIMULATION_ONLY</span></div>
+            <div class="dv-detail-label">Permitted Actions:</div>
+            <div id="dv-comm-permitted" class="dv-detail-value" style="font-size: 11px;">DISCOVER, VIEW, QUERY, TRANSLATE, DOWNLOAD</div>
+            <div class="dv-detail-label">Restrictions:</div>
+            <div id="dv-comm-prohibited" class="dv-detail-value" style="color: #d31d36; font-size: 11px;">TRANSFORM, PUBLISH</div>
+          </div>
+          <div style="margin-top: 12px; display: flex; flex-direction: column; gap: 8px;">
+            <button id="dv-request-access-btn" class="scene-btn" style="width: 100%; background: #c8a75d; color: black; border: none; padding: 8px; font-weight: bold; cursor: pointer; border-radius: 4px;">REQUEST LICENSED ACCESS</button>
+            <div id="dv-commerce-outcome" style="display: none; padding: 8px; background: rgba(47, 143, 91, 0.1); border-left: 4px solid #2f8f5b; font-size: 11px;">
+              <div style="color: #2f8f5b; font-weight: bold; margin-bottom: 4px;">✔ TRANSACTION AUTHORIZED</div>
+              <div><strong>Transaction ID:</strong> <span id="dv-tx-id">--</span></div>
+              <div><strong>Settlement status:</strong> Complete (Entitlement Registered)</div>
+            </div>
+          </div>
+        </div>
+
         <!-- Section: Compiled System Prompt -->
         <div class="dv-section">
           <div class="dv-section-title">COMPILED SYSTEM INSTRUCTION (LLM GATE)</div>
