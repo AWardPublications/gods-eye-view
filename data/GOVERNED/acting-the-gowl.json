@@ -9,7 +9,7 @@
   "provenance": {
     "source_urn": "urn:davincia:corklan:linguistic_record:acting-the-gowl",
     "checksum": "sha256-mock-checksum",
-    "extracted_at": "2026-08-29T21:18:53.906Z",
+    "extracted_at": "2026-08-29T21:26:06.848Z",
     "source_type": "COMMUNITY",
     "collected_at": "2026-08-28T12:00:00Z",
     "geographic_origin": {
@@ -60,7 +60,7 @@
   "lifecycle_state": "AUTHORIZED",
   "governance_passport": {
     "manifest_hash": "sha256-passport-hash",
-    "authorized_at": "2026-08-29T21:18:53.918Z",
-    "decision_ref": "urn:davincia:decision:8u1yhlbsri9"
+    "authorized_at": "2026-08-29T21:26:06.860Z",
+    "decision_ref": "urn:davincia:decision:q35tugt9xue"
   }
 }
