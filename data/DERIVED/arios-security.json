@@ -14,7 +14,7 @@
       "longitude": -8.4756
     },
     "source_urn": "urn:davincia:raw:arios-security",
-    "extracted_at": "2026-08-30T07:24:33.653Z",
+    "extracted_at": "2026-08-30T11:53:33.903Z",
     "checksum": "sha256-derived-arios-security"
   },
   "facts": [

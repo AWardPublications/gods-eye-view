@@ -30,7 +30,7 @@ function getGitCommitSha() {
 function runCommand(command) {
   console.log(`Running task: "${command}"...`);
   try {
-    execSync(command, { stdio: 'ignore', cwd: path.join(__dirname, '..') });
+    execSync(command, { stdio: 'inherit', cwd: path.join(__dirname, '..') });
     console.log(`  ➔ Task PASSED`);
     return true;
   } catch (e) {
@@ -68,6 +68,11 @@ async function runCeremony() {
   } else if (MILESTONE_ID === "DAVINCIA-GOVERNED-COMMERCE-v0.7.0") {
     testPass = runCommand("npm run test");
     conformancePass = runCommand("node tools/run-commerce-conformance.js");
+    govConformancePass = true;
+    buildPass = runCommand("npm run build");
+  } else if (MILESTONE_ID === "DAVINCIA-COMMERCIAL-TRANSACTION-v0.5.0") {
+    testPass = runCommand("npm run test");
+    conformancePass = runCommand("node tools/run-simulation-conformance.js");
     govConformancePass = true;
     buildPass = runCommand("npm run build");
   } else {
