@@ -97,7 +97,7 @@ export function refineRawToDerived(rawAsset) {
     licensing: {
       commercial_available: true,
       pricing: { model: "USAGE_BASED", price: 0.05, currency: "USD" },
-      permitted_actions: ["SEARCH", "READ"],
+      permitted_actions: ["SEARCH", "READ", "TRANSLATE", "EXECUTE", "SHARE", "INFER"],
       prohibited_actions: ["TRANSFORM"]
     },
     lifecycle_state: "PROFILED"
