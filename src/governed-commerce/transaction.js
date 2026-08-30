@@ -58,6 +58,13 @@ export async function executeGovernedTransaction(request, paymentProvider, alloc
     return txObj;
   }
 
+  // Passport expiration check
+  if (activePassport.expires_at && new Date(activePassport.expires_at) < new Date()) {
+    txObj.status = "FAILED";
+    txObj.settlement = { settlement_status: "FAILED", price: 0.00, platform_fee: 0.00, owner_amount: 0.00 };
+    return txObj;
+  }
+
   // 3. Delegation check if agent is executing
   if (agentPassport && delegationToken) {
     const delegCheck = verifyDelegationToken(delegationToken, action, agentPassport, humanPassport);
@@ -72,6 +79,16 @@ export async function executeGovernedTransaction(request, paymentProvider, alloc
   const asset = lookupAssetById(assetId);
   if (!asset) {
     txObj.status = "FAILED";
+    txObj.settlement = { settlement_status: "FAILED", price: 0.00, platform_fee: 0.00, owner_amount: 0.00 };
+    return txObj;
+  }
+
+  // Permitted action check
+  const permitted = asset.licensing?.permitted_actions || ["READ"];
+  const prohibited = asset.licensing?.prohibited_actions || [];
+  if (!permitted.includes(action) || prohibited.includes(action)) {
+    txObj.status = "FAILED";
+    txObj.settlement = { settlement_status: "FAILED", price: 0.00, platform_fee: 0.00, owner_amount: 0.00 };
     return txObj;
   }
 

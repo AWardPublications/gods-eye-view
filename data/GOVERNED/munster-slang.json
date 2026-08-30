@@ -14,7 +14,7 @@
       "longitude": -8.4756
     },
     "source_urn": "urn:davincia:raw:munster-slang",
-    "extracted_at": "2026-08-30T13:20:24.380Z",
+    "extracted_at": "2026-08-30T14:33:53.907Z",
     "checksum": "sha256-derived-munster-slang"
   },
   "facts": [
@@ -47,11 +47,11 @@
   "verification": {
     "state": "VERIFIED",
     "reviewer_role": "SYSTEM_GOVERNOR",
-    "verified_at": "2026-08-30T13:20:24.382Z",
+    "verified_at": "2026-08-30T14:33:53.915Z",
     "evidence_ref": "urn:davincia:evidence:refinery:munster-slang"
   },
   "governance_passport": {
-    "authorized_at": "2026-08-30T13:20:24.382Z",
-    "decision_ref": "urn:davincia:decision:ugz6kg7gpb"
+    "authorized_at": "2026-08-30T14:33:53.915Z",
+    "decision_ref": "urn:davincia:decision:8802xn8mtka"
   }
 }
