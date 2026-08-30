@@ -14,7 +14,7 @@
       "longitude": -8.4756
     },
     "source_urn": "urn:davincia:raw:brehon-ip",
-    "extracted_at": "2026-08-30T15:57:26.124Z",
+    "extracted_at": "2026-08-30T17:59:44.782Z",
     "checksum": "sha256-derived-brehon-ip"
   },
   "facts": [
@@ -51,11 +51,11 @@
   "verification": {
     "state": "VERIFIED",
     "reviewer_role": "SYSTEM_GOVERNOR",
-    "verified_at": "2026-08-30T15:57:26.128Z",
+    "verified_at": "2026-08-30T17:59:44.784Z",
     "evidence_ref": "urn:davincia:evidence:refinery:brehon-ip"
   },
   "governance_passport": {
-    "authorized_at": "2026-08-30T15:57:26.128Z",
-    "decision_ref": "urn:davincia:decision:sb7v1ouxbck"
+    "authorized_at": "2026-08-30T17:59:44.784Z",
+    "decision_ref": "urn:davincia:decision:i9g87h2tf18"
   }
 }

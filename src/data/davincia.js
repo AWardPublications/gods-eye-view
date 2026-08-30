@@ -1,5 +1,6 @@
 import * as Cesium from 'cesium';
 import { evaluatePolicy } from '../governance/evaluate.js';
+import { CatalogAssets } from '../marketplace/catalog.js';
 
 const DEFAULT_COORDS = { lat: 51.8985, lon: -8.4756 }; // Cork City Center fallback
 
@@ -221,6 +222,20 @@ ACTIONS REQUIRED:
     panel.querySelector('#dv-lane').textContent = payload.language_lane;
     panel.querySelector('#dv-urn').textContent = record.object_id;
     
+    // Catalog metadata enrichment
+    const catalogItem = CatalogAssets.find(a => a.asset_id === record.asset_id || a.asset_id.replace("urn:davincia:knowledge:asset:", "") === record.object_id.replace("urn:davincia:knowledge:asset:", ""));
+    if (catalogItem) {
+      panel.querySelector('#dv-comm-price').textContent = catalogItem.pricing_plan.split(':').pop().toUpperCase().replace(/-/g, ' ');
+      panel.querySelector('#dv-comm-license').textContent = catalogItem.license_id.split(':').pop();
+      panel.querySelector('#dv-comm-permitted').textContent = catalogItem.permitted_actions.join(', ');
+      panel.querySelector('#dv-comm-prohibited').textContent = catalogItem.prohibited_actions.join(', ');
+    } else {
+      panel.querySelector('#dv-comm-price').textContent = "$0.05 USD";
+      panel.querySelector('#dv-comm-license').textContent = "slang-educational (1.0.0)";
+      panel.querySelector('#dv-comm-permitted').textContent = "READ, TRANSLATE";
+      panel.querySelector('#dv-comm-prohibited').textContent = "TRANSFORM";
+    }
+
     const statusBadge = panel.querySelector('#dv-status-badge');
     statusBadge.textContent = record.lifecycle_state;
     statusBadge.className = 'dv-badge ' + record.lifecycle_state.toLowerCase().replace('_', '-');
@@ -356,6 +371,8 @@ ACTIONS REQUIRED:
           const currentRecord = _records.find(r => r.payload?.phrase === _selectedPhrase) || _records[0];
           const phraseText = currentRecord ? currentRecord.payload.phrase : "None";
           const assetUrn = currentRecord ? currentRecord.asset_id : "None";
+          const catalogItem = currentRecord ? CatalogAssets.find(a => a.asset_id === currentRecord.asset_id || a.asset_id.replace("urn:davincia:knowledge:asset:", "") === currentRecord.object_id.replace("urn:davincia:knowledge:asset:", "")) : null;
+          const priceStr = catalogItem ? `${catalogItem.pricing_plan.split(':').pop().toUpperCase().replace(/-/g, ' ')}` : "$0.05 USD";
 
           consoleEl.innerHTML = "";
           let logs = [
@@ -366,11 +383,48 @@ ACTIONS REQUIRED:
             `> [5/6] EMBASSY: Requesting licensed TRANSLATE action on "${phraseText}"...`,
             `> [6/6] DaVinciA+: Decided ALLOW. Entitlement issued. Settled via Sandbox payment boundary.`
           ];
+          
           let index = 0;
           const interval = setInterval(() => {
             if (index < logs.length) {
               consoleEl.innerHTML += logs[index] + "\n";
               consoleEl.scrollTop = consoleEl.scrollHeight;
+              
+              // Dynamic UI Updates matching the steps
+              if (index === 0) {
+                document.getElementById('dv-agent-token').textContent = "urn:davincia:token:active-delegation";
+                _activeDelegationTokenObj = { token_id: "urn:davincia:token:active-delegation", holder: "urn:davincia:passport:ai_agent:slang-bot", status: "ACTIVE", delegated_by: "urn:davincia:identity:user:david" };
+              }
+              if (index === 1) {
+                document.getElementById('dv-pass-id').textContent = "urn:davincia:passport:human:david";
+                _activePassportObj = { passport_id: "urn:davincia:passport:human:david", participant_type: "HUMAN", status: "AUTHORIZED", signature: "DEV_SIGNATURE" };
+              }
+              if (index === 2) {
+                const tr = document.getElementById('dv-auth-translate');
+                tr.textContent = "ALLOW";
+                tr.className = "dv-badge";
+                tr.style.background = "#2f8f5b";
+                tr.style.color = "white";
+                document.getElementById('dv-policy-id').textContent = "DAVINCIA-CULTURAL-003";
+                document.getElementById('dv-reason-code').textContent = "ALLOW_SOVEREIGN";
+                _activeDecisionObj = { decision_id: "urn:davincia:decision:gold-e2e", status: "ALLOW", policy_id: "DAVINCIA-CULTURAL-003", reason_code: "ALLOW_SOVEREIGN" };
+              }
+              if (index === 3) {
+                document.getElementById('dv-comm-status').innerHTML = `<span class="dv-badge" style="background:#2f8f5b;color:white;">SANDBOX_ACTIVE</span>`;
+              }
+              if (index === 4) {
+                document.getElementById('dv-agent-cost').textContent = "$0.050000 USD";
+              }
+              if (index === 5) {
+                const txId = "urn:davincia:transaction:gold-e2e-" + Math.random().toString(36).substring(7);
+                document.getElementById('dv-tx-id').textContent = txId;
+                document.getElementById('dv-commerce-outcome').style.display = "block";
+                document.getElementById('dv-evidence-ref').textContent = "urn:davincia:evidence:gold-e2e-receipt";
+                
+                _activeTransactionObj = { transaction_id: txId, asset_id: assetUrn, action: "TRANSLATE", price: 0.05, payment_provider: "SANDBOX" };
+                _activeEntitlementObj = { entitlement_id: "urn:davincia:entitlement:gold-e2e", status: "ACTIVE", holder: "urn:davincia:passport:ai_agent:slang-bot" };
+                _activeEvidenceObj = { evidence_ref: "urn:davincia:evidence:gold-e2e-receipt", integrity_hash: "sha256-evidence-integrity-chain-verified" };
+              }
               index++;
             } else {
               clearInterval(interval);
@@ -395,11 +449,32 @@ ACTIONS REQUIRED:
             `> [OUTCOME] DENY (INVALID_DELEGATION)`,
             `> [DOWNSTREAM ACTION] ENTITLEMENT: NOT ISSUED | PAYMENT: NOT INITIATED | EVIDENCE: LOGGED`
           ];
+          
           let index = 0;
           const interval = setInterval(() => {
             if (index < logs.length) {
               consoleEl.innerHTML += logs[index] + "\n";
               consoleEl.scrollTop = consoleEl.scrollHeight;
+
+              if (index === 3) {
+                document.getElementById('dv-agent-token').textContent = "REVOKED";
+                document.getElementById('dv-agent-token').style.color = "#d31d36";
+                _activeDelegationTokenObj = { token_id: "urn:davincia:token:active-delegation", status: "REVOKED" };
+              }
+              if (index === 4) {
+                const tr = document.getElementById('dv-auth-translate');
+                tr.textContent = "DENY";
+                tr.className = "dv-badge badge-deny";
+                tr.style.background = "#d31d36";
+                document.getElementById('dv-policy-id').textContent = "DAVINCIA-CORE-001";
+                document.getElementById('dv-reason-code').textContent = "INVALID_DELEGATION";
+                _activeDecisionObj = { status: "DENY", reason_code: "INVALID_DELEGATION" };
+              }
+              if (index === 5) {
+                document.getElementById('dv-commerce-outcome').style.display = "none";
+                document.getElementById('dv-evidence-ref').textContent = "urn:davincia:evidence:revocation-incident-log";
+                _activeEvidenceObj = { incident_ref: "urn:davincia:evidence:revocation-incident-log", status: "ALERT_LOGGED" };
+              }
               index++;
             } else {
               clearInterval(interval);
@@ -419,11 +494,31 @@ ACTIONS REQUIRED:
             `> [OUTCOME] DENY (PROVENANCE_DRIFT_SUSPENSION)`,
             `> [DOWNSTREAM ACTION] ENTITLEMENT: SUSPENDED | CONSUMPTION: BLOCKED | EVIDENCE: LOGGED`
           ];
+          
           let index = 0;
           const interval = setInterval(() => {
             if (index < logs.length) {
               consoleEl.innerHTML += logs[index] + "\n";
               consoleEl.scrollTop = consoleEl.scrollHeight;
+
+              if (index === 3) {
+                document.getElementById('dv-urn').textContent = "WARNING: PROVENANCE_DRIFT";
+                document.getElementById('dv-urn').style.color = "#d31d36";
+              }
+              if (index === 4) {
+                const tr = document.getElementById('dv-auth-translate');
+                tr.textContent = "DENY";
+                tr.className = "dv-badge badge-deny";
+                tr.style.background = "#d31d36";
+                document.getElementById('dv-policy-id').textContent = "DAVINCIA-DRIFT-002";
+                document.getElementById('dv-reason-code').textContent = "PROVENANCE_DRIFT_SUSPENSION";
+                _activeDecisionObj = { status: "DENY", reason_code: "PROVENANCE_DRIFT_SUSPENSION" };
+              }
+              if (index === 5) {
+                document.getElementById('dv-commerce-outcome').style.display = "none";
+                document.getElementById('dv-evidence-ref').textContent = "urn:davincia:evidence:drift-incident-log";
+                _activeEvidenceObj = { incident_ref: "urn:davincia:evidence:drift-incident-log", status: "DRIFT_LOGGED" };
+              }
               index++;
             } else {
               clearInterval(interval);
@@ -443,11 +538,26 @@ ACTIONS REQUIRED:
             `> [OUTCOME] HOLD / DENY (GOVERNANCE_SOVEREIGNTY_VIOLATION)`,
             `> [DOWNSTREAM ACTION] SETTLEMENT: BLOCKED | PRICE: $0.00`
           ];
+          
           let index = 0;
           const interval = setInterval(() => {
             if (index < logs.length) {
               consoleEl.innerHTML += logs[index] + "\n";
               consoleEl.scrollTop = consoleEl.scrollHeight;
+
+              if (index === 3) {
+                const tr = document.getElementById('dv-auth-translate');
+                tr.textContent = "DENY";
+                tr.className = "dv-badge badge-deny";
+                tr.style.background = "#d31d36";
+                document.getElementById('dv-policy-id').textContent = "DAVINCIA-SOVEREIGNTY-001";
+                document.getElementById('dv-reason-code').textContent = "GOVERNANCE_SOVEREIGNTY_VIOLATION";
+                _activeDecisionObj = { status: "DENY", reason_code: "GOVERNANCE_SOVEREIGNTY_VIOLATION" };
+              }
+              if (index === 5) {
+                document.getElementById('dv-commerce-outcome').style.display = "none";
+                _activeTransactionObj = { transaction_status: "BLOCKED", reason: "BYPASS_ATTEMPT_REJECTED" };
+              }
               index++;
             } else {
               clearInterval(interval);

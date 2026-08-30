@@ -1,0 +1,139 @@
+{
+  "evidence_urn": "urn:davincia:evidence:package:8gpkwegj",
+  "transaction_id": "urn:davincia:transaction:8gpkwegj",
+  "timestamp": "2026-08-30T17:59:44.886Z",
+  "chain": {
+    "request_ref": "urn:davincia:request:8gpkwegj",
+    "passport_ref": "urn:davincia:passport:human:external-research-organisation",
+    "asset_ref": "urn:davincia:knowledge:asset:brehon-ip",
+    "policy_ref": "DAVINCIA-CORE-001",
+    "decision_ref": "urn:davincia:decision:x5x5j0x5ro",
+    "entitlement_ref": "urn:davincia:entitlement:xaeml9ub",
+    "usage_refs": [
+      "urn:davincia:usage:record:4zem2jy0"
+    ],
+    "settlement_ref": "urn:pay:8gpkwegj",
+    "allocation_reconciled": true
+  },
+  "payload": {
+    "request": {
+      "request_id": "urn:davincia:request:8gpkwegj",
+      "humanPassport": {
+        "passport_id": "urn:davincia:passport:human:external-research-organisation",
+        "passport_version": "1.0.0",
+        "participant_type": "HUMAN",
+        "identity": {
+          "id": "urn:id:user:external-research-org",
+          "name": "External Research Organisation"
+        },
+        "issuer": "urn:davincia:identity:organization:brehon_ai",
+        "owner": "urn:davincia:identity:organization:external-research-org",
+        "controller": "urn:id:user:external-research-org",
+        "domain": "core",
+        "declared_capabilities": [
+          "READ"
+        ],
+        "declared_actions": [
+          "READ",
+          "TRANSLATE"
+        ],
+        "data_classifications": [
+          "PUBLIC"
+        ],
+        "risk_profile": {
+          "risk_level": "LOW"
+        },
+        "provenance": {
+          "source_type": "SYSTEM",
+          "source_urn": "urn:id:user:external-research-org",
+          "checksum": "sha256-mock-passport-checksum",
+          "collected_at": "2026-08-30T17:59:44.882Z",
+          "geographic_origin": {
+            "latitude": 51.8985,
+            "longitude": -8.4756
+          }
+        },
+        "verification": {
+          "state": "VERIFIED",
+          "reviewer_role": "SYSTEM_GOVERNOR",
+          "evidence_ref": "urn:davincia:passport:human:external-research-organisation"
+        },
+        "governance": {
+          "conformance_state": "CONFORMANT",
+          "drift_hash": "sha256-no-drift"
+        },
+        "policy_references": [
+          "DAVINCIA-CORE-001"
+        ],
+        "evidence_references": [],
+        "manifest_hash": "sha256-mock-manifest",
+        "issued_at": "2026-08-30T17:59:44.882Z",
+        "expires_at": "2027-03-02T18:59:44.882Z",
+        "status": "AUTHORIZED",
+        "signature": "DEVELOPMENT_SIGNATURE-sig-e3tlrrgj"
+      },
+      "assetId": "urn:davincia:knowledge:asset:brehon-ip",
+      "action": "READ"
+    },
+    "decision": {
+      "decision_id": "urn:davincia:decision:x5x5j0x5ro",
+      "participant_id": "urn:davincia:passport:human:external-research-organisation",
+      "action": "READ",
+      "decision": "ALLOW",
+      "reason_code": "PASSPORT_VERIFIED",
+      "policy_reference": "DAVINCIA-CORE-001",
+      "timestamp": "2026-08-30T17:59:44.885Z"
+    },
+    "entitlement": {
+      "entitlement_id": "urn:davincia:entitlement:xaeml9ub",
+      "asset_id": "urn:davincia:knowledge:asset:brehon-ip",
+      "buyer_id": "urn:davincia:passport:human:external-research-organisation",
+      "decision_id": "urn:davincia:decision:x5x5j0x5ro",
+      "licence_id": "urn:davincia:license:auth-1788112784886",
+      "scope": "READ",
+      "purpose": "COMMERCIAL_USE",
+      "usage_limit": 100,
+      "usage_count": 1,
+      "price": 0.05,
+      "currency": "USD",
+      "issued_at": "2026-08-30T17:59:44.886Z",
+      "expires_at": "2026-08-30T18:59:44.886Z",
+      "status": "ACTIVE",
+      "revocation_state": "NONE",
+      "provenance_hash": "prov-sig-1788112784886",
+      "policy_hash": "DAVINCIA-CORE-001",
+      "decision_hash": "urn:davincia:decision:x5x5j0x5ro"
+    },
+    "usage_records": [
+      {
+        "usage_id": "urn:davincia:usage:record:4zem2jy0",
+        "entitlement_id": "urn:davincia:entitlement:xaeml9ub",
+        "consumed_units": 1,
+        "measurement_type": "API_CALL",
+        "timestamp": "2026-08-30T17:59:44.886Z"
+      }
+    ],
+    "settlement": {
+      "settlement_urn": "urn:pay:8gpkwegj",
+      "transaction_id": "urn:davincia:transaction:8gpkwegj",
+      "asset_id": "urn:davincia:knowledge:asset:brehon-ip",
+      "buyer_id": "urn:davincia:passport:human:external-research-organisation",
+      "owner_id": "urn:davincia:identity:organization:brehon_ai",
+      "entitlement_id": "urn:davincia:entitlement:xaeml9ub",
+      "usage_id": "urn:davincia:usage:record:4zem2jy0",
+      "gross_amount": 0.05,
+      "settlement_status": "SETTLED",
+      "payout_type": "SIMULATED_SETTLEMENT",
+      "platform_fee": 0.01,
+      "owner_amount": 0.04
+    },
+    "allocation": {
+      "gross_amount": 0.05,
+      "platform_amount": 0.01,
+      "owner_amount": 0.04,
+      "partner_amount": 0,
+      "rules_version": "1.0.0",
+      "reconciled": true
+    }
+  }
+}
