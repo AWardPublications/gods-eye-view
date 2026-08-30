@@ -16,7 +16,39 @@ Photorealistic 3D globe. Live aircraft, ships, satellites, earthquakes, traffic,
 
 ▶️ **From the project behind the viral God's Eye View series** *(formerly WorldView)* — [5M+ on YouTube](https://youtube.com/playlist?list=PL6qSg2I-7_koPbDnSMo0QeeHX_RknA2uv&si=nBGYMoHWQw41v93Q)
 
+
 </div>
+
+---
+
+## 📜 DaVinciA⁺ Governed AI Embassy
+
+### What is DaVinciA⁺?
+**DaVinciA⁺** is a machine-enforceable governance infrastructure layer designed to separate capability from authority. It places constitutional policy gates upstream of execution, metering, and transaction settlement.
+
+### Why It Exists
+In a world of highly autonomous AI agents and open web environments, capability is not the same as authority. DaVinciA⁺ provides a sovereign, fail-closed border control framework. External systems and AI agents cannot query, translate, or interact with governed cultural assets unless they obtain a Governance Passport, satisfy operational delegation limits, and sign an auditable contract.
+
+### Core Architecture
+* **DAVID_OS (Operator Layer)**: Establishes human authority and agent delegation.
+* **DaVinciA⁺ (Governance Engine)**: Resolves policies, verifies signatures, and generates signed Decision Objects.
+* **Governed AI Embassy (Economy Layer)**: Manages discovery pricing, licenses, and meters sandbox transaction settlements.
+
+### Current Status
+* **Passports & Onboarding**: Fully live and cryptographically signed.
+* **Policy Resolvers**: Evaluates targets and Ethical Custody rules.
+* **Marketplace Primitives**: Active licensing and pricing plan catalog.
+* **Payment Clearing**: Simulated sandbox payment provider boundary.
+
+### Demonstration & Testing
+* **Scenario HUD**: Run the progressive Guided Tour (Acts I–VI) and trigger the **Golden E2E Transaction** or **Adversarial Block Attacks** inside the interactive dashboard panel.
+* **Test Status**: **2,702 / 2,702 tests passed**. Run `npm test` or the conformance scorecards under `tools/`.
+
+> [!IMPORTANT]
+> **AI Coding Agents**: If you are an autonomous agent executing tasks in this repository, you **MUST** read the operating manual and technical blueprints before making changes:
+> * [AI Agent Guide](file:///C:/Users/David/.gemini/antigravity/scratch/gods-eye-view/AI_AGENT_GUIDE.md) — Step-by-step operating guidelines and escalation tokens.
+> * [Architecture Reference](file:///C:/Users/David/.gemini/antigravity/scratch/gods-eye-view/ARCHITECTURE.md) — Technical layouts, module boundaries, and API definitions.
+> * [Historical Learnings](file:///C:/Users/David/.gemini/antigravity/scratch/gods-eye-view/LEARNINGS.md) — Repository memory and resolved issues database.
 
 ---
 

@@ -1,0 +1,45 @@
+{
+  "agent_profile": {
+    "agent_id": "urn:davincia:identity:agent:wenger-golf-coach",
+    "name": "Wenger AI Golf Coach",
+    "domain": "alex-wenger",
+    "capabilities": ["READ", "COACH", "ANALYSE"],
+    "permitted_coaching_actions": [
+      "RECOMMEND_DRILLS",
+      "ANALYSE_SWING_TELEMETRY",
+      "GENERATE_TRAINING_PLAN"
+    ],
+    "requires_human_review_actions": [
+      "DIAGNOSE_PHYSICAL_INJURY",
+      "MODIFY_MEDAL_PLAY_ROUNDS"
+    ],
+    "prohibited_actions": [
+      "TRANSFORM_CORE_BIOMECHANICS",
+      "DELETE_PLAYER_RECORD"
+    ],
+    "drift_control": {
+      "suspend_on_mismatch": true,
+      "alert_reviewer": "urn:davincia:identity:user:david"
+    }
+  },
+  "player_governance_model": {
+    "player_identity": "urn:davincia:identity:user:player-one",
+    "consent_state": {
+      "athlete_consent": true,
+      "permissions": ["READ_TELEMETRY", "COACH_COGNITIVE"],
+      "last_updated": "2026-08-30T12:00:00Z"
+    },
+    "coaching_scope": {
+      "allowed_modes": ["TRAIN", "PREPARE", "REVIEW"],
+      "restricted_modes": ["COMPETE"],
+      "supervision_required": {
+        "COMPETE": "HUMAN_OPERATOR"
+      }
+    },
+    "revocation_policy": {
+      "immediate_halt": true,
+      "clear_transient_cache": true,
+      "evidence_audit_ref": "urn:davincia:evidence:player-revocation"
+    }
+  }
+}

@@ -433,6 +433,72 @@ ACTIONS REQUIRED:
         });
       }
 
+      const btnWenger = document.getElementById('btn-scenario-wenger');
+      if (btnWenger && consoleEl) {
+        btnWenger.addEventListener('click', () => {
+          consoleEl.innerHTML = "";
+          let logs = [
+            `> [1/6] DAVID_OS: Initializing Player authority context (Player One)...`,
+            `> [2/6] DAVID_OS: Verifying Player Passport: urn:davincia:passport:human:player-one`,
+            `> [3/6] DaVinciA+: Coach Agent URN (wenger-golf-coach) Delegation: ACTIVE [OK]`,
+            `> [4/6] EMBASSY: Querying catalog for asset: wenger-swing-mechanics`,
+            `> [5/6] EMBASSY: Requesting COACH action under TRAIN mode...`,
+            `> [6/6] DaVinciA+: Decided ALLOW (APPROVED). Entitlement generated. Settled 80/20 split.`
+          ];
+
+          let index = 0;
+          const interval = setInterval(() => {
+            if (index < logs.length) {
+              consoleEl.innerHTML += logs[index] + "\n";
+              consoleEl.scrollTop = consoleEl.scrollHeight;
+
+              // Dynamic UI Updates matching the steps
+              if (index === 0) {
+                document.getElementById('dv-agent-token').textContent = "urn:davincia:token:wenger-delegation";
+                _activeDelegationTokenObj = { token_id: "urn:davincia:token:wenger-delegation", holder: "urn:davincia:identity:agent:wenger-golf-coach", status: "ACTIVE", delegated_by: "urn:davincia:identity:user:player-one" };
+              }
+              if (index === 1) {
+                document.getElementById('dv-pass-id').textContent = "urn:davincia:passport:human:player-one";
+                _activePassportObj = { passport_id: "urn:davincia:passport:human:player-one", participant_type: "HUMAN", status: "AUTHORIZED", athlete_consent: true };
+              }
+              if (index === 2) {
+                const tr = document.getElementById('dv-auth-translate');
+                tr.textContent = "ALLOW";
+                tr.className = "dv-badge";
+                tr.style.background = "#2f8f5b";
+                tr.style.color = "white";
+                document.getElementById('dv-policy-id').textContent = "DAVINCIA-GOLF-004";
+                document.getElementById('dv-reason-code').textContent = "APPROVED";
+                _activeDecisionObj = { decision_id: "urn:davincia:decision:wenger-coach-allow", status: "ALLOW", policy_id: "DAVINCIA-GOLF-004", reason_code: "APPROVED" };
+              }
+              if (index === 3) {
+                document.getElementById('dv-comm-status').innerHTML = `<span class="dv-badge" style="background:#2f8f5b;color:white;">SANDBOX_ACTIVE</span>`;
+                document.getElementById('dv-comm-price').textContent = "USAGE BASED";
+                document.getElementById('dv-comm-license').textContent = "wenger-commercial-v1";
+                document.getElementById('dv-comm-permitted').textContent = "READ, ANALYSE, COACH";
+                document.getElementById('dv-comm-prohibited').textContent = "TRANSFORM, DELETE";
+              }
+              if (index === 4) {
+                document.getElementById('dv-agent-cost').textContent = "$0.050000 USD";
+              }
+              if (index === 5) {
+                const txId = "urn:davincia:transaction:wenger-coaching-" + Math.random().toString(36).substring(7);
+                document.getElementById('dv-tx-id').textContent = txId;
+                document.getElementById('dv-commerce-outcome').style.display = "block";
+                document.getElementById('dv-evidence-ref').textContent = "urn:davincia:evidence:wenger-coaching-receipt";
+
+                _activeTransactionObj = { transaction_id: txId, asset_id: "urn:davincia:knowledge:asset:wenger-swing-mechanics", action: "COACH", price: 0.05, split: { owner: 0.04, platform: 0.01 } };
+                _activeEntitlementObj = { entitlement_id: "urn:davincia:entitlement:wenger-coaching", status: "ACTIVE", holder: "urn:davincia:identity:agent:wenger-golf-coach" };
+                _activeEvidenceObj = { evidence_ref: "urn:davincia:evidence:wenger-coaching-receipt", integrity_hash: "sha256-wenger-swing-mechanics-prov-hash-88c2f1" };
+              }
+              index++;
+            } else {
+              clearInterval(interval);
+            }
+          }, 300);
+        });
+      }
+
       // Bind Adversarial Attacks
       const btnAttackRevoked = document.getElementById('btn-attack-revoked');
       const btnAttackDrift = document.getElementById('btn-attack-drift');

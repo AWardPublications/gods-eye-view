@@ -27,6 +27,75 @@
       "reason_code": "CUSTODY_PROTECTED"
     },
     {
+      "id": "RULE-GOLF-TRAIN-MODE",
+      "target": {
+        "athlete_consent": true
+      },
+      "conditions": {
+        "action": ["TRAIN"]
+      },
+      "outcome": "ALLOW",
+      "reason_code": "APPROVED"
+    },
+    {
+      "id": "RULE-GOLF-PREPARE-MODE",
+      "target": {
+        "athlete_consent": true
+      },
+      "conditions": {
+        "action": ["SEARCH"]
+      },
+      "outcome": "ALLOW",
+      "reason_code": "APPROVED"
+    },
+    {
+      "id": "RULE-GOLF-COMPETE-MODE-UNSUPERVISED",
+      "target": {
+        "athlete_consent": true,
+        "human_supervision": false
+      },
+      "conditions": {
+        "action": ["EXECUTE"]
+      },
+      "outcome": "DENY",
+      "reason_code": "SUPERVISION_REQUIRED"
+    },
+    {
+      "id": "RULE-GOLF-COMPETE-MODE-SUPERVISED",
+      "target": {
+        "athlete_consent": true,
+        "human_supervision": true
+      },
+      "conditions": {
+        "action": ["EXECUTE"]
+      },
+      "outcome": "ALLOW",
+      "reason_code": "APPROVED"
+    },
+    {
+      "id": "RULE-GOLF-REVIEW-MODE",
+      "target": {
+        "athlete_consent": true
+      },
+      "conditions": {
+        "action": ["INFER"]
+      },
+      "outcome": "ALLOW",
+      "reason_code": "APPROVED"
+    },
+    {
+      "id": "RULE-GOLF-CAREER-MODE",
+      "target": {
+        "athlete_consent": true,
+        "career_opt_in": true
+      },
+      "conditions": {
+        "action": ["SHARE"]
+      },
+      "outcome": "ALLOW",
+      "reason_code": "APPROVED"
+    },
+    {
       "id": "RULE-GOLF-ANALYSE-COACH",
       "target": {},
       "conditions": {

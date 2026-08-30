@@ -10,7 +10,7 @@ import { verifyOfferIntegrity } from './offers.js';
 
 test('Marketplace: 1. Verify 10-asset discovery registry', () => {
   const catalog = discoverAssets();
-  assert.equal(catalog.length, 10);
+  assert.equal(catalog.length, 13);
   for (const asset of catalog) {
     assert.ok(asset.asset_id);
     assert.ok(asset.title);

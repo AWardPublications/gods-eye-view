@@ -1,0 +1,141 @@
+{
+  "evidence_urn": "urn:davincia:evidence:package:mxlzv2x0",
+  "transaction_id": "urn:davincia:transaction:mxlzv2x0",
+  "timestamp": "2026-08-30T22:42:39.522Z",
+  "chain": {
+    "request_ref": "urn:davincia:request:mxlzv2x0",
+    "passport_ref": "urn:davincia:passport:human:player-one",
+    "asset_ref": "urn:davincia:knowledge:asset:wenger-swing-mechanics",
+    "policy_ref": "DAVINCIA-CORE-001",
+    "decision_ref": "urn:davincia:decision:pbg9tmeozzb",
+    "entitlement_ref": "urn:davincia:entitlement:x5cl5ezo",
+    "usage_refs": [
+      "urn:davincia:usage:record:k7b6hr1b"
+    ],
+    "settlement_ref": "urn:pay:mxlzv2x0",
+    "allocation_reconciled": true
+  },
+  "payload": {
+    "request": {
+      "request_id": "urn:davincia:request:mxlzv2x0",
+      "humanPassport": {
+        "passport_id": "urn:davincia:passport:human:player-one",
+        "passport_version": "1.0.0",
+        "participant_type": "HUMAN",
+        "identity": {
+          "id": "urn:id:user:player-one",
+          "name": "Player One"
+        },
+        "issuer": "urn:davincia:identity:organization:brehon_ai",
+        "owner": "urn:davincia:identity:organization:brehon_ai",
+        "controller": "urn:davincia:identity:user:david",
+        "domain": "core",
+        "declared_capabilities": [
+          "READ",
+          "COACH",
+          "TRAIN"
+        ],
+        "declared_actions": [
+          "READ",
+          "TRANSLATE"
+        ],
+        "data_classifications": [
+          "PUBLIC"
+        ],
+        "risk_profile": {
+          "risk_level": "LOW"
+        },
+        "provenance": {
+          "source_type": "SYSTEM",
+          "source_urn": "urn:id:user:player-one",
+          "checksum": "sha256-mock-passport-checksum",
+          "collected_at": "2026-08-30T22:42:39.518Z",
+          "geographic_origin": {
+            "latitude": 51.8985,
+            "longitude": -8.4756
+          }
+        },
+        "verification": {
+          "state": "VERIFIED",
+          "reviewer_role": "SYSTEM_GOVERNOR",
+          "evidence_ref": "urn:davincia:passport:human:player-one"
+        },
+        "governance": {
+          "conformance_state": "CONFORMANT",
+          "drift_hash": "sha256-no-drift"
+        },
+        "policy_references": [
+          "DAVINCIA-CORE-001"
+        ],
+        "evidence_references": [],
+        "manifest_hash": "sha256-mock-manifest",
+        "issued_at": "2026-08-30T22:42:39.518Z",
+        "expires_at": "2027-03-02T23:42:39.518Z",
+        "status": "AUTHORIZED",
+        "signature": "DEVELOPMENT_SIGNATURE-sig-l0k568gs"
+      },
+      "assetId": "urn:davincia:knowledge:asset:wenger-swing-mechanics",
+      "action": "READ"
+    },
+    "decision": {
+      "decision_id": "urn:davincia:decision:pbg9tmeozzb",
+      "participant_id": "urn:davincia:passport:human:player-one",
+      "action": "READ",
+      "decision": "ALLOW",
+      "reason_code": "PASSPORT_VERIFIED",
+      "policy_reference": "DAVINCIA-CORE-001",
+      "timestamp": "2026-08-30T22:42:39.522Z"
+    },
+    "entitlement": {
+      "entitlement_id": "urn:davincia:entitlement:x5cl5ezo",
+      "asset_id": "urn:davincia:knowledge:asset:wenger-swing-mechanics",
+      "buyer_id": "urn:davincia:passport:human:player-one",
+      "decision_id": "urn:davincia:decision:pbg9tmeozzb",
+      "licence_id": "urn:davincia:license:auth-1788129759522",
+      "scope": "READ",
+      "purpose": "COMMERCIAL_USE",
+      "usage_limit": 100,
+      "usage_count": 1,
+      "price": 0.05,
+      "currency": "USD",
+      "issued_at": "2026-08-30T22:42:39.522Z",
+      "expires_at": "2026-08-30T23:42:39.522Z",
+      "status": "ACTIVE",
+      "revocation_state": "NONE",
+      "provenance_hash": "prov-sig-1788129759522",
+      "policy_hash": "DAVINCIA-CORE-001",
+      "decision_hash": "urn:davincia:decision:pbg9tmeozzb"
+    },
+    "usage_records": [
+      {
+        "usage_id": "urn:davincia:usage:record:k7b6hr1b",
+        "entitlement_id": "urn:davincia:entitlement:x5cl5ezo",
+        "consumed_units": 1,
+        "measurement_type": "API_CALL",
+        "timestamp": "2026-08-30T22:42:39.522Z"
+      }
+    ],
+    "settlement": {
+      "settlement_urn": "urn:pay:mxlzv2x0",
+      "transaction_id": "urn:davincia:transaction:mxlzv2x0",
+      "asset_id": "urn:davincia:knowledge:asset:wenger-swing-mechanics",
+      "buyer_id": "urn:davincia:passport:human:player-one",
+      "owner_id": "urn:davincia:identity:organization:wenger_golf",
+      "entitlement_id": "urn:davincia:entitlement:x5cl5ezo",
+      "usage_id": "urn:davincia:usage:record:k7b6hr1b",
+      "gross_amount": 0.05,
+      "settlement_status": "SETTLED",
+      "payout_type": "SIMULATED_SETTLEMENT",
+      "platform_fee": 0.01,
+      "owner_amount": 0.04
+    },
+    "allocation": {
+      "gross_amount": 0.05,
+      "platform_amount": 0.01,
+      "owner_amount": 0.04,
+      "partner_amount": 0,
+      "rules_version": "1.0.0",
+      "reconciled": true
+    }
+  }
+}

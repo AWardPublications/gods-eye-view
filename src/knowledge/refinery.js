@@ -59,6 +59,45 @@ export function populateSampleCorpus() {
         source_reference: "ARIOS OS Manual v1.2",
         geographic_origin: { latitude: 51.8985, longitude: -8.4756 }
       }
+    },
+    {
+      object_id: "urn:davincia:raw:wenger-swing-mechanics",
+      title: "Alex Wenger Swing Mechanics & Kinematics",
+      domain: "alex-wenger",
+      owner: "urn:davincia:identity:organization:wenger_golf",
+      content: "Proprietary telemetry for golf body mechanics, rotational kinematics, and swing posture alignment.",
+      provenance: {
+        source_type: "PATENT_DATASET",
+        collected_at: "2026-08-30T12:00:00Z",
+        source_reference: "Alex Wenger Golf OS Patent v1",
+        geographic_origin: { latitude: 51.8985, longitude: -8.4756 }
+      }
+    },
+    {
+      object_id: "urn:davincia:raw:wenger-drills-database",
+      title: "Alex Wenger Practice & Swing Correction Drills",
+      domain: "alex-wenger",
+      owner: "urn:davincia:identity:organization:wenger_golf",
+      content: "Core physical exercises to adjust hips, spine angle, and shoulder turn during backswing.",
+      provenance: {
+        source_type: "INSTRUCTIONAL",
+        collected_at: "2026-08-30T12:00:00Z",
+        source_reference: "Alex Wenger Golf OS Reference Guide",
+        geographic_origin: { latitude: 51.8985, longitude: -8.4756 }
+      }
+    },
+    {
+      object_id: "urn:davincia:raw:wenger-course-strategy",
+      title: "Alex Wenger Course Strategy & Tactical Planning",
+      domain: "alex-wenger",
+      owner: "urn:davincia:identity:organization:wenger_golf",
+      content: "Wind offsets, hazard clearances, and putting line geometries for major championship venues.",
+      provenance: {
+        source_type: "TACTICAL_GUIDE",
+        collected_at: "2026-08-30T12:00:00Z",
+        source_reference: "Alex Wenger Golf OS Strategy Manual",
+        geographic_origin: { latitude: 51.8985, longitude: -8.4756 }
+      }
     }
   ];
 

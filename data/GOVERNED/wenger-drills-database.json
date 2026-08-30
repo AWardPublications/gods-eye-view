@@ -1,0 +1,61 @@
+{
+  "asset_id": "urn:davincia:knowledge:asset:wenger-drills-database",
+  "asset_type": "knowledge_asset_governed",
+  "title": "Alex Wenger Practice & Swing Correction Drills",
+  "domain": "alex-wenger",
+  "owner": "urn:davincia:identity:organization:wenger_golf",
+  "source": "urn:davincia:raw:wenger-drills-database",
+  "provenance": {
+    "source_type": "INSTRUCTIONAL",
+    "collected_at": "2026-08-30T12:00:00Z",
+    "source_reference": "Alex Wenger Golf OS Reference Guide",
+    "geographic_origin": {
+      "latitude": 51.8985,
+      "longitude": -8.4756
+    },
+    "source_urn": "urn:davincia:raw:wenger-drills-database",
+    "extracted_at": "2026-08-30T22:34:19.003Z",
+    "checksum": "sha256-derived-wenger-drills-database"
+  },
+  "facts": [
+    {
+      "id": "F1",
+      "statement": "Alex Wenger Practice & Swing Correction Drills outlines core concepts of domain alex-wenger."
+    },
+    {
+      "id": "F2",
+      "statement": "The asset is owned by the organization: urn:davincia:identity:organization:wenger_golf."
+    }
+  ],
+  "licensing": {
+    "commercial_available": true,
+    "pricing": {
+      "model": "USAGE_BASED",
+      "price": 0.05,
+      "currency": "USD"
+    },
+    "permitted_actions": [
+      "SEARCH",
+      "READ",
+      "TRANSLATE",
+      "EXECUTE",
+      "SHARE",
+      "INFER"
+    ],
+    "prohibited_actions": [
+      "TRANSFORM"
+    ]
+  },
+  "lifecycle_state": "AUTHORIZED",
+  "issuer": "urn:davincia:identity:organization:brehon_ai",
+  "verification": {
+    "state": "VERIFIED",
+    "reviewer_role": "SYSTEM_GOVERNOR",
+    "verified_at": "2026-08-30T22:34:19.008Z",
+    "evidence_ref": "urn:davincia:evidence:refinery:wenger-drills-database"
+  },
+  "governance_passport": {
+    "authorized_at": "2026-08-30T22:34:19.008Z",
+    "decision_ref": "urn:davincia:decision:dit1pmw8gcm"
+  }
+}

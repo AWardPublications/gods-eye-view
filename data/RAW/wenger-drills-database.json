@@ -1,0 +1,16 @@
+{
+  "object_id": "urn:davincia:raw:wenger-drills-database",
+  "title": "Alex Wenger Practice & Swing Correction Drills",
+  "domain": "alex-wenger",
+  "owner": "urn:davincia:identity:organization:wenger_golf",
+  "content": "Core physical exercises to adjust hips, spine angle, and shoulder turn during backswing.",
+  "provenance": {
+    "source_type": "INSTRUCTIONAL",
+    "collected_at": "2026-08-30T12:00:00Z",
+    "source_reference": "Alex Wenger Golf OS Reference Guide",
+    "geographic_origin": {
+      "latitude": 51.8985,
+      "longitude": -8.4756
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "asset_id": "urn:davincia:knowledge:asset:wenger-swing-mechanics",
+  "asset_type": "knowledge_asset_governed",
+  "title": "Alex Wenger Swing Mechanics & Kinematics",
+  "domain": "alex-wenger",
+  "owner": "urn:davincia:identity:organization:wenger_golf",
+  "source": "urn:davincia:raw:wenger-swing-mechanics",
+  "provenance": {
+    "source_type": "PATENT_DATASET",
+    "collected_at": "2026-08-30T12:00:00Z",
+    "source_reference": "Alex Wenger Golf OS Patent v1",
+    "geographic_origin": {
+      "latitude": 51.8985,
+      "longitude": -8.4756
+    },
+    "source_urn": "urn:davincia:raw:wenger-swing-mechanics",
+    "extracted_at": "2026-08-30T22:34:19.013Z",
+    "checksum": "sha256-derived-wenger-swing-mechanics"
+  },
+  "facts": [
+    {
+      "id": "F1",
+      "statement": "Alex Wenger Swing Mechanics & Kinematics outlines core concepts of domain alex-wenger."
+    },
+    {
+      "id": "F2",
+      "statement": "The asset is owned by the organization: urn:davincia:identity:organization:wenger_golf."
+    }
+  ],
+  "licensing": {
+    "commercial_available": true,
+    "pricing": {
+      "model": "USAGE_BASED",
+      "price": 0.05,
+      "currency": "USD"
+    },
+    "permitted_actions": [
+      "SEARCH",
+      "READ",
+      "TRANSLATE",
+      "EXECUTE",
+      "SHARE",
+      "INFER"
+    ],
+    "prohibited_actions": [
+      "TRANSFORM"
+    ]
+  },
+  "lifecycle_state": "AUTHORIZED",
+  "issuer": "urn:davincia:identity:organization:brehon_ai",
+  "verification": {
+    "state": "VERIFIED",
+    "reviewer_role": "SYSTEM_GOVERNOR",
+    "verified_at": "2026-08-30T22:34:19.017Z",
+    "evidence_ref": "urn:davincia:evidence:refinery:wenger-swing-mechanics"
+  },
+  "governance_passport": {
+    "authorized_at": "2026-08-30T22:34:19.017Z",
+    "decision_ref": "urn:davincia:decision:v2c13t0qir"
+  }
+}

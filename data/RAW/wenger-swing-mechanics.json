@@ -1,0 +1,16 @@
+{
+  "object_id": "urn:davincia:raw:wenger-swing-mechanics",
+  "title": "Alex Wenger Swing Mechanics & Kinematics",
+  "domain": "alex-wenger",
+  "owner": "urn:davincia:identity:organization:wenger_golf",
+  "content": "Proprietary telemetry for golf body mechanics, rotational kinematics, and swing posture alignment.",
+  "provenance": {
+    "source_type": "PATENT_DATASET",
+    "collected_at": "2026-08-30T12:00:00Z",
+    "source_reference": "Alex Wenger Golf OS Patent v1",
+    "geographic_origin": {
+      "latitude": 51.8985,
+      "longitude": -8.4756
+    }
+  }
+}
