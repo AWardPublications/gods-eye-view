@@ -104,7 +104,13 @@ export async function evaluatePolicy(envelope, action, actor, resolver = default
       let targetMatches = true;
       if (rule.target) {
         for (const [key, val] of Object.entries(rule.target)) {
-          const actualVal = envelope[key] || envelope.payload?.[key] || envelope.verification?.[key] || envelope.provenance?.[key] || envelope.sensitivity?.[key];
+          let actualVal = undefined;
+          if (envelope[key] !== undefined) actualVal = envelope[key];
+          else if (envelope.payload?.[key] !== undefined) actualVal = envelope.payload[key];
+          else if (envelope.verification?.[key] !== undefined) actualVal = envelope.verification[key];
+          else if (envelope.provenance?.[key] !== undefined) actualVal = envelope.provenance[key];
+          else if (envelope.sensitivity?.[key] !== undefined) actualVal = envelope.sensitivity[key];
+          
           if (actualVal !== val) {
             targetMatches = false;
             break;

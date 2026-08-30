@@ -96,7 +96,7 @@ export function refineRawToDerived(rawAsset) {
     facts: facts,
     licensing: {
       commercial_available: true,
-      pricing: { model: "USAGE_BASED", price: 0.02, currency: "USD" },
+      pricing: { model: "USAGE_BASED", price: 0.05, currency: "USD" },
       permitted_actions: ["SEARCH", "READ"],
       prohibited_actions: ["TRANSFORM"]
     },

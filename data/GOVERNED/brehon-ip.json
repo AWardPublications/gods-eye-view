@@ -14,7 +14,7 @@
       "longitude": -8.4756
     },
     "source_urn": "urn:davincia:raw:brehon-ip",
-    "extracted_at": "2026-08-30T11:53:33.919Z",
+    "extracted_at": "2026-08-30T13:20:24.375Z",
     "checksum": "sha256-derived-brehon-ip"
   },
   "facts": [
@@ -31,7 +31,7 @@
     "commercial_available": true,
     "pricing": {
       "model": "USAGE_BASED",
-      "price": 0.02,
+      "price": 0.05,
       "currency": "USD"
     },
     "permitted_actions": [
@@ -47,11 +47,11 @@
   "verification": {
     "state": "VERIFIED",
     "reviewer_role": "SYSTEM_GOVERNOR",
-    "verified_at": "2026-08-30T11:53:33.924Z",
+    "verified_at": "2026-08-30T13:20:24.378Z",
     "evidence_ref": "urn:davincia:evidence:refinery:brehon-ip"
   },
   "governance_passport": {
-    "authorized_at": "2026-08-30T11:53:33.924Z",
-    "decision_ref": "urn:davincia:decision:a73jx0a0oy"
+    "authorized_at": "2026-08-30T13:20:24.378Z",
+    "decision_ref": "urn:davincia:decision:70pj1xh3oir"
   }
 }
