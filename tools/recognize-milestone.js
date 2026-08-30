@@ -65,6 +65,11 @@ async function runCeremony() {
     conformancePass = runCommand("node tools/run-agent-conformance.js");
     govConformancePass = true;
     buildPass = runCommand("npm run build");
+  } else if (MILESTONE_ID === "DAVINCIA-GOVERNED-COMMERCE-v0.7.0") {
+    testPass = runCommand("npm run test");
+    conformancePass = runCommand("node tools/run-commerce-conformance.js");
+    govConformancePass = true;
+    buildPass = runCommand("npm run build");
   } else {
     testPass = runCommand("npm run test");
     conformancePass = runCommand("node tools/run-conformance.js");

@@ -7471,6 +7471,58 @@ function davinciaProxy() {
         }
       });
     });
+
+    middlewares.use('/api/davincia/commerce/license/create', (req, res) => {
+      let body = '';
+      req.on('data', chunk => { body += chunk; });
+      req.on('end', async () => {
+        try {
+          const request = JSON.parse(body || '{}');
+          const { createAgreementApi } = await import('./src/governed-commerce/api.js');
+          const agreement = createAgreementApi(request);
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/json; charset=utf-8');
+          res.end(JSON.stringify({ agreement }));
+        } catch (error) {
+          res.statusCode = 500;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({ error: error.message }));
+        }
+      });
+    });
+
+    middlewares.use('/api/davincia/commerce/transact', (req, res) => {
+      let body = '';
+      req.on('data', chunk => { body += chunk; });
+      req.on('end', async () => {
+        try {
+          const request = JSON.parse(body || '{}');
+          const { transactApi } = await import('./src/governed-commerce/api.js');
+          const tx = transactApi(request);
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/json; charset=utf-8');
+          res.end(JSON.stringify({ transaction: tx }));
+        } catch (error) {
+          res.statusCode = 500;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({ error: error.message }));
+        }
+      });
+    });
+
+    middlewares.use('/api/davincia/commerce/ledger', async (req, res) => {
+      try {
+        const { getLedgerApi } = await import('./src/governed-commerce/api.js');
+        const ledger = getLedgerApi();
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json; charset=utf-8');
+        res.end(JSON.stringify(ledger));
+      } catch (error) {
+        res.statusCode = 500;
+        res.setHeader('Content-Type', 'application/json');
+        res.end(JSON.stringify({ error: error.message }));
+      }
+    });
   }
 
   return {
