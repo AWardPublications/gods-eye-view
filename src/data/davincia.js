@@ -11,6 +11,13 @@ export function createDavinciaLayer() {
   let _clickHandler = null;
   let _viewer = null;
 
+  let _activePassportObj = null;
+  let _activeDelegationTokenObj = null;
+  let _activeDecisionObj = null;
+  let _activeEntitlementObj = null;
+  let _activeTransactionObj = null;
+  let _activeEvidenceObj = null;
+
   // Color mapping based on DaVinciA+ Governance Status
   function getStatusColor(lifecycleState) {
     switch (lifecycleState) {
@@ -110,11 +117,8 @@ ACTIONS REQUIRED:
         const passData = await passRes.json();
         if (passData.passport) {
           activePassport = passData.passport;
+          _activePassportObj = activePassport;
           panel.querySelector('#dv-pass-id').textContent = activePassport.passport_id;
-          panel.querySelector('#dv-pass-holder-type').textContent = activePassport.participant_type || "HUMAN";
-          panel.querySelector('#dv-pass-expiry').textContent = new Date(activePassport.expires_at).toLocaleDateString();
-          panel.querySelector('#dv-pass-capabilities').textContent = activePassport.declared_capabilities.join(', ');
-          panel.querySelector('#dv-pass-signature').textContent = activePassport.signature;
         }
 
         // 2. Issue Agent Passport
@@ -147,6 +151,7 @@ ACTIONS REQUIRED:
           const delegData = await delegRes.json();
           if (delegData.token) {
             delegationToken = delegData.token;
+            _activeDelegationTokenObj = delegationToken;
             panel.querySelector('#dv-agent-token').textContent = delegationToken.token_id;
           }
         }
@@ -189,6 +194,13 @@ ACTIONS REQUIRED:
               outcome.style.display = 'block';
               newBtn.style.display = 'none';
               
+              _activeTransactionObj = result.commerce_event;
+              _activeEntitlementObj = result.entitlement || {
+                entitlement_id: "urn:davincia:entitlement:" + Math.random().toString(36).substring(7),
+                status: "ACTIVE",
+                issued_at: new Date().toISOString()
+              };
+
               // Update dynamic cost readout
               const costVal = result.commerce_event.price;
               panel.querySelector('#dv-agent-cost').textContent = `$${costVal.toFixed(6)} USD`;
@@ -229,6 +241,7 @@ ACTIONS REQUIRED:
 
     // Decisions display
     if (translateDecision) {
+      _activeDecisionObj = translateDecision;
       const tb = panel.querySelector('#dv-auth-translate');
       tb.textContent = translateDecision.status;
       tb.className = `dv-badge badge-${translateDecision.status.toLowerCase().replace(/_/g, '-')}`;
@@ -243,8 +256,13 @@ ACTIONS REQUIRED:
 
     // Evidence details
     const ver = record.verification || {};
+    _activeEvidenceObj = {
+      evidence_ref: ver.evidence_ref || 'N/A',
+      reviewer_role: ver.reviewer_role || 'N/A',
+      verified_at: ver.verified_at || new Date().toISOString(),
+      sha256_checksum: record.provenance?.checksum || 'N/A'
+    };
     panel.querySelector('#dv-evidence-ref').textContent = ver.evidence_ref || 'N/A';
-    panel.querySelector('#dv-reviewer-role').textContent = ver.reviewer_role || 'N/A';
 
     // Compile system prompt
     const promptText = compileSystemPrompt(record, translateDecision);
@@ -331,7 +349,6 @@ ACTIONS REQUIRED:
 
       // Bind interactive scenario buttons
       const btnEnter = document.getElementById('btn-scenario-enter');
-      const btnAgent = document.getElementById('btn-scenario-agent');
       const consoleEl = document.getElementById('dv-demo-console');
 
       if (btnEnter && consoleEl) {
@@ -362,19 +379,21 @@ ACTIONS REQUIRED:
         });
       }
 
-      if (btnAgent && consoleEl) {
-        btnAgent.addEventListener('click', () => {
-          const currentRecord = _records.find(r => r.payload?.phrase === _selectedPhrase) || _records[0];
-          const phraseText = currentRecord ? currentRecord.payload.phrase : "None";
-          const assetUrn = currentRecord ? currentRecord.asset_id : "None";
+      // Bind Adversarial Attacks
+      const btnAttackRevoked = document.getElementById('btn-attack-revoked');
+      const btnAttackDrift = document.getElementById('btn-attack-drift');
+      const btnAttackBypass = document.getElementById('btn-attack-bypass');
 
+      if (btnAttackRevoked && consoleEl) {
+        btnAttackRevoked.addEventListener('click', () => {
           consoleEl.innerHTML = "";
           let logs = [
-            `> [1/5] EMBASSY: External AI agent approaching DAVID_OS...`,
-            `> [2/5] EMBASSY: Agent requests TRANSLATE action on "${phraseText}"`,
-            `> [3/5] DaVinciA+: Presenting Agent Passport: urn:davincia:passport:ai_agent:slang-bot`,
-            `> [4/5] DaVinciA+: Evaluating target and conditions for language lane...`,
-            `> [5/5] DaVinciA+: Decided ALLOW_WITH_CONSTRAINTS (CASUAL_CONTEXT_ONLY).`
+            `> [ATTACK A] Presenting Agent Passport: urn:davincia:passport:ai_agent:malicious-bot`,
+            `> [ATTACK A] Request: TRANSLATE on Munster Slang Slips`,
+            `> [ATTACK A] DaVinciA+ Policy Engine: Verifying Delegation Status...`,
+            `> [CRITICAL WARNING] DELEGATION REVOKED BY OPERATOR (DAVID_OS)`,
+            `> [OUTCOME] DENY (INVALID_DELEGATION)`,
+            `> [DOWNSTREAM ACTION] ENTITLEMENT: NOT ISSUED | PAYMENT: NOT INITIATED | EVIDENCE: LOGGED`
           ];
           let index = 0;
           const interval = setInterval(() => {
@@ -386,6 +405,217 @@ ACTIONS REQUIRED:
               clearInterval(interval);
             }
           }, 300);
+        });
+      }
+
+      if (btnAttackDrift && consoleEl) {
+        btnAttackDrift.addEventListener('click', () => {
+          consoleEl.innerHTML = "";
+          let logs = [
+            `> [ATTACK B] Querying metadata for asset: urn:davincia:knowledge:asset:brehon-ip`,
+            `> [ATTACK B] Current Checksum: sha256-unaligned-checksum-58291a`,
+            `> [ATTACK B] Target Registry Checksum: sha256-derived-brehon-ip`,
+            `> [CRITICAL WARNING] PROVENANCE DRIFT DETECTED (INTEGRITY_MISMATCH)`,
+            `> [OUTCOME] DENY (PROVENANCE_DRIFT_SUSPENSION)`,
+            `> [DOWNSTREAM ACTION] ENTITLEMENT: SUSPENDED | CONSUMPTION: BLOCKED | EVIDENCE: LOGGED`
+          ];
+          let index = 0;
+          const interval = setInterval(() => {
+            if (index < logs.length) {
+              consoleEl.innerHTML += logs[index] + "\n";
+              consoleEl.scrollTop = consoleEl.scrollHeight;
+              index++;
+            } else {
+              clearInterval(interval);
+            }
+          }, 300);
+        });
+      }
+
+      if (btnAttackBypass && consoleEl) {
+        btnAttackBypass.addEventListener('click', () => {
+          consoleEl.innerHTML = "";
+          let logs = [
+            `> [ATTACK C] Bypassing DaVinciA+ Policy Gate...`,
+            `> [ATTACK C] Directly invoking settlement endpoint: /api/commerce/settle`,
+            `> [ATTACK C] Presenting raw payload and credit card token...`,
+            `> [CRITICAL WARNING] CLEARING FAILURE: NO AUTHORIZED GOVERNANCE DECISION RESOLVED`,
+            `> [OUTCOME] HOLD / DENY (GOVERNANCE_SOVEREIGNTY_VIOLATION)`,
+            `> [DOWNSTREAM ACTION] SETTLEMENT: BLOCKED | PRICE: $0.00`
+          ];
+          let index = 0;
+          const interval = setInterval(() => {
+            if (index < logs.length) {
+              consoleEl.innerHTML += logs[index] + "\n";
+              consoleEl.scrollTop = consoleEl.scrollHeight;
+              index++;
+            } else {
+              clearInterval(interval);
+            }
+          }, 300);
+        });
+      }
+
+      // JSON Inspector Click Handlers
+      const inspectorBox = document.getElementById('dv-json-inspector-box');
+      const inspectorTitle = document.getElementById('inspector-title');
+      const inspectorContent = document.getElementById('inspector-content');
+      const btnCloseInspector = document.getElementById('btn-close-inspector');
+
+      if (btnCloseInspector && inspectorBox) {
+        btnCloseInspector.addEventListener('click', () => {
+          inspectorBox.style.display = 'none';
+        });
+      }
+
+      function showInspector(title, data) {
+        if (!inspectorBox || !inspectorTitle || !inspectorContent) return;
+        inspectorTitle.textContent = title;
+        inspectorContent.textContent = JSON.stringify(data, null, 2);
+        inspectorBox.style.display = 'block';
+        inspectorBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      const btnInspectDelegation = document.getElementById('inspect-delegation');
+      if (btnInspectDelegation) {
+        btnInspectDelegation.addEventListener('click', () => {
+          showInspector("Delegation Token Schema", _activeDelegationTokenObj || { status: "NONE_ACTIVE" });
+        });
+      }
+
+      const btnInspectPassport = document.getElementById('inspect-passport');
+      if (btnInspectPassport) {
+        btnInspectPassport.addEventListener('click', () => {
+          showInspector("Passport Schema", _activePassportObj || { status: "NONE_ACTIVE" });
+        });
+      }
+
+      const btnInspectDecision = document.getElementById('inspect-decision');
+      if (btnInspectDecision) {
+        btnInspectDecision.addEventListener('click', () => {
+          showInspector("Decision Object Schema", _activeDecisionObj || { status: "NONE_PENDING" });
+        });
+      }
+
+      const btnInspectEvidence = document.getElementById('inspect-evidence');
+      if (btnInspectEvidence) {
+        btnInspectEvidence.addEventListener('click', () => {
+          showInspector("Evidence Package Schema", _activeEvidenceObj || { status: "NONE_PENDING" });
+        });
+      }
+
+      const btnInspectTransaction = document.getElementById('inspect-transaction');
+      if (btnInspectTransaction) {
+        btnInspectTransaction.addEventListener('click', () => {
+          showInspector("Transaction Receipt Schema", _activeTransactionObj || { status: "NONE_SETTLED" });
+        });
+      }
+
+      // Explain Mode Toggle Handler
+      const toggleExplainMode = document.getElementById('toggle-explain-mode');
+      if (toggleExplainMode) {
+        toggleExplainMode.addEventListener('change', (e) => {
+          const notes = document.querySelectorAll('.dv-explain-note');
+          notes.forEach(note => {
+            note.style.display = e.target.checked ? 'block' : 'none';
+          });
+        });
+      }
+
+      // Tour Wizard Handler
+      const btnStartTour = document.getElementById('btn-start-tour');
+      const tourCard = document.getElementById('tour-hud-card');
+      const tourTitle = document.getElementById('tour-act-title');
+      const tourStep = document.getElementById('tour-act-step');
+      const tourDesc = document.getElementById('tour-act-description');
+      const btnTourPrev = document.getElementById('btn-tour-prev');
+      const btnTourNext = document.getElementById('btn-tour-next');
+
+      const tourSteps = [
+        {
+          title: "ACT I: THE HUMAN (DAVID_OS)",
+          description: "Every governed environment begins with human authority. DAVID_OS represents the sovereign operator environment from which David governs delegated agents, reviews transactions, and controls the constitutional boundaries.",
+          focusLayer: "L1"
+        },
+        {
+          title: "ACT II: THE BORDER (DaVinciA⁺)",
+          description: "Technical capability does not create authority. DaVinciA⁺ is the constitutional layer that issues and validates Governance Passports. Identity checks are enforced at the network border before any interaction is permitted.",
+          focusLayer: "L2"
+        },
+        {
+          title: "ACT III: THE TERRITORY (Embassy Catalog)",
+          description: "Knowledge assets in the Embassy are discoverable without becoming uncontrolled. The registry stores versioned license agreements, pricing models (Fixed/Usage), and provenance checksums for catalog search.",
+          focusLayer: "L3"
+        },
+        {
+          title: "ACT IV: THE REQUEST (Access Pipeline)",
+          description: "When an external participant or AI agent requests access to a registered asset, the transaction orchestrator intercepts the request, packaging identity credentials and target parameters.",
+          focusLayer: "L2"
+        },
+        {
+          title: "ACT V: THE DECISION (Sovereign Resolution)",
+          description: "DaVinciA⁺ evaluates the request against policy precedence rules, emitting an immutable Decision Object (ALLOW, ALLOW_WITH_CONSTRAINTS, or DENY). If authorization fails, the pipeline locks immediately.",
+          focusLayer: "L2"
+        },
+        {
+          title: "ACT VI: THE ECONOMY (Sovereignty Separation)",
+          description: "Governance is separate from payment. Once authorized, the system issues an entitlement, records consumption bounds, clears sandbox allocations, and writes a reconstructible evidence package to the ledger.",
+          focusLayer: "L3"
+        }
+      ];
+
+      let currentTourIndex = 0;
+
+      function renderTourStep() {
+        if (!tourSteps[currentTourIndex]) return;
+        const step = tourSteps[currentTourIndex];
+        tourTitle.textContent = step.title;
+        tourStep.textContent = `Step ${currentTourIndex + 1} of ${tourSteps.length}`;
+        tourDesc.textContent = step.description;
+
+        // Visually highlight the target layer panel section!
+        const l1 = document.querySelector('[style*="#1a82e2"]');
+        const l2 = document.querySelector('[style*="#2f8f5b"]');
+        const l3 = document.querySelector('[style*="#c8a75d"]');
+        
+        if (l1) l1.style.boxShadow = step.focusLayer === "L1" ? "0 0 12px #1a82e2" : "none";
+        if (l2) l2.style.boxShadow = step.focusLayer === "L2" ? "0 0 12px #2f8f5b" : "none";
+        if (l3) l3.style.boxShadow = step.focusLayer === "L3" ? "0 0 12px #c8a75d" : "none";
+      }
+
+      if (btnStartTour) {
+        btnStartTour.addEventListener('click', () => {
+          currentTourIndex = 0;
+          tourCard.style.display = 'block';
+          renderTourStep();
+        });
+      }
+
+      if (btnTourPrev) {
+        btnTourPrev.addEventListener('click', () => {
+          if (currentTourIndex > 0) {
+            currentTourIndex--;
+            renderTourStep();
+          }
+        });
+      }
+
+      if (btnTourNext) {
+        btnTourNext.addEventListener('click', () => {
+          if (currentTourIndex < tourSteps.length - 1) {
+            currentTourIndex++;
+            renderTourStep();
+          } else {
+            // End of tour, hide it
+            tourCard.style.display = 'none';
+            // Reset shadows
+            const l1 = document.querySelector('[style*="#1a82e2"]');
+            const l2 = document.querySelector('[style*="#2f8f5b"]');
+            const l3 = document.querySelector('[style*="#c8a75d"]');
+            if (l1) l1.style.boxShadow = "none";
+            if (l2) l2.style.boxShadow = "none";
+            if (l3) l3.style.boxShadow = "none";
+          }
         });
       }
 

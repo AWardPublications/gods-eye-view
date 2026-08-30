@@ -14,7 +14,7 @@
       "longitude": -8.4756
     },
     "source_urn": "urn:davincia:raw:arios-security",
-    "extracted_at": "2026-08-30T15:39:41.721Z",
+    "extracted_at": "2026-08-30T15:57:26.115Z",
     "checksum": "sha256-derived-arios-security"
   },
   "facts": [
@@ -51,11 +51,11 @@
   "verification": {
     "state": "VERIFIED",
     "reviewer_role": "SYSTEM_GOVERNOR",
-    "verified_at": "2026-08-30T15:39:41.729Z",
+    "verified_at": "2026-08-30T15:57:26.120Z",
     "evidence_ref": "urn:davincia:evidence:refinery:arios-security"
   },
   "governance_passport": {
-    "authorized_at": "2026-08-30T15:39:41.730Z",
-    "decision_ref": "urn:davincia:decision:4eblxc6x5qj"
+    "authorized_at": "2026-08-30T15:57:26.120Z",
+    "decision_ref": "urn:davincia:decision:3mhnvrcx9er"
   }
 }
