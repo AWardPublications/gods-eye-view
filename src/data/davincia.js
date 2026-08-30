@@ -329,6 +329,66 @@ ACTIONS REQUIRED:
         }
       }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
 
+      // Bind interactive scenario buttons
+      const btnEnter = document.getElementById('btn-scenario-enter');
+      const btnAgent = document.getElementById('btn-scenario-agent');
+      const consoleEl = document.getElementById('dv-demo-console');
+
+      if (btnEnter && consoleEl) {
+        btnEnter.addEventListener('click', () => {
+          const currentRecord = _records.find(r => r.payload?.phrase === _selectedPhrase) || _records[0];
+          const phraseText = currentRecord ? currentRecord.payload.phrase : "None";
+          const assetUrn = currentRecord ? currentRecord.asset_id : "None";
+
+          consoleEl.innerHTML = "";
+          let logs = [
+            `> [1/6] DAVID_OS: Initializing human authority credentials...`,
+            `> [2/6] DAVID_OS: Presenting Governance Passport: urn:davincia:passport:human:david`,
+            `> [3/6] DaVinciA+: Constitutional engine validating identity... [OK]`,
+            `> [4/6] EMBASSY: Querying Governed AI Embassy Catalog for: ${assetUrn}`,
+            `> [5/6] EMBASSY: Requesting licensed TRANSLATE action on "${phraseText}"...`,
+            `> [6/6] DaVinciA+: Decided ALLOW. Entitlement issued. Settled via Sandbox payment boundary.`
+          ];
+          let index = 0;
+          const interval = setInterval(() => {
+            if (index < logs.length) {
+              consoleEl.innerHTML += logs[index] + "\n";
+              consoleEl.scrollTop = consoleEl.scrollHeight;
+              index++;
+            } else {
+              clearInterval(interval);
+            }
+          }, 300);
+        });
+      }
+
+      if (btnAgent && consoleEl) {
+        btnAgent.addEventListener('click', () => {
+          const currentRecord = _records.find(r => r.payload?.phrase === _selectedPhrase) || _records[0];
+          const phraseText = currentRecord ? currentRecord.payload.phrase : "None";
+          const assetUrn = currentRecord ? currentRecord.asset_id : "None";
+
+          consoleEl.innerHTML = "";
+          let logs = [
+            `> [1/5] EMBASSY: External AI agent approaching DAVID_OS...`,
+            `> [2/5] EMBASSY: Agent requests TRANSLATE action on "${phraseText}"`,
+            `> [3/5] DaVinciA+: Presenting Agent Passport: urn:davincia:passport:ai_agent:slang-bot`,
+            `> [4/5] DaVinciA+: Evaluating target and conditions for language lane...`,
+            `> [5/5] DaVinciA+: Decided ALLOW_WITH_CONSTRAINTS (CASUAL_CONTEXT_ONLY).`
+          ];
+          let index = 0;
+          const interval = setInterval(() => {
+            if (index < logs.length) {
+              consoleEl.innerHTML += logs[index] + "\n";
+              consoleEl.scrollTop = consoleEl.scrollHeight;
+              index++;
+            } else {
+              clearInterval(interval);
+            }
+          }, 300);
+        });
+      }
+
       // Trigger initial load
       this.update(viewer);
     },

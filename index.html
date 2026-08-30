@@ -648,60 +648,57 @@
     <div class="panel-glow"></div>
     <div class="davincia-panel-inner">
       <div class="panel-header">
-        <span class="panel-title">DAVINCIA⁺ GOVERNANCE</span>
+        <span class="panel-title">DAVINCIA⁺ GOVERNED EMBASSY</span>
         <span class="panel-divider"></span>
         <button class="panel-collapse-btn" data-collapse-target="davincia-panel" title="Collapse panel">+</button>
       </div>
       
-      <div class="dv-scroll-container">
-        <!-- Selected Phrase Card -->
-        <div class="dv-card-primary">
-          <div class="dv-card-row">
-            <h2 id="dv-phrase" class="dv-term">Select a node</h2>
-            <span id="dv-status-badge" class="dv-badge">PENDING</span>
+      <div class="dv-scroll-container" style="padding: 12px; display: flex; flex-direction: column; gap: 16px;">
+        
+        <!-- Interactive Architectural Scenarios -->
+        <div class="dv-section" style="border: 1px solid #c8a75d; padding: 12px; border-radius: 6px; background: rgba(200, 167, 93, 0.06);">
+          <div class="dv-section-title" style="color: #c8a75d; font-weight: bold; margin-bottom: 8px; font-size: 11px; letter-spacing: 0.05em;">INTERACTIVE EMBASSY SCENARIOS</div>
+          <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+            <button id="btn-scenario-enter" class="scene-btn" style="flex: 1; background: #c8a75d; color: black; border: none; padding: 8px; font-size: 10px; font-weight: bold; cursor: pointer; border-radius: 4px;">1. DAVID_OS ENTERS EMBASSY</button>
+            <button id="btn-scenario-agent" class="scene-btn" style="flex: 1; background: #d31d36; color: white; border: none; padding: 8px; font-size: 10px; font-weight: bold; cursor: pointer; border-radius: 4px;">2. AGENT APPROACH</button>
           </div>
-          <p id="dv-lane" class="dv-subtitle">Language Lane</p>
-          <div id="dv-urn" class="dv-urn">Select a node to inspect URN</div>
-        </div>
-
-        <!-- Section: Cultural Context -->
-        <div class="dv-section">
-          <div class="dv-section-title">CULTURAL CUSTODY CONTEXT</div>
-          <div class="dv-detail-grid">
-            <div class="dv-detail-label">Definition:</div>
-            <div id="dv-meaning" class="dv-detail-value">meaning</div>
-            <div class="dv-detail-label">Region:</div>
-            <div id="dv-region" class="dv-detail-value">region</div>
-            <div class="dv-detail-label">When to Use:</div>
-            <div id="dv-when-use" class="dv-detail-value">when to use</div>
-            <div class="dv-detail-label">When NOT to Use:</div>
-            <div id="dv-when-not-use" class="dv-detail-value">when not to use</div>
-            <div class="dv-detail-label">Nuances:</div>
-            <div id="dv-nuances" class="dv-detail-value">nuances</div>
+          <div id="dv-demo-console" style="background: #080808; color: #00ff66; font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 8px; border-radius: 4px; height: 120px; overflow-y: auto; border: 1px solid #222; line-height: 1.4; white-space: pre-wrap; word-break: break-all;">
+&gt; Select an architectural scenario above to simulate the interaction.
           </div>
         </div>
 
-        <!-- Section: Machine Translation Bridge -->
-        <div class="dv-section">
-          <div class="dv-section-title">MACHINE TRANSLATION BRIDGE</div>
+        <!-- LAYER 1: DAVID_OS (Human Authority Layer) -->
+        <div class="dv-section" style="border: 1px solid #1a82e2; padding: 12px; border-radius: 6px; background: rgba(26, 130, 226, 0.03);">
+          <div class="dv-section-title" style="color: #1a82e2; font-weight: bold; margin-bottom: 8px; font-size: 11px; letter-spacing: 0.05em;">LAYER 1: DAVID_OS (HUMAN AUTHORITY)</div>
           <div class="dv-detail-grid">
-            <div class="dv-detail-label">Allowed Use:</div>
-            <div id="dv-allowed" class="dv-detail-value">allowed</div>
-            <div class="dv-detail-label">Prohibited Use:</div>
-            <div id="dv-prohibited" class="dv-detail-value">prohibited</div>
-            <div class="dv-detail-label">Tone Preference:</div>
-            <div id="dv-tone" class="dv-detail-value">tone</div>
-            <div class="dv-detail-label">Sensitivity:</div>
-            <div id="dv-severity" class="dv-detail-value">severity</div>
-            <div class="dv-detail-label">Routing Rule:</div>
-            <div id="dv-routing" class="dv-detail-value">routing</div>
+            <div class="dv-detail-label">Operator:</div>
+            <div id="dv-os-operator" class="dv-detail-value" style="font-weight: bold;">David O'Connor</div>
+            <div class="dv-detail-label">Authority URN:</div>
+            <div class="dv-detail-value" style="font-family: monospace; font-size: 10px;">urn:davincia:identity:user:david</div>
+            <div class="dv-detail-label">Status:</div>
+            <div class="dv-detail-value"><span class="dv-badge" style="background: #1a82e2; color: white;">SOVEREIGN CONTROL</span></div>
+            <div class="dv-detail-label">Delegated Agent:</div>
+            <div id="dv-agent-urn" class="dv-detail-value" style="font-family: monospace; font-size: 10px;">urn:davincia:passport:ai_agent:slang-bot</div>
+            <div class="dv-detail-label">Delegation Token:</div>
+            <div id="dv-agent-token" class="dv-detail-value" style="font-family: monospace; font-size: 10px; color: #1a82e2;">--</div>
           </div>
         </div>
 
-        <!-- Section: Governance Audit Trail -->
-        <div class="dv-section">
-          <div class="dv-section-title">GOVERNANCE & TRUST DECISIONS</div>
+        <!-- LAYER 2: DAVINCIA⁺ (Constitutional Layer) -->
+        <div class="dv-section" style="border: 1px solid #2f8f5b; padding: 12px; border-radius: 6px; background: rgba(47, 143, 91, 0.03);">
+          <div class="dv-section-title" style="color: #2f8f5b; font-weight: bold; margin-bottom: 8px; font-size: 11px; letter-spacing: 0.05em;">LAYER 2: DAVINCIA⁺ (CONSTITUTIONAL ENGINE)</div>
+          <div class="dv-card-primary" style="margin-bottom: 12px; padding: 8px; background: rgba(255,255,255,0.02); border-radius: 4px;">
+            <div class="dv-card-row" style="display: flex; justify-content: space-between; align-items: center;">
+              <h3 id="dv-phrase" class="dv-term" style="margin: 0; font-size: 14px; font-weight: bold;">Select a node</h3>
+              <span id="dv-status-badge" class="dv-badge">PENDING</span>
+            </div>
+            <p id="dv-lane" class="dv-subtitle" style="margin: 4px 0 0 0; font-size: 11px; color: #888;">Language Lane</p>
+            <div id="dv-urn" class="dv-urn" style="font-family: monospace; font-size: 9px; margin-top: 4px; color: #666; word-break: break-all;">Select a node to inspect URN</div>
+          </div>
+          
           <div class="dv-detail-grid">
+            <div class="dv-detail-label">Active Passport:</div>
+            <div id="dv-pass-id" class="dv-detail-value" style="font-family: monospace; font-size: 10px;">urn:davincia:passport:human:david</div>
             <div class="dv-detail-label">Translation Auth:</div>
             <div><span id="dv-auth-translate" class="dv-badge badge-deny">DENY</span></div>
             <div class="dv-detail-label">Publication Auth:</div>
@@ -711,88 +708,52 @@
             <div class="dv-detail-label">Reason Code:</div>
             <div id="dv-reason-code" class="dv-detail-value">--</div>
             <div class="dv-detail-label">Evidence Ref:</div>
-            <div id="dv-evidence-ref" class="dv-detail-value">--</div>
-            <div class="dv-detail-label">Reviewer Role:</div>
-            <div id="dv-reviewer-role" class="dv-detail-value">--</div>
+            <div id="dv-evidence-ref" class="dv-detail-value" style="font-family: monospace; font-size: 10px;">--</div>
+          </div>
+
+          <!-- Section: Audio Archive -->
+          <div id="dv-audio-wrap" style="display:none; margin-top: 12px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 8px;">
+            <div style="font-size: 10px; font-weight: bold; color: #2f8f5b;">AUDIO PROVENANCE EVIDENCE</div>
+            <div class="dv-audio-meta" style="font-size: 10px; color: #aaa; margin-top: 4px;">
+              <div><strong>Source:</strong> <span id="dv-audio-source">source</span></div>
+              <div><strong>Speaker:</strong> <span id="dv-audio-speaker">speaker</span></div>
+            </div>
+            <audio id="dv-audio-player" controls style="width:100%; margin-top:8px; height: 28px;"></audio>
           </div>
         </div>
 
-        <!-- Section: Audio Archive -->
-        <div id="dv-audio-wrap" class="dv-section" style="display:none;">
-          <div class="dv-section-title">AUDIO PROVENANCE ARCHIVE</div>
-          <div class="dv-audio-meta">
-            <div><strong>Source:</strong> <span id="dv-audio-source">source</span></div>
-            <div><strong>Speaker:</strong> <span id="dv-audio-speaker">speaker</span></div>
-          </div>
-          <audio id="dv-audio-player" controls style="width:100%; margin-top:8px;"></audio>
-        </div>
-
-        <!-- Section: Governed AI Embassy & Commerce Registry -->
-        <div class="dv-section" id="dv-commerce-section" style="border: 1px solid #c8a75d; padding: 12px; border-radius: 6px; background: rgba(200, 167, 93, 0.05); margin-top: 16px;">
-          <div class="dv-section-title" style="color: #c8a75d; font-weight: bold; margin-bottom: 8px;">GOVERNED AI EMBASSY EXCHANGE</div>
+        <!-- LAYER 3: GOVERNED AI EMBASSY (Institutional / Economic Layer) -->
+        <div class="dv-section" style="border: 1px solid #c8a75d; padding: 12px; border-radius: 6px; background: rgba(200, 167, 93, 0.03);">
+          <div class="dv-section-title" style="color: #c8a75d; font-weight: bold; margin-bottom: 8px; font-size: 11px; letter-spacing: 0.05em;">LAYER 3: GOVERNED AI EMBASSY (ECONOMY)</div>
           <div class="dv-detail-grid">
-            <div class="dv-detail-label">Asset URN:</div>
-            <div id="dv-comm-urn" class="dv-detail-value" style="font-family: monospace; font-size: 11px;">urn:davincia:knowledge:asset:acting-the-gowl</div>
-            <div class="dv-detail-label">Price:</div>
+            <div class="dv-detail-label">Catalog Price:</div>
             <div id="dv-comm-price" class="dv-detail-value" style="color: #c8a75d; font-weight: bold;">$0.05 USD</div>
-            <div class="dv-detail-label">Commercial Status:</div>
+            <div class="dv-detail-label">Status:</div>
             <div id="dv-comm-status" class="dv-detail-value"><span class="dv-badge" style="background: #2f8f5b; color: white;">SIMULATION_ONLY</span></div>
-            <div class="dv-detail-label">Permitted Actions:</div>
-            <div id="dv-comm-permitted" class="dv-detail-value" style="font-size: 11px;">DISCOVER, VIEW, QUERY, TRANSLATE, DOWNLOAD</div>
-            <div class="dv-detail-label">Restrictions:</div>
-            <div id="dv-comm-prohibited" class="dv-detail-value" style="color: #d31d36; font-size: 11px;">TRANSFORM, PUBLISH</div>
+            <div class="dv-detail-label">Permitted:</div>
+            <div id="dv-comm-permitted" class="dv-detail-value" style="font-size: 10px;">READ, TRANSLATE</div>
+            <div class="dv-detail-label">Prohibited:</div>
+            <div id="dv-comm-prohibited" class="dv-detail-value" style="color: #d31d36; font-size: 10px;">TRANSFORM</div>
+            <div class="dv-detail-label">Maturity Cost:</div>
+            <div id="dv-agent-cost" class="dv-detail-value" style="color: #c8a75d; font-weight: bold;">$0.000000 USD</div>
           </div>
-          <div style="margin-top: 12px; display: flex; flex-direction: column; gap: 8px;">
-            <button id="dv-request-access-btn" class="scene-btn" style="width: 100%; background: #c8a75d; color: black; border: none; padding: 8px; font-weight: bold; cursor: pointer; border-radius: 4px;">REQUEST LICENSED ACCESS</button>
-            <div id="dv-commerce-outcome" style="display: none; padding: 8px; background: rgba(47, 143, 91, 0.1); border-left: 4px solid #2f8f5b; font-size: 11px;">
+          
+          <div style="margin-top: 12px;">
+            <button id="dv-request-access-btn" class="scene-btn" style="width: 100%; background: #c8a75d; color: black; border: none; padding: 8px; font-weight: bold; cursor: pointer; border-radius: 4px; font-size: 11px;">REQUEST LICENSED ACCESS</button>
+            <div id="dv-commerce-outcome" style="display: none; padding: 8px; background: rgba(47, 143, 91, 0.1); border-left: 4px solid #2f8f5b; font-size: 10px; margin-top: 8px;">
               <div style="color: #2f8f5b; font-weight: bold; margin-bottom: 4px;">✔ TRANSACTION AUTHORIZED</div>
               <div><strong>Transaction ID:</strong> <span id="dv-tx-id">--</span></div>
-              <div><strong>Settlement status:</strong> Complete (Entitlement Registered)</div>
+              <div><strong>Status:</strong> Settled &amp; Allocated</div>
             </div>
           </div>
         </div>
 
-        <!-- Section: Governance Passport Admission HUD -->
-        <div class="dv-section" id="dv-passport-section" style="border: 1px solid #2f8f5b; padding: 12px; border-radius: 6px; background: rgba(47, 143, 91, 0.05); margin-top: 16px;">
-          <div class="dv-section-title" style="color: #2f8f5b; font-weight: bold; margin-bottom: 8px;">ACTIVE GOVERNANCE PASSPORT</div>
-          <div class="dv-detail-grid">
-            <div class="dv-detail-label">Passport ID:</div>
-            <div id="dv-pass-id" class="dv-detail-value" style="font-family: monospace; font-size: 11px;">urn:davincia:passport:human:david</div>
-            <div class="dv-detail-label">Holder Type:</div>
-            <div id="dv-pass-holder-type" class="dv-detail-value">HUMAN</div>
-            <div class="dv-detail-label">Verification State:</div>
-            <div id="dv-pass-verification" class="dv-detail-value"><span class="dv-badge" style="background: #2f8f5b; color: white;">VERIFIED</span></div>
-            <div class="dv-detail-label">Expires At:</div>
-            <div id="dv-pass-expiry" class="dv-detail-value">--</div>
-            <div class="dv-detail-label">Capabilities:</div>
-            <div id="dv-pass-capabilities" class="dv-detail-value" style="font-size: 11px;">READ, TRANSLATE</div>
-            <div class="dv-detail-label">Signature:</div>
-            <div id="dv-pass-signature" class="dv-detail-value" style="font-family: monospace; font-size: 10px;">--</div>
-          </div>
-        </div>
-
-        <!-- Section: Agent Delegation & Cost Metering -->
-        <div class="dv-section" id="dv-agent-section" style="border: 1px solid #1a82e2; padding: 12px; border-radius: 6px; background: rgba(26, 130, 226, 0.05); margin-top: 16px;">
-          <div class="dv-section-title" style="color: #1a82e2; font-weight: bold; margin-bottom: 8px;">DELEGATED AGENT CONTEXT</div>
-          <div class="dv-detail-grid">
-            <div class="dv-detail-label">Agent URN:</div>
-            <div id="dv-agent-urn" class="dv-detail-value" style="font-family: monospace; font-size: 11px;">urn:davincia:passport:ai_agent:slang-bot</div>
-            <div class="dv-detail-label">Delegation Token:</div>
-            <div id="dv-agent-token" class="dv-detail-value" style="font-family: monospace; font-size: 11px;">--</div>
-            <div class="dv-detail-label">Rate Limit:</div>
-            <div id="dv-agent-rate" class="dv-detail-value"><span class="dv-badge" style="background: #1a82e2; color: white;">10 RPM (OK)</span></div>
-            <div class="dv-detail-label">Billing Model:</div>
-            <div id="dv-agent-billing" class="dv-detail-value">TOKEN_METERED (MINI)</div>
-            <div class="dv-detail-label">Maturity Cost:</div>
-            <div id="dv-agent-cost" class="dv-detail-value" style="color: #1a82e2; font-weight: bold;">$0.000000 USD</div>
-          </div>
-        </div>
-
         <!-- Section: Compiled System Prompt -->
-        <div class="dv-section">
-          <div class="dv-section-title">COMPILED SYSTEM INSTRUCTION (LLM GATE)</div>
-          <pre id="dv-prompt-output" class="dv-prompt-box">Compiled system prompt output will render here.</pre>
+        <div class="dv-section" style="border: 1px solid #444; padding: 12px; border-radius: 6px; background: rgba(255,255,255,0.01);">
+          <div class="dv-section-title" style="color: #aaa; font-weight: bold; margin-bottom: 8px; font-size: 11px;">COMPILED SYSTEM PROMPT (LLM GATE)</div>
+          <pre id="dv-prompt-output" class="dv-prompt-box" style="font-family: 'JetBrains Mono', monospace; font-size: 9px; background: #080808; padding: 8px; border-radius: 4px; border: 1px solid #222; overflow-x: auto; white-space: pre-wrap; margin: 0; max-height: 150px; color: #ccc;">Select a node to compile system prompt.</pre>
         </div>
+
       </div>
     </div>
   </div>
