@@ -34,3 +34,27 @@ Three separate test scripts validate different aspects of the repository:
 3. **Marketplace Scorecard (`run-marketplace-conformance.js`)**: Validates cryptographically bound offers, pricing engines, and license validation rules.
 
 All three scorecards yield a **100% conformant** status on the main branch.
+
+---
+
+## 4. Unknown-System Conformance & Adapter-Independence (v0.2.0 Milestone)
+
+To prove that the constitutional kernel can ingest, profile, compose policies for, and govern previously unknown systems without requiring bespoke developer adapters (zero-code integration), we executed a two-part programmatic experiment in the sandbox using the formal **DaVinciA⁺ Governance Manifest Schema**:
+
+### Run 1: Onboarding a Valid, Compliant System (`futuresystem-x`)
+We onboarded **FutureSystem-X**, a foreign entity declaring operations over personal data and intellectual property:
+* **Manifest Profiling**: Automatically discovered its objects (`user_profile`, `proprietary_dataset`) and actions (`export_knowledge`, `modify_access`).
+* **Dynamic Policy Composition**: Composed universal rules requiring `identity_assertion` and `consent_verification` for high/critical sensitivity classifications.
+* **Verdict**: Successfully yielded an `AUTHORIZED` Universal Decision Object with code `CONFORMANCE_PASS`, granting entry into the Embassy.
+
+### Run 2: Hostile Resistance Test (`hostile-system-y`)
+We simulated onboarding a hostile system (**Hostile-System-Y**) registering sensitive data objects but deliberately omitting required controls to bypass audits:
+* **Fail-Closed Protection**: Recognized that `user_credentials` and `exfiltrate_data` carried critical sensitivity/impact.
+* **Verification Halt**: Verified missing controls against composed safety rules, transitioning the system to a `HOLD` state.
+* **Verdict**: Blocked onboarding with `INSUFFICIENT_CONTROLS` and `FAIL_CLOSED_ON_DRIFT` reason codes.
+
+### Key Milestones Proven
+1. **Zero-Code Autonomy**: Kernel successfully profiled the system and composed valid rules without application-specific wrapper adapters.
+2. **Deterministic Fail-Closed**: Confirmed that the kernel safely places unverified profiles on a `HOLD` state to protect perimeters and IP.
+3. **Tamper-Evident Ledgering**: Serialized and logged both events into the audit database as cryptographically signed GAMP 5 entries.
+
