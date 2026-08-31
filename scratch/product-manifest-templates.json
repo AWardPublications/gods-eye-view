@@ -1,0 +1,172 @@
+{
+  "system_class": "AWardPublications.ProductRefinery.v1.0",
+  "canon_standard": "AIPS-002 / AIPS-001",
+  "brand_identity": {
+    "primary_color": "#d31d36",
+    "primary_color_name": "Cork Crimson",
+    "aesthetic_standard": "AWP-PRINT-002",
+    "primary_slogan": "PUBLISHING THE FUTURE. ETHICALLY.",
+    "secondary_slogan": "ETHICAL AI • EXCEPTIONAL PUBLISHING"
+  },
+  "templates": {
+    "coloring_book": {
+      "product_type": "AWP-BOK-002-COLOR",
+      "layout_specs": {
+        "trim_size": "A4 (210x297mm)",
+        "bleed": "3.175mm",
+        "digital_resolution": "2480x3508px (300 DPI)",
+        "page_style": "Linen White (#FBFBFA)"
+      },
+      "visual_strategy": {
+        "style_modifier": "clean, crisp black and white line art coloring page, pure thick outlines, high-contrast, no shading, no grayscale, solid white background",
+        "composition_hierarchy": {
+          "subject_weight": "70% (centered static observer, blocky cork texture, domino mask, cape)",
+          "background_weight": "25% (damp Georgian/Victorian Cork context)",
+          "prop_weight": "5% (oblique thematic prop representing headline, <10% frame area)"
+        },
+        "narrative_invariance_rule": "The character stands as a silent witness. No flying, running, or narrative re-enactment of the headline is permitted."
+      },
+      "governance_stamps": {
+        "metadata_keys": [
+          "urn:davincia:identity:organization:award_publications",
+          "urn:davincia:disclosure:ai_generated"
+        ],
+        "visual_overlay": {
+          "border_style": "crisp black outline border",
+          "disclosure_text": "AI Generated Outline • Licensed by A.Ward Publications",
+          "regulatory_seal": "AWard Publications Institutional Circular Seal (black line art)"
+        }
+      },
+      "required_controls": [
+        "consent_verification",
+        "provenance_audit",
+        "isbn_check_digit_validation"
+      ]
+    },
+    "narrative_storybook": {
+      "product_type": "AWP-BOK-001-STORY",
+      "layout_specs": {
+        "trim_size": "6x9 inches (152.4x228.6mm)",
+        "bleed": "3.175mm",
+        "digital_resolution": "1800x2700px (300 DPI)",
+        "page_style": "Linen White (#FBFBFA)"
+      },
+      "visual_strategy": {
+        "style_modifier": "high-detail rich watercolor and damp chalk pastel illustration, soft atmospheric lighting, overcast skies, subtle local color accents",
+        "composition_hierarchy": {
+          "subject_weight": "70% (centered blocky observer)",
+          "background_weight": "25% (low-rise historic Cork architectures, Shandon Hill/Kinsale)",
+          "prop_weight": "5% (subtle Easter egg)"
+        },
+        "narrative_invariance_rule": "The illustration captures the atmospheric backdrop, while the textual verse carries the folklore."
+      },
+      "narrative_generation": {
+        "engine_role": "Modern Filidh (advisory only)",
+        "format": "Three-act folklore chapter or rhythmic verse based on raw news feed",
+        "linter_checks": {
+          "vocal_command_validator": "five_character_standard (no 'Yes' or 'OK' allowed)",
+          "telemetry_check": "minimum_50_character_rule (prevention of institutional silence)"
+        }
+      },
+      "governance_stamps": {
+        "metadata_keys": [
+          "urn:davincia:identity:organization:award_publications",
+          "urn:davincia:disclosure:ai_generated",
+          "urn:davincia:provenance:source_hash"
+        ],
+        "visual_overlay": {
+          "border_style": "Thin black frame with Cork Crimson #d31d36 corner nodes",
+          "disclosure_text": "Text & Image Governed by DaVinciA+ • A.Ward Publications",
+          "regulatory_seal": "AWard Publications Institutional Circular Seal (gold/bronze)"
+        }
+      },
+      "required_controls": [
+        "consent_verification",
+        "provenance_audit",
+        "voice_linter_validation",
+        "pre_execution_intent_capture"
+      ]
+    },
+    "tcg_playing_card": {
+      "product_type": "AWP-TCG-001-CARD",
+      "layout_specs": {
+        "trim_size": "63x88mm (Poker Size)",
+        "bleed": "2.5mm",
+        "digital_resolution": "744x1039px (300 DPI)",
+        "page_style": "Cork Crimson (#d31d36) borders"
+      },
+      "visual_strategy": {
+        "style_modifier": "epic retro-print comic book halftone illustration, high-impact contrast ink lines, solid color blocks",
+        "composition_hierarchy": {
+          "subject_weight": "70% (centered static character profile)",
+          "background_weight": "25% (abstract speed-lines or stylized local landscape)",
+          "prop_weight": "5% (iconographic game symbol)"
+        },
+        "narrative_invariance_rule": "Character remains in card pose. Action is indicated by game mechanics and stats budget."
+      },
+      "game_mechanics_validator": {
+        "stats_budget": 24,
+        "individual_stat_range": [0, 10],
+        "deck_size_limit": 32,
+        "restricted_names_blocklist": [
+          "Barry's Tea",
+          "Michael Collins",
+          "Sir Henry's",
+          "Evening Echo"
+        ]
+      },
+      "governance_stamps": {
+        "metadata_keys": [
+          "urn:davincia:identity:organization:award_publications",
+          "urn:davincia:license:internal_use",
+          "urn:davincia:tcg:card_hash"
+        ],
+        "visual_overlay": {
+          "border_style": "AWP-PRINT-002 Aesthetic border in Cork Crimson #d31d36",
+          "disclosure_text": "BAIS Approved • AI Generated",
+          "regulatory_seal": "Digital Product File (DPF) QR code linking physical to ledger"
+        }
+      },
+      "required_controls": [
+        "tcg_invariant_budget_check",
+        "blocklist_trademark_scan",
+        "state_capture_audit"
+      ]
+    },
+    "art_poster": {
+      "product_type": "AWP-PST-001-POSTER",
+      "layout_specs": {
+        "trim_size": "A2 (420x594mm) or A3 (297x420mm)",
+        "bleed": "5.0mm",
+        "digital_resolution": "4960x7016px (300 DPI)",
+        "page_style": "Linen White (#FBFBFA) border bleed"
+      },
+      "visual_strategy": {
+        "style_modifier": "prestige oil painting aesthetic, fine textured brushstrokes, dramatic chiaroscuro lighting, deep rich shadows, academic composition",
+        "composition_hierarchy": {
+          "subject_weight": "70% (monolithic silent centered observer)",
+          "background_weight": "25% (cinematic low-rise Cork landscape, overcast sky)",
+          "prop_weight": "5% (prominent atmospheric prop)"
+        },
+        "narrative_invariance_rule": "Character stands as a physical-linked deterministic hash proxy witness."
+      },
+      "governance_stamps": {
+        "metadata_keys": [
+          "urn:davincia:identity:organization:award_publications",
+          "urn:davincia:disclosure:ai_generated",
+          "urn:davincia:provenance:render_chain"
+        ],
+        "visual_overlay": {
+          "border_style": "Inlaid elegant gold and Cork Crimson border frame",
+          "disclosure_text": "PUBLISHING THE FUTURE. ETHICALLY. • © A.Ward Publications",
+          "regulatory_seal": "Authoritative circular seal featuring the interlocking AW monogram"
+        }
+      },
+      "required_controls": [
+        "consent_verification",
+        "provenance_audit",
+        "upscaling_artifact_scan"
+      ]
+    }
+  }
+}
