@@ -31,6 +31,7 @@ import { createHash, randomUUID } from 'node:crypto';
 import path from 'node:path';
 import { Readable } from 'node:stream';
 import https from 'node:https';
+import http from 'node:http';
 import { lookup as lookupDns } from 'node:dns/promises';
 import { directionToHeading } from './src/data/directionText.js';
 import {
@@ -7325,6 +7326,37 @@ function normalizeAisTimestamp(value) {
 
 function davinciaProxy() {
   function install(middlewares) {
+    middlewares.use('/api/davincia/tuath', (req, res) => {
+      const targetUrl = `http://127.0.0.1:8000/api/tuath${req.url}`;
+      
+      const parsedUrl = new URL(targetUrl);
+      const options = {
+        hostname: parsedUrl.hostname,
+        port: parsedUrl.port,
+        path: parsedUrl.pathname + parsedUrl.search,
+        method: req.method,
+        headers: req.headers
+      };
+      
+      options.headers.host = parsedUrl.host;
+      
+      const proxyReq = http.request(options, (proxyRes) => {
+        res.statusCode = proxyRes.statusCode;
+        Object.keys(proxyRes.headers).forEach(key => {
+          res.setHeader(key, proxyRes.headers[key]);
+        });
+        proxyRes.pipe(res, { end: true });
+      });
+      
+      proxyReq.on('error', (err) => {
+        res.statusCode = 502;
+        res.setHeader('Content-Type', 'application/json');
+        res.end(JSON.stringify({ error: 'Tuath-One offline or connection failed', details: err.message }));
+      });
+      
+      req.pipe(proxyReq, { end: true });
+    });
+
     middlewares.use('/api/davincia/records', async (req, res) => {
       try {
         const recordsPath = path.join(__dirname, 'public/corklan_records.json');
