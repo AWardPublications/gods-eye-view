@@ -1,6 +1,7 @@
 import * as Cesium from 'cesium';
 import { evaluatePolicy } from '../governance/evaluate.js';
 import { CatalogAssets } from '../marketplace/catalog.js';
+import { createWengerHud } from '../wenger/wenger-hud.js';
 
 const DEFAULT_COORDS = { lat: 51.8985, lon: -8.4756 }; // Cork City Center fallback
 
@@ -490,6 +491,14 @@ ACTIONS REQUIRED:
                 _activeTransactionObj = { transaction_id: txId, asset_id: "urn:davincia:knowledge:asset:wenger-swing-mechanics", action: "COACH", price: 0.05, split: { owner: 0.04, platform: 0.01 } };
                 _activeEntitlementObj = { entitlement_id: "urn:davincia:entitlement:wenger-coaching", status: "ACTIVE", holder: "urn:davincia:identity:agent:wenger-golf-coach" };
                 _activeEvidenceObj = { evidence_ref: "urn:davincia:evidence:wenger-coaching-receipt", integrity_hash: "sha256-wenger-swing-mechanics-prov-hash-88c2f1" };
+                
+                // Mount and display the interactive 5-Mode Alex Wenger Coaching HUD
+                try {
+                  const hud = createWengerHud();
+                  hud.mount();
+                } catch (e) {
+                  console.error("Failed to mount Wenger HUD:", e);
+                }
               }
               index++;
             } else {
