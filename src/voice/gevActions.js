@@ -951,6 +951,45 @@ export function createGevActionRunner({ viewer, styleManager, dataManager, scene
       };
     }
 
+    if (name === 'compile_product_format') {
+      const format = String(args.format || args.product_key || 'tcg_playing_card').toLowerCase();
+      const headline = String(args.headline || args.title || 'Alpine Masterpiece').trim();
+      const { MultiFormatProductCompiler } = await import('../compiler/productCompiler.js');
+      const compiler = new MultiFormatProductCompiler();
+
+      const inputData = {
+        headline,
+        character_name: args.character_name || headline,
+        stats: args.stats || { sound: 6, cop_on: 6, neck: 6, rebel: 6 },
+        text: args.text || args.narrative_text || "The legend of the alpine fairways echoed across the Swiss peaks."
+      };
+
+      try {
+        const result = compiler.compileProduct(format, inputData, {}, {
+          run_id: `voice-prod-${Date.now()}`
+        });
+
+        return {
+          ok: true,
+          action: 'compile_product_format',
+          status: 'SUCCESS',
+          product_code: result.product_code,
+          product_type: result.product_type,
+          title: result.artifact.title,
+          dimensions: result.artifact.dimensions,
+          evidence_ref: result.evidence?.evidence_ref,
+          evidence_hash: result.evidence?.evidence_hash
+        };
+      } catch (err) {
+        return {
+          ok: false,
+          action: 'compile_product_format',
+          status: 'FAILED',
+          error: err.message
+        };
+      }
+    }
+
     throw new Error(`Unknown GEV tool: ${name}`);
   };
 }
