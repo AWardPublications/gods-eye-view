@@ -8,5 +8,6 @@ test('UI Sovereign Tray: Subsystem Composition & Component Wiring', () => {
   assert.ok(tray.wengerHud);
   assert.ok(tray.factoryHud);
   assert.ok(tray.marketHud);
+  assert.ok(tray.auditHud);
   assert.ok(tray.speedgolfSim);
 });

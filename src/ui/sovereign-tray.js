@@ -7,6 +7,7 @@
 import { createWengerHud } from '../wenger/wenger-hud.js';
 import { createProductFactoryHud } from '../studio/product-factory-hud.js';
 import { createMarketplaceHud } from '../marketplace/marketplace-hud.js';
+import { createAuditViewerHud } from './audit-viewer-hud.js';
 import { EmbassyTradeCorridorsLayer } from '../data/embassyTradeCorridors.js';
 import { SpeedgolfTelemetrySimulator } from '../golf/simulator/speedgolf-sim.js';
 
@@ -17,6 +18,7 @@ export function createSovereignTray(options = {}) {
   const wengerHud = createWengerHud();
   const factoryHud = createProductFactoryHud();
   const marketHud = createMarketplaceHud();
+  const auditHud = createAuditViewerHud();
   const corridorsLayer = viewer ? new EmbassyTradeCorridorsLayer(viewer) : null;
   const speedgolfSim = new SpeedgolfTelemetrySimulator();
 
@@ -91,6 +93,11 @@ export function createSovereignTray(options = {}) {
         <span>Trade Corridors</span>
       </button>
 
+      <button id="tray-btn-audit" class="sovereign-tray-btn">
+        <span>📜</span>
+        <span>Audit Dossier</span>
+      </button>
+
       <button id="tray-btn-sim" class="sovereign-tray-btn">
         <span>⛳</span>
         <span>Simulate Round</span>
@@ -106,6 +113,7 @@ export function createSovereignTray(options = {}) {
     const factoryBtn = trayElement.querySelector('#tray-btn-factory');
     const marketBtn = trayElement.querySelector('#tray-btn-market');
     const corridorsBtn = trayElement.querySelector('#tray-btn-corridors');
+    const auditBtn = trayElement.querySelector('#tray-btn-audit');
     const simBtn = trayElement.querySelector('#tray-btn-sim');
 
     wengerBtn.addEventListener('click', () => {
@@ -118,6 +126,10 @@ export function createSovereignTray(options = {}) {
 
     marketBtn.addEventListener('click', () => {
       marketHud.mount();
+    });
+
+    auditBtn.addEventListener('click', () => {
+      auditHud.mount();
     });
 
     corridorsBtn.addEventListener('click', () => {
@@ -145,6 +157,7 @@ export function createSovereignTray(options = {}) {
     wengerHud,
     factoryHud,
     marketHud,
+    auditHud,
     corridorsLayer,
     speedgolfSim
   };

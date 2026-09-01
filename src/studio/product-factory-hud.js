@@ -4,6 +4,7 @@
  */
 
 import { MultiFormatProductCompiler, PRODUCT_TEMPLATES } from '../compiler/productCompiler.js';
+import { ProductLayoutRenderer } from './product-renderer.js';
 
 export function createProductFactoryHud() {
   const compiler = new MultiFormatProductCompiler();
@@ -246,6 +247,7 @@ export function createProductFactoryHud() {
           <span id="factory-preview-code" class="factory-preview-code">AWP-CRD-001-TCG</span>
           <span id="factory-preview-dims" class="factory-preview-dims">2.5x3.5" (Poker Standard) • 600 DPI</span>
         </div>
+        <div id="factory-svg-viewport" style="max-height: 200px; overflow: hidden; display: flex; justify-content: center; margin: 8px 0; border-radius: 8px;"></div>
         <div id="factory-style-chip" class="factory-style-chip">collectible card dynamic splash art</div>
         <div style="display: flex; justify-content: space-between; align-items: center;">
           <div id="factory-seal-chip" class="factory-seal-chip">● COP-ON-GENUINE-CARD-v1</div>
@@ -327,6 +329,22 @@ export function createProductFactoryHud() {
       } else {
         tcgStatsContainer.style.display = 'none';
         textContainer.style.display = 'none';
+      }
+
+      // Live SVG Render
+      const headline = headlineInput ? headlineInput.value.trim() : "Product Preview";
+      const svg = ProductLayoutRenderer.renderSvg({
+        product_type: selectedFormat,
+        product_code: template.product_code,
+        headline,
+        character_name: headline,
+        narrative_text: textContainer.querySelector('input')?.value || "Across the high alpine ridge, the legend prepared for the final approach.",
+        stats: { sound: 6, cop_on: 6, neck: 6, rebel: 6 },
+        stamps: template.governance_stamps
+      });
+      const svgViewport = hudElement.querySelector('#factory-svg-viewport');
+      if (svgViewport) {
+        svgViewport.innerHTML = svg;
       }
     }
 
