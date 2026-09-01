@@ -852,8 +852,19 @@
       </div>
     </div>
 
+    <!-- Visual Capture Action Toolbar -->
+    <div class="visual-toolbar" style="margin-top: 12px; margin-bottom: 8px; display: flex; gap: 8px;">
+      <button id="btn-snap-hud" style="background: rgba(30, 41, 59, 0.9); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; padding: 10px 14px; color: #ffffff !important; font-size: 12px; font-weight: 800; cursor: pointer; flex: 1;">
+        📸 SNAP TACTICAL CARD
+      </button>
+      <label for="camera-input" style="background: rgba(30, 41, 59, 0.9); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; padding: 10px 14px; color: #ffffff !important; font-size: 12px; font-weight: 800; cursor: pointer; flex: 1; text-align: center;">
+        📷 LOG LIE PHOTO
+        <input id="camera-input" type="file" accept="image/*" capture="environment" style="display: none;" />
+      </label>
+    </div>
+
     <!-- Voice Caddy Action Button & Hands-Free Audio Control Bar -->
-    <div style="margin-top: 16px; margin-bottom: 12px; display: flex; gap: 8px;">
+    <div style="margin-top: 4px; margin-bottom: 12px; display: flex; gap: 8px;">
       <button class="action-btn" id="voiceCaddyBtn" style="background: linear-gradient(135deg, #10b981, #059669); flex: 1;">
         <span>🎙️ VOICE CADDY (LISTEN & SPEAK)</span>
       </button>
@@ -894,6 +905,8 @@
     import { alexAudioDriver } from './src/golf/alex-wenger-golf/core/vocal/activeAudioDriver.js';
     import { processWhisperSTTInput } from './src/golf/alex-wenger-golf/core/vocal/alexVoiceAudioEngine.js';
     import { calculate3DoFEffectiveYardage } from './src/golf/alex-wenger-golf/core/spatial/spatialIngestionEngine.js';
+    import { captureTacticalHUD, compressPhotoForMemory } from './src/golf/visual/visualCaptureEngine.js';
+
 
 
     // State Variables
@@ -1336,6 +1349,44 @@
         }, 3000);
       });
     });
+
+    // Snap Current Tactical Card (Map + Plotter + Speech)
+    const btnSnapHud = document.getElementById('btn-snap-hud');
+    if (btnSnapHud) {
+      btnSnapHud.addEventListener('click', async () => {
+        try {
+          const mainContainer = document.querySelector('.spotter-container') || document.body;
+          const snapshot = await captureTacticalHUD(mainContainer);
+          window.activeRoundLog = window.activeRoundLog || [];
+          window.activeRoundLog.push({
+            type: 'TACTICAL_CARD_SNAPSHOT',
+            imageBlob: snapshot.blob,
+            exportUrl: snapshot.exportUrl,
+            hole: currentHole,
+            timestamp: snapshot.timestamp,
+          });
+          alert(`📸 Tactical card saved to round log! (${(snapshot.sizeBytes / 1024).toFixed(1)} KB)`);
+        } catch (err) {
+          console.warn('Tactical snapshot warning:', err.message);
+        }
+      });
+    }
+
+    // Ingest Lie / Turf Photo
+    const cameraInput = document.getElementById('camera-input');
+    if (cameraInput) {
+      cameraInput.addEventListener('change', async (e) => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+        try {
+          const compressed = await compressPhotoForMemory(file);
+          console.log(`📷 Ingested lie photo (${(compressed.sizeBytes / 1024).toFixed(1)} KB)`);
+          alert(`📷 Lie photo saved & compressed to ${(compressed.sizeBytes / 1024).toFixed(1)} KB for userMemory!`);
+        } catch (err) {
+          console.warn('Photo compression warning:', err.message);
+        }
+      });
+    }
 
     function renderLedger() {
       ledgerCount.textContent = loggedShots.length;
