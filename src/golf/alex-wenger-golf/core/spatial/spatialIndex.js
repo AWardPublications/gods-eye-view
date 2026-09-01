@@ -66,12 +66,13 @@ export class CourseSpatialIndex {
           return {
             surface: feature.properties?.subsystem || 'fairway',
             id: feature.properties?.id || `feat-${i}`,
-            hole: feature.properties?.hole || '1'
+            hole: feature.properties?.hole || '1',
+            dual_green_type: feature.properties?.dual_green_type || 'STANDARD_GREEN'
           };
         }
       }
     }
 
-    return { surface: 'rough', id: null, hole: null };
+    return { surface: 'rough', id: null, hole: null, dual_green_type: null };
   }
 }

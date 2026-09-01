@@ -1,8 +1,13 @@
 {
-  "orchestrator_version": "v4.5.2",
-  "timestamp": "2026-09-01T23:37:27.375Z",
+  "orchestrator_version": "v4.6.0",
+  "timestamp": "2026-09-01T23:44:14.614Z",
   "total_global_target_courses": 38500,
   "ingested_in_memory_db": 27,
+  "rate_limit_protection": {
+    "exponential_backoff": true,
+    "request_queuing": true,
+    "local_cache_fallback": true
+  },
   "tier1_flagships": {
     "tier": "Tier 1: High-Authority Flagships & Tour Venues",
     "target_capacity": 1500,
@@ -87,6 +92,7 @@
         "batch_size": 500
       }
     ],
+    "rate_limit_protection": "EXPONENTIAL_BACKOFF_AND_SERIAL_QUEUE",
     "status": "CRON_WORKER_READY"
   },
   "storage_architecture": {

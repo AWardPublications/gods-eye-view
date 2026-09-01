@@ -144,16 +144,27 @@ export function normalizeOsmToGeoJSON(elements = []) {
         coords.push([coords[0][0], coords[0][1]]);
       }
 
-      // Check APAC Dual Green properties (A/B, Main/Sub)
-      const isSubGreen = el.tags.ref === 'B' || (el.tags.name && el.tags.name.toLowerCase().includes('sub'));
-      const greenType = isSubGreen ? 'sub_green' : (golfType === 'green' ? 'main_green' : golfType);
+      // Check APAC Dual Green properties (A/B, Main/Sub, ref=A/B, golf:green=main/sub)
+      const refTag = (el.tags.ref || '').toUpperCase();
+      const nameTag = (el.tags.name || '').toLowerCase();
+      const greenTypeTag = (el.tags['golf:green'] || '').toLowerCase();
+
+      const isSubGreen = refTag === 'B' || greenTypeTag === 'sub' || nameTag.includes('sub') || nameTag.includes('korai') || nameTag.includes('secondary');
+      const isMainGreen = refTag === 'A' || greenTypeTag === 'main' || nameTag.includes('main') || nameTag.includes('bent');
+
+      let subsystemType = golfType;
+      if (golfType === 'green') {
+        subsystemType = isSubGreen ? 'sub_green' : 'main_green';
+      }
 
       features.push(createPolygonFeature([coords], {
         id: el.id,
-        subsystem: greenType,
+        subsystem: subsystemType,
         hole: el.tags.ref || el.tags.hole || null,
         surface: el.tags.surface || null,
-        name: el.tags.name || null
+        name: el.tags.name || null,
+        ref: el.tags.ref || null,
+        dual_green_type: isSubGreen ? 'SUB_GREEN_B' : (isMainGreen ? 'MAIN_GREEN_A' : 'STANDARD_GREEN')
       }));
     }
   }

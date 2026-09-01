@@ -136,11 +136,13 @@ export default {
         if (localCourse) {
           const lat = localCourse.elevation_m || 56.34; // fallback lat/lon
           const lon = localCourse.total_yards ? localCourse.total_yards / 100 : -2.80;
+          const countryCode = localCourse.country_code || localCourse.country || 'US';
           const geohash5 = encodeGeohash5(lat, lon);
+          const geohashPartition = `course_idx_${countryCode}_${geohash5}`;
 
           return new Response(JSON.stringify({
             status: 'success',
-            geohash_partition: `course_idx_${geohash5}`,
+            geohash_partition: geohashPartition,
             course: localCourse,
           }), {
             headers: {
@@ -150,9 +152,10 @@ export default {
           });
         }
 
-        // KV Edge Partition Index lookup fallback
+        // KV Edge Partition Index lookup fallback (course_idx_${country}_${geohash5})
         if (env && env.COURSE_INDEX) {
-          const cached = await env.COURSE_INDEX.get(`course_${courseId}`, 'json');
+          const partitionKey = `course_idx_${courseId}`;
+          const cached = await env.COURSE_INDEX.get(partitionKey, 'json') || await env.COURSE_INDEX.get(`course_${courseId}`, 'json');
           if (cached) {
             return new Response(JSON.stringify(cached), {
               headers: {

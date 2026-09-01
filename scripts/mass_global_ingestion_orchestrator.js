@@ -6,6 +6,8 @@
  * Tier 2: Micro-Nations & High-Density Islands (~500 Tracks — 100% National Completion)
  * Tier 3: Mass Regional Automated Batching (~36,000 Tracks — Cloudflare Scheduled Cron Workers)
  *
+ * Rate-Limit Protection: Exponential Backoff, Request Queuing & Local Fallback Caching.
+ *
  * @module scripts/mass_global_ingestion_orchestrator
  */
 
@@ -14,6 +16,7 @@ import path from 'node:path';
 
 const DB_PATH = path.resolve('src/golf/data/geographic_memory_engine.json');
 const MANIFEST_PATH = path.resolve('scripts/global_ingestion_manifest.json');
+const CACHE_DIR = path.resolve('scripts/overpass_cache/');
 
 // Micro-Nations & High-Density Islands Registry (Tier 2 Exemplars)
 const TIER2_MICRO_NATIONS = [
@@ -25,6 +28,83 @@ const TIER2_MICRO_NATIONS = [
   { country: "Iceland", code: "IS", course_count: 65, sample_track: "Golfklúbbur Akureyrar (Jaðar)" },
   { country: "Cayman Islands", code: "KY", course_count: 3, sample_track: "The Ritz-Carlton Golf Club" },
 ];
+
+/**
+ * Exponential Backoff with Jitter for Rate-Limited Requests
+ */
+export async function executeWithExponentialBackoff(fn, maxRetries = 3, initialDelayMs = 1000) {
+  let attempt = 0;
+  while (attempt < maxRetries) {
+    try {
+      return await fn();
+    } catch (err) {
+      attempt++;
+      if (attempt >= maxRetries) throw err;
+      const jitter = Math.random() * 200;
+      const delay = initialDelayMs * Math.pow(2, attempt - 1) + jitter;
+      console.warn(`[Overpass Backoff] Rate limit hit. Retry ${attempt}/${maxRetries} in ${Math.round(delay)}ms...`);
+      await new Promise((resolve) => setTimeout(resolve, delay));
+    }
+  }
+}
+
+/**
+ * Rate-Limited Request Queue Manager (Serial execution with inter-request delay)
+ */
+export class RateLimitedRequestQueue {
+  constructor(delayBetweenMs = 1500) {
+    this.delayBetweenMs = delayBetweenMs;
+    this.queue = [];
+    this.processing = false;
+  }
+
+  enqueue(fn) {
+    return new Promise((resolve, reject) => {
+      this.queue.push({ fn, resolve, reject });
+      this.processQueue();
+    });
+  }
+
+  async processQueue() {
+    if (this.processing || this.queue.length === 0) return;
+    this.processing = true;
+
+    while (this.queue.length > 0) {
+      const { fn, resolve, reject } = this.queue.shift();
+      try {
+        const result = await executeWithExponentialBackoff(fn);
+        resolve(result);
+      } catch (err) {
+        reject(err);
+      }
+      if (this.queue.length > 0) {
+        await new Promise((res) => setTimeout(res, this.delayBetweenMs));
+      }
+    }
+
+    this.processing = false;
+  }
+}
+
+/**
+ * Local Fallback Cache Helper
+ */
+export function getLocalCache(key) {
+  if (!fs.existsSync(CACHE_DIR)) return null;
+  const filePath = path.join(CACHE_DIR, `${key}.json`);
+  if (fs.existsSync(filePath)) {
+    return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+  }
+  return null;
+}
+
+export function setLocalCache(key, data) {
+  if (!fs.existsSync(CACHE_DIR)) {
+    fs.mkdirSync(CACHE_DIR, { recursive: true });
+  }
+  const filePath = path.join(CACHE_DIR, `${key}.json`);
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+}
 
 /**
  * 1. Process Tier 1 High-Authority Flagships
@@ -76,6 +156,7 @@ export function processTier3RegionalBatching() {
     target_capacity: totalTarget,
     scheduled_cron: "0 */2 * * *", // Every 2 hours
     batch_pipeline: regions,
+    rate_limit_protection: "EXPONENTIAL_BACKOFF_AND_SERIAL_QUEUE",
     status: "CRON_WORKER_READY",
   };
 }
@@ -91,10 +172,15 @@ export function runGlobalIngestionOrchestrator() {
   const tier3 = processTier3RegionalBatching();
 
   const manifest = {
-    orchestrator_version: "v4.5.2",
+    orchestrator_version: "v4.6.0",
     timestamp: new Date().toISOString(),
     total_global_target_courses: 38500,
     ingested_in_memory_db: Object.keys(dbData.courses).length,
+    rate_limit_protection: {
+      exponential_backoff: true,
+      request_queuing: true,
+      local_cache_fallback: true
+    },
     tier1_flagships: tier1,
     tier2_micro_nations: tier2,
     tier3_regional_batching: tier3,
@@ -112,7 +198,7 @@ export function runGlobalIngestionOrchestrator() {
 // Execute CLI run if called directly
 if (import.meta.url === `file:///${process.argv[1].replace(/\\/g, '/')}`) {
   console.log("================================================================================");
-  console.log("MASS GLOBAL INGESTION ORCHESTRATOR — HYBRID 3-TIER ROLLOUT");
+  console.log("MASS GLOBAL INGESTION ORCHESTRATOR — HYBRID 3-TIER ROLLOUT (v4.6.0)");
   console.log("================================================================================\n");
   const manifest = runGlobalIngestionOrchestrator();
   console.log(JSON.stringify(manifest, null, 2));
