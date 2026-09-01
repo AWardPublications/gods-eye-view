@@ -918,6 +918,39 @@ export function createGevActionRunner({ viewer, styleManager, dataManager, scene
       return clearAnnotations(annotations);
     }
 
+    if (name === 'wenger_coaching_turn') {
+      const input = String(args.input || args.natural_language_input || '').trim();
+      const mode = String(args.mode || 'TRAIN').toUpperCase();
+      const athleteConsent = args.athlete_consent !== false;
+      const humanSupervision = Boolean(args.human_supervision);
+      const careerOptIn = Boolean(args.career_opt_in);
+
+      const { AlexWengerSubsystem } = await import('../golf/index.js');
+      const subsystem = new AlexWengerSubsystem({ storageFilePath: 'data/athlete_sessions.jsonl' });
+      
+      const result = await subsystem.executeCoachingTurn(input, {
+        mode,
+        athlete_consent: athleteConsent,
+        human_supervision: humanSupervision,
+        career_opt_in: careerOptIn,
+        run_id: `voice-run-${Date.now()}`
+      });
+
+      return {
+        ok: result.status === 'SUCCESS',
+        action: 'wenger_coaching_turn',
+        status: result.status,
+        mode: result.mode,
+        tone_state: result.tone_state || 'NEUTRAL',
+        response_text: result.output?.text || result.output?.message || '',
+        delivery_modality: result.output?.delivery_modality || 'TEXT_ONLY',
+        pacing_units: result.output?.pacing_units || 1.0,
+        evidence_ref: result.evidence?.evidence_ref || null,
+        evidence_hash: result.evidence?.evidence_hash || null,
+        governance_blocked: result.status === 'DENIED'
+      };
+    }
+
     throw new Error(`Unknown GEV tool: ${name}`);
   };
 }

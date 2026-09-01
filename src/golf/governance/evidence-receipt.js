@@ -1,11 +1,29 @@
 /**
  * Alex Wenger² Cryptographic Evidence Receipt & Ledger Generator
  * Produces audit packages complying with DNSL Spine ART-001 & AUD-002
+ * Isomorphic: supports Node.js filesystem persistence and browser client hashing.
  */
 
-import { createHash } from 'node:crypto';
-import { existsSync, appendFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import path from 'node:path';
+function getNodeBuiltins() {
+  if (typeof process !== 'undefined' && typeof process.getBuiltinModule === 'function') {
+    try {
+      const crypto = process.getBuiltinModule('node:crypto');
+      const fs = process.getBuiltinModule('node:fs');
+      const path = process.getBuiltinModule('node:path');
+      return { crypto, fs, path };
+    } catch (e) {}
+  }
+  return { crypto: null, fs: null, path: null };
+}
+
+function fallbackHash(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = ((hash << 5) - hash) + str.charCodeAt(i);
+    hash |= 0;
+  }
+  return `sha256-fallback-${Math.abs(hash).toString(16).padStart(16, '0')}`;
+}
 
 export class EvidenceReceiptGenerator {
   static generateReceipt(executionPackage, options = {}) {
@@ -36,8 +54,12 @@ export class EvidenceReceiptGenerator {
       output: executionPackage.output
     });
 
-    // Standard Cryptographic SHA-256 Hash
-    const integrityHash = `sha256-${createHash('sha256').update(serializedPayload).digest('hex')}`;
+    const { crypto, fs, path } = getNodeBuiltins();
+
+    let integrityHash = fallbackHash(serializedPayload);
+    if (crypto) {
+      integrityHash = `sha256-${crypto.createHash('sha256').update(serializedPayload).digest('hex')}`;
+    }
 
     const receipt = {
       manifest,
@@ -46,20 +68,19 @@ export class EvidenceReceiptGenerator {
       evidence_ref: manifest.evidence_ref
     };
 
-    // Persistence to Disk (Ledger & Individual Package)
+    // Persistence in Node.js environment
     const writeToDisk = options.writeToDisk !== false;
-    const baseDir = options.baseDir || path.resolve(process.cwd(), 'data');
-
-    if (writeToDisk) {
+    if (writeToDisk && fs && path) {
       try {
+        const baseDir = options.baseDir || path.resolve(process.cwd(), 'data');
         const pkgDir = path.join(baseDir, 'evidence-packages');
-        if (!existsSync(pkgDir)) {
-          mkdirSync(pkgDir, { recursive: true });
+        if (!fs.existsSync(pkgDir)) {
+          fs.mkdirSync(pkgDir, { recursive: true });
         }
 
         // 1. Write individual evidence package
         const pkgPath = path.join(pkgDir, `${runId}.json`);
-        writeFileSync(pkgPath, JSON.stringify(receipt, null, 2), 'utf8');
+        fs.writeFileSync(pkgPath, JSON.stringify(receipt, null, 2), 'utf8');
 
         // 2. Append entry to evidence-ledger.jsonl
         const ledgerPath = path.join(baseDir, 'evidence-ledger.jsonl');
@@ -74,7 +95,7 @@ export class EvidenceReceiptGenerator {
           status: manifest.status,
           evidence_hash: integrityHash
         };
-        appendFileSync(ledgerPath, JSON.stringify(ledgerEntry) + '\n', 'utf8');
+        fs.appendFileSync(ledgerPath, JSON.stringify(ledgerEntry) + '\n', 'utf8');
       } catch (e) {
         console.error("[EvidenceReceiptGenerator] Warning: Failed to persist evidence to disk:", e);
       }

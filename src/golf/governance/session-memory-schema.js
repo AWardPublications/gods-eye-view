@@ -1,33 +1,57 @@
 /**
  * Alex Wenger² Persistent Memory Architecture
- * Implements Claim 1 & Claim 3 (Structured Longitudinal Memory Schema, Indexing, Disk Persistence & Replay)
+ * Implements Claim 1 & Claim 3 (Structured Longitudinal Memory Schema, Indexing, Persistence & Replay)
+ * Isomorphic: supports Node.js file-backed storage and Browser localStorage.
  */
 
-import { existsSync, readFileSync, appendFileSync, mkdirSync, writeFileSync } from 'node:fs';
-import path from 'node:path';
+function getNodeFs() {
+  if (typeof process !== 'undefined' && typeof process.getBuiltinModule === 'function') {
+    try {
+      const fs = process.getBuiltinModule('node:fs');
+      const path = process.getBuiltinModule('node:path');
+      return { fs, path };
+    } catch (e) {}
+  }
+  return { fs: null, path: null };
+}
 
 export class PersistentMemoryArchitecture {
   constructor(options = {}) {
     this.storageFilePath = options.storageFilePath || null;
+    this.storageKey = options.storageKey || 'wenger_athlete_sessions';
     this.sessions = [];
 
-    if (this.storageFilePath) {
-      this.loadFromDisk();
-    }
+    this.loadFromStorage();
   }
 
-  loadFromDisk() {
-    if (!this.storageFilePath) return;
-
-    try {
-      if (existsSync(this.storageFilePath)) {
-        const fileContent = readFileSync(this.storageFilePath, 'utf8');
-        const lines = fileContent.split('\n').map(l => l.trim()).filter(Boolean);
-        this.sessions = lines.map(line => JSON.parse(line));
+  loadFromStorage() {
+    // 1. Browser LocalStorage Environment
+    if (typeof window !== 'undefined' && window.localStorage) {
+      try {
+        const raw = window.localStorage.getItem(this.storageKey);
+        if (raw) {
+          this.sessions = JSON.parse(raw);
+        }
+      } catch (e) {
+        console.warn("[PersistentMemoryArchitecture] Failed to load from localStorage:", e);
       }
-    } catch (e) {
-      console.error(`[PersistentMemoryArchitecture] Warning: Failed to load from disk '${this.storageFilePath}':`, e);
-      this.sessions = [];
+      return;
+    }
+
+    // 2. Node.js Environment
+    if (this.storageFilePath) {
+      const { fs } = getNodeFs();
+      if (fs) {
+        try {
+          if (fs.existsSync(this.storageFilePath)) {
+            const fileContent = fs.readFileSync(this.storageFilePath, 'utf8');
+            const lines = fileContent.split('\n').map(l => l.trim()).filter(Boolean);
+            this.sessions = lines.map(line => JSON.parse(line));
+          }
+        } catch (e) {
+          console.error(`[PersistentMemoryArchitecture] Warning: Failed to load from disk '${this.storageFilePath}':`, e);
+        }
+      }
     }
   }
 
@@ -56,16 +80,26 @@ export class PersistentMemoryArchitecture {
 
     this.sessions.push(entry);
 
-    // Persist to Disk if storageFilePath is configured
-    if (this.storageFilePath) {
+    // Persist in Browser
+    if (typeof window !== 'undefined' && window.localStorage) {
       try {
-        const dir = path.dirname(this.storageFilePath);
-        if (!existsSync(dir)) {
-          mkdirSync(dir, { recursive: true });
+        window.localStorage.setItem(this.storageKey, JSON.stringify(this.sessions));
+      } catch (e) {}
+    }
+
+    // Persist in Node.js
+    if (this.storageFilePath) {
+      const { fs, path } = getNodeFs();
+      if (fs && path) {
+        try {
+          const dir = path.dirname(this.storageFilePath);
+          if (!fs.existsSync(dir)) {
+            fs.mkdirSync(dir, { recursive: true });
+          }
+          fs.appendFileSync(this.storageFilePath, JSON.stringify(entry) + '\n', 'utf8');
+        } catch (e) {
+          console.error(`[PersistentMemoryArchitecture] Warning: Failed to append to disk '${this.storageFilePath}':`, e);
         }
-        appendFileSync(this.storageFilePath, JSON.stringify(entry) + '\n', 'utf8');
-      } catch (e) {
-        console.error(`[PersistentMemoryArchitecture] Warning: Failed to append to disk '${this.storageFilePath}':`, e);
       }
     }
 
@@ -131,11 +165,17 @@ export class PersistentMemoryArchitecture {
 
   clear() {
     this.sessions = [];
-    if (this.storageFilePath && existsSync(this.storageFilePath)) {
+    if (typeof window !== 'undefined' && window.localStorage) {
       try {
-        writeFileSync(this.storageFilePath, '', 'utf8');
-      } catch (e) {
-        // Safe fallback
+        window.localStorage.removeItem(this.storageKey);
+      } catch (e) {}
+    }
+    if (this.storageFilePath) {
+      const { fs } = getNodeFs();
+      if (fs && fs.existsSync(this.storageFilePath)) {
+        try {
+          fs.writeFileSync(this.storageFilePath, '', 'utf8');
+        } catch (e) {}
       }
     }
   }
