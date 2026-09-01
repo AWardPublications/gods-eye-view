@@ -1,0 +1,35 @@
+{
+  "version": "v4.7.0",
+  "demo_venue": "Camiral Golf & Wellness (Stadium Course)",
+  "hole_number": 11,
+  "par": 3,
+  "raw_yards": 164,
+  "plays_like_yards": 151,
+  "elevation_plunge_meters": -13,
+  "coordinates": {
+    "tee": [2.7601, 41.8542],
+    "green": [2.7615, 41.8550],
+    "pin": [2.7618, 41.8552]
+  },
+  "thermodynamics": {
+    "altitude_meters": 1480,
+    "barometric_pressure_hpa": 852.0,
+    "temperature_celsius": 22.0,
+    "relative_humidity_pct": 40.0,
+    "air_density_kg_m3": 1.002,
+    "density_ratio": 0.818
+  },
+  "micro_climate_wind": {
+    "speed_mph": 16.0,
+    "direction_deg": 135,
+    "canopy_shear_mph": 22.0,
+    "type": "Quartering Headwind"
+  },
+  "spatial_surface": {
+    "surface_lie": "fairway",
+    "slope_angle_degrees": 6.5,
+    "hazard_proximity_yards": 4.2,
+    "false_front_warning": true
+  },
+  "alex_coaching_speech": "Mais oui! She looks like 164, but with this thin mountain air and a 13-meter plunge, trust 151. Smooth 9-iron, favor the left shelf, and let the false front feed it toward the cup."
+}

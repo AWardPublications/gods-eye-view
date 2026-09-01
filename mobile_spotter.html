@@ -764,6 +764,7 @@
           <span>🎯 2D Coordinate Plotter</span>
         </div>
         <div style="display: flex; align-items: center; gap: 6px;">
+          <button class="toggle-btn" id="btnDualViewport" style="font-size: 11px; padding: 6px 10px;">🖥️ DUAL VIEWPORT</button>
           <button class="toggle-btn" id="btnGodsEye" style="font-size: 11px; padding: 6px 10px;">👁️ GOD'S EYE</button>
           <button class="toggle-btn active" id="btnSatToggle" style="font-size: 11px; padding: 6px 10px;">🛰️ SATELLITE ON</button>
           <div class="brand-subtitle" id="canvasCoords">X: 0.50 | Y: 0.88</div>
@@ -1166,6 +1167,19 @@
             btnGodsEye.classList.remove('active');
             btnGodsEye.textContent = "👁️ GOD'S EYE";
           }
+          drawHole();
+        });
+      }
+
+      // Setup Dual Viewport Flight Deck Toggle
+      const btnDualViewport = document.getElementById('btnDualViewport');
+      let dualViewportActive = false;
+      if (btnDualViewport) {
+        btnDualViewport.addEventListener('click', () => {
+          dualViewportActive = !dualViewportActive;
+          btnDualViewport.classList.toggle('active', dualViewportActive);
+          btnDualViewport.textContent = dualViewportActive ? '🖥️ DUAL ACTIVE' : '🖥️ DUAL VIEWPORT';
+          console.log(`🖥️ Flight Deck Dual Viewport State: ${dualViewportActive ? 'ACTIVE' : 'OFF'}`);
           drawHole();
         });
       }
