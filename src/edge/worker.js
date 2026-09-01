@@ -79,7 +79,7 @@ export default {
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json; charset=utf-8',
       'X-Governance-Patent': env?.PATENT_GOVERNANCE || 'WO/2026/150385',
-      'X-Engine-Version': env?.API_VERSION || 'v4.4.0',
+      'X-Engine-Version': env?.API_VERSION || 'v4.6.0',
     };
 
     try {

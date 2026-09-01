@@ -34,7 +34,7 @@
   },
   "vars": {
     "ENVIRONMENT": "production",
-    "API_VERSION": "v4.4.0",
+    "API_VERSION": "v4.6.0",
     "MAX_PAYLOAD_SIZE_BYTES": 153600,
     "PATENT_GOVERNANCE": "WO/2026/150385"
   }
