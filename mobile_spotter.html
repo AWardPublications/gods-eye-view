@@ -840,10 +840,19 @@
       </div>
     </div>
 
-    <!-- Main Action Button -->
-    <button class="action-btn" id="recordBtn">
-      <span>⚡ RECORD SHOT EVENT</span>
-    </button>
+    <!-- Voice Caddy Action Button & Hands-Free Audio Control Bar -->
+    <div style="margin-top: 16px; margin-bottom: 12px; display: flex; gap: 8px;">
+      <button class="action-btn" id="voiceCaddyBtn" style="background: linear-gradient(135deg, #10b981, #059669); flex: 1;">
+        <span>🎙️ VOICE CADDY (LISTEN & SPEAK)</span>
+      </button>
+      <button class="action-btn" id="recordBtn" style="flex: 1;">
+        <span>⚡ RECORD SHOT EVENT</span>
+      </button>
+    </div>
+
+    <div id="voiceStatusPill" style="display: none; background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; border-radius: 8px; padding: 10px 14px; color: #34d399; font-size: 13px; font-weight: 700; margin-bottom: 16px;">
+      <span id="voiceStatusText">🎙️ Listening... Speak your voice query to Alex...</span>
+    </div>
 
     <!-- Session Ledger Feed Drawer -->
     <div class="ledger-drawer">
@@ -868,6 +877,12 @@
       createShotEvent,
       formatShotEventJsonl,
     } from './src/golf/spotterEngine.js';
+
+    import { executeGovernedIntelligencePipeline } from './src/golf/alex-wenger-golf/core/architecture/governedIntelligenceSystem.js';
+    import { alexAudioDriver } from './src/golf/alex-wenger-golf/core/vocal/activeAudioDriver.js';
+    import { processWhisperSTTInput } from './src/golf/alex-wenger-golf/core/vocal/alexVoiceAudioEngine.js';
+    import { calculate3DoFEffectiveYardage } from './src/golf/alex-wenger-golf/core/spatial/spatialIngestionEngine.js';
+
 
     // State Variables
     let currentHole = 1;
@@ -1277,6 +1292,38 @@
       renderLedger();
       drawHole();
     }
+
+    // Voice Caddy Button Event Listener (State 5 Physical Audio Speech Loop)
+    const voiceCaddyBtn = document.getElementById('voiceCaddyBtn');
+    const voiceStatusPill = document.getElementById('voiceStatusPill');
+    const voiceStatusText = document.getElementById('voiceStatusText');
+
+    voiceCaddyBtn.addEventListener('click', () => {
+      voiceStatusPill.style.display = 'block';
+      voiceStatusText.textContent = '🎙️ Listening... Speak query to Alex...';
+
+      alexAudioDriver.startVoiceControl(async (transcript) => {
+        const normalized = processWhisperSTTInput(transcript);
+        voiceStatusText.textContent = `🗣️ Heard: "${normalized.clean_transcript}" — Processing pipeline...`;
+
+        const dist = Math.round(distanceYards);
+        const playsLike = calculate3DoFEffectiveYardage(dist, 4, 120, 12);
+
+        const pipelineRes = executeGovernedIntelligencePipeline({
+          userQuery: normalized.clean_transcript,
+          branchId: 'COURSE_SYSTEM',
+          specialistFindingText: `Plays-like distance ${playsLike} yards into 12mph breeze. Target center-green shelf.`
+        });
+
+        const alexSpeech = pipelineRes.integrated_coaching_response;
+        voiceStatusText.textContent = `🔊 Alex Speaking: "${alexSpeech}"`;
+
+        await alexAudioDriver.speak(alexSpeech, { speaker: 'Alex' });
+        setTimeout(() => {
+          voiceStatusPill.style.display = 'none';
+        }, 3000);
+      });
+    });
 
     function renderLedger() {
       ledgerCount.textContent = loggedShots.length;
