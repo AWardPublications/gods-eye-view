@@ -1,19 +1,29 @@
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+/**
+ * Governed Knowledge Registry
+ * Resolves discoverable assets and verified schemas from data/GOVERNED.
+ * Isomorphic: uses process.getBuiltinModule in Node.js runtime.
+ */
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const GOVERNED_DIR = path.join(__dirname, '../../data/GOVERNED');
+function getNodeBuiltins() {
+  if (typeof process !== 'undefined' && typeof process.getBuiltinModule === 'function') {
+    try {
+      const fs = process.getBuiltinModule('node:fs');
+      const path = process.getBuiltinModule('node:path');
+      return { fs, path };
+    } catch (e) {}
+  }
+  return { fs: null, path: null };
+}
 
 export function listRegisteredAssets() {
-  if (!fs.existsSync(GOVERNED_DIR)) return [];
-  const files = fs.readdirSync(GOVERNED_DIR).filter(f => f.endsWith('.json'));
+  const { fs, path } = getNodeBuiltins();
+  if (!fs || !path) return [];
+  const governedDir = path.resolve(process.cwd(), 'data', 'GOVERNED');
+  if (!fs.existsSync(governedDir)) return [];
+  const files = fs.readdirSync(governedDir).filter(f => f.endsWith('.json'));
   return files.map(file => {
-    const fullPath = path.join(GOVERNED_DIR, file);
+    const fullPath = path.join(governedDir, file);
     const asset = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
-    // Return discoverable catalog entry, omitting actual facts / payloads
     return {
       asset_id: asset.asset_id,
       title: asset.title,
@@ -29,10 +39,13 @@ export function listRegisteredAssets() {
 }
 
 export function lookupAssetById(assetId) {
-  if (!fs.existsSync(GOVERNED_DIR)) return null;
-  const files = fs.readdirSync(GOVERNED_DIR).filter(f => f.endsWith('.json'));
+  const { fs, path } = getNodeBuiltins();
+  if (!fs || !path) return null;
+  const governedDir = path.resolve(process.cwd(), 'data', 'GOVERNED');
+  if (!fs.existsSync(governedDir)) return null;
+  const files = fs.readdirSync(governedDir).filter(f => f.endsWith('.json'));
   for (const file of files) {
-    const fullPath = path.join(GOVERNED_DIR, file);
+    const fullPath = path.join(governedDir, file);
     const asset = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
     if (asset.asset_id === assetId) {
       return asset;

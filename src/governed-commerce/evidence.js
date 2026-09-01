@@ -1,11 +1,19 @@
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+/**
+ * Governed Evidence Package Compiler
+ * Produces verifiable audit packages and dual-writes to data/evidence-packages.
+ * Isomorphic: uses process.getBuiltinModule in Node.js runtime.
+ */
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const EVIDENCE_DIR = path.join(__dirname, '../../data/evidence-packages');
+function getNodeBuiltins() {
+  if (typeof process !== 'undefined' && typeof process.getBuiltinModule === 'function') {
+    try {
+      const fs = process.getBuiltinModule('node:fs');
+      const path = process.getBuiltinModule('node:path');
+      return { fs, path };
+    } catch (e) {}
+  }
+  return { fs: null, path: null };
+}
 
 export function compileEvidencePackage(transaction) {
   const {
@@ -49,13 +57,17 @@ export function compileEvidencePackage(transaction) {
     }
   };
 
-  // Ensure logging folder exists
-  if (!fs.existsSync(EVIDENCE_DIR)) {
-    fs.mkdirSync(EVIDENCE_DIR, { recursive: true });
+  const { fs, path } = getNodeBuiltins();
+  if (fs && path) {
+    try {
+      const evidenceDir = path.resolve(process.cwd(), 'data', 'evidence-packages');
+      if (!fs.existsSync(evidenceDir)) {
+        fs.mkdirSync(evidenceDir, { recursive: true });
+      }
+      const filePath = path.join(evidenceDir, `${transaction_id.split(':').pop()}.json`);
+      fs.writeFileSync(filePath, JSON.stringify(evidencePackage, null, 2), 'utf8');
+    } catch (e) {}
   }
-
-  const filePath = path.join(EVIDENCE_DIR, `${transaction_id.split(':').pop()}.json`);
-  fs.writeFileSync(filePath, JSON.stringify(evidencePackage, null, 2), 'utf8');
 
   return evidencePackage;
 }

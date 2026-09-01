@@ -990,6 +990,31 @@ export function createGevActionRunner({ viewer, styleManager, dataManager, scene
       }
     }
 
+    if (name === 'open_marketplace') {
+      const { createMarketplaceHud } = await import('../marketplace/marketplace-hud.js');
+      const hud = createMarketplaceHud();
+      if (typeof window !== 'undefined') {
+        hud.mount();
+      }
+      return {
+        ok: true,
+        action: 'open_marketplace',
+        status: 'OPENED',
+        catalog_count: 5,
+        currency: 'EUR'
+      };
+    }
+
+    if (name === 'show_trade_corridors') {
+      const { EMBASSY_NODES, TRADE_CORRIDORS } = await import('../data/embassyTradeCorridors.js');
+      return {
+        ok: true,
+        action: 'show_trade_corridors',
+        nodes: EMBASSY_NODES.map(n => n.name),
+        corridors: TRADE_CORRIDORS.map(c => c.title)
+      };
+    }
+
     throw new Error(`Unknown GEV tool: ${name}`);
   };
 }
