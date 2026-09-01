@@ -1,62 +1,84 @@
 /**
- * Alex Wenger Master Golf Intelligence Ecosystem — Progressive Web App (PWA) Service Worker
- *
- * Provides 100% off-grid offline caching for:
- * 1. Satellite & Vector Tile Maps (Layer A & B).
- * 2. DEM Topographic Terrain Meshes (Layer C).
- * 3. Geographic Memory Engine Course Database (geographic_memory_engine.json).
- * 4. Piper TTS SSML Speech Synthesis Models & Web Audio Fallbacks.
+ * Alex Wenger Master Golf Intelligence Ecosystem — Service Worker (v4.6.0)
+ * Off-Grid PWA Caching Strategy for Map Tiles, Vectors & Speech Models
  */
 
-const CACHE_NAME = 'alex-wenger-golf-v4.3.2';
+const CACHE_NAME = 'golf-spatial-v4.6.0';
 
-const ASSETS_TO_CACHE = [
+const OFFLINE_ASSETS = [
   './',
   './mobile_spotter.html',
-  './index.html',
-  './style.css',
-  './src/golf/spotterEngine.js',
-  './src/golf/alex-wenger-golf/core/architecture/governedIntelligenceSystem.js',
-  './src/golf/alex-wenger-golf/core/vocal/activeAudioDriver.js',
-  './src/golf/alex-wenger-golf/core/vocal/alexVoiceAudioEngine.js',
-  './src/golf/alex-wenger-golf/core/spatial/spatialIngestionEngine.js',
-  './src/golf/data/geographic_memory_engine.json',
+  './manifest.json',
+  './visuals/clubhouse_interior_dawn.png',
+  './visuals/clubhouse_landscape_arrival.png',
+  './visuals/signature_hole_dawn.png',
+  './visuals/swing_lab_calm.png',
+  './visuals/golf_caddie.webp',
+  './visuals/golf_coaching.webp'
 ];
 
-// Install Event — Cache Core App Shell & Offline Engine
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('[Service Worker] Caching App Shell & Course Memory Datasets...');
-      return cache.addAll(ASSETS_TO_CACHE);
-    }).then(() => self.skipWaiting())
+      console.log('[ServiceWorker] Caching static offline shell assets...');
+      return cache.addAll(OFFLINE_ASSETS).catch((err) => {
+        console.warn('[ServiceWorker] Pre-cache warning:', err);
+      });
+    })
   );
+  self.skipWaiting();
 });
 
-// Activate Event — Clean up stale caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((keyList) => {
+    caches.keys().then((cacheNames) => {
       return Promise.all(
-        keyList.map((key) => {
-          if (key !== CACHE_NAME) {
-            console.log('[Service Worker] Removing old cache:', key);
-            return caches.delete(key);
+        cacheNames.map((name) => {
+          if (name !== CACHE_NAME) {
+            console.log('[ServiceWorker] Clearing legacy cache:', name);
+            return caches.delete(name);
           }
         })
       );
-    }).then(() => self.clients.claim())
+    })
   );
+  self.clients.claim();
 });
 
-// Fetch Event — Cache First Strategy with Network Fallback
 self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET') return;
+  const url = new URL(event.request.url);
 
+  // Cache ESRI Satellite Raster Tiles & OSM Overpass responses
+  if (
+    url.hostname.includes('arcgisonline.com') ||
+    url.hostname.includes('overpass-api.de') ||
+    url.hostname.includes('overpass.kumi.systems')
+  ) {
+    event.respondWith(
+      caches.open(CACHE_NAME).then(async (cache) => {
+        const cachedResponse = await cache.match(event.request);
+        if (cachedResponse) return cachedResponse;
+
+        try {
+          const networkResponse = await fetch(event.request);
+          if (networkResponse && networkResponse.status === 200) {
+            cache.put(event.request, networkResponse.clone());
+          }
+          return networkResponse;
+        } catch (err) {
+          // If offline and not in cache, fallback gracefully
+          return cachedResponse || new Response('Offline asset unavailable', { status: 503 });
+        }
+      })
+    );
+    return;
+  }
+
+  // Cache-first strategy for static assets
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
+    caches.match(event.request).then((response) => {
+      if (response) {
+        return response;
       }
       return fetch(event.request).then((networkResponse) => {
         if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
