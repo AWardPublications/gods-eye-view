@@ -16,7 +16,8 @@ const OFFLINE_ASSETS = [
   './visuals/golf_caddie.webp',
   './visuals/golf_coaching.webp',
   './visuals/valderrama_cork_oaks.png',
-  './visuals/links_fescue_turf.png'
+  './visuals/links_fescue_turf.png',
+  './visuals/aerial_satellite_backdrop.png'
 ];
 
 self.addEventListener('install', (event) => {

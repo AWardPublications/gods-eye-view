@@ -763,7 +763,10 @@
         <div class="canvas-title">
           <span>🎯 2D Coordinate Plotter</span>
         </div>
-        <div class="brand-subtitle" id="canvasCoords">X: 0.50 | Y: 0.88</div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <button class="toggle-btn active" id="btnSatToggle" style="font-size: 11px; padding: 6px 12px;">🛰️ SATELLITE ON</button>
+          <div class="brand-subtitle" id="canvasCoords">X: 0.50 | Y: 0.88</div>
+        </div>
       </div>
 
       <div class="canvas-wrapper">
@@ -1137,6 +1140,17 @@
         });
       }
 
+      // Setup Satellite Image Toggle Handler
+      const btnSatToggle = document.getElementById('btnSatToggle');
+      if (btnSatToggle) {
+        btnSatToggle.addEventListener('click', () => {
+          useSatellite = !useSatellite;
+          btnSatToggle.classList.toggle('active', useSatellite);
+          btnSatToggle.textContent = useSatellite ? '🛰️ SATELLITE ON' : '🗺️ VECTOR ONLY';
+          drawHole();
+        });
+      }
+
       updateHoleMetrics();
       drawHole();
     }
@@ -1198,14 +1212,26 @@
       drawHole();
     }
 
+    // Satellite Image Preloader
+    let useSatellite = true;
+    const aerialSatImg = new Image();
+    aerialSatImg.src = './visuals/aerial_satellite_backdrop.png';
+    aerialSatImg.onload = () => { if (typeof drawHole === 'function') drawHole(); };
+
     function drawHole() {
       const w = holeCanvas.width;
       const h = holeCanvas.height;
       ctx.clearRect(0, 0, w, h);
 
-      // Background - Primary Cut / Rough
-      ctx.fillStyle = '#0f291e';
-      ctx.fillRect(0, 0, w, h);
+      // Background Layer: High-Res Real Satellite Image or Procedural Rough
+      if (useSatellite && aerialSatImg.complete && aerialSatImg.naturalWidth > 0) {
+        ctx.drawImage(aerialSatImg, 0, 0, w, h);
+        ctx.fillStyle = 'rgba(5, 7, 13, 0.25)'; // Subtle contrast tint
+        ctx.fillRect(0, 0, w, h);
+      } else {
+        ctx.fillStyle = '#0f291e';
+        ctx.fillRect(0, 0, w, h);
+      }
 
       // Fairway Path (Dynamic curved fairway corridor)
       ctx.beginPath();
