@@ -763,8 +763,9 @@
         <div class="canvas-title">
           <span>🎯 2D Coordinate Plotter</span>
         </div>
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <button class="toggle-btn active" id="btnSatToggle" style="font-size: 11px; padding: 6px 12px;">🛰️ SATELLITE ON</button>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <button class="toggle-btn" id="btnGodsEye" style="font-size: 11px; padding: 6px 10px;">👁️ GOD'S EYE</button>
+          <button class="toggle-btn active" id="btnSatToggle" style="font-size: 11px; padding: 6px 10px;">🛰️ SATELLITE ON</button>
           <div class="brand-subtitle" id="canvasCoords">X: 0.50 | Y: 0.88</div>
         </div>
       </div>
@@ -978,6 +979,8 @@
       formatShotEventJsonl,
     } from './src/golf/spotterEngine.js';
 
+    import { GodsEyeController } from './src/golf/alex-wenger-golf/core/spatial/godsEyeController.js';
+
     import { executeGovernedIntelligencePipeline } from './src/golf/alex-wenger-golf/core/architecture/governedIntelligenceSystem.js';
     import { alexAudioDriver } from './src/golf/alex-wenger-golf/core/vocal/activeAudioDriver.js';
     import { processWhisperSTTInput } from './src/golf/alex-wenger-golf/core/vocal/alexVoiceAudioEngine.js';
@@ -1136,6 +1139,33 @@
           const selectedId = e.target.value;
           console.log(`⛳ Switched Course Map to: ${selectedId}`);
           updateHoleMetrics();
+          drawHole();
+        });
+      }
+
+      // Instantiate GodsEyeController Engine
+      const godsEyeCtrl = new GodsEyeController();
+      let godsEyeMode = 'NONE'; // 'NONE' | 'NADIR' | 'ORBIT'
+
+      // Setup God's Eye Toggle Handler
+      const btnGodsEye = document.getElementById('btnGodsEye');
+      if (btnGodsEye) {
+        btnGodsEye.addEventListener('click', () => {
+          if (godsEyeMode === 'NONE') {
+            godsEyeMode = 'NADIR';
+            btnGodsEye.classList.add('active');
+            btnGodsEye.textContent = '👁️ NADIR (90°)';
+            godsEyeCtrl.snapToNadir([-2.8027, 56.3432], 17);
+          } else if (godsEyeMode === 'NADIR') {
+            godsEyeMode = 'ORBIT';
+            btnGodsEye.classList.add('active');
+            btnGodsEye.textContent = '👁️ ORBIT (58°)';
+            godsEyeCtrl.orbitApproach([-2.8010, 56.3450], 45);
+          } else {
+            godsEyeMode = 'NONE';
+            btnGodsEye.classList.remove('active');
+            btnGodsEye.textContent = "👁️ GOD'S EYE";
+          }
           drawHole();
         });
       }
