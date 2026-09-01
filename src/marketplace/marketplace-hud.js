@@ -1,11 +1,14 @@
 /**
  * Sovereign AI Embassy Interactive Marketplace HUD Component
- * Provides live browsing, filtering, and instant one-click settlement for phygital cards, books, and IP assets.
+ * Provides live browsing, filtering, dynamic Corkonian registry ingestion,
+ * and active settlement telemetry event streaming.
  */
 
 import { discoverAssets, requestMarketplaceAccess } from './marketplace.js';
+import { listRegisteredAssets } from '../knowledge/registry.js';
+import { SettlementTelemetryStream } from '../governed-commerce/telemetry-stream.js';
 
-export const MARKETPLACE_PRODUCTS = [
+export const BASE_MARKETPLACE_PRODUCTS = [
   {
     asset_id: "urn:davincia:product:corkman-tcg-card",
     product_code: "AWP-CRD-001-TCG",
@@ -63,9 +66,35 @@ export const MARKETPLACE_PRODUCTS = [
   }
 ];
 
+export function getCombinedMarketplaceProducts() {
+  const products = [...BASE_MARKETPLACE_PRODUCTS];
+  try {
+    const registered = listRegisteredAssets();
+    for (const reg of registered) {
+      if (!products.some(p => p.asset_id === reg.asset_id)) {
+        products.push({
+          asset_id: reg.asset_id,
+          product_code: `GOV-${reg.asset_id.split(':').pop().toUpperCase()}`,
+          title: reg.title,
+          category: reg.domain === 'LORE_AND_CULTURE' ? 'Governance IP' : 'Publishing',
+          price_eur: (reg.pricing?.base_price || 20.00).toFixed(2),
+          price_cents: Math.round((reg.pricing?.base_price || 20.00) * 100),
+          description: `Registered governed asset from ${reg.owner || 'Brehon Court'}.`,
+          owner: reg.owner,
+          badge: reg.verification_state === 'VERIFIED' ? 'VERIFIED IP' : 'CANONICAL'
+        });
+      }
+    }
+  } catch (e) {}
+  return products;
+}
+
+export const MARKETPLACE_PRODUCTS = getCombinedMarketplaceProducts();
+
 export function createMarketplaceHud() {
   let hudElement = null;
   let activeCategory = "All";
+  let telemetryUnsub = null;
 
   function render() {
     if (document.getElementById('sovereign-marketplace-hud')) {
@@ -82,7 +111,7 @@ export function createMarketplaceHud() {
           position: absolute;
           top: 24px;
           left: 24px;
-          width: 520px;
+          width: 540px;
           max-height: 85vh;
           background: rgba(13, 17, 23, 0.96);
           border: 1px solid rgba(46, 160, 67, 0.6);
@@ -242,7 +271,7 @@ export function createMarketplaceHud() {
       <div class="market-filter-bar">
         <button class="market-filter-btn active" data-cat="All">All Assets</button>
         <button class="market-filter-btn" data-cat="Phygital Gaming">🃏 Phygital Cards</button>
-        <button class="market-filter-btn" data-cat="Publishing">📖 Storybooks & Color</button>
+        <button class="market-filter-btn" data-cat="Publishing">📖 Storybooks & Lore</button>
         <button class="market-filter-btn" data-cat="Fine Art">🖼️ Fine Art</button>
         <button class="market-filter-btn" data-cat="Governance IP">⚖️ Legal IP</button>
       </div>
@@ -259,15 +288,28 @@ export function createMarketplaceHud() {
     document.body.appendChild(hudElement);
     bindEvents();
     renderCards();
+    subscribeToTelemetry();
+  }
+
+  function subscribeToTelemetry() {
+    if (telemetryUnsub) telemetryUnsub();
+    telemetryUnsub = SettlementTelemetryStream.subscribe(event => {
+      const term = hudElement?.querySelector('#market-terminal-output');
+      if (term) {
+        const timeShort = new Date().toLocaleTimeString();
+        term.innerHTML = `<span style="color:#7ee787;">[${timeShort} LIVE CLEARING] Tx: ${event.transaction_id} | Asset: ${event.asset_id} | Settled: ${event.amount} ${event.currency}</span><br>` + term.innerHTML;
+      }
+    });
   }
 
   function renderCards() {
     const grid = hudElement.querySelector('#market-items-grid');
     grid.innerHTML = "";
 
+    const catalog = getCombinedMarketplaceProducts();
     const items = activeCategory === "All"
-      ? MARKETPLACE_PRODUCTS
-      : MARKETPLACE_PRODUCTS.filter(p => p.category === activeCategory);
+      ? catalog
+      : catalog.filter(p => p.category === activeCategory);
 
     for (const item of items) {
       const card = document.createElement('div');
@@ -296,14 +338,14 @@ export function createMarketplaceHud() {
   }
 
   async function handleCheckout(assetId) {
-    const item = MARKETPLACE_PRODUCTS.find(p => p.asset_id === assetId);
+    const catalog = getCombinedMarketplaceProducts();
+    const item = catalog.find(p => p.asset_id === assetId);
     if (!item) return;
 
     const term = hudElement.querySelector('#market-terminal-output');
     term.innerHTML = `[Initiating governed settlement for '${item.product_code}' (Price: €${item.price_eur})...]`;
 
     try {
-      // Mock sovereign passport for user
       const passport = {
         id: "urn:davincia:passport:investor:sion_alpine",
         type: "INVESTOR",
@@ -317,11 +359,11 @@ export function createMarketplaceHud() {
       if (result.status === "DENIED" || result.settlement?.settlement_status === "FAILED") {
         term.innerHTML = `<span style="color:#ff7b72;">[TRANSACTION REJECTED]: ${result.decision?.reason_code || 'UNAUTHORIZED'}</span>`;
       } else {
-        const hashShort = result.evidence?.evidence_hash ? result.evidence.evidence_hash.substring(0, 16) + '...' : 'sha256-verified';
+        const hashShort = result.evidence?.evidence_urn ? result.evidence.evidence_urn.substring(0, 24) + '...' : 'verified';
         term.innerHTML = `<span style="color:#7ee787;"><strong>[SETTLEMENT CLEARED]</strong><br>` +
           `Asset: ${item.product_code} (€${item.price_eur})<br>` +
           `Status: AUTHORIZED & SETTLED<br>` +
-          `Evidence Hash: ${hashShort}</span>`;
+          `Evidence Package: ${hashShort}</span>`;
       }
     } catch (err) {
       term.innerHTML = `<span style="color:#ff7b72;">[ERROR]: ${err.message}</span>`;

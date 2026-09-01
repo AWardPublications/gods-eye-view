@@ -1,6 +1,7 @@
 /**
  * Sovereign AI Embassy 3D Trade Corridors & Phygital Settlement Nodes Layer
  * Renders glowing great-circle trade arcs and diplomatic nodes on the Cesium 3D Globe.
+ * Provides cinematic camera flight verbs along trade corridors.
  */
 
 import * as Cesium from 'cesium';
@@ -69,6 +70,44 @@ export const TRADE_CORRIDORS = [
   { from: "node-cork", to: "node-sf", title: "Transatlantic Geospatial & IP Channel", volume_eur: "€8.7M/mo" },
   { from: "node-sion", to: "node-tokyo", title: "Alpine-Pacific TCG Collector Express", volume_eur: "€3.9M/mo" }
 ];
+
+export function flyToEmbassyNode(viewer, nodeId, durationS = 3) {
+  if (!viewer || !viewer.camera) return false;
+  const node = EMBASSY_NODES.find(n => n.id === nodeId || n.name.toLowerCase().includes(String(nodeId).toLowerCase()));
+  if (!node) return false;
+
+  viewer.camera.flyTo({
+    destination: Cesium.Cartesian3.fromDegrees(node.longitude, node.latitude, 25000),
+    orientation: {
+      heading: Cesium.Math.toRadians(0),
+      pitch: Cesium.Math.toRadians(-45),
+      roll: 0.0
+    },
+    duration: durationS
+  });
+  return true;
+}
+
+export function flyTradeCorridor(viewer, fromNodeId, toNodeId, durationS = 6) {
+  if (!viewer || !viewer.camera) return false;
+  const nodeA = EMBASSY_NODES.find(n => n.id === fromNodeId || n.name.toLowerCase().includes(String(fromNodeId).toLowerCase()));
+  const nodeB = EMBASSY_NODES.find(n => n.id === toNodeId || n.name.toLowerCase().includes(String(toNodeId).toLowerCase()));
+  if (!nodeA || !nodeB) return false;
+
+  const midLon = (nodeA.longitude + nodeB.longitude) / 2;
+  const midLat = (nodeA.latitude + nodeB.latitude) / 2;
+
+  viewer.camera.flyTo({
+    destination: Cesium.Cartesian3.fromDegrees(midLon, midLat, 1500000),
+    orientation: {
+      heading: Cesium.Math.toRadians(0),
+      pitch: Cesium.Math.toRadians(-65),
+      roll: 0.0
+    },
+    duration: durationS
+  });
+  return true;
+}
 
 export class EmbassyTradeCorridorsLayer {
   constructor(viewer) {

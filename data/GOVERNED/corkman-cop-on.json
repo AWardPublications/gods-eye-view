@@ -1,0 +1,24 @@
+{
+  "asset_id": "urn:davincia:knowledge:asset:corkman-cop-on",
+  "title": "CorkMan: Cop On Sovereign Dialogue Matrix",
+  "domain": "LORE_AND_CULTURE",
+  "owner": "urn:davincia:identity:organization:brehon_ai",
+  "issuer": "urn:davincia:issuer:award_publications",
+  "classification": "RESTRICTED_CULTURAL",
+  "version": "1.0.0",
+  "verification": {
+    "state": "VERIFIED",
+    "verified_by": "urn:davincia:authority:brehon_court",
+    "hash": "sha256-corkman-cop-on-matrix-prov"
+  },
+  "licensing": {
+    "license_template": "urn:davincia:license:corkman-phygital-v1",
+    "commercial_allowed": true,
+    "derivative_allowed": true
+  },
+  "pricing": {
+    "base_price": 14.99,
+    "currency": "EUR"
+  },
+  "lifecycle_state": "PUBLISHED"
+}

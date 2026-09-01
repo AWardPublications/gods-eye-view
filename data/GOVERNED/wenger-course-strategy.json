@@ -14,7 +14,7 @@
       "longitude": -8.4756
     },
     "source_urn": "urn:davincia:raw:wenger-course-strategy",
-    "extracted_at": "2026-08-30T22:34:18.994Z",
+    "extracted_at": "2026-09-01T09:32:35.544Z",
     "checksum": "sha256-derived-wenger-course-strategy"
   },
   "facts": [
@@ -51,11 +51,11 @@
   "verification": {
     "state": "VERIFIED",
     "reviewer_role": "SYSTEM_GOVERNOR",
-    "verified_at": "2026-08-30T22:34:18.998Z",
+    "verified_at": "2026-09-01T09:32:35.549Z",
     "evidence_ref": "urn:davincia:evidence:refinery:wenger-course-strategy"
   },
   "governance_passport": {
-    "authorized_at": "2026-08-30T22:34:18.999Z",
-    "decision_ref": "urn:davincia:decision:q8exc1ajfyb"
+    "authorized_at": "2026-09-01T09:32:35.549Z",
+    "decision_ref": "urn:davincia:decision:pw7iwcby6q"
   }
 }

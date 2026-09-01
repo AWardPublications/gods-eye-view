@@ -1015,6 +1015,33 @@ export function createGevActionRunner({ viewer, styleManager, dataManager, scene
       };
     }
 
+    if (name === 'fly_to_embassy_node') {
+      const { flyToEmbassyNode, EMBASSY_NODES } = await import('../data/embassyTradeCorridors.js');
+      const nodeId = args?.node_id || args?.node || 'node-sion';
+      const flown = flyToEmbassyNode(viewer, nodeId, args?.duration_seconds || 3);
+      const node = EMBASSY_NODES.find(n => n.id === nodeId || n.name.toLowerCase().includes(String(nodeId).toLowerCase()));
+      return {
+        ok: true,
+        action: 'fly_to_embassy_node',
+        flown,
+        target_node: node?.name || nodeId,
+        country: node?.country || 'Unknown'
+      };
+    }
+
+    if (name === 'fly_trade_corridor') {
+      const { flyTradeCorridor, TRADE_CORRIDORS } = await import('../data/embassyTradeCorridors.js');
+      const from = args?.from || 'node-cork';
+      const to = args?.to || 'node-sion';
+      const flown = flyTradeCorridor(viewer, from, to, args?.duration_seconds || 6);
+      return {
+        ok: true,
+        action: 'fly_trade_corridor',
+        flown,
+        corridor: `${from} -> ${to}`
+      };
+    }
+
     throw new Error(`Unknown GEV tool: ${name}`);
   };
 }

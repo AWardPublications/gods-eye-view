@@ -14,7 +14,7 @@
       "longitude": -8.4756
     },
     "source_urn": "urn:davincia:raw:wenger-drills-database",
-    "extracted_at": "2026-08-30T22:34:19.003Z",
+    "extracted_at": "2026-09-01T09:32:35.556Z",
     "checksum": "sha256-derived-wenger-drills-database"
   },
   "facts": [
@@ -51,11 +51,11 @@
   "verification": {
     "state": "VERIFIED",
     "reviewer_role": "SYSTEM_GOVERNOR",
-    "verified_at": "2026-08-30T22:34:19.008Z",
+    "verified_at": "2026-09-01T09:32:35.561Z",
     "evidence_ref": "urn:davincia:evidence:refinery:wenger-drills-database"
   },
   "governance_passport": {
-    "authorized_at": "2026-08-30T22:34:19.008Z",
-    "decision_ref": "urn:davincia:decision:dit1pmw8gcm"
+    "authorized_at": "2026-09-01T09:32:35.561Z",
+    "decision_ref": "urn:davincia:decision:5iwsumurln7"
   }
 }

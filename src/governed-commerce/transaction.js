@@ -8,6 +8,7 @@ import { trackConsumption } from './metering.js';
 import { clearTransaction } from './settlement.js';
 import { calculateAllocation } from './allocation.js';
 import { compileEvidencePackage } from './evidence.js';
+import { SettlementTelemetryStream } from './telemetry-stream.js';
 
 export function createCommercialTransactionObject(requestId) {
   const transactionId = `urn:davincia:transaction:${requestId.split(':').pop()}`;
@@ -191,6 +192,18 @@ export async function executeGovernedTransaction(request, paymentProvider, alloc
   const evidence = compileEvidencePackage(txObj);
   txObj.evidence = evidence;
   txObj.status = "SETTLED";
+
+  // 11. Dispatch Live Telemetry Stream Event
+  SettlementTelemetryStream.publish({
+    event_type: "TRANSACTION_SETTLED",
+    transaction_id: txObj.transaction_id,
+    asset_id: txObj.request?.assetId,
+    buyer_passport: activePassport.passport_id,
+    amount: txObj.settlement?.gross_amount,
+    currency: txObj.settlement?.currency,
+    evidence_hash: evidence.evidence_hash,
+    evidence_urn: evidence.evidence_urn
+  });
 
   return txObj;
 }
