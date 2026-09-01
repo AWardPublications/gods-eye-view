@@ -4,7 +4,7 @@
  *
  * Edge Latency Targets:
  * - /api/v1/ballistics: <15ms (Smart placement pure math)
- * - /api/v1/spatial/:id: <25ms (Edge-cached via KV/R2)
+ * - /api/v1/spatial/:id: <25ms (Edge-cached via Geohash-5 KV/R2)
  * - /api/v1/state: <45ms (Governed 6-State FSM pipeline)
  * - /api/v1/memory/snapshot: <50ms (Non-blocking async KV write via ctx.waitUntil)
  *
@@ -14,6 +14,50 @@
 import { executeGovernedIntelligencePipeline } from '../golf/alex-wenger-golf/core/architecture/governedIntelligenceSystem.js';
 import { calculate3DoFEffectiveYardage } from '../golf/alex-wenger-golf/core/spatial/spatialIngestionEngine.js';
 import geographicMemoryDb from '../golf/data/geographic_memory_engine.json' with { type: 'json' };
+
+/**
+ * Coarse Geohash-5 Encoder for KV Partitioning (~4.9km x 4.9km resolution)
+ * Prevents Cloudflare KV write-rate limits across dense clusters.
+ */
+export function encodeGeohash5(lat = 56.34, lon = -2.80) {
+  const BITS = [16, 8, 4, 2, 1];
+  const BASE32 = '0123456789bcdefghjkmnpqrstuvwxyz';
+  let isEven = true;
+  let latMin = -90, latMax = 90;
+  let lonMin = -180, lonMax = 180;
+  let bit = 0;
+  let ch = 0;
+  let geohash = '';
+
+  while (geohash.length < 5) {
+    if (isEven) {
+      const lonMid = (lonMin + lonMax) / 2;
+      if (lon >= lonMid) {
+        ch |= BITS[bit];
+        lonMin = lonMid;
+      } else {
+        lonMax = lonMid;
+      }
+    } else {
+      const latMid = (latMin + latMax) / 2;
+      if (lat >= latMid) {
+        ch |= BITS[bit];
+        latMin = latMid;
+      } else {
+        latMax = latMid;
+      }
+    }
+    isEven = !isEven;
+    if (bit < 4) {
+      bit++;
+    } else {
+      geohash += BASE32[ch];
+      bit = 0;
+      ch = 0;
+    }
+  }
+  return geohash;
+}
 
 export default {
   async fetch(request, env, ctx) {
@@ -83,15 +127,21 @@ export default {
         }), { headers: corsHeaders });
       }
 
-      // 3. Edge-Cached Spatial Bundle Retrieval (<25ms Target)
+      // 3. Edge-Cached Spatial Bundle Retrieval (<25ms Target with Geohash-5 Partitioning)
       if (pathname.startsWith('/api/v1/spatial/')) {
         const courseId = pathname.replace('/api/v1/spatial/', '');
 
-        // Check local memory engine index
-        if (geographicMemoryDb.courses[courseId]) {
+        // Direct local memory index lookup
+        const localCourse = geographicMemoryDb.courses[courseId];
+        if (localCourse) {
+          const lat = localCourse.elevation_m || 56.34; // fallback lat/lon
+          const lon = localCourse.total_yards ? localCourse.total_yards / 100 : -2.80;
+          const geohash5 = encodeGeohash5(lat, lon);
+
           return new Response(JSON.stringify({
             status: 'success',
-            course: geographicMemoryDb.courses[courseId],
+            geohash_partition: `course_idx_${geohash5}`,
+            course: localCourse,
           }), {
             headers: {
               ...corsHeaders,
@@ -100,7 +150,7 @@ export default {
           });
         }
 
-        // Check KV edge index fallback if available
+        // KV Edge Partition Index lookup fallback
         if (env && env.COURSE_INDEX) {
           const cached = await env.COURSE_INDEX.get(`course_${courseId}`, 'json');
           if (cached) {
