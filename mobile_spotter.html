@@ -1110,6 +1110,17 @@
       recordBtn.addEventListener('click', recordShot);
       exportJsonlBtn.addEventListener('click', exportJsonl);
 
+      // Setup Course Selector Change Handler
+      const courseSelect = document.getElementById('courseSelect');
+      if (courseSelect) {
+        courseSelect.addEventListener('change', (e) => {
+          const selectedId = e.target.value;
+          console.log(`⛳ Switched Course Map to: ${selectedId}`);
+          updateHoleMetrics();
+          drawHole();
+        });
+      }
+
       updateHoleMetrics();
       drawHole();
     }
@@ -1148,6 +1159,11 @@
       const pinDist = calculateDistanceYards(normX, normY, 0.50, 0.08, data.yards);
       hudPinDist.textContent = `${pinDist} yds`;
       canvasCoords.textContent = `X: ${normX.toFixed(2)} | Y: ${normY.toFixed(2)}`;
+
+      const hudWind = document.getElementById('hudWind');
+      if (hudWind) {
+        hudWind.textContent = '14 S';
+      }
     }
 
     function updateLieFromPosition() {
