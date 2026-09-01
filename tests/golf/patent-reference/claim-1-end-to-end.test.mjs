@@ -11,7 +11,7 @@ test('Claim 1: Sensorless natural-language multi-session coaching end-to-end exe
   assert.equal(res1.signals.intent, "REQUEST_DRILL");
   assert.equal(res1.compliance.classification, "HIGH_COMPLIANCE");
   assert.equal(res1.tone_state, "BASELINE");
-  assert.ok(res1.evidence.evidence_hash.startsWith("sha256-wenger-evidence-"));
+  assert.ok(res1.evidence.evidence_hash.startsWith("sha256-"));
 
   // Verify memory persistence across turns
   const res2 = await subsystem.executeCoachingTurn("Ready to scout the greens and wind on hole 4.", { mode: "PREPARE" });

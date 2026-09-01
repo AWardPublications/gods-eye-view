@@ -1,11 +1,34 @@
 /**
  * Alex Wenger² Persistent Memory Architecture
- * Implements Claim 1 & Claim 3 (Structured Longitudinal Memory Schema, Indexing & Replay)
+ * Implements Claim 1 & Claim 3 (Structured Longitudinal Memory Schema, Indexing, Disk Persistence & Replay)
  */
 
+import { existsSync, readFileSync, appendFileSync, mkdirSync, writeFileSync } from 'node:fs';
+import path from 'node:path';
+
 export class PersistentMemoryArchitecture {
-  constructor() {
+  constructor(options = {}) {
+    this.storageFilePath = options.storageFilePath || null;
     this.sessions = [];
+
+    if (this.storageFilePath) {
+      this.loadFromDisk();
+    }
+  }
+
+  loadFromDisk() {
+    if (!this.storageFilePath) return;
+
+    try {
+      if (existsSync(this.storageFilePath)) {
+        const fileContent = readFileSync(this.storageFilePath, 'utf8');
+        const lines = fileContent.split('\n').map(l => l.trim()).filter(Boolean);
+        this.sessions = lines.map(line => JSON.parse(line));
+      }
+    } catch (e) {
+      console.error(`[PersistentMemoryArchitecture] Warning: Failed to load from disk '${this.storageFilePath}':`, e);
+      this.sessions = [];
+    }
   }
 
   appendSessionRecord(record) {
@@ -32,6 +55,20 @@ export class PersistentMemoryArchitecture {
     };
 
     this.sessions.push(entry);
+
+    // Persist to Disk if storageFilePath is configured
+    if (this.storageFilePath) {
+      try {
+        const dir = path.dirname(this.storageFilePath);
+        if (!existsSync(dir)) {
+          mkdirSync(dir, { recursive: true });
+        }
+        appendFileSync(this.storageFilePath, JSON.stringify(entry) + '\n', 'utf8');
+      } catch (e) {
+        console.error(`[PersistentMemoryArchitecture] Warning: Failed to append to disk '${this.storageFilePath}':`, e);
+      }
+    }
+
     return entry;
   }
 
@@ -94,5 +131,12 @@ export class PersistentMemoryArchitecture {
 
   clear() {
     this.sessions = [];
+    if (this.storageFilePath && existsSync(this.storageFilePath)) {
+      try {
+        writeFileSync(this.storageFilePath, '', 'utf8');
+      } catch (e) {
+        // Safe fallback
+      }
+    }
   }
 }

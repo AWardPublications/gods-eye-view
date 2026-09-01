@@ -30,14 +30,17 @@ export {
 };
 
 export class AlexWengerSubsystem {
-  constructor() {
+  constructor(options = {}) {
+    this.options = options;
     this.signalExtractor = new SignalExtractor();
     this.complianceClassifier = new RuleBasedComplianceClassifier();
     this.driftAnalyzer = new EngagementDriftAnalyzer();
     this.thresholdEngine = new ThresholdEngine();
     this.toneStateMachine = new ToneStateMachine();
     this.outputControl = new OutputControlModule();
-    this.memory = new PersistentMemoryArchitecture();
+    this.memory = new PersistentMemoryArchitecture({
+      storageFilePath: options.storageFilePath || null
+    });
     this.router = new PolicyRouter();
   }
 
@@ -137,7 +140,7 @@ export class AlexWengerSubsystem {
       tone_state: toneTransition,
       routing_result: routingResult,
       output: outputResult
-    });
+    }, options);
 
     return {
       status: "SUCCESS",
