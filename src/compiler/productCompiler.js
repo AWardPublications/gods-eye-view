@@ -8,6 +8,7 @@
  */
 
 import { EvidenceReceiptGenerator } from '../golf/governance/evidence-receipt.js';
+import { DomainCollisionLinter } from './domainCollisionLinter.js';
 
 export const PRODUCT_TEMPLATES = {
   narrative_storybook: {
@@ -178,6 +179,12 @@ export class MultiFormatProductCompiler {
       if (narrativeText.length > 0 && narrativeText.length < 50) {
         throw new Error("LINT_ERROR_TELEMETRY_SHORT: Input narrative text must be at least 50 characters.");
       }
+    }
+
+    // C. Cross-Domain Collision Linting
+    const domainLint = DomainCollisionLinter.lintProductDomain(inputData);
+    if (!domainLint.compliant) {
+      throw new Error(`DOMAIN_LINT_FAILURE: ${domainLint.error}`);
     }
 
     // 4. Step 4: Intent Registration
