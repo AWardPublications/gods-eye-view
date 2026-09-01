@@ -1,0 +1,97 @@
+{
+  "orchestrator_version": "v4.5.2",
+  "timestamp": "2026-09-01T22:30:21.706Z",
+  "total_global_target_courses": 38500,
+  "ingested_in_memory_db": 27,
+  "tier1_flagships": {
+    "tier": "Tier 1: High-Authority Flagships & Tour Venues",
+    "target_capacity": 1500,
+    "current_ingested": 27,
+    "status": "ACTIVE_INGESTION"
+  },
+  "tier2_micro_nations": {
+    "tier": "Tier 2: Micro-Nations & High-Density Islands",
+    "target_capacity": 500,
+    "countries_registered": 7,
+    "total_courses_mapped": 119,
+    "national_completion_rate": "100.0%",
+    "registry": [
+      {
+        "country": "Singapore",
+        "code": "SG",
+        "course_count": 14,
+        "sample_track": "Sentosa Golf Club (Serapong)"
+      },
+      {
+        "country": "Bermuda",
+        "code": "BM",
+        "course_count": 7,
+        "sample_track": "Mid Ocean Club"
+      },
+      {
+        "country": "United Arab Emirates",
+        "code": "AE",
+        "course_count": 22,
+        "sample_track": "Emirates Golf Club (Majlis)"
+      },
+      {
+        "country": "Luxembourg",
+        "code": "LU",
+        "course_count": 6,
+        "sample_track": "Golf Club Grand-Ducal"
+      },
+      {
+        "country": "Bahrain",
+        "code": "BH",
+        "course_count": 2,
+        "sample_track": "The Royal Golf Club (Riffa)"
+      },
+      {
+        "country": "Iceland",
+        "code": "IS",
+        "course_count": 65,
+        "sample_track": "Golfklúbbur Akureyrar (Jaðar)"
+      },
+      {
+        "country": "Cayman Islands",
+        "code": "KY",
+        "course_count": 3,
+        "sample_track": "The Ritz-Carlton Golf Club"
+      }
+    ],
+    "status": "BATCH_READY"
+  },
+  "tier3_regional_batching": {
+    "tier": "Tier 3: Mass Regional Automated Batching",
+    "target_capacity": 38000,
+    "scheduled_cron": "0 */2 * * *",
+    "batch_pipeline": [
+      {
+        "region": "North America (US & Canada)",
+        "target_courses": 16500,
+        "batch_size": 500
+      },
+      {
+        "region": "Europe & UK / Ireland",
+        "target_courses": 9200,
+        "batch_size": 500
+      },
+      {
+        "region": "Asia-Pacific (Japan, Australia, SK)",
+        "target_courses": 7800,
+        "batch_size": 500
+      },
+      {
+        "region": "Rest of World (Latin America, Africa)",
+        "target_courses": 4500,
+        "batch_size": 500
+      }
+    ],
+    "status": "CRON_WORKER_READY"
+  },
+  "storage_architecture": {
+    "r2_bucket": "golf-spatial-engine-assets/bundles/",
+    "kv_namespace": "COURSE_INDEX (kv_course_index_prod_id)",
+    "latency_guarantee": "< 25 ms"
+  }
+}
