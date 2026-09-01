@@ -1,0 +1,23 @@
+{
+  "test": "REAL_TONE_AND_FALLBACK_VALIDATION",
+  "status": "PASSED",
+  "timestamp_utc": "2026-09-01T16:32:47.393Z",
+  "tone_modulations": {
+    "baseline": {
+      "speed": 1,
+      "duration_ms": 1830
+    },
+    "modulated": {
+      "speed": 0.88,
+      "duration_ms": 2695
+    },
+    "decayed": {
+      "speed": 0.8,
+      "duration_ms": 2950
+    },
+    "recovering": {
+      "speed": 0.96,
+      "duration_ms": 2483
+    }
+  }
+}

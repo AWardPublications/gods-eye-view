@@ -1,0 +1,54 @@
+{
+  "manifest_version": "1.0.0",
+  "generated_at": "2026-09-01T18:32:00.000Z",
+  "models": [
+    {
+      "role": "STT_PRIMARY",
+      "model_name": "sherpa-onnx-moonshine-tiny-en-int8",
+      "version": "1.10.0",
+      "source": "https://github.com/k2-fsa/sherpa-onnx",
+      "license": "Apache-2.0",
+      "sha256": "sha256-4c9197fe8a3297a7604fc819b1b79644d6ff0b6d274092b1a13e2f5926500da5",
+      "size_mb": 62.4,
+      "runtime": "ONNX Runtime / Node.js Isomorphic",
+      "hardware_support": "CPU (AVX2/NEON), DirectML, CUDA",
+      "streaming_supported": true
+    },
+    {
+      "role": "TTS_PRIMARY",
+      "model_name": "kokoro-v0.19-int8.onnx",
+      "version": "0.19.0",
+      "source": "https://github.com/hexgrad/kokoro",
+      "license": "Apache-2.0",
+      "sha256": "sha256-a79e4d5881c6183e20e8840b8a1c1d81023d8c1103c80918731b7470f1a92e10",
+      "size_mb": 84.1,
+      "runtime": "ONNX Runtime / Node.js Isomorphic",
+      "hardware_support": "CPU (Single-core RTF < 0.15), DirectML",
+      "streaming_supported": true
+    },
+    {
+      "role": "TTS_FALLBACK",
+      "model_name": "en_US-lessac-medium.onnx",
+      "version": "1.2.0",
+      "source": "https://github.com/rhasspy/piper",
+      "license": "MIT",
+      "sha256": "sha256-d61b34e1c278696d5a764d7c088319e712a521c7694f48866164f9bca88311e5",
+      "size_mb": 34.2,
+      "runtime": "ONNX Runtime / Node.js Isomorphic",
+      "hardware_support": "Low-power CPU, Raspberry Pi 4, x86_64",
+      "streaming_supported": true
+    },
+    {
+      "role": "VAD_PRIMARY",
+      "model_name": "silero_vad_v5.onnx",
+      "version": "5.1.0",
+      "source": "https://github.com/snakers4/silero-vad",
+      "license": "MIT",
+      "sha256": "sha256-1e967a3dc1e27a92237887309995818ca8066fba05342a76f2f273db0ef88219",
+      "size_mb": 1.8,
+      "runtime": "ONNX Runtime / Node.js Isomorphic",
+      "hardware_support": "CPU, Mobile, Edge",
+      "streaming_supported": true
+    }
+  ]
+}

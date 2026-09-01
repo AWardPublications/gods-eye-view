@@ -89,6 +89,20 @@ export class StreamingAudioBufferBridge {
     };
   }
 
+  clearBuffer() {
+    this.bufferQueue = [];
+    return { cleared: true, queue_depth: 0 };
+  }
+
+  getStats() {
+    return {
+      buffered_frames: this.bufferQueue.length,
+      is_connected: this.isConnected,
+      current_latency_ms: this.currentLatencyMs,
+      metrics: this.metrics
+    };
+  }
+
   getTelemetry() {
     return {
       is_connected: this.isConnected,

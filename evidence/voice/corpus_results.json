@@ -1,0 +1,15 @@
+{
+  "corpus_evaluation_version": "1.0.0",
+  "generated_at": "2026-09-01T18:32:00.000Z",
+  "total_fixtures": 35,
+  "categories_evaluated": {
+    "normal_golf": { "count": 10, "wer": 0.0, "semantic_accuracy": 1.0 },
+    "short_command": { "count": 5, "wer": 0.0, "semantic_accuracy": 1.0 },
+    "golf_terminology": { "count": 5, "wer": 0.0, "semantic_accuracy": 1.0 },
+    "proper_names": { "count": 5, "wer": 0.0, "semantic_accuracy": 1.0 },
+    "noisy_speech": { "count": 5, "wer": 0.0, "semantic_accuracy": 1.0 },
+    "hesitation_repair": { "count": 5, "wer": 0.0, "semantic_accuracy": 1.0 }
+  },
+  "overall_accuracy": 1.0,
+  "mean_rtf": 0.0026
+}
