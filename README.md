@@ -49,6 +49,8 @@ In a world of highly autonomous AI agents and open web environments, capability 
 > * [AI Agent Guide](file:///C:/Users/David/.gemini/antigravity/scratch/gods-eye-view/AI_AGENT_GUIDE.md) — Step-by-step operating guidelines and escalation tokens.
 > * [Architecture Reference](file:///C:/Users/David/.gemini/antigravity/scratch/gods-eye-view/ARCHITECTURE.md) — Technical layouts, module boundaries, and API definitions.
 > * [Historical Learnings](file:///C:/Users/David/.gemini/antigravity/scratch/gods-eye-view/LEARNINGS.md) — Repository memory and resolved issues database.
+> * [Alex Wenger Golf Case Study](file:///C:/Users/David/.gemini/antigravity/scratch/gods-eye-view/docs/alex-wenger-governance-case-study.md) — Flagship vertical proof (5-mode athlete telemetry & fail-closed consent).
+> * [COP-ON Phygital Case Study](file:///C:/Users/David/.gemini/antigravity/scratch/gods-eye-view/docs/cop-on-phygital-case-study.md) — Industrial proof (physical-linked DPF, 3-pillar corporate trust gateway, cost-plus 8.5% transfer pricing & FKS doctrine).
 
 ---
 

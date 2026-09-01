@@ -92,3 +92,11 @@ The package records:
 * **Unit Testing**: Standard Node.js `test` framework executed via `scripts/run-unit-tests.mjs`.
 * **E2E Golden Path Test**: Located in `tests/e2e-transaction.test.js`, verifying the complete flow from passport onboarding to billing.
 * **Scorecards**: Static analysis and runtime validation script scorecards located in `/tools/` executing assertions for regression prevention.
+
+---
+
+## 5. Institutional Case Studies & Vertical Proofs
+
+* **Alex Wenger Golf Vertical**: [docs/alex-wenger-governance-case-study.md](file:///C:/Users/David/.gemini/antigravity/scratch/gods-eye-view/docs/alex-wenger-governance-case-study.md) — Demonstrates 5-mode player telemetry, biometric data custody, and fail-closed consent revocation.
+* **COP-ON Phygital & ARIOS/DVA Governance Engine**: [docs/cop-on-phygital-case-study.md](file:///C:/Users/David/.gemini/antigravity/scratch/gods-eye-view/docs/cop-on-phygital-case-study.md) — Demonstrates physical-linked deterministic hash proxies (AWP-PRINT-002, 63x88mm, Cork Crimson #d31d36), three-pillar corporate trust gateways (UK IP Holdco, Irish OpCo CRO 790337, Swiss R&D BAIT), cost-plus 8.5% transfer pricing (Section 835D TCA 1997), and Media Pipeline Phase 6 / FKS human signing gates.
+
