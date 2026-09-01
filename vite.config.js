@@ -7323,6 +7323,62 @@ function normalizeAisTimestamp(value) {
   return Number.isNaN(date.getTime()) ? new Date().toISOString() : date.toISOString();
 }
 
+function shotEventsSinkProxy() {
+  const SHOT_LOG_PATH = path.resolve(process.cwd(), 'shot_events.jsonl');
+
+  const install = (middlewares) => {
+    middlewares.use('/api/shot-events', async (req, res) => {
+      if (req.method === 'POST') {
+        let body = '';
+        req.on('data', (chunk) => { body += chunk; });
+        req.on('end', () => {
+          try {
+            const payload = JSON.parse(body);
+            payload.received_at = new Date().toISOString();
+            const line = JSON.stringify(payload);
+            fs.appendFileSync(SHOT_LOG_PATH, line + '\n', 'utf8');
+            res.writeHead(200, {
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*',
+            });
+            res.end(JSON.stringify({ status: 'OK', log: 'shot_events.jsonl', id: payload.event_id || Date.now() }));
+          } catch (err) {
+            res.writeHead(400, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ error: String(err?.message || err) }));
+          }
+        });
+        return;
+      }
+      if (req.method === 'GET') {
+        try {
+          const content = fs.existsSync(SHOT_LOG_PATH) ? fs.readFileSync(SHOT_LOG_PATH, 'utf8') : '';
+          const lines = content.trim().split('\n').filter(Boolean).map((l) => {
+            try { return JSON.parse(l); } catch { return null; }
+          }).filter(Boolean);
+          res.writeHead(200, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ count: lines.length, events: lines.slice(-50) }));
+        } catch (err) {
+          res.writeHead(500, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: String(err?.message || err) }));
+        }
+        return;
+      }
+      res.writeHead(405);
+      res.end('Method Not Allowed');
+    });
+  };
+
+  return {
+    name: 'shot-events-sink-proxy',
+    configureServer(server) {
+      install(server.middlewares);
+    },
+    configurePreviewServer(server) {
+      install(server.middlewares);
+    },
+  };
+}
+
 /**
  * Main Vite configuration factory.
  *
@@ -7360,6 +7416,7 @@ export default defineConfig(({ mode }) => {
       trackBackfillProxies(),
       openAiRealtimeProxy(),
       googlePlacesContextProxy(),
+      shotEventsSinkProxy(),
     ],
     server: {
       host: env.HOST || 'localhost',
@@ -7378,6 +7435,13 @@ export default defineConfig(({ mode }) => {
       // The Cesium engine bundle is inherently large; raise the warning ceiling
       // so the build log isn't dominated by an expected chunk-size notice.
       chunkSizeWarningLimit: 1500,
+      rollupOptions: {
+        input: {
+          main: path.resolve(__dirname, 'index.html'),
+          mobile_spotter: path.resolve(__dirname, 'mobile_spotter.html'),
+        },
+      },
     },
   };
 });
+

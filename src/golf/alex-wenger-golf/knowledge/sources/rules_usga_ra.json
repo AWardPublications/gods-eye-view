@@ -1,0 +1,44 @@
+{
+  "rules": {
+    "18.2": {
+      "rule_number": "18.2",
+      "title": "Ball Out of Bounds or Lost",
+      "canonical_source": "USGA / R&A Official Rules of Golf 2026",
+      "summary": "If a ball is out of bounds or lost outside a penalty area, the player must take stroke-and-distance relief by adding one penalty stroke and playing a ball from where the previous stroke was made.",
+      "penalty_strokes": 1,
+      "relief_type": "Stroke-and-Distance",
+      "key_subsections": ["18.2a (When Ball is Lost or Out of Bounds)", "18.2b (What to Do When Ball is Lost or Out of Bounds)"],
+      "confidence_weight": 0.98
+    },
+    "17.1": {
+      "rule_number": "17.1",
+      "title": "Options for Ball in Penalty Area",
+      "canonical_source": "USGA / R&A Official Rules of Golf 2026",
+      "summary": "Penalty areas are defined as yellow or red. Player may play ball as it lies without penalty, or take one penalty stroke for stroke-and-distance relief, back-on-the-line relief, or lateral relief (red penalty areas only).",
+      "penalty_strokes": 1,
+      "relief_type": "Penalty Area Relief (Stroke-and-Distance / Back-on-Line / Lateral)",
+      "key_subsections": ["17.1d (Relief for Ball in Penalty Area)", "17.1e (Relief for Ball Not Found But in Penalty Area)"],
+      "confidence_weight": 0.99
+    },
+    "19.2": {
+      "rule_number": "19.2",
+      "title": "Relief Options for Unplayable Ball",
+      "canonical_source": "USGA / R&A Official Rules of Golf 2026",
+      "summary": "Player is the sole judge of whether ball is unplayable anywhere on course except penalty area. Three relief options for 1 penalty stroke: Stroke-and-distance, back-on-the-line, or lateral relief within two club-lengths.",
+      "penalty_strokes": 1,
+      "relief_type": "Unplayable Ball Relief",
+      "key_subsections": ["19.2a (Stroke-and-Distance)", "19.2b (Back-on-the-Line)", "19.2c (Lateral Relief)"],
+      "confidence_weight": 0.97
+    },
+    "14.3": {
+      "rule_number": "14.3",
+      "title": "Dropping Ball in Relief Area",
+      "canonical_source": "USGA / R&A Official Rules of Golf 2026",
+      "summary": "Player must drop the ball from knee height in straight down motion without touching player or equipment before hitting ground. Ball must land in and stay within designated relief area.",
+      "penalty_strokes": 0,
+      "relief_type": "Procedural Rule",
+      "key_subsections": ["14.3b (Ball Must Be Dropped in Right Way)", "14.3c (Ball Dropped in Right Way Must Come to Rest in Relief Area)"],
+      "confidence_weight": 0.99
+    }
+  }
+}

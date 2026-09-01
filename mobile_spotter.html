@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>DaVinciA⁺ | Mobile On-Course Spotter Deck</title>
+  <meta name="description" content="Touch-first 2D hole coordinate & lie logging spotter interface with direct WebSocket streaming into shot_events.jsonl. Powered by WO/2026/150385 Golf Governance Engine.">
+  <meta name="theme-color" content="#0b0f19">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&family=Inter:wght@500;600;700;800;900&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #05070d;
+      --bg-card: rgba(15, 20, 32, 0.96);
+      --bg-card-hover: rgba(25, 32, 50, 0.98);
+      --border-glow: rgba(52, 211, 153, 0.5);
+      --border-subtle: rgba(255, 255, 255, 0.25);
+      --accent-green: #10b981;
+      --accent-green-bright: #34d399;
+      --accent-cyan: #38bdf8;
+      --accent-gold: #fbbf24;
+      --accent-red: #f87171;
+      --text-main: #ffffff;
+      --text-muted: #ffffff; /* PURE WHITE - NO GREY */
+      --text-dim: #ffffff;   /* PURE WHITE - NO GREY */
+      --font-sans: 'Plus Jakarta Sans', 'Outfit', 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --base-font-scale: 1.20; /* High Legibility Default Scale */
+    }
+
+    /* Font Family Overrides */
+    body.font-outfit { --font-sans: 'Outfit', sans-serif; }
+    body.font-jakarta { --font-sans: 'Plus Jakarta Sans', sans-serif; }
+    body.font-inter { --font-sans: 'Inter', sans-serif; }
+    
+    /* Font Size Scaling Classes */
+    body.size-large { --base-font-scale: 1.35; }
+    body.size-xlarge { --base-font-scale: 1.50; }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      color: #ffffff; /* Force all text to default to pure white */
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: #ffffff;
+      font-family: var(--font-sans);
+      font-size: calc(14px * var(--base-font-scale));
+      font-weight: 700;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      padding-bottom: env(safe-area-inset-bottom, 20px);
+      line-height: 1.4;
+    }
+
+    /* Ambient Background Glow */
+    .bg-ambient {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at 50% 0%, rgba(52, 211, 153, 0.22), transparent 70%),
+                  radial-gradient(circle at 100% 100%, rgba(56, 189, 248, 0.15), transparent 60%);
+      z-index: 0;
+    }
+
+    /* Header Bar */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(5, 7, 13, 0.98);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 2px solid var(--border-subtle);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--accent-green-bright), var(--accent-cyan));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 18px;
+      color: #000000 !important;
+      box-shadow: 0 0 16px rgba(52, 211, 153, 0.6);
+    }
+
+    .brand-title {
+      font-size: calc(17px * var(--base-font-scale));
+      font-weight: 900;
+      letter-spacing: -0.2px;
+      color: #ffffff !important;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    }
+
+    .brand-subtitle {
+      font-size: calc(12px * var(--base-font-scale));
+      color: #34d399 !important;
+      font-family: var(--font-mono);
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1.5px solid var(--border-subtle);
+      font-size: calc(13px * var(--base-font-scale));
+      font-family: var(--font-mono);
+      font-weight: 800;
+      color: #ffffff !important;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--accent-green-bright);
+      box-shadow: 0 0 10px var(--accent-green-bright);
+      animation: pulse 2s infinite;
+    }
+
+    .status-dot.offline {
+      background-color: var(--accent-red);
+      box-shadow: 0 0 10px var(--accent-red);
+      animation: none;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    /* Main Container */
+    main {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      max-width: 660px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Accessibility / Font Controls Tool Bar */
+    .accessibility-bar {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1.5px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .bar-label {
+      font-size: calc(13px * var(--base-font-scale));
+      font-weight: 800;
+      color: #ffffff !important;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 6px;
+    }
+
+    .toggle-btn {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1.5px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 8px 14px;
+      color: #ffffff !important;
+      font-family: var(--font-sans);
+      font-size: calc(13px * var(--base-font-scale));
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .toggle-btn.active {
+      background: var(--accent-green-bright);
+      color: #000000 !important;
+      border-color: #ffffff;
+      box-shadow: 0 0 14px rgba(52, 211, 153, 0.6);
+    }
+
+    /* Course & Hole Controls */
+    .controls-card {
+      background: var(--bg-card);
+      border: 2px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      backdrop-filter: blur(16px);
+    }
+
+    .row-flex {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    select, input[type="text"] {
+      width: 100%;
+      background: #000000;
+      border: 2px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 14px 18px;
+      color: #ffffff !important;
+      font-family: var(--font-sans);
+      font-size: calc(15px * var(--base-font-scale));
+      font-weight: 800;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    select option {
+      background-color: #05070d;
+      color: #ffffff !important;
+      font-weight: 800;
+    }
+
+    ::placeholder {
+      color: #ffffff !important;
+      opacity: 0.85 !important;
+    }
+
+    select:focus, input[type="text"]:focus {
+      border-color: var(--accent-green-bright);
+    }
+
+    /* Hole Quick Bar */
+    .hole-selector {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scrollbar-width: none;
+    }
+
+    .hole-selector::-webkit-scrollbar {
+      display: none;
+    }
+
+    .hole-btn {
+      flex: 0 0 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.10);
+      border: 2px solid var(--border-subtle);
+      color: #ffffff !important;
+      font-family: var(--font-mono);
+      font-weight: 900;
+      font-size: calc(16px * var(--base-font-scale));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .hole-btn.active {
+      background: linear-gradient(135deg, var(--accent-green-bright), #059669);
+      color: #000000 !important;
+      border-color: #ffffff;
+      box-shadow: 0 0 18px rgba(52, 211, 153, 0.6);
+    }
+
+    /* Metric Grid Bar */
+    .metrics-hud {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .metric-pill {
+      background: rgba(0, 0, 0, 0.65);
+      border: 1.5px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 12px 8px;
+      text-align: center;
+    }
+
+    .metric-label {
+      font-size: calc(11px * var(--base-font-scale));
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #ffffff !important; /* PURE WHITE */
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .metric-val {
+      font-size: calc(20px * var(--base-font-scale));
+      font-weight: 900;
+      font-family: var(--font-mono);
+      color: #34d399 !important;
+      text-shadow: 0 0 8px rgba(52, 211, 153, 0.4);
+    }
+
+    /* 2D Interactive Hole Canvas Card */
+    .canvas-card {
+      background: var(--bg-card);
+      border: 2px solid var(--border-glow);
+      border-radius: 22px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    .canvas-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4px;
+    }
+
+    .canvas-title {
+      font-size: calc(14px * var(--base-font-scale));
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #ffffff !important;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .canvas-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 14;
+      background: #061811;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 2px solid rgba(52, 211, 153, 0.4);
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      touch-action: none;
+    }
+
+    .canvas-hint {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.92);
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(12px);
+      padding: 10px 20px;
+      border-radius: 28px;
+      font-size: calc(13px * var(--base-font-scale));
+      font-weight: 800;
+      color: #ffffff !important;
+      pointer-events: none;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+    }
+
+    /* Lie Selector Matrix */
+    .section-title {
+      font-size: calc(14px * var(--base-font-scale));
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #ffffff !important;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .lie-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .lie-btn {
+      background: rgba(255, 255, 255, 0.10);
+      border: 2px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 14px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lie-btn:active {
+      transform: scale(0.96);
+    }
+
+    .lie-btn.selected {
+      background: rgba(16, 185, 129, 0.35);
+      border-color: #ffffff;
+      box-shadow: 0 0 20px rgba(52, 211, 153, 0.5);
+    }
+
+    .lie-icon {
+      font-size: calc(22px * var(--base-font-scale));
+    }
+
+    .lie-name {
+      font-size: calc(13px * var(--base-font-scale));
+      font-weight: 800;
+      color: #ffffff !important;
+    }
+
+    /* Shot Logger Panel */
+    .logger-panel {
+      background: var(--bg-card);
+      border: 2px solid var(--border-subtle);
+      border-radius: 22px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Club Wheel Selector */
+    .club-bar {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scrollbar-width: none;
+    }
+
+    .club-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .club-btn {
+      flex: 0 0 54px;
+      height: 48px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.10);
+      border: 2px solid var(--border-subtle);
+      color: #ffffff !important;
+      font-family: var(--font-mono);
+      font-weight: 900;
+      font-size: calc(15px * var(--base-font-scale));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .club-btn.selected {
+      background: var(--accent-cyan);
+      color: #000000 !important;
+      border-color: #ffffff;
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.6);
+    }
+
+    /* Intent & Shape Chips */
+    .chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      background: rgba(255, 255, 255, 0.10);
+      border: 2px solid var(--border-subtle);
+      border-radius: 26px;
+      padding: 10px 18px;
+      font-size: calc(13px * var(--base-font-scale));
+      font-weight: 800;
+      color: #ffffff !important;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .chip.selected {
+      background: rgba(251, 191, 36, 0.35);
+      border-color: #ffffff;
+      color: #000000 !important;
+      background-color: var(--accent-gold);
+      font-weight: 900;
+      box-shadow: 0 0 16px rgba(251, 191, 36, 0.5);
+    }
+
+    /* Action Trigger Button */
+    .action-btn {
+      width: 100%;
+      padding: 20px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      border: 2px solid #ffffff;
+      color: #000000 !important;
+      font-family: var(--font-sans);
+      font-weight: 900;
+      font-size: calc(18px * var(--base-font-scale));
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 12px 32px rgba(16, 185, 129, 0.55);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .action-btn span {
+      color: #000000 !important;
+    }
+
+    .action-btn:active {
+      transform: scale(0.97);
+      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+    }
+
+    /* Drawer / Ledger Panel */
+    .ledger-drawer {
+      background: var(--bg-card);
+      border: 2px solid var(--border-subtle);
+      border-radius: 22px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .ledger-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ledger-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 260px;
+      overflow-y: auto;
+    }
+
+    .ledger-item {
+      background: rgba(0, 0, 0, 0.65);
+      border: 1.5px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: calc(14px * var(--base-font-scale));
+    }
+
+    .ledger-main {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .shot-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent-green-bright);
+      color: #000000 !important;
+      font-weight: 900;
+      font-size: calc(14px * var(--base-font-scale));
+      font-family: var(--font-mono);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .shot-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .shot-title {
+      font-weight: 800;
+      color: #ffffff !important;
+    }
+
+    .shot-sub {
+      font-size: calc(12px * var(--base-font-scale));
+      color: #ffffff !important;
+      font-family: var(--font-mono);
+      font-weight: 700;
+    }
+
+    .shot-sync {
+      font-size: calc(12px * var(--base-font-scale));
+      font-family: var(--font-mono);
+      font-weight: 800;
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: rgba(16, 185, 129, 0.3);
+      color: #34d399 !important;
+    }
+  </style>
+</head>
+<body class="font-jakarta">
+  <div class="bg-ambient"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <div class="brand-logo">A⁺</div>
+      <div>
+        <div class="brand-title">DaVinciA⁺ Spotter</div>
+        <div class="brand-subtitle">WO/2026/150385 GOLF</div>
+      </div>
+    </div>
+    <div class="header-controls">
+      <div class="status-badge" id="statusBadge">
+        <div class="status-dot" id="statusDot"></div>
+        <span id="statusText">CONNECTING</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Work Area -->
+  <main>
+    <!-- Legibility & Font Adjuster Bar -->
+    <div class="accessibility-bar">
+      <div class="bar-label">🔤 TYPOGRAPHY</div>
+      <div class="btn-group">
+        <button class="toggle-btn active" id="fontJakartaBtn">Plus Jakarta</button>
+        <button class="toggle-btn" id="fontOutfitBtn">Outfit</button>
+        <button class="toggle-btn" id="fontInterBtn">Inter</button>
+      </div>
+      <div class="btn-group">
+        <button class="toggle-btn active" id="sizeStdBtn">Std</button>
+        <button class="toggle-btn" id="sizeLgBtn">Large</button>
+        <button class="toggle-btn" id="sizeXlBtn">XL</button>
+      </div>
+    </div>
+
+    <!-- Course & Hole Selector -->
+    <div class="controls-card">
+      <div class="row-flex">
+        <select id="courseSelect">
+          <option value="st_andrews_old">St Andrews Old Course (Fife, Scotland)</option>
+          <option value="royal_county_down">Royal County Down Golf Club (Down, N. Ireland)</option>
+          <option value="royal_portrush">Royal Portrush Dunluce Links (Antrim, N. Ireland)</option>
+          <option value="muirfield">Muirfield HCEG (East Lothian, Scotland)</option>
+          <option value="carnoustie_champ">Carnoustie Golf Links (Angus, Scotland)</option>
+          <option value="ballybunion_old">Ballybunion Old Course (Kerry, Ireland)</option>
+          <option value="lahinch_champ">Lahinch Golf Club (Clare, Ireland)</option>
+          <option value="pebble_beach">Pebble Beach Golf Links (California, USA)</option>
+          <option value="pine_valley">Pine Valley Golf Club (New Jersey, USA)</option>
+          <option value="oakmont_cc">Oakmont Country Club (Pennsylvania, USA)</option>
+          <option value="shinnecock_hills">Shinnecock Hills Golf Club (New York, USA)</option>
+          <option value="augusta_national">Augusta National (Georgia, USA)</option>
+          <option value="royal_melbourne">Royal Melbourne West Course (Victoria, Australia)</option>
+          <option value="kingston_heath">Kingston Heath Golf Club (Victoria, Australia)</option>
+          <option value="hirono_gc">Hirono Golf Club (Hyogo, Japan)</option>
+          <option value="cape_kidnappers">Cape Kidnappers (Hawke's Bay, New Zealand)</option>
+          <option value="valderrama_golf_club">Real Club Valderrama (Sotogrande, Andalusia, Spain)</option>
+          <option value="el_saler_golf">Campo de Golf El Saler (Valencia, Spain)</option>
+          <option value="finca_cortesin">Finca Cortesin Golf Club (Casares, Andalusia, Spain)</option>
+          <option value="puerta_de_hierro_arriba">Real Club Puerta de Hierro Arriba (Madrid, Spain)</option>
+          <option value="el_prat_pink">Real Club de Golf El Prat Pink (Barcelona, Catalonia, Spain)</option>
+          <option value="pga_catalunya_stadium">Camiral Golf & Wellness / PGA Catalunya (Girona, Spain)</option>
+          <option value="leeside_links">Lee Side Sovereign Links (Cork, Ireland)</option>
+        </select>
+      </div>
+
+      <div class="hole-selector" id="holeSelector">
+        <!-- 1 to 18 generated via JS -->
+      </div>
+
+      <div class="metrics-hud">
+        <div class="metric-pill">
+          <div class="metric-label">Hole / Par</div>
+          <div class="metric-val" id="hudHolePar">#1 / P4</div>
+        </div>
+        <div class="metric-pill">
+          <div class="metric-label">Hole Yds</div>
+          <div class="metric-val" id="hudTotalYards">408</div>
+        </div>
+        <div class="metric-pill">
+          <div class="metric-label">Pin Dist</div>
+          <div class="metric-val" id="hudPinDist">408 yds</div>
+        </div>
+        <div class="metric-pill">
+          <div class="metric-label">Wind</div>
+          <div class="metric-val" id="hudWind">12 SW</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2D Interactive Hole Canvas -->
+    <div class="canvas-card">
+      <div class="canvas-header">
+        <div class="canvas-title">
+          <span>🎯 2D Coordinate Plotter</span>
+        </div>
+        <div class="brand-subtitle" id="canvasCoords">X: 0.50 | Y: 0.88</div>
+      </div>
+
+      <div class="canvas-wrapper">
+        <canvas id="holeCanvas"></canvas>
+        <div class="canvas-hint" id="canvasHint">TAP OR DRAG TO PLACE BALL LOCATION</div>
+      </div>
+    </div>
+
+    <!-- Lie Selector Matrix -->
+    <div>
+      <div class="section-title">
+        <span>DETECTED / SELECTED LIE</span>
+        <span id="detectedLieLabel" style="color: var(--accent-green-bright); text-transform: none;">Tee Box</span>
+      </div>
+
+      <div class="lie-grid" id="lieGrid">
+        <div class="lie-btn selected" data-lie="TEE">
+          <span class="lie-icon">🟢</span>
+          <span class="lie-name">Tee Box</span>
+        </div>
+        <div class="lie-btn" data-lie="FAIRWAY">
+          <span class="lie-icon">🟩</span>
+          <span class="lie-name">Fairway</span>
+        </div>
+        <div class="lie-btn" data-lie="FIRST_CUT">
+          <span class="lie-icon">🌿</span>
+          <span class="lie-name">First Cut</span>
+        </div>
+        <div class="lie-btn" data-lie="ROUGH">
+          <span class="lie-icon">🌾</span>
+          <span class="lie-name">Primary Rough</span>
+        </div>
+        <div class="lie-btn" data-lie="DEEP_ROUGH">
+          <span class="lie-icon">🪵</span>
+          <span class="lie-name">Deep Rough</span>
+        </div>
+        <div class="lie-btn" data-lie="FAIRWAY_BUNKER">
+          <span class="lie-icon">🏖️</span>
+          <span class="lie-name">Fairway Bunker</span>
+        </div>
+        <div class="lie-btn" data-lie="GREENSIDE_BUNKER">
+          <span class="lie-icon">⏳</span>
+          <span class="lie-name">Greenside Bunker</span>
+        </div>
+        <div class="lie-btn" data-lie="FRINGE">
+          <span class="lie-icon">⛳</span>
+          <span class="lie-name">Fringe</span>
+        </div>
+        <div class="lie-btn" data-lie="GREEN">
+          <span class="lie-icon">🎯</span>
+          <span class="lie-name">Green</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shot Parameters Logger -->
+    <div class="logger-panel">
+      <div class="section-title">CLUB SELECTION</div>
+      <div class="club-bar" id="clubBar">
+        <!-- Clubs generated by JS -->
+      </div>
+
+      <div class="section-title">SWING INTENT</div>
+      <div class="chip-group" id="intentGroup">
+        <div class="chip selected" data-val="Full Swing">Full Swing</div>
+        <div class="chip" data-val="3/4 Control">3/4 Control</div>
+        <div class="chip" data-val="Punch/Stinger">Punch / Stinger</div>
+        <div class="chip" data-val="Flop/High Soft">Flop / Soft</div>
+        <div class="chip" data-val="Pitch/Chip">Pitch / Chip</div>
+        <div class="chip" data-val="Lag Putt">Lag Putt</div>
+      </div>
+
+      <div class="section-title">SHOT SHAPE & RESULT</div>
+      <div class="chip-group" id="shapeGroup">
+        <div class="chip selected" data-val="Straight">Straight</div>
+        <div class="chip" data-val="Baby Draw">Baby Draw</div>
+        <div class="chip" data-val="Fade">Fade</div>
+        <div class="chip" data-val="High Hook">Hook</div>
+        <div class="chip" data-val="Push Slice">Slice</div>
+        <div class="chip" data-val="Thin / Low">Thin</div>
+        <div class="chip" data-val="Fat / Chunk">Chunk</div>
+      </div>
+
+      <div class="row-flex" style="margin-top: 4px;">
+        <input type="text" id="spotterNotes" placeholder="Spotter observation notes (optional)...">
+      </div>
+    </div>
+
+    <!-- Main Action Button -->
+    <button class="action-btn" id="recordBtn">
+      <span>⚡ RECORD SHOT EVENT</span>
+    </button>
+
+    <!-- Session Ledger Feed Drawer -->
+    <div class="ledger-drawer">
+      <div class="ledger-header">
+        <div class="section-title" style="margin-bottom: 0;">SHOT LEDGER (<span id="ledgerCount">0</span>)</div>
+        <button id="exportJsonlBtn" style="background: none; border: none; color: #34d399 !important; font-size: 14px; font-weight: 900; cursor: pointer;">Export JSONL</button>
+      </div>
+
+      <div class="ledger-list" id="ledgerList">
+        <div style="text-align: center; color: #ffffff !important; font-size: 13px; padding: 14px;">No shots logged for this hole yet.</div>
+      </div>
+    </div>
+  </main>
+
+  <script type="module">
+    import {
+      LIE_TYPES,
+      LIE_LABELS,
+      CLUBS,
+      calculateDistanceYards,
+      detectLieFromCoordinates,
+      createShotEvent,
+      formatShotEventJsonl,
+    } from './src/golf/spotterEngine.js';
+
+    // State Variables
+    let currentHole = 1;
+    let shotNumber = 1;
+    let selectedLie = LIE_TYPES.TEE;
+    let selectedClub = '1W';
+    let selectedIntent = 'Full Swing';
+    let selectedShape = 'Straight';
+    let normX = 0.50;
+    let normY = 0.88;
+    let prevNormX = null;
+    let prevNormY = null;
+    let isDragging = false;
+    let ws = null;
+    let loggedShots = [];
+
+    const HOLE_DATA = {
+      1: { par: 4, yards: 408, hcp: 5 },
+      2: { par: 4, yards: 445, hcp: 1 },
+      3: { par: 3, yards: 182, hcp: 13 },
+      4: { par: 5, yards: 520, hcp: 9 },
+      5: { par: 4, yards: 395, hcp: 7 },
+      6: { par: 4, yards: 412, hcp: 3 },
+      7: { par: 3, yards: 165, hcp: 15 },
+      8: { par: 4, yards: 450, hcp: 2 },
+      9: { par: 4, yards: 388, hcp: 11 },
+      10: { par: 4, yards: 375, hcp: 12 },
+      11: { par: 4, yards: 468, hcp: 4 },
+      12: { par: 3, yards: 210, hcp: 8 },
+      13: { par: 5, yards: 540, hcp: 6 },
+      14: { par: 4, yards: 430, hcp: 10 },
+      15: { par: 3, yards: 194, hcp: 14 },
+      16: { par: 5, yards: 515, hcp: 16 },
+      17: { par: 4, yards: 410, hcp: 18 },
+      18: { par: 4, yards: 442, hcp: 17 },
+    };
+
+    // DOM References
+    const holeSelector = document.getElementById('holeSelector');
+    const clubBar = document.getElementById('clubBar');
+    const lieGrid = document.getElementById('lieGrid');
+    const holeCanvas = document.getElementById('holeCanvas');
+    const ctx = holeCanvas.getContext('2d');
+    const recordBtn = document.getElementById('recordBtn');
+    const statusBadge = document.getElementById('statusBadge');
+    const statusDot = document.getElementById('statusDot');
+    const statusText = document.getElementById('statusText');
+    const hudHolePar = document.getElementById('hudHolePar');
+    const hudTotalYards = document.getElementById('hudTotalYards');
+    const hudPinDist = document.getElementById('hudPinDist');
+    const canvasCoords = document.getElementById('canvasCoords');
+    const detectedLieLabel = document.getElementById('detectedLieLabel');
+    const ledgerList = document.getElementById('ledgerList');
+    const ledgerCount = document.getElementById('ledgerCount');
+    const exportJsonlBtn = document.getElementById('exportJsonlBtn');
+
+    // Font Accessibility Toggles
+    const fontJakartaBtn = document.getElementById('fontJakartaBtn');
+    const fontOutfitBtn = document.getElementById('fontOutfitBtn');
+    const fontInterBtn = document.getElementById('fontInterBtn');
+    const sizeStdBtn = document.getElementById('sizeStdBtn');
+    const sizeLgBtn = document.getElementById('sizeLgBtn');
+    const sizeXlBtn = document.getElementById('sizeXlBtn');
+
+    function setupTypographyControls() {
+      const setFont = (className, activeBtn) => {
+        document.body.classList.remove('font-jakarta', 'font-outfit', 'font-inter');
+        document.body.classList.add(className);
+        [fontJakartaBtn, fontOutfitBtn, fontInterBtn].forEach(b => b.classList.remove('active'));
+        activeBtn.classList.add('active');
+        resizeCanvas();
+      };
+
+      const setSize = (className, activeBtn) => {
+        document.body.classList.remove('size-large', 'size-xlarge');
+        if (className) document.body.classList.add(className);
+        [sizeStdBtn, sizeLgBtn, sizeXlBtn].forEach(b => b.classList.remove('active'));
+        activeBtn.classList.add('active');
+        resizeCanvas();
+      };
+
+      fontJakartaBtn.addEventListener('click', () => setFont('font-jakarta', fontJakartaBtn));
+      fontOutfitBtn.addEventListener('click', () => setFont('font-outfit', fontOutfitBtn));
+      fontInterBtn.addEventListener('click', () => setFont('font-inter', fontInterBtn));
+
+      sizeStdBtn.addEventListener('click', () => setSize('', sizeStdBtn));
+      sizeLgBtn.addEventListener('click', () => setSize('size-large', sizeLgBtn));
+      sizeXlBtn.addEventListener('click', () => setSize('size-xlarge', sizeXlBtn));
+    }
+
+    // Initialize UI
+    function initUI() {
+      setupTypographyControls();
+
+      // Build Hole Buttons
+      holeSelector.innerHTML = '';
+      for (let h = 1; h <= 18; h++) {
+        const btn = document.createElement('button');
+        btn.className = `hole-btn ${h === currentHole ? 'active' : ''}`;
+        btn.textContent = h;
+        btn.addEventListener('click', () => setHole(h));
+        holeSelector.appendChild(btn);
+      }
+
+      // Build Club Buttons
+      clubBar.innerHTML = '';
+      CLUBS.forEach((c) => {
+        const btn = document.createElement('button');
+        btn.className = `club-btn ${c === selectedClub ? 'selected' : ''}`;
+        btn.textContent = c;
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.club-btn').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+          selectedClub = c;
+        });
+        clubBar.appendChild(btn);
+      });
+
+      // Bind Intent & Shape Chips
+      bindChips('intentGroup', (v) => selectedIntent = v);
+      bindChips('shapeGroup', (v) => selectedShape = v);
+
+      // Bind Lie Buttons
+      document.querySelectorAll('.lie-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.lie-btn').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+          selectedLie = btn.dataset.lie;
+          detectedLieLabel.textContent = LIE_LABELS[selectedLie] || selectedLie;
+        });
+      });
+
+      // Setup Canvas
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+      setupCanvasEvents();
+
+      // Setup WebSocket
+      initWebSocket();
+
+      // Setup Record Button
+      recordBtn.addEventListener('click', recordShot);
+      exportJsonlBtn.addEventListener('click', exportJsonl);
+
+      updateHoleMetrics();
+      drawHole();
+    }
+
+    function bindChips(groupId, onSelect) {
+      const container = document.getElementById(groupId);
+      container.querySelectorAll('.chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          container.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+          chip.classList.add('selected');
+          onSelect(chip.dataset.val);
+        });
+      });
+    }
+
+    function setHole(h) {
+      currentHole = h;
+      shotNumber = 1;
+      normX = 0.50;
+      normY = 0.88;
+      prevNormX = null;
+      prevNormY = null;
+      document.querySelectorAll('.hole-btn').forEach(b => {
+        b.classList.toggle('active', parseInt(b.textContent) === h);
+      });
+      updateHoleMetrics();
+      updateLieFromPosition();
+      drawHole();
+    }
+
+    function updateHoleMetrics() {
+      const data = HOLE_DATA[currentHole] || { par: 4, yards: 400 };
+      hudHolePar.textContent = `#${currentHole} / P${data.par}`;
+      hudTotalYards.textContent = data.yards;
+
+      const pinDist = calculateDistanceYards(normX, normY, 0.50, 0.08, data.yards);
+      hudPinDist.textContent = `${pinDist} yds`;
+      canvasCoords.textContent = `X: ${normX.toFixed(2)} | Y: ${normY.toFixed(2)}`;
+    }
+
+    function updateLieFromPosition() {
+      const lie = detectLieFromCoordinates(normX, normY);
+      selectedLie = lie;
+      detectedLieLabel.textContent = LIE_LABELS[lie] || lie;
+      document.querySelectorAll('.lie-btn').forEach(btn => {
+        btn.classList.toggle('selected', btn.dataset.lie === lie);
+      });
+    }
+
+    function resizeCanvas() {
+      const rect = holeCanvas.parentElement.getBoundingClientRect();
+      holeCanvas.width = rect.width * window.devicePixelRatio;
+      holeCanvas.height = rect.height * window.devicePixelRatio;
+      drawHole();
+    }
+
+    function drawHole() {
+      const w = holeCanvas.width;
+      const h = holeCanvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      // Background - Primary Cut / Rough
+      ctx.fillStyle = '#0f291e';
+      ctx.fillRect(0, 0, w, h);
+
+      // Fairway Path (Dynamic curved fairway corridor)
+      ctx.beginPath();
+      ctx.moveTo(w * 0.35, h * 0.86);
+      ctx.bezierCurveTo(w * 0.30, h * 0.50, w * 0.70, h * 0.40, w * 0.65, h * 0.18);
+      ctx.lineTo(w * 0.35, h * 0.18);
+      ctx.bezierCurveTo(w * 0.40, h * 0.40, w * 0.15, h * 0.50, w * 0.20, h * 0.86);
+      ctx.closePath();
+      ctx.fillStyle = '#10b981';
+      ctx.fill();
+
+      // Water Hazard (Penalty Area right side)
+      ctx.beginPath();
+      ctx.ellipse(w * 0.80, h * 0.48, w * 0.12, h * 0.12, 0, 0, Math.PI * 2);
+      ctx.fillStyle = '#0284c7';
+      ctx.fill();
+      ctx.strokeStyle = '#38bdf8';
+      ctx.lineWidth = 3;
+      ctx.stroke();
+
+      // Fairway Bunker
+      ctx.beginPath();
+      ctx.ellipse(w * 0.62, h * 0.55, w * 0.05, h * 0.07, 0.4, 0, Math.PI * 2);
+      ctx.fillStyle = '#f59e0b';
+      ctx.fill();
+
+      // Green Complex
+      ctx.beginPath();
+      ctx.ellipse(w * 0.50, h * 0.10, w * 0.16, h * 0.08, 0, 0, Math.PI * 2);
+      ctx.fillStyle = '#34d399';
+      ctx.fill();
+      ctx.strokeStyle = '#6ee7b7';
+      ctx.lineWidth = 4;
+      ctx.stroke();
+
+      // Greenside Bunker Left & Right
+      ctx.beginPath();
+      ctx.ellipse(w * 0.30, h * 0.12, w * 0.04, h * 0.05, -0.3, 0, Math.PI * 2);
+      ctx.ellipse(w * 0.70, h * 0.12, w * 0.04, h * 0.05, 0.3, 0, Math.PI * 2);
+      ctx.fillStyle = '#f59e0b';
+      ctx.fill();
+
+      // Tee Box
+      ctx.fillStyle = '#059669';
+      ctx.fillRect(w * 0.35, h * 0.86, w * 0.30, h * 0.08);
+      ctx.strokeStyle = '#34d399';
+      ctx.lineWidth = 3;
+      ctx.strokeRect(w * 0.35, h * 0.86, w * 0.30, h * 0.08);
+
+      // Pin Position (Flag at top center)
+      const pinX = w * 0.50;
+      const pinY = h * 0.08;
+      ctx.beginPath();
+      ctx.moveTo(pinX, pinY);
+      ctx.lineTo(pinX, pinY - 30);
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 4;
+      ctx.stroke();
+
+      // Flag Triangle
+      ctx.beginPath();
+      ctx.moveTo(pinX, pinY - 30);
+      ctx.lineTo(pinX - 18, pinY - 22);
+      ctx.lineTo(pinX, pinY - 14);
+      ctx.closePath();
+      ctx.fillStyle = '#ef4444';
+      ctx.fill();
+
+      // Shot Vector Trajectory (if previous point exists)
+      if (prevNormX !== null && prevNormY !== null) {
+        ctx.beginPath();
+        ctx.moveTo(prevNormX * w, prevNormY * h);
+        ctx.lineTo(normX * w, normY * h);
+        ctx.strokeStyle = '#f59e0b';
+        ctx.lineWidth = 4;
+        ctx.setLineDash([8, 6]);
+        ctx.stroke();
+        ctx.setLineDash([]);
+      }
+
+      // Current Ball Position Marker
+      const ballX = normX * w;
+      const ballY = normY * h;
+
+      // Pulse Ring
+      ctx.beginPath();
+      ctx.arc(ballX, ballY, 18, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(16, 185, 129, 0.4)';
+      ctx.fill();
+
+      // Ball Core
+      ctx.beginPath();
+      ctx.arc(ballX, ballY, 9, 0, Math.PI * 2);
+      ctx.fillStyle = '#ffffff';
+      ctx.fill();
+      ctx.strokeStyle = '#10b981';
+      ctx.lineWidth = 4;
+      ctx.stroke();
+    }
+
+    function setupCanvasEvents() {
+      const handleTouch = (e) => {
+        const rect = holeCanvas.getBoundingClientRect();
+        const touch = e.touches ? e.touches[0] : e;
+        const x = (touch.clientX - rect.left) / rect.width;
+        const y = (touch.clientY - rect.top) / rect.height;
+
+        normX = Math.max(0.02, Math.min(0.98, x));
+        normY = Math.max(0.02, Math.min(0.98, y));
+
+        updateHoleMetrics();
+        updateLieFromPosition();
+        drawHole();
+      };
+
+      holeCanvas.addEventListener('mousedown', (e) => { isDragging = true; handleTouch(e); });
+      window.addEventListener('mousemove', (e) => { if (isDragging) handleTouch(e); });
+      window.addEventListener('mouseup', () => { isDragging = false; });
+
+      holeCanvas.addEventListener('touchstart', (e) => { isDragging = true; handleTouch(e); });
+      holeCanvas.addEventListener('touchmove', (e) => { if (isDragging) handleTouch(e); });
+      holeCanvas.addEventListener('touchend', () => { isDragging = false; });
+    }
+
+    function initWebSocket() {
+      const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+      const wsUrl = `${protocol}//${window.location.host}/ws/shot-events`;
+
+      try {
+        ws = new WebSocket(wsUrl);
+        ws.onopen = () => {
+          statusDot.classList.remove('offline');
+          statusText.textContent = 'WS CONNECTED';
+          statusBadge.style.borderColor = 'rgba(52, 211, 153, 0.6)';
+        };
+        ws.onclose = ws.onerror = () => {
+          statusDot.classList.add('offline');
+          statusText.textContent = 'HTTP SINK (ACTIVE)';
+          statusBadge.style.borderColor = 'rgba(251, 191, 36, 0.6)';
+        };
+      } catch {
+        statusDot.classList.add('offline');
+        statusText.textContent = 'LOCAL QUEUE';
+      }
+    }
+
+    async function recordShot() {
+      // Trigger haptic feedback
+      if (navigator.vibrate) navigator.vibrate(40);
+
+      const hole = HOLE_DATA[currentHole] || { par: 4, yards: 400 };
+      const event = createShotEvent({
+        hole_number: currentHole,
+        hole_par: hole.par,
+        hole_total_yards: hole.yards,
+        shot_number: shotNumber,
+        norm_x: normX,
+        norm_y: normY,
+        prev_norm_x: prevNormX,
+        prev_norm_y: prevNormY,
+        lie_type: selectedLie,
+        club: selectedClub,
+        intent: selectedIntent,
+        shot_shape: selectedShape,
+        remaining_to_pin_yards: calculateDistanceYards(normX, normY, 0.50, 0.08, hole.yards),
+        notes: document.getElementById('spotterNotes').value,
+      });
+
+      loggedShots.push(event);
+
+      // Attempt WebSocket / HTTP sync
+      let synced = false;
+      if (ws && ws.readyState === WebSocket.OPEN) {
+        ws.send(JSON.stringify(event));
+        synced = true;
+      } else {
+        try {
+          const res = await fetch('/api/shot-events', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(event),
+          });
+          if (res.ok) synced = true;
+        } catch {
+          // Saved locally in loggedShots array
+        }
+      }
+
+      // Visual Feedback
+      recordBtn.style.transform = 'scale(0.96)';
+      setTimeout(() => recordBtn.style.transform = 'scale(1)', 150);
+
+      // Prepare for next shot
+      prevNormX = normX;
+      prevNormY = normY;
+      shotNumber++;
+      document.getElementById('spotterNotes').value = '';
+
+      renderLedger();
+      drawHole();
+    }
+
+    function renderLedger() {
+      ledgerCount.textContent = loggedShots.length;
+      if (loggedShots.length === 0) {
+        ledgerList.innerHTML = `<div style="text-align: center; color: #ffffff !important; font-size: 13px; padding: 14px;">No shots logged for this hole yet.</div>`;
+        return;
+      }
+
+      ledgerList.innerHTML = loggedShots.slice().reverse().map(shot => `
+        <div class="ledger-item">
+          <div class="ledger-main">
+            <div class="shot-num">${shot.shot_number}</div>
+            <div class="shot-details">
+              <div class="shot-title">Hole ${shot.hole_number} · ${shot.club} (${shot.lie_label})</div>
+              <div class="shot-sub">${shot.intent} · ${shot.metrics.remaining_to_pin_yards} yds remaining</div>
+            </div>
+          </div>
+          <div class="shot-sync">SYNCED</div>
+        </div>
+      `).join('');
+    }
+
+    function exportJsonl() {
+      if (loggedShots.length === 0) {
+        alert('No shot events in ledger to export.');
+        return;
+      }
+      const jsonlText = loggedShots.map(s => formatShotEventJsonl(s)).join('\n') + '\n';
+      const blob = new Blob([jsonlText], { type: 'application/x-ndjson' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `shot_events_${Date.now()}.jsonl`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    window.addEventListener('DOMContentLoaded', initUI);
+  </script>
+</body>
+</html>

@@ -1,0 +1,2555 @@
+{
+  "schema_version": "4.2.0",
+  "governance_patent": "WO/2026/150385",
+  "engine_name": "Geographic Memory Engine - Complete 18-Hole Pilot Cohort Registry",
+  "last_updated": "2026-09-01T21:18:09.734Z",
+  "courses": {
+    "st_andrews_old": {
+      "course_id": "st_andrews_old",
+      "name": "St Andrews Links (The Old Course)",
+      "cohort": "Links Core (Batch A)",
+      "established": 1552,
+      "par": 72,
+      "total_yards": 7305,
+      "location": {
+        "lat": 56.3432,
+        "lng": -2.8027,
+        "elevation_m": 6,
+        "region": "Fife, Scotland",
+        "country": "Scotland"
+      },
+      "prevailing_winds": {
+        "primary_direction_deg": 65,
+        "primary_cardinal": "ENE",
+        "avg_speed_mph": 20,
+        "gust_max_mph": 40
+      },
+      "environmental_constants": {
+        "base_air_density_delta": "0.0%",
+        "surface_firmness_rating": "Very High (Links Turf)",
+        "prevailing_wind_vectors": [
+          "North_Sea_ENE",
+          "West_Southwest"
+        ]
+      },
+      "lore": {
+        "home_of_golf": "The sacred birthplace of golf with 7 double greens and 112 pot bunkers.",
+        "watson_quote": "St Andrews is the birthplace of golf — every hole tells a story."
+      },
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Burn",
+          "par": 4,
+          "yards": 376,
+          "handicap": 10
+        },
+        "14": {
+          "number": 14,
+          "name": "Long",
+          "par": 5,
+          "yards": 618,
+          "handicap": 1
+        },
+        "17": {
+          "number": 17,
+          "name": "Road Hole",
+          "par": 4,
+          "yards": 495,
+          "handicap": 2
+        },
+        "18": {
+          "number": 18,
+          "name": "Tom Morris",
+          "par": 4,
+          "yards": 357,
+          "handicap": 18
+        }
+      },
+      "hole_count": 18,
+      "hole_registry": [
+        {
+          "hole_number": 1,
+          "name": "Burn",
+          "par": 4,
+          "championship_yardage": 376,
+          "handicap": 10,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "water_hazard": "Swilcan Burn in front of green"
+          },
+          "agent_directives": {
+            "caddy": "Aim right over 18th fairway line; carry Swilcan Burn with wedge."
+          }
+        },
+        {
+          "hole_number": 2,
+          "name": "Outer",
+          "par": 4,
+          "championship_yardage": 453,
+          "handicap": 6,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "pot_bunkers": "Cheape's Bunker"
+          },
+          "agent_directives": {
+            "caddy": "Drive right of center fairway; approach to shared 2/16 green."
+          }
+        },
+        {
+          "hole_number": 3,
+          "name": "Cartgate (Out)",
+          "par": 4,
+          "championship_yardage": 397,
+          "handicap": 14,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "pot_bunkers": "Cartgate Bunker right"
+          },
+          "agent_directives": {
+            "caddy": "Favor right side; approach shared 3/15 green avoiding gorse."
+          }
+        },
+        {
+          "hole_number": 4,
+          "name": "Ginger Beer",
+          "par": 4,
+          "championship_yardage": 480,
+          "handicap": 2,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "mounds": "Cottage Mounds right, Students' Bunkers left"
+          },
+          "agent_directives": {
+            "statty": "SI-2 brute; aggressive line over mounds gains +0.28 EV."
+          }
+        },
+        {
+          "hole_number": 5,
+          "name": "Hole O'Cross (Out)",
+          "par": 5,
+          "championship_yardage": 568,
+          "handicap": 8,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "pot_bunkers": "Seven Sisters Bunkers"
+          },
+          "agent_directives": {
+            "caddy": "Lay up short of Seven Sisters; shared 5/13 green is 100 yards deep."
+          }
+        },
+        {
+          "hole_number": 6,
+          "name": "Heathery (Out)",
+          "par": 4,
+          "championship_yardage": 412,
+          "handicap": 12,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "pot_bunkers": "Coffin Bunkers left"
+          },
+          "agent_directives": {
+            "caddy": "Avoid Coffin Bunkers at all costs; drive right fairway."
+          }
+        },
+        {
+          "hole_number": 7,
+          "name": "High (Out)",
+          "par": 4,
+          "championship_yardage": 371,
+          "handicap": 16,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "pot_bunkers": "Shell Bunker"
+          },
+          "agent_directives": {
+            "caddy": "Blind drive; aim over March stone line."
+          }
+        },
+        {
+          "hole_number": 8,
+          "name": "Short",
+          "par": 3,
+          "championship_yardage": 175,
+          "handicap": 4,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "pot_bunkers": "Short Hole Bunker front"
+          },
+          "agent_directives": {
+            "caddy": "First single green; tee shot into prevailing wind."
+          }
+        },
+        {
+          "hole_number": 9,
+          "name": "End",
+          "par": 4,
+          "championship_yardage": 352,
+          "handicap": 18,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "pot_bunkers": "Boase's and End Hole Bunkers"
+          },
+          "agent_directives": {
+            "caddy": "Driveable par 4 for long hitters; lay up option safe."
+          }
+        },
+        {
+          "hole_number": 10,
+          "name": "Bobby Jones",
+          "par": 4,
+          "championship_yardage": 386,
+          "handicap": 13,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "gorse": "Gorse scrub left and right"
+          },
+          "agent_directives": {
+            "caddy": "Wide fairway; approach into flat green."
+          }
+        },
+        {
+          "hole_number": 11,
+          "name": "High (In)",
+          "par": 3,
+          "championship_yardage": 174,
+          "handicap": 7,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "pot_bunkers": "Strath Bunker front, Hill Bunker left"
+          },
+          "agent_directives": {
+            "caddy": "Severe slope back to front; do not land in Strath Bunker."
+          }
+        },
+        {
+          "hole_number": 12,
+          "name": "Heathery (In)",
+          "par": 4,
+          "championship_yardage": 348,
+          "handicap": 15,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "pot_bunkers": "Hidden fairway pot bunkers"
+          },
+          "agent_directives": {
+            "caddy": "Blind drive; layup with 3-iron guarantees fairway lie."
+          }
+        },
+        {
+          "hole_number": 13,
+          "name": "Hole O'Cross (In)",
+          "par": 4,
+          "championship_yardage": 465,
+          "handicap": 3,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "pot_bunkers": "Coffins and Beardies left"
+          },
+          "agent_directives": {
+            "caddy": "Drive right toward March stone; long approach into 5/13 double green."
+          }
+        },
+        {
+          "hole_number": 14,
+          "name": "Long",
+          "par": 5,
+          "championship_yardage": 618,
+          "handicap": 1,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "pot_bunkers": "Hell Bunker (10-ft deep wall), Beardies left"
+          },
+          "agent_directives": {
+            "caddy": "Lay up right of Hell Bunker; do not challenge 10-ft sand wall into wind."
+          }
+        },
+        {
+          "hole_number": 15,
+          "name": "Cartgate (In)",
+          "par": 4,
+          "championship_yardage": 455,
+          "handicap": 9,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "pot_bunkers": "Robbie's Bunker"
+          },
+          "agent_directives": {
+            "caddy": "Drive left-center fairway; approach to shared 3/15 green."
+          }
+        },
+        {
+          "hole_number": 16,
+          "name": "Corner of the Dyke",
+          "par": 4,
+          "championship_yardage": 423,
+          "handicap": 11,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "pot_bunkers": "Principal's Nose and Deacon Sime Bunkers"
+          },
+          "agent_directives": {
+            "caddy": "Steer drive right of Principal's Nose; OB wall right."
+          }
+        },
+        {
+          "hole_number": 17,
+          "name": "Road Hole",
+          "par": 4,
+          "championship_yardage": 495,
+          "handicap": 5,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "blind_tee_carry": "Old Course Hotel Sheds",
+            "greenside_penalty": "Road Hole Bunker (front left)",
+            "rear_boundary": "Tarmac Road & Stone Wall (Rule 18.2 applies)"
+          },
+          "agent_directives": {
+            "caddy": "Aim over letter 'L' of hotel sheds; plays +12 yards into prevailing wind.",
+            "statty": "Approaching right-side bailout yields +0.38 EV over targeting tucked pins near bunker.",
+            "puttser": "Approach runs heavy toward road if landing past front-left tier."
+          }
+        },
+        {
+          "hole_number": 18,
+          "name": "Tom Morris",
+          "par": 4,
+          "championship_yardage": 357,
+          "handicap": 17,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "dip": "Valley of Sin in front of green"
+          },
+          "agent_directives": {
+            "caddy": "Drive across Swilcan Bridge corridor; carry Valley of Sin to back pin."
+          }
+        }
+      ]
+    },
+    "royal_county_down": {
+      "course_id": "royal_county_down",
+      "name": "Royal County Down Golf Club",
+      "cohort": "Links Core (Batch A)",
+      "established": 1889,
+      "par": 71,
+      "total_yards": 7186,
+      "location": {
+        "lat": 54.2178,
+        "lng": -5.8889,
+        "elevation_m": 14,
+        "region": "Newcastle, Down",
+        "country": "Northern Ireland"
+      },
+      "prevailing_winds": {
+        "primary_direction_deg": 120,
+        "primary_cardinal": "ESE",
+        "avg_speed_mph": 22,
+        "gust_max_mph": 42
+      },
+      "environmental_constants": {
+        "base_air_density_delta": "0.0%",
+        "surface_firmness_rating": "Extreme (Irish Sea Duneland)",
+        "prevailing_wind_vectors": [
+          "Irish_Sea_ESE",
+          "Mourne_Downburst"
+        ]
+      },
+      "lore": {
+        "mourne_backdrop": "Framed by the dramatic Mountains of Mourne sweeping down to the Irish Sea."
+      },
+      "holes": {
+        "4": {
+          "number": 4,
+          "name": "The Giant",
+          "par": 3,
+          "yards": 228,
+          "handicap": 11
+        },
+        "9": {
+          "number": 9,
+          "name": "The Castle",
+          "par": 4,
+          "yards": 486,
+          "handicap": 1
+        }
+      },
+      "hole_count": 18,
+      "hole_registry": [
+        {
+          "hole_number": 1,
+          "name": "Dunluce",
+          "par": 5,
+          "championship_yardage": 539,
+          "handicap": 13,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "gorse": "Dense gorse left and Irish Sea right"
+          },
+          "agent_directives": {
+            "caddy": "Opening par 5 toward Irish Sea; favor right-center fairway."
+          }
+        },
+        {
+          "hole_number": 2,
+          "name": "Gulley",
+          "par": 4,
+          "championship_yardage": 444,
+          "handicap": 7,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "blind_tee": "Blind tee shot over dune ridge"
+          },
+          "agent_directives": {
+            "caddy": "Aim for red apex marker on dune ridge."
+          }
+        },
+        {
+          "hole_number": 3,
+          "name": "Braid's",
+          "par": 4,
+          "championship_yardage": 475,
+          "handicap": 3,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "pot_bunkers": "Deep fairway pot bunkers"
+          },
+          "agent_directives": {
+            "caddy": "Brute par 4 into prevailing sea gale."
+          }
+        },
+        {
+          "hole_number": 4,
+          "name": "The Giant",
+          "par": 3,
+          "championship_yardage": 228,
+          "handicap": 11,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "gorse_bunkers": "10 gorse-bearded pot bunkers"
+          },
+          "agent_directives": {
+            "caddy": "Target center green plateau; wind downburst drops ball 8 yards short."
+          }
+        },
+        {
+          "hole_number": 5,
+          "name": "Spion Kop",
+          "par": 4,
+          "championship_yardage": 440,
+          "handicap": 5,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "blind_second": "Blind approach shot over dune hill"
+          },
+          "agent_directives": {
+            "caddy": "Trust distance card; green slopes back-to-front."
+          }
+        },
+        {
+          "hole_number": 6,
+          "name": "Dunbar",
+          "par": 3,
+          "championship_yardage": 215,
+          "handicap": 15,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "pine": "Pine grove framing green"
+          },
+          "agent_directives": {
+            "caddy": "Crosswind from Mourne Mountains; play 1 extra club."
+          }
+        },
+        {
+          "hole_number": 7,
+          "name": "Annesley",
+          "par": 4,
+          "championship_yardage": 395,
+          "handicap": 9,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "gorse": "Gorse alleyway"
+          },
+          "agent_directives": {
+            "caddy": "Tight tee shot demands 3-wood precision."
+          }
+        },
+        {
+          "hole_number": 8,
+          "name": "Himalayas",
+          "par": 4,
+          "championship_yardage": 430,
+          "handicap": 17,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "dunes": "Towering sand dunes"
+          },
+          "agent_directives": {
+            "caddy": "Elevated tee; funnels down to wide fairway basin."
+          }
+        },
+        {
+          "hole_number": 9,
+          "name": "The Castle",
+          "par": 4,
+          "championship_yardage": 486,
+          "handicap": 1,
+          "elevation_delta_m": -12,
+          "critical_hazards": {
+            "blind_ridge": "Elevated dune ridge blind drive"
+          },
+          "agent_directives": {
+            "zenner": "Focus on aim point over white rock on dune ridge; trust visual line."
+          }
+        },
+        {
+          "hole_number": 10,
+          "name": "St. John's",
+          "par": 3,
+          "championship_yardage": 196,
+          "handicap": 14,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "pot_bunkers": "Greenside pot bunkers"
+          },
+          "agent_directives": {
+            "caddy": "Downhill par 3 facing Slieve Donard mountain peak."
+          }
+        },
+        {
+          "hole_number": 11,
+          "name": "Valley",
+          "par": 4,
+          "championship_yardage": 442,
+          "handicap": 8,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "gorse": "Deep gorse banks"
+          },
+          "agent_directives": {
+            "caddy": "Fairway snakes through dune valley."
+          }
+        },
+        {
+          "hole_number": 12,
+          "name": "Slieve Donard",
+          "par": 5,
+          "championship_yardage": 525,
+          "handicap": 10,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "ditch": "Cross ditch 80 yards short of green"
+          },
+          "agent_directives": {
+            "statty": "Reachable par 5; lay up yields +0.15 EV over cross-ditch carry."
+          }
+        },
+        {
+          "hole_number": 13,
+          "name": "Widow's Peak",
+          "par": 4,
+          "championship_yardage": 445,
+          "handicap": 4,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "blind_approach": "Blind approach to plateau green"
+          },
+          "agent_directives": {
+            "caddy": "High arc approach required to hold firm green."
+          }
+        },
+        {
+          "hole_number": 14,
+          "name": "Short",
+          "par": 3,
+          "championship_yardage": 212,
+          "handicap": 16,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "pot_bunkers": "Deep sand crater bunkers"
+          },
+          "agent_directives": {
+            "caddy": "Exposed tee box into Atlantic sea breeze."
+          }
+        },
+        {
+          "hole_number": 15,
+          "name": "Bunker Hill",
+          "par": 4,
+          "championship_yardage": 466,
+          "handicap": 2,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "pot_bunkers": "Fairway pot bunker complex"
+          },
+          "agent_directives": {
+            "caddy": "SI-2 brute; favor right fairway corridor."
+          }
+        },
+        {
+          "hole_number": 16,
+          "name": "Home Dip",
+          "par": 4,
+          "championship_yardage": 336,
+          "handicap": 18,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "gorse": "Gorse ridge right"
+          },
+          "agent_directives": {
+            "caddy": "Short tactical par 4; iron off tee recommended."
+          }
+        },
+        {
+          "hole_number": 17,
+          "name": "Pond",
+          "par": 4,
+          "championship_yardage": 407,
+          "handicap": 12,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "pond": "Pond in fairway landing zone"
+          },
+          "agent_directives": {
+            "caddy": "Carrying pond requires 250yd carry; lay up left."
+          }
+        },
+        {
+          "hole_number": 18,
+          "name": "Clubhouse",
+          "par": 5,
+          "championship_yardage": 548,
+          "handicap": 6,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "pot_bunkers": "12 fairway bunkers framing closing hole"
+          },
+          "agent_directives": {
+            "caddy": "Classic links finish heading toward Newcastle clubhouse."
+          }
+        }
+      ]
+    },
+    "pebble_beach": {
+      "course_id": "pebble_beach",
+      "name": "Pebble Beach Golf Links",
+      "cohort": "US Championship (Batch B)",
+      "established": 1919,
+      "par": 72,
+      "total_yards": 7075,
+      "location": {
+        "lat": 36.5688,
+        "lng": -121.9506,
+        "elevation_m": 12,
+        "region": "Pebble Beach, California",
+        "country": "USA"
+      },
+      "prevailing_winds": {
+        "primary_direction_deg": 270,
+        "primary_cardinal": "W",
+        "avg_speed_mph": 15,
+        "gust_max_mph": 32
+      },
+      "environmental_constants": {
+        "base_air_density_delta": "+1.2%",
+        "surface_firmness_rating": "Medium-High (Poa Annua Greens)",
+        "prevailing_wind_vectors": [
+          "Pacific_Ocean_West"
+        ]
+      },
+      "lore": {
+        "cliffside_grandeur": "Pebble Beach features 8 holes perched directly above the crashing Pacific Ocean."
+      },
+      "holes": {
+        "7": {
+          "number": 7,
+          "name": "Ocean Cliff",
+          "par": 3,
+          "yards": 106,
+          "handicap": 18
+        },
+        "8": {
+          "number": 8,
+          "name": "Chasm",
+          "par": 4,
+          "yards": 428,
+          "handicap": 6
+        },
+        "18": {
+          "number": 18,
+          "name": "Stillwater Cove",
+          "par": 5,
+          "yards": 543,
+          "handicap": 2
+        }
+      },
+      "hole_count": 18,
+      "hole_registry": [
+        {
+          "hole_number": 1,
+          "name": "Main Street",
+          "par": 4,
+          "championship_yardage": 380,
+          "handicap": 8,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "trees": "Dogleg right around Cypress tree"
+          },
+          "agent_directives": {
+            "caddy": "Gentle opener; lay up 220yd off tee to clear dogleg."
+          }
+        },
+        {
+          "hole_number": 2,
+          "name": "Peter Hay",
+          "par": 5,
+          "championship_yardage": 502,
+          "handicap": 10,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "ditch": "Baranca ditch crossing fairway"
+          },
+          "agent_directives": {
+            "statty": "Reachable par 5 in two; carry baranca ditch for birdie chance."
+          }
+        },
+        {
+          "hole_number": 3,
+          "name": "Rodeo",
+          "par": 4,
+          "championship_yardage": 390,
+          "handicap": 12,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "ravine": "Arroyo ravine left"
+          },
+          "agent_directives": {
+            "caddy": "Dogleg left; aim drive right of arroyo."
+          }
+        },
+        {
+          "hole_number": 4,
+          "name": "Creek",
+          "par": 4,
+          "championship_yardage": 331,
+          "handicap": 16,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "ocean": "Stillwater Cove right"
+          },
+          "agent_directives": {
+            "caddy": "Short par 4; iron off tee keeps ball in play."
+          }
+        },
+        {
+          "hole_number": 5,
+          "name": "Jack Nicklaus",
+          "par": 3,
+          "championship_yardage": 195,
+          "handicap": 14,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "ocean": "Ocean cliff right, severe green slope"
+          },
+          "agent_directives": {
+            "caddy": "Jack Nicklaus redesigned par 3 played over ocean cove."
+          }
+        },
+        {
+          "hole_number": 6,
+          "name": "Cliffs",
+          "par": 5,
+          "championship_yardage": 523,
+          "handicap": 2,
+          "elevation_delta_m": 14,
+          "critical_hazards": {
+            "ocean_cliff": "Pacific Ocean cliff all along right side"
+          },
+          "agent_directives": {
+            "caddy": "Blind second shot carrying uphill over ocean cliff."
+          }
+        },
+        {
+          "hole_number": 7,
+          "name": "Ocean Cliff",
+          "par": 3,
+          "championship_yardage": 106,
+          "handicap": 18,
+          "elevation_delta_m": -8,
+          "critical_hazards": {
+            "ocean": "Pacific Ocean surrounds green on 3 sides"
+          },
+          "agent_directives": {
+            "tailor": "Heavy ocean air increases drag; use lower spinning 9-iron punch."
+          }
+        },
+        {
+          "hole_number": 8,
+          "name": "Chasm",
+          "par": 4,
+          "championship_yardage": 428,
+          "handicap": 6,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "ocean_chasm": "90-foot ocean chasm carry on 2nd shot"
+          },
+          "agent_directives": {
+            "caddy": "One of the greatest 2nd shots in golf across ocean chasm."
+          }
+        },
+        {
+          "hole_number": 9,
+          "name": "Carmel Bay",
+          "par": 4,
+          "championship_yardage": 505,
+          "handicap": 4,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "ocean_beach": "Carmel Bay beach right"
+          },
+          "agent_directives": {
+            "caddy": "Brutal 505yd par 4 along ocean cliff."
+          }
+        },
+        {
+          "hole_number": 10,
+          "name": "Carmel Beach",
+          "par": 4,
+          "championship_yardage": 495,
+          "handicap": 3,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "ocean_cliff": "Ocean cliff right, sloping fairway"
+          },
+          "agent_directives": {
+            "caddy": "Fairway slants toward ocean; aim drive left."
+          }
+        },
+        {
+          "hole_number": 11,
+          "name": "Del Monte",
+          "par": 4,
+          "championship_yardage": 390,
+          "handicap": 11,
+          "elevation_delta_m": 6,
+          "critical_hazards": {
+            "trees": "Uphill drive into pine forest corridor"
+          },
+          "agent_directives": {
+            "caddy": "Uphill approach into smallest green on course."
+          }
+        },
+        {
+          "hole_number": 12,
+          "name": "Apex",
+          "par": 3,
+          "championship_yardage": 202,
+          "handicap": 7,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "bunkers": "Deep greenside bunker complex"
+          },
+          "agent_directives": {
+            "caddy": "Long par 3 playing into prevailing ocean wind."
+          }
+        },
+        {
+          "hole_number": 13,
+          "name": "Alister MacKenzie",
+          "par": 4,
+          "championship_yardage": 445,
+          "handicap": 9,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "bunkers": "Cross bunkers in landing zone"
+          },
+          "agent_directives": {
+            "caddy": "Uphill approach to plateau green."
+          }
+        },
+        {
+          "hole_number": 14,
+          "name": "MacKenzie Ridge",
+          "par": 5,
+          "championship_yardage": 580,
+          "handicap": 1,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "bunker": "Massive greenside sand trap right"
+          },
+          "agent_directives": {
+            "statty": "SI-1 monster par 5; lay up 100yd out for full wedge control."
+          }
+        },
+        {
+          "hole_number": 15,
+          "name": "Cypress",
+          "par": 4,
+          "championship_yardage": 397,
+          "handicap": 13,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "trees": "Cypress trees framing fairway"
+          },
+          "agent_directives": {
+            "caddy": "Straight drive required down narrow cypress corridor."
+          }
+        },
+        {
+          "hole_number": 16,
+          "name": "Island Green",
+          "par": 4,
+          "championship_yardage": 403,
+          "handicap": 15,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "bunker": "Cross bunker bisecting fairway"
+          },
+          "agent_directives": {
+            "caddy": "Drive over fairway bunker; approach to tiny green."
+          }
+        },
+        {
+          "hole_number": 17,
+          "name": "Tom Watson",
+          "par": 3,
+          "championship_yardage": 208,
+          "handicap": 5,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "ocean": "Pacific Ocean behind, hourglass green"
+          },
+          "agent_directives": {
+            "caddy": "Site of Watson's famous chip-in in 1982 US Open."
+          }
+        },
+        {
+          "hole_number": 18,
+          "name": "Stillwater Cove",
+          "par": 5,
+          "championship_yardage": 543,
+          "handicap": 2,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "ocean_seawall": "Pacific Ocean sea wall all along left, central tree"
+          },
+          "agent_directives": {
+            "caddy": "Classic closing par 5 wrapping around Stillwater Cove sea wall."
+          }
+        }
+      ]
+    },
+    "pga_catalunya_stadium": {
+      "course_id": "pga_catalunya_stadium",
+      "name": "Camiral Golf & Wellness (Stadium Course)",
+      "cohort": "Mediterranean (Batch D)",
+      "established": 1999,
+      "par": 72,
+      "total_yards": 7333,
+      "location": {
+        "lat": 41.8794,
+        "lng": 2.7667,
+        "elevation_m": 120,
+        "region": "Girona, Catalonia",
+        "country": "Spain"
+      },
+      "prevailing_winds": {
+        "primary_direction_deg": 25,
+        "primary_cardinal": "NNE",
+        "avg_speed_mph": 14,
+        "gust_max_mph": 28
+      },
+      "environmental_constants": {
+        "base_air_density_delta": "-1.4%",
+        "surface_firmness_rating": "High (Catalan Bentgrass)",
+        "prevailing_wind_vectors": [
+          "Tramuntana_NNE",
+          "Garbi_SSW"
+        ]
+      },
+      "lore": {
+        "ryder_cup_2031": "Selected venue for the 2031 Ryder Cup Match."
+      },
+      "holes": {
+        "3": {
+          "number": 3,
+          "name": "Lake Guard",
+          "par": 5,
+          "yards": 560,
+          "handicap": 7
+        },
+        "9": {
+          "number": 9,
+          "name": "SI-1 Brute",
+          "par": 4,
+          "yards": 467,
+          "handicap": 1
+        },
+        "11": {
+          "number": 11,
+          "name": "Pyrenees Drop",
+          "par": 3,
+          "yards": 189,
+          "handicap": 11
+        },
+        "13": {
+          "number": 13,
+          "name": "Pine Canopy",
+          "par": 4,
+          "yards": 435,
+          "handicap": 3
+        },
+        "18": {
+          "number": 18,
+          "name": "Stadium Finish",
+          "par": 4,
+          "yards": 465,
+          "handicap": 5
+        }
+      },
+      "hole_count": 18,
+      "hole_registry": [
+        {
+          "hole_number": 1,
+          "name": "Pyrenees Gateway",
+          "par": 4,
+          "championship_yardage": 435,
+          "handicap": 9,
+          "elevation_delta_m": 4,
+          "critical_hazards": {
+            "pines": "Umbrella pine forest left and right"
+          },
+          "agent_directives": {
+            "caddy": "Elevated tee drive down pine corridor."
+          }
+        },
+        {
+          "hole_number": 2,
+          "name": "Cork Oak",
+          "par": 4,
+          "championship_yardage": 410,
+          "handicap": 13,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "bunkers": "Fairway bunkers right"
+          },
+          "agent_directives": {
+            "caddy": "Dogleg right; favor left fairway."
+          }
+        },
+        {
+          "hole_number": 3,
+          "name": "Lake Guard",
+          "par": 5,
+          "championship_yardage": 560,
+          "handicap": 7,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "lake": "Lake guarding right side of green"
+          },
+          "agent_directives": {
+            "statty": "Lake guards right; lay up to center green yields +0.42 EV."
+          }
+        },
+        {
+          "hole_number": 4,
+          "name": "Catalan Ridge",
+          "par": 4,
+          "championship_yardage": 385,
+          "handicap": 15,
+          "elevation_delta_m": -6,
+          "critical_hazards": {
+            "water": "Stream crossing fairway"
+          },
+          "agent_directives": {
+            "caddy": "Downhill drive; 3-wood off tee avoids stream."
+          }
+        },
+        {
+          "hole_number": 5,
+          "name": "Monastery",
+          "par": 3,
+          "championship_yardage": 215,
+          "handicap": 5,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "lake": "Lake carry to peninsula green"
+          },
+          "agent_directives": {
+            "caddy": "Long par 3 carry over lake; play 1 extra club."
+          }
+        },
+        {
+          "hole_number": 6,
+          "name": "Girona Crest",
+          "par": 4,
+          "championship_yardage": 445,
+          "handicap": 3,
+          "elevation_delta_m": 8,
+          "critical_hazards": {
+            "pines": "Dense umbrella pines"
+          },
+          "agent_directives": {
+            "caddy": "Uphill brute into multi-tiered green."
+          }
+        },
+        {
+          "hole_number": 7,
+          "name": "Valley Stream",
+          "par": 5,
+          "championship_yardage": 535,
+          "handicap": 11,
+          "elevation_delta_m": -10,
+          "critical_hazards": {
+            "stream": "Winding valley stream"
+          },
+          "agent_directives": {
+            "statty": "Downhill par 5; aggressive eagle attempt."
+          }
+        },
+        {
+          "hole_number": 8,
+          "name": "Pine Needle",
+          "par": 3,
+          "championship_yardage": 170,
+          "handicap": 17,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "bunkers": "3 deep greenside bunkers"
+          },
+          "agent_directives": {
+            "caddy": "Short iron target hole."
+          }
+        },
+        {
+          "hole_number": 9,
+          "name": "SI-1 Brute",
+          "par": 4,
+          "championship_yardage": 467,
+          "handicap": 1,
+          "elevation_delta_m": 9.5,
+          "critical_hazards": {
+            "elevation": "+9.5m uphill drive, 24m fairway pinch"
+          },
+          "agent_directives": {
+            "caddy": "+9.5m uphill compression; play +12 yards longer."
+          }
+        },
+        {
+          "hole_number": 10,
+          "name": "Resort Start",
+          "par": 4,
+          "championship_yardage": 415,
+          "handicap": 10,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "pines": "Umbrella pine overhangs"
+          },
+          "agent_directives": {
+            "caddy": "Favor left fairway away from pine overhangs."
+          }
+        },
+        {
+          "hole_number": 11,
+          "name": "Pyrenees Drop",
+          "par": 3,
+          "championship_yardage": 189,
+          "handicap": 11,
+          "elevation_delta_m": -13,
+          "critical_hazards": {
+            "lake": "Lake guarding front green, -13m drop"
+          },
+          "agent_directives": {
+            "caddy": "-13m drop plays 1 club shorter over lake."
+          }
+        },
+        {
+          "hole_number": 12,
+          "name": "Waterfall",
+          "par": 5,
+          "championship_yardage": 540,
+          "handicap": 8,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "lake": "Lake all along left side"
+          },
+          "agent_directives": {
+            "caddy": "Risk-reward par 5 wrapping around lake."
+          }
+        },
+        {
+          "hole_number": 13,
+          "name": "Pine Canopy",
+          "par": 4,
+          "championship_yardage": 435,
+          "handicap": 3,
+          "elevation_delta_m": 5,
+          "critical_hazards": {
+            "lake": "Elevated tee carry over lake"
+          },
+          "agent_directives": {
+            "caddy": "Must clear 210yd water carry off tee."
+          }
+        },
+        {
+          "hole_number": 14,
+          "name": "Bell Tower",
+          "par": 4,
+          "championship_yardage": 420,
+          "handicap": 14,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "bunkers": "Cross bunkers"
+          },
+          "agent_directives": {
+            "caddy": "Dogleg left; aim over fairway bunker."
+          }
+        },
+        {
+          "hole_number": 15,
+          "name": "Caldes Reach",
+          "par": 5,
+          "championship_yardage": 575,
+          "handicap": 6,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "lake": "Lake guarding green left"
+          },
+          "agent_directives": {
+            "caddy": "Longest par 5 on course; 3-shot strategy."
+          }
+        },
+        {
+          "hole_number": 16,
+          "name": "Ambush",
+          "par": 3,
+          "championship_yardage": 195,
+          "handicap": 16,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "bunkers": "Deep sand crater left"
+          },
+          "agent_directives": {
+            "caddy": "Target center green; avoid left bunker."
+          }
+        },
+        {
+          "hole_number": 17,
+          "name": "Ryder Ridge",
+          "par": 4,
+          "championship_yardage": 450,
+          "handicap": 4,
+          "elevation_delta_m": 6,
+          "critical_hazards": {
+            "pines": "Pine corridor framing green"
+          },
+          "agent_directives": {
+            "caddy": "Penultimate match-play pressure hole."
+          }
+        },
+        {
+          "hole_number": 18,
+          "name": "Stadium Finish",
+          "par": 4,
+          "championship_yardage": 465,
+          "handicap": 2,
+          "elevation_delta_m": 7,
+          "critical_hazards": {
+            "lake": "Lake right, amphitheater hill left"
+          },
+          "agent_directives": {
+            "caddy": "Uphill closing hole toward Camiral clubhouse."
+          }
+        }
+      ]
+    },
+    "royal_portrush": {
+      "course_id": "royal_portrush",
+      "name": "Royal Portrush Golf Club (Dunluce Links)",
+      "cohort": "Links Core (Batch A)",
+      "established": 1888,
+      "par": 71,
+      "total_yards": 7344,
+      "location": {
+        "lat": 55.2035,
+        "lng": -6.6382,
+        "elevation_m": 22,
+        "region": "Portrush, Antrim",
+        "country": "Northern Ireland"
+      },
+      "prevailing_winds": {
+        "primary_direction_deg": 300,
+        "primary_cardinal": "WNW",
+        "avg_speed_mph": 19,
+        "gust_max_mph": 36
+      },
+      "environmental_constants": {
+        "base_air_density_delta": "-0.5%",
+        "surface_firmness_rating": "High (Atlantic Duneland)",
+        "prevailing_wind_vectors": [
+          "North_Channel_WNW"
+        ]
+      },
+      "lore": {
+        "open_venue": "The only venue outside Great Britain to host The Open Championship."
+      },
+      "holes": {
+        "5": {
+          "number": 5,
+          "name": "White Rocks",
+          "par": 4,
+          "yards": 374,
+          "handicap": 13
+        },
+        "16": {
+          "number": 16,
+          "name": "Calamity Corner",
+          "par": 3,
+          "yards": 236,
+          "handicap": 2
+        }
+      },
+      "hole_registry": [
+        {
+          "hole_number": 16,
+          "name": "Calamity Corner",
+          "par": 3,
+          "championship_yardage": 236,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "chasm": "75-foot deep natural chasm right of green"
+          },
+          "agent_directives": {
+            "statty": "Bailout left of green yields +0.52 EV compared to pin-hunting over chasm."
+          }
+        }
+      ]
+    },
+    "muirfield": {
+      "course_id": "muirfield",
+      "name": "Muirfield (Honourable Company of Edinburgh Golfers)",
+      "cohort": "Links Core (Batch A)",
+      "established": 1891,
+      "par": 71,
+      "total_yards": 7245,
+      "location": {
+        "lat": 56.0423,
+        "lng": -2.8228,
+        "elevation_m": 18,
+        "region": "Gullane, East Lothian",
+        "country": "Scotland"
+      },
+      "prevailing_winds": {
+        "primary_direction_deg": 250,
+        "primary_cardinal": "WSW",
+        "avg_speed_mph": 17,
+        "gust_max_mph": 34
+      },
+      "environmental_constants": {
+        "base_air_density_delta": "0.0%",
+        "surface_firmness_rating": "Very High (Firth of Forth Links)",
+        "prevailing_wind_vectors": [
+          "Firth_WSW",
+          "Concentric_Loop_Shifting"
+        ]
+      },
+      "lore": {
+        "fairest_test": "Widely praised by Tour pros as the fairest links course routing in the world."
+      },
+      "holes": {
+        "9": {
+          "number": 9,
+          "name": "Out",
+          "par": 5,
+          "yards": 558,
+          "handicap": 3
+        },
+        "18": {
+          "number": 18,
+          "name": "In",
+          "par": 4,
+          "yards": 473,
+          "handicap": 1
+        }
+      },
+      "hole_registry": [
+        {
+          "hole_number": 9,
+          "name": "Out",
+          "par": 5,
+          "championship_yardage": 558,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "boundary_wall": "Historic stone wall along left fairway"
+          },
+          "agent_directives": {
+            "caddy": "Wind shifts 90 degrees between outer and inner loops; recalculate vector."
+          }
+        }
+      ]
+    },
+    "carnoustie_champ": {
+      "course_id": "carnoustie_champ",
+      "name": "Carnoustie Golf Links (Championship Course)",
+      "cohort": "Links Core (Batch A)",
+      "established": 1842,
+      "par": 72,
+      "total_yards": 7421,
+      "location": {
+        "lat": 56.4975,
+        "lng": -2.7161,
+        "elevation_m": 5,
+        "region": "Carnoustie, Angus",
+        "country": "Scotland"
+      },
+      "prevailing_winds": {
+        "primary_direction_deg": 90,
+        "primary_cardinal": "E",
+        "avg_speed_mph": 18,
+        "gust_max_mph": 38
+      },
+      "environmental_constants": {
+        "base_air_density_delta": "0.0%",
+        "surface_firmness_rating": "Extreme (Barry Burn Estuary)",
+        "prevailing_wind_vectors": [
+          "East_North_Sea"
+        ]
+      },
+      "lore": {
+        "carnoustie_carnege": "Renowned as the sternest championship test in golf history."
+      },
+      "holes": {
+        "16": {
+          "number": 16,
+          "name": "Southward Ho",
+          "par": 3,
+          "yards": 248,
+          "handicap": 6
+        },
+        "17": {
+          "number": 17,
+          "name": "Island",
+          "par": 4,
+          "yards": 461,
+          "handicap": 2
+        },
+        "18": {
+          "number": 18,
+          "name": "Home (Barry Burn)",
+          "par": 4,
+          "yards": 499,
+          "handicap": 4
+        }
+      },
+      "hole_registry": [
+        {
+          "hole_number": 18,
+          "name": "Home (Barry Burn)",
+          "par": 4,
+          "championship_yardage": 499,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "water_hazard": "Winding Barry Burn in front of green"
+          },
+          "agent_directives": {
+            "judge": "Rule 17.1 applies if ball enters Barry Burn penalty area."
+          }
+        }
+      ]
+    },
+    "pine_valley": {
+      "course_id": "pine_valley",
+      "name": "Pine Valley Golf Club",
+      "cohort": "US Championship (Batch B)",
+      "established": 1913,
+      "par": 70,
+      "total_yards": 7057,
+      "location": {
+        "lat": 39.7891,
+        "lng": -74.9667,
+        "elevation_m": 45,
+        "region": "Pine Valley, New Jersey",
+        "country": "USA"
+      },
+      "prevailing_winds": {
+        "primary_direction_deg": 290,
+        "primary_cardinal": "WNW",
+        "avg_speed_mph": 12,
+        "gust_max_mph": 24
+      },
+      "environmental_constants": {
+        "base_air_density_delta": "-0.5%",
+        "surface_firmness_rating": "High (Sand Scrubland)",
+        "prevailing_wind_vectors": [
+          "WNW_Pine_Forest"
+        ]
+      },
+      "lore": {
+        "world_rank_1": "Consistently ranked among the top golf courses in the world."
+      },
+      "holes": {
+        "2": {
+          "number": 2,
+          "name": "The Island",
+          "par": 4,
+          "yards": 368,
+          "handicap": 3
+        },
+        "5": {
+          "number": 5,
+          "name": "Devil's Fright",
+          "par": 3,
+          "yards": 238,
+          "handicap": 1
+        },
+        "10": {
+          "number": 10,
+          "name": "Devil's Aperture",
+          "par": 3,
+          "yards": 161,
+          "handicap": 18
+        },
+        "15": {
+          "number": 15,
+          "name": "The Ravine",
+          "par": 5,
+          "yards": 615,
+          "handicap": 5
+        }
+      },
+      "hole_registry": [
+        {
+          "hole_number": 10,
+          "name": "Devil's Aperture",
+          "par": 3,
+          "championship_yardage": 161,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "bunker": "Hell's Half Acre deep sand scrub"
+          },
+          "agent_directives": {
+            "alieve": "Maintain solid spine angle on high tee shot; avoid sudden jerky torque."
+          }
+        }
+      ]
+    },
+    "oakmont_cc": {
+      "course_id": "oakmont_cc",
+      "name": "Oakmont Country Club",
+      "cohort": "US Championship (Batch B)",
+      "established": 1903,
+      "par": 71,
+      "total_yards": 7255,
+      "location": {
+        "lat": 40.5256,
+        "lng": -79.8267,
+        "elevation_m": 260,
+        "region": "Oakmont, Pennsylvania",
+        "country": "USA"
+      },
+      "prevailing_winds": {
+        "primary_direction_deg": 315,
+        "primary_cardinal": "NW",
+        "avg_speed_mph": 11,
+        "gust_max_mph": 22
+      },
+      "environmental_constants": {
+        "base_air_density_delta": "-2.5%",
+        "surface_firmness_rating": "Extreme (14.5+ Stimpmeter Greens)",
+        "prevailing_wind_vectors": [
+          "NW_Allegheny"
+        ]
+      },
+      "lore": {
+        "church_pews": "Famous Church Pews bunker with 12 turf ridges separating sand furrows."
+      },
+      "holes": {
+        "3": {
+          "number": 3,
+          "name": "Church Pews",
+          "par": 4,
+          "yards": 428,
+          "handicap": 1
+        }
+      },
+      "hole_registry": [
+        {
+          "hole_number": 3,
+          "name": "Church Pews",
+          "par": 4,
+          "championship_yardage": 428,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "bunker": "Church Pews bunker with 12 turf ridges"
+          },
+          "agent_directives": {
+            "puttser": "Greens running 14.5 Stimpmeter; die downhill putts 2 feet above hole."
+          }
+        }
+      ]
+    },
+    "shinnecock_hills": {
+      "course_id": "shinnecock_hills",
+      "name": "Shinnecock Hills Golf Club",
+      "cohort": "US Championship (Batch B)",
+      "established": 1891,
+      "par": 70,
+      "total_yards": 7445,
+      "location": {
+        "lat": 40.8943,
+        "lng": -72.4398,
+        "elevation_m": 25,
+        "region": "Southampton, New York",
+        "country": "USA"
+      },
+      "prevailing_winds": {
+        "primary_direction_deg": 200,
+        "primary_cardinal": "SSW",
+        "avg_speed_mph": 16,
+        "gust_max_mph": 35
+      },
+      "environmental_constants": {
+        "base_air_density_delta": "0.0%",
+        "surface_firmness_rating": "Very High (Peconic Bay Duneland)",
+        "prevailing_wind_vectors": [
+          "Peconic_Bay_SSW"
+        ]
+      },
+      "lore": {
+        "us_open_crucible": "One of the founding clubs of the USGA and a premier US Open venue."
+      },
+      "holes": {
+        "7": {
+          "number": 7,
+          "name": "Redan",
+          "par": 3,
+          "yards": 189,
+          "handicap": 9
+        },
+        "18": {
+          "number": 18,
+          "name": "Home",
+          "par": 4,
+          "yards": 485,
+          "handicap": 4
+        }
+      },
+      "hole_registry": [
+        {
+          "hole_number": 7,
+          "name": "Redan",
+          "par": 3,
+          "championship_yardage": 189,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "redan_slope": "Green sloped right-to-left away from tee"
+          },
+          "agent_directives": {
+            "caddy": "Land approach front-right quarter; contour feeds ball toward pin."
+          }
+        }
+      ]
+    },
+    "royal_melbourne": {
+      "course_id": "royal_melbourne",
+      "name": "Royal Melbourne Golf Club (West Course)",
+      "cohort": "Sandbelt & Global (Batch C)",
+      "established": 1891,
+      "par": 72,
+      "total_yards": 6635,
+      "location": {
+        "lat": -37.9692,
+        "lng": 145.0211,
+        "elevation_m": 35,
+        "region": "Black Rock, Victoria",
+        "country": "Australia"
+      },
+      "prevailing_winds": {
+        "primary_direction_deg": 180,
+        "primary_cardinal": "S",
+        "avg_speed_mph": 15,
+        "gust_max_mph": 30
+      },
+      "environmental_constants": {
+        "base_air_density_delta": "-1.0%",
+        "surface_firmness_rating": "Extreme (Melbourne Sandbelt)",
+        "prevailing_wind_vectors": [
+          "Southerly_Buster_S",
+          "Northerly_Heat_N"
+        ]
+      },
+      "lore": {
+        "sandbelt_masterpiece": "Alister MacKenzie's masterpiece featuring firm, fast greens and steep bunkering."
+      },
+      "holes": {
+        "5": {
+          "number": 5,
+          "name": "Sandbelt Pinnacle",
+          "par": 3,
+          "yards": 176,
+          "handicap": 5
+        }
+      },
+      "hole_registry": [
+        {
+          "hole_number": 5,
+          "name": "Sandbelt Pinnacle",
+          "par": 3,
+          "championship_yardage": 176,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "flashed_bunkers": "Steep greenside runoff into flashed sand"
+          },
+          "agent_directives": {
+            "puttser": "Firm greens release 15 yards; land approach 10 yards short of pin."
+          }
+        }
+      ]
+    },
+    "kingston_heath": {
+      "course_id": "kingston_heath",
+      "name": "Kingston Heath Golf Club",
+      "cohort": "Sandbelt & Global (Batch C)",
+      "established": 1925,
+      "par": 72,
+      "total_yards": 6815,
+      "location": {
+        "lat": -37.9514,
+        "lng": 145.0744,
+        "elevation_m": 30,
+        "region": "Cheltenham, Victoria",
+        "country": "Australia"
+      },
+      "prevailing_winds": {
+        "primary_direction_deg": 225,
+        "primary_cardinal": "SW",
+        "avg_speed_mph": 14,
+        "gust_max_mph": 28
+      },
+      "environmental_constants": {
+        "base_air_density_delta": "-0.8%",
+        "surface_firmness_rating": "Extreme (Sandbelt Turf)",
+        "prevailing_wind_vectors": [
+          "South_West_Breeze"
+        ]
+      },
+      "lore": {
+        "bunkering_art": "Renowned for its world-class natural sandbelt bunker placement."
+      },
+      "holes": {
+        "15": {
+          "number": 15,
+          "name": "Classic Short",
+          "par": 3,
+          "yards": 154,
+          "handicap": 11
+        }
+      },
+      "hole_registry": [
+        {
+          "hole_number": 15,
+          "name": "Classic Short",
+          "par": 3,
+          "championship_yardage": 154,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "bunkers": "Deep sandbelt bunkers surrounding green"
+          },
+          "agent_directives": {
+            "statty": "Positional Strokes Gained outranks distance; play to widest fairway angle."
+          }
+        }
+      ]
+    },
+    "hirono_gc": {
+      "course_id": "hirono_gc",
+      "name": "Hirono Golf Club",
+      "cohort": "Sandbelt & Global (Batch C)",
+      "established": 1932,
+      "par": 72,
+      "total_yards": 7165,
+      "location": {
+        "lat": 34.7675,
+        "lng": 134.9892,
+        "elevation_m": 85,
+        "region": "Miki, Hyogo",
+        "country": "Japan"
+      },
+      "prevailing_winds": {
+        "primary_direction_deg": 0,
+        "primary_cardinal": "N",
+        "avg_speed_mph": 10,
+        "gust_max_mph": 20
+      },
+      "environmental_constants": {
+        "base_air_density_delta": "-1.5%",
+        "surface_firmness_rating": "High (Japanese Pine Forest)",
+        "prevailing_wind_vectors": [
+          "Kansai_Mountain_N"
+        ]
+      },
+      "lore": {
+        "pine_valley_of_japan": "C.H. Alison's legendary Japanese masterpiece with deep cross-ravines."
+      },
+      "holes": {
+        "5": {
+          "number": 5,
+          "name": "Ravine Carry",
+          "par": 3,
+          "yards": 185,
+          "handicap": 3
+        }
+      },
+      "hole_registry": [
+        {
+          "hole_number": 5,
+          "name": "Ravine Carry",
+          "par": 3,
+          "championship_yardage": 185,
+          "elevation_delta_m": -5,
+          "critical_hazards": {
+            "ravine": "Deep natural pine ravine"
+          },
+          "agent_directives": {
+            "caddy": "Pine Valley of Japan; carry ravine with 1 extra club."
+          }
+        }
+      ]
+    },
+    "cape_kidnappers": {
+      "course_id": "cape_kidnappers",
+      "name": "Cape Kidnappers Golf Course",
+      "cohort": "Sandbelt & Global (Batch C)",
+      "established": 2004,
+      "par": 71,
+      "total_yards": 7147,
+      "location": {
+        "lat": -39.6385,
+        "lng": 177.0872,
+        "elevation_m": 140,
+        "region": "Hawke's Bay",
+        "country": "New Zealand"
+      },
+      "prevailing_winds": {
+        "primary_direction_deg": 180,
+        "primary_cardinal": "S",
+        "avg_speed_mph": 20,
+        "gust_max_mph": 40
+      },
+      "environmental_constants": {
+        "base_air_density_delta": "-2.0%",
+        "surface_firmness_rating": "Very High (Pacific Ridge Cliffs)",
+        "prevailing_wind_vectors": [
+          "Pacific_Southerly_Gale"
+        ]
+      },
+      "lore": {
+        "ridge_cliffs": "Built atop dramatic 140m fingers of land jutting out into the Pacific Ocean."
+      },
+      "holes": {
+        "15": {
+          "number": 15,
+          "name": "Pirate's Plank",
+          "par": 5,
+          "yards": 650,
+          "handicap": 1
+        }
+      },
+      "hole_registry": [
+        {
+          "hole_number": 15,
+          "name": "Pirate's Plank",
+          "par": 5,
+          "championship_yardage": 650,
+          "elevation_delta_m": -15,
+          "critical_hazards": {
+            "cliff_drop": "140m vertical drop into Pacific Ocean on both sides"
+          },
+          "agent_directives": {
+            "zenner": "Execute 4-7-8 breathing on narrow ridge fairway; ignore visual ocean drop."
+          }
+        }
+      ]
+    },
+    "ballybunion_old": {
+      "course_id": "ballybunion_old",
+      "name": "Ballybunion Old Course",
+      "cohort": "Links Core (Batch A)",
+      "established": 1893,
+      "par": 71,
+      "total_yards": 6802,
+      "location": {
+        "lat": 52.5114,
+        "lng": -9.6806,
+        "elevation_m": 15,
+        "region": "Ballybunion, Kerry",
+        "country": "Ireland"
+      },
+      "prevailing_winds": {
+        "primary_direction_deg": 225,
+        "primary_cardinal": "SW",
+        "avg_speed_mph": 18,
+        "gust_max_mph": 35
+      },
+      "environmental_constants": {
+        "base_air_density_delta": "0.0%",
+        "surface_firmness_rating": "Extreme (Atlantic Links)",
+        "prevailing_wind_vectors": [
+          "Atlantic_SW"
+        ]
+      },
+      "lore": {
+        "watson_quote": "Nobody can call himself a golfer who hasn't played Ballybunion."
+      },
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Graveyard",
+          "par": 4,
+          "yards": 408,
+          "handicap": 5
+        },
+        "2": {
+          "number": 2,
+          "name": "Mrs. Simpson",
+          "par": 4,
+          "yards": 445,
+          "handicap": 1
+        },
+        "11": {
+          "number": 11,
+          "name": "Mrs. Simpson's Leap",
+          "par": 4,
+          "yards": 468,
+          "handicap": 4
+        },
+        "18": {
+          "number": 18,
+          "name": "Home",
+          "par": 4,
+          "yards": 442,
+          "handicap": 17
+        }
+      },
+      "hole_registry": [
+        {
+          "hole_number": 11,
+          "name": "Mrs. Simpson's Leap",
+          "par": 4,
+          "championship_yardage": 468,
+          "elevation_delta_m": -8,
+          "critical_hazards": {
+            "ocean_cliff": "Atlantic Ocean cliffs left"
+          },
+          "agent_directives": {
+            "caddy": "Play +18 yards long into 25mph crosswind."
+          }
+        }
+      ]
+    },
+    "lahinch_champ": {
+      "course_id": "lahinch_champ",
+      "name": "Lahinch Golf Club (Championship Course)",
+      "cohort": "Links Core (Batch A)",
+      "established": 1892,
+      "par": 72,
+      "total_yards": 6950,
+      "location": {
+        "lat": 52.9341,
+        "lng": -9.3475,
+        "elevation_m": 12,
+        "region": "Lahinch, Clare",
+        "country": "Ireland"
+      },
+      "prevailing_winds": {
+        "primary_direction_deg": 240,
+        "primary_cardinal": "WSW",
+        "avg_speed_mph": 16,
+        "gust_max_mph": 30
+      },
+      "environmental_constants": {
+        "base_air_density_delta": "0.0%",
+        "surface_firmness_rating": "Extreme (Duneland Links)",
+        "prevailing_wind_vectors": [
+          "Atlantic_WSW"
+        ]
+      },
+      "lore": {
+        "famous_holes": [
+          "Klondyke (Hole 4)",
+          "The Dell (Hole 5)"
+        ]
+      },
+      "holes": {
+        "4": {
+          "number": 4,
+          "name": "Klondyke",
+          "par": 5,
+          "yards": 520,
+          "handicap": 9
+        },
+        "5": {
+          "number": 5,
+          "name": "The Dell",
+          "par": 3,
+          "yards": 165,
+          "handicap": 15
+        }
+      },
+      "hole_registry": [
+        {
+          "hole_number": 4,
+          "name": "Klondyke",
+          "par": 5,
+          "championship_yardage": 520,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "sand_dune": "Klondyke sand dune"
+          },
+          "agent_directives": {
+            "caddy": "Aim over white rock marker on Klondyke dune."
+          }
+        }
+      ]
+    },
+    "augusta_national": {
+      "course_id": "augusta_national",
+      "name": "Augusta National Golf Club",
+      "cohort": "US Championship (Batch B)",
+      "established": 1932,
+      "par": 72,
+      "total_yards": 7545,
+      "location": {
+        "lat": 33.5021,
+        "lng": -82.0226,
+        "elevation_m": 95,
+        "region": "Augusta, Georgia",
+        "country": "USA"
+      },
+      "prevailing_winds": {
+        "primary_direction_deg": 180,
+        "primary_cardinal": "S",
+        "avg_speed_mph": 8,
+        "gust_max_mph": 16
+      },
+      "environmental_constants": {
+        "base_air_density_delta": "-1.0%",
+        "surface_firmness_rating": "Very High (Bentgrass Greens)",
+        "prevailing_wind_vectors": [
+          "Amen_Corner_Swirling"
+        ]
+      },
+      "lore": {
+        "the_masters": "Home of The Masters Tournament since 1934."
+      },
+      "holes": {
+        "11": {
+          "number": 11,
+          "name": "White Dogwood",
+          "par": 4,
+          "yards": 520,
+          "handicap": 3
+        },
+        "12": {
+          "number": 12,
+          "name": "Golden Bell",
+          "par": 3,
+          "yards": 155,
+          "handicap": 1
+        },
+        "13": {
+          "number": 13,
+          "name": "Azalea",
+          "par": 5,
+          "yards": 545,
+          "handicap": 5
+        }
+      },
+      "hole_registry": [
+        {
+          "hole_number": 12,
+          "name": "Golden Bell",
+          "par": 3,
+          "championship_yardage": 155,
+          "elevation_delta_m": -5,
+          "critical_hazards": {
+            "creek": "Rae's Creek"
+          },
+          "agent_directives": {
+            "zenner": "Swirling pine breeze; wait for wind flag to settle before swing."
+          }
+        }
+      ]
+    },
+    "leeside_links": {
+      "course_id": "leeside_links",
+      "name": "Lee Side Sovereign Links",
+      "cohort": "Sovereign Trade Node",
+      "established": 2026,
+      "par": 72,
+      "total_yards": 7020,
+      "location": {
+        "lat": 51.8985,
+        "lng": -8.4756,
+        "elevation_m": 10,
+        "region": "Cork, Cork",
+        "country": "Ireland"
+      },
+      "prevailing_winds": {
+        "primary_direction_deg": 210,
+        "primary_cardinal": "SSW",
+        "avg_speed_mph": 15,
+        "gust_max_mph": 28
+      },
+      "environmental_constants": {
+        "base_air_density_delta": "0.0%",
+        "surface_firmness_rating": "High (Estuary Links)",
+        "prevailing_wind_vectors": [
+          "Lee_Estuary_SSW"
+        ]
+      },
+      "lore": {
+        "sovereign_node": "Home of the Sovereign Media Ecosystem."
+      },
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Lee Gate",
+          "par": 4,
+          "yards": 415,
+          "handicap": 7
+        },
+        "18": {
+          "number": 18,
+          "name": "Finbarr's Citadel",
+          "par": 4,
+          "yards": 455,
+          "handicap": 2
+        }
+      },
+      "hole_registry": [
+        {
+          "hole_number": 1,
+          "name": "Lee Gate",
+          "par": 4,
+          "championship_yardage": 415,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "river": "River Lee estuary"
+          },
+          "agent_directives": {
+            "caddy": "Align drive with Shandon Spire sightline."
+          }
+        }
+      ]
+    },
+    "valderrama_golf_club": {
+      "course_id": "valderrama_golf_club",
+      "name": "Real Club Valderrama",
+      "cohort": "Andalusia & Sotogrande",
+      "established": 1990,
+      "par": 71,
+      "total_yards": 6990,
+      "elevation_m": 45,
+      "location": {
+        "lat": 36.2867,
+        "lng": -5.3256,
+        "region": "Sotogrande, Andalusia, Spain",
+        "country": "Spain"
+      },
+      "prevailing_winds": {
+        "primary_cardinal": "Levante_E",
+        "avg_speed_mph": 14,
+        "gust_max_mph": 28
+      },
+      "environmental_constants": {
+        "base_air_density_delta": "0.0%",
+        "surface_firmness_rating": "Championship Firm (Cork Parkland)",
+        "prevailing_wind_vectors": [
+          "Levante_E",
+          "Poniente_W"
+        ]
+      },
+      "lore": {
+        "hole_4": "La Cascada Par 5 elevated green guarded by water & rock walls",
+        "hole_17": "Par 5 with shallow downhill front slope rolling into water basin"
+      },
+      "subagent_directives": {
+        "tailor": "Enforce flat, penetrating trajectories to avoid cork oak canopy deflectors.",
+        "puttser": "Account for 13.0+ Stimpmeter speeds with steep fallaways into shaved collection zones.",
+        "caddy": "Calculate Levante crosswind drift and cork tree canopy clearance."
+      },
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Opening Drive",
+          "par": 4,
+          "yards": 420,
+          "handicap": 7
+        },
+        "18": {
+          "number": 18,
+          "name": "Clubhouse Finish",
+          "par": 4,
+          "yards": 465,
+          "handicap": 2
+        }
+      },
+      "hole_count": 18,
+      "hole_registry": [
+        {
+          "hole": 4,
+          "name": "La Cascada",
+          "par": 5,
+          "yardage": 563,
+          "elevation_delta_m": 3.5,
+          "directives": {
+            "caddy": "Approach requires high-trajectory apex over lateral water wall.",
+            "statty": "Going for green in 2 yields negative EV for handicap > 2."
+          }
+        },
+        {
+          "hole": 17,
+          "name": "Los Lirios",
+          "par": 5,
+          "yardage": 536,
+          "elevation_delta_m": -2,
+          "directives": {
+            "puttser": "Green slopes front-to-back toward water basin; protect against roll-back on front pin placements.",
+            "tailor": "Dynamic spin management required to hold narrow landing shelf."
+          }
+        }
+      ],
+      "overpass_query_snippet": "[out:json][timeout:30];\n(\n  way[\"golf\"=\"fairway\"](36.275,-5.34,36.298,-5.31);\n  way[\"golf\"=\"green\"](36.275,-5.34,36.298,...",
+      "tees": {
+        "championship": {
+          "rating": 76.1,
+          "slope": 148,
+          "total_yards": 6990,
+          "par": 71
+        },
+        "white": {
+          "rating": 74,
+          "slope": 142,
+          "total_yards": 6560,
+          "par": 71
+        },
+        "yellow": {
+          "rating": 71.8,
+          "slope": 136,
+          "total_yards": 6115,
+          "par": 71
+        }
+      }
+    },
+    "el_saler_golf": {
+      "course_id": "el_saler_golf",
+      "name": "Campo de Golf El Saler",
+      "cohort": "Valencia & Levant Coast",
+      "established": 1990,
+      "par": 72,
+      "total_yards": 6980,
+      "elevation_m": 4,
+      "location": {
+        "lat": 39.3458,
+        "lng": -0.3126,
+        "region": "Valencia, Spain",
+        "country": "Spain"
+      },
+      "prevailing_winds": {
+        "primary_cardinal": "Mediterranean_E",
+        "avg_speed_mph": 14,
+        "gust_max_mph": 28
+      },
+      "environmental_constants": {
+        "base_air_density_delta": "+0.1%",
+        "surface_firmness_rating": "Very Firm (Coastal Links)",
+        "prevailing_wind_vectors": [
+          "Mediterranean_E",
+          "Mistral_NW"
+        ]
+      },
+      "lore": {
+        "coastal_stretch": "Holes 7, 8, 17, and 18 directly border the Mediterranean Sea"
+      },
+      "subagent_directives": {
+        "caddy": "Apply coastal crosswind lateral Magnus drift on approach corridors.",
+        "judge": "Boundary and environmental preservation relief protocols (Albufera Natural Park).",
+        "statty": "Model penalty stroke EV on coastal dune holes."
+      },
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Opening Drive",
+          "par": 4,
+          "yards": 420,
+          "handicap": 7
+        },
+        "18": {
+          "number": 18,
+          "name": "Clubhouse Finish",
+          "par": 4,
+          "yards": 465,
+          "handicap": 2
+        }
+      },
+      "hole_count": 18,
+      "hole_registry": [
+        {
+          "hole": 8,
+          "name": "El Saler Coastal",
+          "par": 4,
+          "yardage": 435,
+          "elevation_delta_m": 0,
+          "directives": {
+            "caddy": "Mediterranean crosswind drives Magnus drift left-to-right toward dunes.",
+            "judge": "Albufera Nature Park preserves define no-play environmental relief boundaries."
+          }
+        }
+      ],
+      "overpass_query_snippet": "[out:json][timeout:30];\n(\n  way[\"golf\"=\"fairway\"](39.335,-0.325,39.358,-0.3);\n  way[\"golf\"=\"green\"](39.335,-0.325,39.358...",
+      "tees": {
+        "white": {
+          "rating": 74.8,
+          "slope": 139,
+          "total_yards": 6980,
+          "par": 72
+        },
+        "yellow": {
+          "rating": 72.4,
+          "slope": 134,
+          "total_yards": 6510,
+          "par": 72
+        }
+      }
+    },
+    "finca_cortesin": {
+      "course_id": "finca_cortesin",
+      "name": "Finca Cortesin Golf Club",
+      "cohort": "Andalusia & Sotogrande",
+      "established": 1990,
+      "par": 72,
+      "total_yards": 6945,
+      "elevation_m": 85,
+      "location": {
+        "lat": 36.3985,
+        "lng": -5.2283,
+        "region": "Casares, Andalusia, Spain",
+        "country": "Spain"
+      },
+      "prevailing_winds": {
+        "primary_cardinal": "Levante_ENE",
+        "avg_speed_mph": 14,
+        "gust_max_mph": 28
+      },
+      "environmental_constants": {
+        "base_air_density_delta": "-0.5%",
+        "surface_firmness_rating": "Bermuda Firm",
+        "prevailing_wind_vectors": [
+          "Levante_ENE",
+          "Thermal_SW"
+        ]
+      },
+      "lore": {
+        "solheim_cup": "Host of 2023 Solheim Cup with dramatic elevation sweeps"
+      },
+      "subagent_directives": {
+        "caddy": "Apply elevation drop ballistics across Mediterranean valley holes.",
+        "fitty": "Monitor player stamina on steep walking corridors."
+      },
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Opening Drive",
+          "par": 4,
+          "yards": 420,
+          "handicap": 7
+        },
+        "18": {
+          "number": 18,
+          "name": "Clubhouse Finish",
+          "par": 4,
+          "yards": 465,
+          "handicap": 2
+        }
+      },
+      "hole_count": 18,
+      "hole_registry": [
+        {
+          "hole": 4,
+          "name": "The Gorge",
+          "par": 4,
+          "yardage": 460,
+          "elevation_delta_m": -12,
+          "directives": {
+            "caddy": "Plays -14 yards due to steep drop into prevailing thermal headwind.",
+            "alieve": "Uneven downhill lie setup: stabilize lead hip to reduce lumbar shear."
+          }
+        }
+      ],
+      "overpass_query_snippet": "[out:json][timeout:30];\n(\n  way[\"golf\"=\"fairway\"](36.388,-5.245,36.41,-5.215);\n  way[\"golf\"=\"green\"](36.388,-5.245,36.41...",
+      "tees": {
+        "black": {
+          "rating": 76.8,
+          "slope": 146,
+          "total_yards": 7482,
+          "par": 72
+        },
+        "white": {
+          "rating": 74.5,
+          "slope": 140,
+          "total_yards": 6945,
+          "par": 72
+        }
+      }
+    },
+    "puerta_de_hierro_arriba": {
+      "course_id": "puerta_de_hierro_arriba",
+      "name": "Real Club de la Puerta de Hierro (Arriba)",
+      "cohort": "Madrid & Central Plateau",
+      "established": 1990,
+      "par": 72,
+      "total_yards": 6950,
+      "elevation_m": 660,
+      "location": {
+        "lat": 40.4578,
+        "lng": -3.7625,
+        "region": "Madrid, Spain",
+        "country": "Spain"
+      },
+      "prevailing_winds": {
+        "primary_cardinal": "Guadarrama_N",
+        "avg_speed_mph": 14,
+        "gust_max_mph": 28
+      },
+      "environmental_constants": {
+        "base_air_density_delta": "-4.2%",
+        "surface_firmness_rating": "High-Plateau Parkland",
+        "prevailing_wind_vectors": [
+          "Guadarrama_N",
+          "Meseta_SW"
+        ]
+      },
+      "lore": {
+        "thin_air": "660m altitude produces +3% ball carry distance"
+      },
+      "subagent_directives": {
+        "sticks": "Thin-air density carry math (~+3% carry distance adjustment).",
+        "caddy": "Recalculate iron carries into firm Madrid plateau greens."
+      },
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Opening Drive",
+          "par": 4,
+          "yards": 420,
+          "handicap": 7
+        },
+        "18": {
+          "number": 18,
+          "name": "Clubhouse Finish",
+          "par": 4,
+          "yards": 465,
+          "handicap": 2
+        }
+      },
+      "hole_count": 18,
+      "hole_registry": [
+        {
+          "hole": 12,
+          "name": "Sierra View",
+          "par": 3,
+          "yardage": 215,
+          "elevation_delta_m": 4,
+          "directives": {
+            "sticks": "Thin altitude air (+660m) adds +8 yards carry; club down one full iron.",
+            "caddy": "Northern mountain breeze dampens altitude carry gain."
+          }
+        }
+      ],
+      "overpass_query_snippet": "[out:json][timeout:30];\n(\n  way[\"golf\"=\"fairway\"](40.448,-3.778,40.468,-3.748);\n  way[\"golf\"=\"green\"](40.448,-3.778,40.4...",
+      "tees": {
+        "white": {
+          "rating": 74.2,
+          "slope": 137,
+          "total_yards": 6950,
+          "par": 72
+        },
+        "yellow": {
+          "rating": 71.9,
+          "slope": 131,
+          "total_yards": 6480,
+          "par": 72
+        }
+      }
+    },
+    "el_prat_pink": {
+      "course_id": "el_prat_pink",
+      "name": "Real Club de Golf El Prat (Pink Course)",
+      "cohort": "Catalonia & Costa Brava",
+      "established": 1990,
+      "par": 72,
+      "total_yards": 7200,
+      "elevation_m": 150,
+      "location": {
+        "lat": 41.5542,
+        "lng": 2.0528,
+        "region": "Terrassa, Catalonia, Spain",
+        "country": "Spain"
+      },
+      "prevailing_winds": {
+        "primary_cardinal": "Pyrenees_North",
+        "avg_speed_mph": 14,
+        "gust_max_mph": 28
+      },
+      "environmental_constants": {
+        "base_air_density_delta": "-1.8%",
+        "surface_firmness_rating": "High (Spanish Bentgrass)",
+        "prevailing_wind_vectors": [
+          "Pyrenees_North",
+          "Garbi_South"
+        ]
+      },
+      "lore": {
+        "norman_bunkers": "Greg Norman 45-hole master design with deep ravine cuts & steep bunker faces"
+      },
+      "subagent_directives": {
+        "statty": "Model conservative approach EV away from severe greenside tier drops.",
+        "puttser": "Account for multi-tiered Catalan bentgrass breaks."
+      },
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Opening Drive",
+          "par": 4,
+          "yards": 420,
+          "handicap": 7
+        },
+        "18": {
+          "number": 18,
+          "name": "Clubhouse Finish",
+          "par": 4,
+          "yards": 465,
+          "handicap": 2
+        }
+      },
+      "hole_count": 18,
+      "hole_registry": [
+        {
+          "hole_number": 1,
+          "name": "Opening Drive",
+          "par": 4,
+          "championship_yardage": 420,
+          "elevation_delta_m": 0,
+          "critical_hazards": {
+            "norman_bunkers": "Greg Norman 45-hole master design with deep ravine cuts & steep bunker faces"
+          },
+          "agent_directives": {
+            "statty": "Model conservative approach EV away from severe greenside tier drops.",
+            "puttser": "Account for multi-tiered Catalan bentgrass breaks."
+          }
+        }
+      ],
+      "overpass_query_snippet": "[out:json][timeout:30];\n(\n  way[\"golf\"=\"fairway\"](41.545,2.04,41.565,2.065);\n  way[\"golf\"=\"green\"](41.545,2.04,41.565,2...."
+    }
+  }
+}

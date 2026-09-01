@@ -35,6 +35,7 @@
     "dev": "vite",
     "dev:secure": "./scripts/dev-secure.sh",
     "opensky:import": "./scripts/opensky-import-client.sh",
+    "ingest:courses": "node scripts/ingest_course_bundle.js scripts/ingest_spanish_courses.json",
     "build": "vite build",
     "preview": "vite preview",
     "test": "node scripts/run-unit-tests.mjs",

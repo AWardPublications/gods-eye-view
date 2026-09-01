@@ -1,0 +1,90 @@
+[
+  {
+    "id": "valderrama_golf_club",
+    "name": "Real Club Valderrama",
+    "cohort": "Andalusia & Sotogrande",
+    "location": { "lat": 36.2867, "lng": -5.3256, "region": "Sotogrande, Andalusia, Spain", "country": "Spain" },
+    "bbox": [36.275, -5.340, 36.298, -5.310],
+    "elevation_m": 45,
+    "air_density_delta": "0.0%",
+    "prevailing_wind": ["Levante_E", "Poniente_W"],
+    "signature_hazards": {
+      "hole_4": "La Cascada Par 5 elevated green guarded by water & rock walls",
+      "hole_17": "Par 5 with shallow downhill front slope rolling into water basin"
+    },
+    "subagent_directives": {
+      "tailor": "Enforce flat, penetrating trajectories to avoid cork oak canopy deflectors.",
+      "puttser": "Account for 13.0+ Stimpmeter speeds with steep fallaways into shaved collection zones.",
+      "caddy": "Calculate Levante crosswind drift and cork tree canopy clearance."
+    }
+  },
+  {
+    "id": "el_saler_golf",
+    "name": "Campo de Golf El Saler",
+    "cohort": "Valencia & Levant Coast",
+    "location": { "lat": 39.3458, "lng": -0.3126, "region": "Valencia, Spain", "country": "Spain" },
+    "bbox": [39.335, -0.325, 39.358, -0.300],
+    "elevation_m": 4,
+    "air_density_delta": "+0.1%",
+    "prevailing_wind": ["Mediterranean_E", "Mistral_NW"],
+    "signature_hazards": {
+      "coastal_stretch": "Holes 7, 8, 17, and 18 directly border the Mediterranean Sea"
+    },
+    "subagent_directives": {
+      "caddy": "Apply coastal crosswind lateral Magnus drift on approach corridors.",
+      "judge": "Boundary and environmental preservation relief protocols (Albufera Natural Park).",
+      "statty": "Model penalty stroke EV on coastal dune holes."
+    }
+  },
+  {
+    "id": "finca_cortesin",
+    "name": "Finca Cortesin Golf Club",
+    "cohort": "Andalusia & Sotogrande",
+    "location": { "lat": 36.3985, "lng": -5.2283, "region": "Casares, Andalusia, Spain", "country": "Spain" },
+    "bbox": [36.388, -5.245, 36.410, -5.215],
+    "elevation_m": 85,
+    "air_density_delta": "-0.5%",
+    "prevailing_wind": ["Levante_ENE", "Thermal_SW"],
+    "signature_hazards": {
+      "solheim_cup": "Host of 2023 Solheim Cup with dramatic elevation sweeps"
+    },
+    "subagent_directives": {
+      "caddy": "Apply elevation drop ballistics across Mediterranean valley holes.",
+      "fitty": "Monitor player stamina on steep walking corridors."
+    }
+  },
+  {
+    "id": "puerta_de_hierro_arriba",
+    "name": "Real Club de la Puerta de Hierro (Arriba)",
+    "cohort": "Madrid & Central Plateau",
+    "location": { "lat": 40.4578, "lng": -3.7625, "region": "Madrid, Spain", "country": "Spain" },
+    "bbox": [40.448, -3.778, 40.468, -3.748],
+    "elevation_m": 660,
+    "air_density_delta": "-4.2%",
+    "prevailing_wind": ["Guadarrama_N", "Meseta_SW"],
+    "signature_hazards": {
+      "thin_air": "660m altitude produces +3% ball carry distance"
+    },
+    "subagent_directives": {
+      "sticks": "Thin-air density carry math (~+3% carry distance adjustment).",
+      "caddy": "Recalculate iron carries into firm Madrid plateau greens."
+    }
+  },
+  {
+    "id": "el_prat_pink",
+    "name": "Real Club de Golf El Prat (Pink Course)",
+    "cohort": "Catalonia & Costa Brava",
+    "location": { "lat": 41.5542, "lng": 2.0528, "region": "Terrassa, Catalonia, Spain", "country": "Spain" },
+    "bbox": [41.545, 2.040, 41.565, 2.065],
+    "elevation_m": 150,
+    "air_density_delta": "-1.8%",
+    "prevailing_wind": ["Pyrenees_North", "Garbi_South"],
+    "signature_hazards": {
+      "norman_bunkers": "Greg Norman 45-hole master design with deep ravine cuts & steep bunker faces"
+    },
+    "subagent_directives": {
+      "statty": "Model conservative approach EV away from severe greenside tier drops.",
+      "puttser": "Account for multi-tiered Catalan bentgrass breaks."
+    }
+  }
+]
