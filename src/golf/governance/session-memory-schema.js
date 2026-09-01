@@ -122,11 +122,20 @@ export class PersistentMemoryArchitecture {
       return null;
     }
 
-    const sentiments = playerSessions.map(s => s.sentiment_state);
-    const compliances = playerSessions.map(s => s.compliance_score);
+    const validSentiments = playerSessions
+      .map(s => Number(s.sentiment_state))
+      .filter(v => !isNaN(v) && isFinite(v));
+    const validCompliances = playerSessions
+      .map(s => Number(s.compliance_score))
+      .filter(v => !isNaN(v) && isFinite(v))
+      .map(v => Math.max(0.0, Math.min(1.0, v)));
 
-    const rawAvgSentiment = sentiments.reduce((a, b) => a + b, 0) / sentiments.length;
-    const rawAvgCompliance = compliances.reduce((a, b) => a + b, 0) / compliances.length;
+    const rawAvgSentiment = validSentiments.length > 0
+      ? validSentiments.reduce((a, b) => a + b, 0) / validSentiments.length
+      : 0.0;
+    const rawAvgCompliance = validCompliances.length > 0
+      ? validCompliances.reduce((a, b) => a + b, 0) / validCompliances.length
+      : 0.8;
 
     return {
       avg_sentiment: Math.round(rawAvgSentiment * 10000) / 10000,

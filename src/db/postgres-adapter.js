@@ -1,7 +1,7 @@
 /**
- * DaVinciA+ Enterprise PostgreSQL & Database Adapter
- * Manages schemas, row-level locking for dispute freezes, and audit trail ledgering.
- * Supports live PostgreSQL connections (via pg pool) with seamless offline in-memory fallback.
+ * DaVinciA+ Enterprise PostgreSQL & Concurrency-Hardened Database Adapter
+ * Manages schemas, row-level locking for dispute freezes, concurrency retries,
+ * and immutable audit trail ledgering.
  */
 
 export class PostgresGovernanceAdapter {
@@ -18,11 +18,13 @@ export class PostgresGovernanceAdapter {
       entitlements: new Map()
     };
 
+    // Active row-level concurrency mutexes
+    this.activeLocks = new Set();
+
     this.initSchema();
   }
 
   initSchema() {
-    // SQL schema definitions for production Postgres migration
     this.schemaSql = `
       CREATE TABLE IF NOT EXISTS audit_events (
         transaction_urn VARCHAR(255) PRIMARY KEY,
@@ -138,33 +140,61 @@ export class PostgresGovernanceAdapter {
   }
 
   /**
-   * Settle Transaction
-   * Invariant: Fails closed if status is not AUTHORIZED or if dispute_frozen is TRUE.
+   * Settle Transaction with Mutex & Strict Invariant Check
    */
   async settleTransaction(transactionId) {
-    const tx = this.tables.market_transactions.get(transactionId);
-    if (!tx) {
-      throw new Error(`TRANSACTION_NOT_FOUND: Transaction '${transactionId}' does not exist.`);
+    if (this.activeLocks.has(transactionId)) {
+      throw new Error(`CONCURRENCY_LOCK_CONTENTION: Transaction '${transactionId}' is being modified by another worker.`);
     }
 
-    if (tx.dispute_frozen || tx.status === 'DISPUTE_FROZEN') {
-      throw new Error(`SETTLEMENT_BLOCKED: Transaction '${transactionId}' is currently FROZEN in dispute: ${tx.dispute_reason}`);
+    this.activeLocks.add(transactionId);
+    try {
+      const tx = this.tables.market_transactions.get(transactionId);
+      if (!tx) {
+        throw new Error(`TRANSACTION_NOT_FOUND: Transaction '${transactionId}' does not exist.`);
+      }
+
+      if (tx.dispute_frozen || tx.status === 'DISPUTE_FROZEN') {
+        throw new Error(`SETTLEMENT_BLOCKED: Transaction '${transactionId}' is currently FROZEN in dispute: ${tx.dispute_reason}`);
+      }
+
+      if (tx.status !== 'AUTHORIZED') {
+        throw new Error(`SETTLEMENT_INVALID_STATE: Transaction status must be 'AUTHORIZED' to settle (current: ${tx.status}).`);
+      }
+
+      tx.status = 'SETTLED';
+      tx.settled_at = Date.now();
+      this.tables.market_transactions.set(transactionId, tx);
+
+      return {
+        settled: true,
+        transaction_id: transactionId,
+        status: tx.status,
+        settled_at: tx.settled_at
+      };
+    } finally {
+      this.activeLocks.delete(transactionId);
     }
+  }
 
-    if (tx.status !== 'AUTHORIZED') {
-      throw new Error(`SETTLEMENT_INVALID_STATE: Transaction status must be 'AUTHORIZED' to settle (current: ${tx.status}).`);
+  /**
+   * Concurrency-Hardened Retry Wrapper (Exponential Backoff with Jitter)
+   */
+  async settleTransactionWithRetry(transactionId, maxRetries = 3) {
+    let attempts = 0;
+    while (attempts < maxRetries) {
+      try {
+        return await this.settleTransaction(transactionId);
+      } catch (err) {
+        attempts++;
+        if (err.message.includes('CONCURRENCY_LOCK_CONTENTION') && attempts < maxRetries) {
+          const delayMs = Math.floor(Math.pow(2, attempts) * 10 + Math.random() * 20);
+          await new Promise(resolve => setTimeout(resolve, delayMs));
+        } else {
+          throw err;
+        }
+      }
     }
-
-    tx.status = 'SETTLED';
-    tx.settled_at = Date.now();
-    this.tables.market_transactions.set(transactionId, tx);
-
-    return {
-      settled: true,
-      transaction_id: transactionId,
-      status: tx.status,
-      settled_at: tx.settled_at
-    };
   }
 
   async getPendingAuthorizedTransactions() {
