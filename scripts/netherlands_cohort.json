@@ -1,0 +1,1168 @@
+{
+  "haagsche_golf_country_club": {
+    "course_id": "haagsche_golf_country_club",
+    "name": "Koninklijke Haagsche Golf & Country Club",
+    "cohort": "Netherlands Strategic Cohort",
+    "location": "Wassenaar, Netherlands",
+    "architect": "Harry Colt & Hugh Alison",
+    "established": 1893,
+    "par": 72,
+    "total_yards": 6920,
+    "elevation_m": 12,
+    "turf_type": "Fescue / Bentgrass Duneland Turf",
+    "firmness_stimp": 11.8,
+    "tactical_profile": "Undulating coastal duneland, firm turf rebound, high sidehill lie torque",
+    "subagent_focus": "Caddy (Air density +0.4%), Alieve (Sidehill posture stabilization)",
+    "holes": [
+      {
+        "hole_number": 1,
+        "name": "Hole 1",
+        "par": 4,
+        "championship_yardage": 160,
+        "handicap": 2,
+        "elevation_delta_m": 3.5,
+        "critical_hazards": {
+          "dune_slopes": "Severe undulating dune slopes and deep sidehill lies"
+        },
+        "agent_directives": {
+          "caddy": "Factor +0.4% air density; aim for flat fairway ridges.",
+          "alieve": "Enforce lead-hip posture lock on sidehill stances."
+        }
+      },
+      {
+        "hole_number": 2,
+        "name": "Hole 2",
+        "par": 4,
+        "championship_yardage": 182,
+        "handicap": 5,
+        "elevation_delta_m": -2.8,
+        "critical_hazards": {
+          "dune_slopes": "Severe undulating dune slopes and deep sidehill lies"
+        },
+        "agent_directives": {
+          "caddy": "Factor +0.4% air density; aim for flat fairway ridges.",
+          "alieve": "Enforce lead-hip posture lock on sidehill stances."
+        }
+      },
+      {
+        "hole_number": 3,
+        "name": "Hole 3",
+        "par": 3,
+        "championship_yardage": 204,
+        "handicap": 8,
+        "elevation_delta_m": 3.5,
+        "critical_hazards": {
+          "dune_slopes": "Severe undulating dune slopes and deep sidehill lies"
+        },
+        "agent_directives": {
+          "caddy": "Factor +0.4% air density; aim for flat fairway ridges.",
+          "alieve": "Enforce lead-hip posture lock on sidehill stances."
+        }
+      },
+      {
+        "hole_number": 4,
+        "name": "Hole 4",
+        "par": 4,
+        "championship_yardage": 226,
+        "handicap": 11,
+        "elevation_delta_m": -2.8,
+        "critical_hazards": {
+          "dune_slopes": "Severe undulating dune slopes and deep sidehill lies"
+        },
+        "agent_directives": {
+          "caddy": "Factor +0.4% air density; aim for flat fairway ridges.",
+          "alieve": "Enforce lead-hip posture lock on sidehill stances."
+        }
+      },
+      {
+        "hole_number": 5,
+        "name": "Hole 5",
+        "par": 4,
+        "championship_yardage": 248,
+        "handicap": 14,
+        "elevation_delta_m": 3.5,
+        "critical_hazards": {
+          "dune_slopes": "Severe undulating dune slopes and deep sidehill lies"
+        },
+        "agent_directives": {
+          "caddy": "Factor +0.4% air density; aim for flat fairway ridges.",
+          "alieve": "Enforce lead-hip posture lock on sidehill stances."
+        }
+      },
+      {
+        "hole_number": 6,
+        "name": "Hole 6",
+        "par": 5,
+        "championship_yardage": 270,
+        "handicap": 17,
+        "elevation_delta_m": -2.8,
+        "critical_hazards": {
+          "dune_slopes": "Severe undulating dune slopes and deep sidehill lies"
+        },
+        "agent_directives": {
+          "caddy": "Factor +0.4% air density; aim for flat fairway ridges.",
+          "alieve": "Enforce lead-hip posture lock on sidehill stances."
+        }
+      },
+      {
+        "hole_number": 7,
+        "name": "Hole 7",
+        "par": 4,
+        "championship_yardage": 292,
+        "handicap": 2,
+        "elevation_delta_m": 3.5,
+        "critical_hazards": {
+          "dune_slopes": "Severe undulating dune slopes and deep sidehill lies"
+        },
+        "agent_directives": {
+          "caddy": "Factor +0.4% air density; aim for flat fairway ridges.",
+          "alieve": "Enforce lead-hip posture lock on sidehill stances."
+        }
+      },
+      {
+        "hole_number": 8,
+        "name": "Hole 8",
+        "par": 4,
+        "championship_yardage": 314,
+        "handicap": 5,
+        "elevation_delta_m": -2.8,
+        "critical_hazards": {
+          "dune_slopes": "Severe undulating dune slopes and deep sidehill lies"
+        },
+        "agent_directives": {
+          "caddy": "Factor +0.4% air density; aim for flat fairway ridges.",
+          "alieve": "Enforce lead-hip posture lock on sidehill stances."
+        }
+      },
+      {
+        "hole_number": 9,
+        "name": "Hole 9",
+        "par": 3,
+        "championship_yardage": 336,
+        "handicap": 8,
+        "elevation_delta_m": 3.5,
+        "critical_hazards": {
+          "dune_slopes": "Severe undulating dune slopes and deep sidehill lies"
+        },
+        "agent_directives": {
+          "caddy": "Factor +0.4% air density; aim for flat fairway ridges.",
+          "alieve": "Enforce lead-hip posture lock on sidehill stances."
+        }
+      },
+      {
+        "hole_number": 10,
+        "name": "Hole 10",
+        "par": 4,
+        "championship_yardage": 358,
+        "handicap": 11,
+        "elevation_delta_m": -2.8,
+        "critical_hazards": {
+          "dune_slopes": "Severe undulating dune slopes and deep sidehill lies"
+        },
+        "agent_directives": {
+          "caddy": "Factor +0.4% air density; aim for flat fairway ridges.",
+          "alieve": "Enforce lead-hip posture lock on sidehill stances."
+        }
+      },
+      {
+        "hole_number": 11,
+        "name": "Hole 11",
+        "par": 4,
+        "championship_yardage": 380,
+        "handicap": 14,
+        "elevation_delta_m": 3.5,
+        "critical_hazards": {
+          "dune_slopes": "Severe undulating dune slopes and deep sidehill lies"
+        },
+        "agent_directives": {
+          "caddy": "Factor +0.4% air density; aim for flat fairway ridges.",
+          "alieve": "Enforce lead-hip posture lock on sidehill stances."
+        }
+      },
+      {
+        "hole_number": 12,
+        "name": "Hole 12",
+        "par": 5,
+        "championship_yardage": 402,
+        "handicap": 17,
+        "elevation_delta_m": -2.8,
+        "critical_hazards": {
+          "dune_slopes": "Severe undulating dune slopes and deep sidehill lies"
+        },
+        "agent_directives": {
+          "caddy": "Factor +0.4% air density; aim for flat fairway ridges.",
+          "alieve": "Enforce lead-hip posture lock on sidehill stances."
+        }
+      },
+      {
+        "hole_number": 13,
+        "name": "Hole 13",
+        "par": 4,
+        "championship_yardage": 424,
+        "handicap": 2,
+        "elevation_delta_m": 3.5,
+        "critical_hazards": {
+          "dune_slopes": "Severe undulating dune slopes and deep sidehill lies"
+        },
+        "agent_directives": {
+          "caddy": "Factor +0.4% air density; aim for flat fairway ridges.",
+          "alieve": "Enforce lead-hip posture lock on sidehill stances."
+        }
+      },
+      {
+        "hole_number": 14,
+        "name": "Hole 14",
+        "par": 3,
+        "championship_yardage": 446,
+        "handicap": 5,
+        "elevation_delta_m": -2.8,
+        "critical_hazards": {
+          "dune_slopes": "Severe undulating dune slopes and deep sidehill lies"
+        },
+        "agent_directives": {
+          "caddy": "Factor +0.4% air density; aim for flat fairway ridges.",
+          "alieve": "Enforce lead-hip posture lock on sidehill stances."
+        }
+      },
+      {
+        "hole_number": 15,
+        "name": "Hole 15",
+        "par": 4,
+        "championship_yardage": 468,
+        "handicap": 8,
+        "elevation_delta_m": 3.5,
+        "critical_hazards": {
+          "dune_slopes": "Severe undulating dune slopes and deep sidehill lies"
+        },
+        "agent_directives": {
+          "caddy": "Factor +0.4% air density; aim for flat fairway ridges.",
+          "alieve": "Enforce lead-hip posture lock on sidehill stances."
+        }
+      },
+      {
+        "hole_number": 16,
+        "name": "Hole 16",
+        "par": 4,
+        "championship_yardage": 170,
+        "handicap": 11,
+        "elevation_delta_m": -2.8,
+        "critical_hazards": {
+          "dune_slopes": "Severe undulating dune slopes and deep sidehill lies"
+        },
+        "agent_directives": {
+          "caddy": "Factor +0.4% air density; aim for flat fairway ridges.",
+          "alieve": "Enforce lead-hip posture lock on sidehill stances."
+        }
+      },
+      {
+        "hole_number": 17,
+        "name": "Hole 17",
+        "par": 3,
+        "championship_yardage": 192,
+        "handicap": 14,
+        "elevation_delta_m": 3.5,
+        "critical_hazards": {
+          "dune_slopes": "Severe undulating dune slopes and deep sidehill lies"
+        },
+        "agent_directives": {
+          "caddy": "Factor +0.4% air density; aim for flat fairway ridges.",
+          "alieve": "Enforce lead-hip posture lock on sidehill stances."
+        }
+      },
+      {
+        "hole_number": 18,
+        "name": "Hole 18",
+        "par": 5,
+        "championship_yardage": 214,
+        "handicap": 17,
+        "elevation_delta_m": -2.8,
+        "critical_hazards": {
+          "dune_slopes": "Severe undulating dune slopes and deep sidehill lies"
+        },
+        "agent_directives": {
+          "caddy": "Factor +0.4% air density; aim for flat fairway ridges.",
+          "alieve": "Enforce lead-hip posture lock on sidehill stances."
+        }
+      }
+    ]
+  },
+  "de_pan_utrechtsche": {
+    "course_id": "de_pan_utrechtsche",
+    "name": "Utrechtsche Golfclub 'de Pan'",
+    "cohort": "Netherlands Strategic Cohort",
+    "location": "Bosch en Duin, Netherlands",
+    "architect": "Harry Colt",
+    "established": 1894,
+    "par": 72,
+    "total_yards": 6710,
+    "elevation_m": 22,
+    "turf_type": "Sandy Subsoil Heather & Fine Fescue",
+    "firmness_stimp": 12,
+    "tactical_profile": "Pine forest corridors, deep heather rough, optical illusion carries",
+    "subagent_focus": "Tailor (10°-12° high-bounce wedge grind), Zenner (Optical illusion bypass)",
+    "holes": [
+      {
+        "hole_number": 1,
+        "name": "Hole 1",
+        "par": 4,
+        "championship_yardage": 155,
+        "handicap": 3,
+        "elevation_delta_m": 4.1,
+        "critical_hazards": {
+          "heather": "Dense heather rough and sandy waste areas"
+        },
+        "agent_directives": {
+          "tailor": "Recommend 10°-12° high-bounce wedge grind to prevent digging in heather.",
+          "zenner": "Focus on verified GPS coordinates over Colt's visual horizon illusions."
+        }
+      },
+      {
+        "hole_number": 2,
+        "name": "Hole 2",
+        "par": 5,
+        "championship_yardage": 179,
+        "handicap": 8,
+        "elevation_delta_m": -1.5,
+        "critical_hazards": {
+          "heather": "Dense heather rough and sandy waste areas"
+        },
+        "agent_directives": {
+          "tailor": "Recommend 10°-12° high-bounce wedge grind to prevent digging in heather.",
+          "zenner": "Focus on verified GPS coordinates over Colt's visual horizon illusions."
+        }
+      },
+      {
+        "hole_number": 3,
+        "name": "Hole 3",
+        "par": 4,
+        "championship_yardage": 203,
+        "handicap": 13,
+        "elevation_delta_m": -1.5,
+        "critical_hazards": {
+          "heather": "Dense heather rough and sandy waste areas"
+        },
+        "agent_directives": {
+          "tailor": "Recommend 10°-12° high-bounce wedge grind to prevent digging in heather.",
+          "zenner": "Focus on verified GPS coordinates over Colt's visual horizon illusions."
+        }
+      },
+      {
+        "hole_number": 4,
+        "name": "Hole 4",
+        "par": 3,
+        "championship_yardage": 227,
+        "handicap": 18,
+        "elevation_delta_m": 4.1,
+        "critical_hazards": {
+          "heather": "Dense heather rough and sandy waste areas"
+        },
+        "agent_directives": {
+          "tailor": "Recommend 10°-12° high-bounce wedge grind to prevent digging in heather.",
+          "zenner": "Focus on verified GPS coordinates over Colt's visual horizon illusions."
+        }
+      },
+      {
+        "hole_number": 5,
+        "name": "Hole 5",
+        "par": 4,
+        "championship_yardage": 251,
+        "handicap": 5,
+        "elevation_delta_m": -1.5,
+        "critical_hazards": {
+          "heather": "Dense heather rough and sandy waste areas"
+        },
+        "agent_directives": {
+          "tailor": "Recommend 10°-12° high-bounce wedge grind to prevent digging in heather.",
+          "zenner": "Focus on verified GPS coordinates over Colt's visual horizon illusions."
+        }
+      },
+      {
+        "hole_number": 6,
+        "name": "Hole 6",
+        "par": 4,
+        "championship_yardage": 275,
+        "handicap": 10,
+        "elevation_delta_m": -1.5,
+        "critical_hazards": {
+          "heather": "Dense heather rough and sandy waste areas"
+        },
+        "agent_directives": {
+          "tailor": "Recommend 10°-12° high-bounce wedge grind to prevent digging in heather.",
+          "zenner": "Focus on verified GPS coordinates over Colt's visual horizon illusions."
+        }
+      },
+      {
+        "hole_number": 7,
+        "name": "Hole 7",
+        "par": 4,
+        "championship_yardage": 299,
+        "handicap": 15,
+        "elevation_delta_m": 4.1,
+        "critical_hazards": {
+          "heather": "Dense heather rough and sandy waste areas"
+        },
+        "agent_directives": {
+          "tailor": "Recommend 10°-12° high-bounce wedge grind to prevent digging in heather.",
+          "zenner": "Focus on verified GPS coordinates over Colt's visual horizon illusions."
+        }
+      },
+      {
+        "hole_number": 8,
+        "name": "Hole 8",
+        "par": 3,
+        "championship_yardage": 323,
+        "handicap": 2,
+        "elevation_delta_m": -1.5,
+        "critical_hazards": {
+          "heather": "Dense heather rough and sandy waste areas"
+        },
+        "agent_directives": {
+          "tailor": "Recommend 10°-12° high-bounce wedge grind to prevent digging in heather.",
+          "zenner": "Focus on verified GPS coordinates over Colt's visual horizon illusions."
+        }
+      },
+      {
+        "hole_number": 9,
+        "name": "Hole 9",
+        "par": 4,
+        "championship_yardage": 347,
+        "handicap": 7,
+        "elevation_delta_m": -1.5,
+        "critical_hazards": {
+          "heather": "Dense heather rough and sandy waste areas"
+        },
+        "agent_directives": {
+          "tailor": "Recommend 10°-12° high-bounce wedge grind to prevent digging in heather.",
+          "zenner": "Focus on verified GPS coordinates over Colt's visual horizon illusions."
+        }
+      },
+      {
+        "hole_number": 10,
+        "name": "Hole 10",
+        "par": 5,
+        "championship_yardage": 371,
+        "handicap": 12,
+        "elevation_delta_m": 4.1,
+        "critical_hazards": {
+          "heather": "Dense heather rough and sandy waste areas"
+        },
+        "agent_directives": {
+          "tailor": "Recommend 10°-12° high-bounce wedge grind to prevent digging in heather.",
+          "zenner": "Focus on verified GPS coordinates over Colt's visual horizon illusions."
+        }
+      },
+      {
+        "hole_number": 11,
+        "name": "Hole 11",
+        "par": 4,
+        "championship_yardage": 395,
+        "handicap": 17,
+        "elevation_delta_m": -1.5,
+        "critical_hazards": {
+          "heather": "Dense heather rough and sandy waste areas"
+        },
+        "agent_directives": {
+          "tailor": "Recommend 10°-12° high-bounce wedge grind to prevent digging in heather.",
+          "zenner": "Focus on verified GPS coordinates over Colt's visual horizon illusions."
+        }
+      },
+      {
+        "hole_number": 12,
+        "name": "Hole 12",
+        "par": 4,
+        "championship_yardage": 419,
+        "handicap": 4,
+        "elevation_delta_m": -1.5,
+        "critical_hazards": {
+          "heather": "Dense heather rough and sandy waste areas"
+        },
+        "agent_directives": {
+          "tailor": "Recommend 10°-12° high-bounce wedge grind to prevent digging in heather.",
+          "zenner": "Focus on verified GPS coordinates over Colt's visual horizon illusions."
+        }
+      },
+      {
+        "hole_number": 13,
+        "name": "Hole 13",
+        "par": 3,
+        "championship_yardage": 443,
+        "handicap": 9,
+        "elevation_delta_m": 4.1,
+        "critical_hazards": {
+          "heather": "Dense heather rough and sandy waste areas"
+        },
+        "agent_directives": {
+          "tailor": "Recommend 10°-12° high-bounce wedge grind to prevent digging in heather.",
+          "zenner": "Focus on verified GPS coordinates over Colt's visual horizon illusions."
+        }
+      },
+      {
+        "hole_number": 14,
+        "name": "Hole 14",
+        "par": 4,
+        "championship_yardage": 157,
+        "handicap": 14,
+        "elevation_delta_m": -1.5,
+        "critical_hazards": {
+          "heather": "Dense heather rough and sandy waste areas"
+        },
+        "agent_directives": {
+          "tailor": "Recommend 10°-12° high-bounce wedge grind to prevent digging in heather.",
+          "zenner": "Focus on verified GPS coordinates over Colt's visual horizon illusions."
+        }
+      },
+      {
+        "hole_number": 15,
+        "name": "Hole 15",
+        "par": 4,
+        "championship_yardage": 181,
+        "handicap": 1,
+        "elevation_delta_m": -1.5,
+        "critical_hazards": {
+          "heather": "Dense heather rough and sandy waste areas"
+        },
+        "agent_directives": {
+          "tailor": "Recommend 10°-12° high-bounce wedge grind to prevent digging in heather.",
+          "zenner": "Focus on verified GPS coordinates over Colt's visual horizon illusions."
+        }
+      },
+      {
+        "hole_number": 16,
+        "name": "Hole 16",
+        "par": 3,
+        "championship_yardage": 205,
+        "handicap": 6,
+        "elevation_delta_m": 4.1,
+        "critical_hazards": {
+          "heather": "Dense heather rough and sandy waste areas"
+        },
+        "agent_directives": {
+          "tailor": "Recommend 10°-12° high-bounce wedge grind to prevent digging in heather.",
+          "zenner": "Focus on verified GPS coordinates over Colt's visual horizon illusions."
+        }
+      },
+      {
+        "hole_number": 17,
+        "name": "Hole 17",
+        "par": 5,
+        "championship_yardage": 229,
+        "handicap": 11,
+        "elevation_delta_m": -1.5,
+        "critical_hazards": {
+          "heather": "Dense heather rough and sandy waste areas"
+        },
+        "agent_directives": {
+          "tailor": "Recommend 10°-12° high-bounce wedge grind to prevent digging in heather.",
+          "zenner": "Focus on verified GPS coordinates over Colt's visual horizon illusions."
+        }
+      },
+      {
+        "hole_number": 18,
+        "name": "Hole 18",
+        "par": 4,
+        "championship_yardage": 253,
+        "handicap": 16,
+        "elevation_delta_m": -1.5,
+        "critical_hazards": {
+          "heather": "Dense heather rough and sandy waste areas"
+        },
+        "agent_directives": {
+          "tailor": "Recommend 10°-12° high-bounce wedge grind to prevent digging in heather.",
+          "zenner": "Focus on verified GPS coordinates over Colt's visual horizon illusions."
+        }
+      }
+    ]
+  },
+  "noordwijkse_golfclub": {
+    "course_id": "noordwijkse_golfclub",
+    "name": "De Noordwijkse Golfclub",
+    "cohort": "Netherlands Strategic Cohort",
+    "location": "Noordwijk, Netherlands",
+    "architect": "Frank Pennink",
+    "established": 1915,
+    "par": 72,
+    "total_yards": 6885,
+    "elevation_m": 8,
+    "turf_type": "Coastal Dune Fescue",
+    "firmness_stimp": 12.5,
+    "tactical_profile": "Exposed North Sea cliffside, gale-force wind shears, ESA Rule 16.1f boundaries",
+    "subagent_focus": "Sticks (Low-spin utility iron trajectory), Judge (Rule 16.1f ESA boundary audit)",
+    "holes": [
+      {
+        "hole_number": 1,
+        "name": "Hole 1",
+        "par": 4,
+        "championship_yardage": 165,
+        "handicap": 4,
+        "elevation_delta_m": 2.5,
+        "critical_hazards": {
+          "north_sea_wind": "Severe 22mph North Sea wind shears and cliffside dropoffs",
+          "esa_dunes": "Environmentally Sensitive Area (Rule 16.1f) bordering fairway right"
+        },
+        "agent_directives": {
+          "caddy": "3-DoF Ballistics: 22mph headwind + 6.8m elevation turns 435 yds into 472 yds.",
+          "sticks": "Low-spin utility iron flight below gale wind ceiling.",
+          "judge": "Mandatory Rule 16.1f relief check if ball crosses ESA dune stakes."
+        }
+      },
+      {
+        "hole_number": 2,
+        "name": "Hole 2",
+        "par": 4,
+        "championship_yardage": 185,
+        "handicap": 8,
+        "elevation_delta_m": -3,
+        "critical_hazards": {
+          "north_sea_wind": "Severe 22mph North Sea wind shears and cliffside dropoffs",
+          "esa_dunes": "Environmentally Sensitive Area (Rule 16.1f) bordering fairway right"
+        },
+        "agent_directives": {
+          "caddy": "3-DoF Ballistics: 22mph headwind + 6.8m elevation turns 435 yds into 472 yds.",
+          "sticks": "Low-spin utility iron flight below gale wind ceiling.",
+          "judge": "Mandatory Rule 16.1f relief check if ball crosses ESA dune stakes."
+        }
+      },
+      {
+        "hole_number": 3,
+        "name": "Hole 3",
+        "par": 5,
+        "championship_yardage": 205,
+        "handicap": 12,
+        "elevation_delta_m": 2.5,
+        "critical_hazards": {
+          "north_sea_wind": "Severe 22mph North Sea wind shears and cliffside dropoffs",
+          "esa_dunes": "Environmentally Sensitive Area (Rule 16.1f) bordering fairway right"
+        },
+        "agent_directives": {
+          "caddy": "3-DoF Ballistics: 22mph headwind + 6.8m elevation turns 435 yds into 472 yds.",
+          "sticks": "Low-spin utility iron flight below gale wind ceiling.",
+          "judge": "Mandatory Rule 16.1f relief check if ball crosses ESA dune stakes."
+        }
+      },
+      {
+        "hole_number": 4,
+        "name": "Hole 4",
+        "par": 4,
+        "championship_yardage": 225,
+        "handicap": 16,
+        "elevation_delta_m": -3,
+        "critical_hazards": {
+          "north_sea_wind": "Severe 22mph North Sea wind shears and cliffside dropoffs",
+          "esa_dunes": "Environmentally Sensitive Area (Rule 16.1f) bordering fairway right"
+        },
+        "agent_directives": {
+          "caddy": "3-DoF Ballistics: 22mph headwind + 6.8m elevation turns 435 yds into 472 yds.",
+          "sticks": "Low-spin utility iron flight below gale wind ceiling.",
+          "judge": "Mandatory Rule 16.1f relief check if ball crosses ESA dune stakes."
+        }
+      },
+      {
+        "hole_number": 5,
+        "name": "Hole 5",
+        "par": 3,
+        "championship_yardage": 245,
+        "handicap": 2,
+        "elevation_delta_m": 2.5,
+        "critical_hazards": {
+          "north_sea_wind": "Severe 22mph North Sea wind shears and cliffside dropoffs",
+          "esa_dunes": "Environmentally Sensitive Area (Rule 16.1f) bordering fairway right"
+        },
+        "agent_directives": {
+          "caddy": "3-DoF Ballistics: 22mph headwind + 6.8m elevation turns 435 yds into 472 yds.",
+          "sticks": "Low-spin utility iron flight below gale wind ceiling.",
+          "judge": "Mandatory Rule 16.1f relief check if ball crosses ESA dune stakes."
+        }
+      },
+      {
+        "hole_number": 6,
+        "name": "Hole 6",
+        "par": 4,
+        "championship_yardage": 265,
+        "handicap": 6,
+        "elevation_delta_m": -3,
+        "critical_hazards": {
+          "north_sea_wind": "Severe 22mph North Sea wind shears and cliffside dropoffs",
+          "esa_dunes": "Environmentally Sensitive Area (Rule 16.1f) bordering fairway right"
+        },
+        "agent_directives": {
+          "caddy": "3-DoF Ballistics: 22mph headwind + 6.8m elevation turns 435 yds into 472 yds.",
+          "sticks": "Low-spin utility iron flight below gale wind ceiling.",
+          "judge": "Mandatory Rule 16.1f relief check if ball crosses ESA dune stakes."
+        }
+      },
+      {
+        "hole_number": 7,
+        "name": "Hole 7",
+        "par": 4,
+        "championship_yardage": 285,
+        "handicap": 10,
+        "elevation_delta_m": 2.5,
+        "critical_hazards": {
+          "north_sea_wind": "Severe 22mph North Sea wind shears and cliffside dropoffs",
+          "esa_dunes": "Environmentally Sensitive Area (Rule 16.1f) bordering fairway right"
+        },
+        "agent_directives": {
+          "caddy": "3-DoF Ballistics: 22mph headwind + 6.8m elevation turns 435 yds into 472 yds.",
+          "sticks": "Low-spin utility iron flight below gale wind ceiling.",
+          "judge": "Mandatory Rule 16.1f relief check if ball crosses ESA dune stakes."
+        }
+      },
+      {
+        "hole_number": 8,
+        "name": "Hole 8",
+        "par": 4,
+        "championship_yardage": 305,
+        "handicap": 14,
+        "elevation_delta_m": -3,
+        "critical_hazards": {
+          "north_sea_wind": "Severe 22mph North Sea wind shears and cliffside dropoffs",
+          "esa_dunes": "Environmentally Sensitive Area (Rule 16.1f) bordering fairway right"
+        },
+        "agent_directives": {
+          "caddy": "3-DoF Ballistics: 22mph headwind + 6.8m elevation turns 435 yds into 472 yds.",
+          "sticks": "Low-spin utility iron flight below gale wind ceiling.",
+          "judge": "Mandatory Rule 16.1f relief check if ball crosses ESA dune stakes."
+        }
+      },
+      {
+        "hole_number": 9,
+        "name": "Hole 9",
+        "par": 3,
+        "championship_yardage": 325,
+        "handicap": 18,
+        "elevation_delta_m": 2.5,
+        "critical_hazards": {
+          "north_sea_wind": "Severe 22mph North Sea wind shears and cliffside dropoffs",
+          "esa_dunes": "Environmentally Sensitive Area (Rule 16.1f) bordering fairway right"
+        },
+        "agent_directives": {
+          "caddy": "3-DoF Ballistics: 22mph headwind + 6.8m elevation turns 435 yds into 472 yds.",
+          "sticks": "Low-spin utility iron flight below gale wind ceiling.",
+          "judge": "Mandatory Rule 16.1f relief check if ball crosses ESA dune stakes."
+        }
+      },
+      {
+        "hole_number": 10,
+        "name": "Hole 10",
+        "par": 4,
+        "championship_yardage": 345,
+        "handicap": 4,
+        "elevation_delta_m": -3,
+        "critical_hazards": {
+          "north_sea_wind": "Severe 22mph North Sea wind shears and cliffside dropoffs",
+          "esa_dunes": "Environmentally Sensitive Area (Rule 16.1f) bordering fairway right"
+        },
+        "agent_directives": {
+          "caddy": "3-DoF Ballistics: 22mph headwind + 6.8m elevation turns 435 yds into 472 yds.",
+          "sticks": "Low-spin utility iron flight below gale wind ceiling.",
+          "judge": "Mandatory Rule 16.1f relief check if ball crosses ESA dune stakes."
+        }
+      },
+      {
+        "hole_number": 11,
+        "name": "Hole 11",
+        "par": 4,
+        "championship_yardage": 365,
+        "handicap": 8,
+        "elevation_delta_m": 2.5,
+        "critical_hazards": {
+          "north_sea_wind": "Severe 22mph North Sea wind shears and cliffside dropoffs",
+          "esa_dunes": "Environmentally Sensitive Area (Rule 16.1f) bordering fairway right"
+        },
+        "agent_directives": {
+          "caddy": "3-DoF Ballistics: 22mph headwind + 6.8m elevation turns 435 yds into 472 yds.",
+          "sticks": "Low-spin utility iron flight below gale wind ceiling.",
+          "judge": "Mandatory Rule 16.1f relief check if ball crosses ESA dune stakes."
+        }
+      },
+      {
+        "hole_number": 12,
+        "name": "Hole 12",
+        "par": 5,
+        "championship_yardage": 385,
+        "handicap": 12,
+        "elevation_delta_m": -3,
+        "critical_hazards": {
+          "north_sea_wind": "Severe 22mph North Sea wind shears and cliffside dropoffs",
+          "esa_dunes": "Environmentally Sensitive Area (Rule 16.1f) bordering fairway right"
+        },
+        "agent_directives": {
+          "caddy": "3-DoF Ballistics: 22mph headwind + 6.8m elevation turns 435 yds into 472 yds.",
+          "sticks": "Low-spin utility iron flight below gale wind ceiling.",
+          "judge": "Mandatory Rule 16.1f relief check if ball crosses ESA dune stakes."
+        }
+      },
+      {
+        "hole_number": 13,
+        "name": "Cliffside West (Hole 13)",
+        "par": 4,
+        "championship_yardage": 435,
+        "handicap": 1,
+        "elevation_delta_m": 6.8,
+        "critical_hazards": {
+          "north_sea_wind": "Severe 22mph North Sea wind shears and cliffside dropoffs",
+          "esa_dunes": "Environmentally Sensitive Area (Rule 16.1f) bordering fairway right"
+        },
+        "agent_directives": {
+          "caddy": "3-DoF Ballistics: 22mph headwind + 6.8m elevation turns 435 yds into 472 yds.",
+          "sticks": "Low-spin utility iron flight below gale wind ceiling.",
+          "judge": "Mandatory Rule 16.1f relief check if ball crosses ESA dune stakes."
+        }
+      },
+      {
+        "hole_number": 14,
+        "name": "Hole 14",
+        "par": 3,
+        "championship_yardage": 425,
+        "handicap": 2,
+        "elevation_delta_m": -3,
+        "critical_hazards": {
+          "north_sea_wind": "Severe 22mph North Sea wind shears and cliffside dropoffs",
+          "esa_dunes": "Environmentally Sensitive Area (Rule 16.1f) bordering fairway right"
+        },
+        "agent_directives": {
+          "caddy": "3-DoF Ballistics: 22mph headwind + 6.8m elevation turns 435 yds into 472 yds.",
+          "sticks": "Low-spin utility iron flight below gale wind ceiling.",
+          "judge": "Mandatory Rule 16.1f relief check if ball crosses ESA dune stakes."
+        }
+      },
+      {
+        "hole_number": 15,
+        "name": "Hole 15",
+        "par": 4,
+        "championship_yardage": 445,
+        "handicap": 6,
+        "elevation_delta_m": 2.5,
+        "critical_hazards": {
+          "north_sea_wind": "Severe 22mph North Sea wind shears and cliffside dropoffs",
+          "esa_dunes": "Environmentally Sensitive Area (Rule 16.1f) bordering fairway right"
+        },
+        "agent_directives": {
+          "caddy": "3-DoF Ballistics: 22mph headwind + 6.8m elevation turns 435 yds into 472 yds.",
+          "sticks": "Low-spin utility iron flight below gale wind ceiling.",
+          "judge": "Mandatory Rule 16.1f relief check if ball crosses ESA dune stakes."
+        }
+      },
+      {
+        "hole_number": 16,
+        "name": "Hole 16",
+        "par": 5,
+        "championship_yardage": 465,
+        "handicap": 10,
+        "elevation_delta_m": -3,
+        "critical_hazards": {
+          "north_sea_wind": "Severe 22mph North Sea wind shears and cliffside dropoffs",
+          "esa_dunes": "Environmentally Sensitive Area (Rule 16.1f) bordering fairway right"
+        },
+        "agent_directives": {
+          "caddy": "3-DoF Ballistics: 22mph headwind + 6.8m elevation turns 435 yds into 472 yds.",
+          "sticks": "Low-spin utility iron flight below gale wind ceiling.",
+          "judge": "Mandatory Rule 16.1f relief check if ball crosses ESA dune stakes."
+        }
+      },
+      {
+        "hole_number": 17,
+        "name": "Hole 17",
+        "par": 4,
+        "championship_yardage": 165,
+        "handicap": 14,
+        "elevation_delta_m": 2.5,
+        "critical_hazards": {
+          "north_sea_wind": "Severe 22mph North Sea wind shears and cliffside dropoffs",
+          "esa_dunes": "Environmentally Sensitive Area (Rule 16.1f) bordering fairway right"
+        },
+        "agent_directives": {
+          "caddy": "3-DoF Ballistics: 22mph headwind + 6.8m elevation turns 435 yds into 472 yds.",
+          "sticks": "Low-spin utility iron flight below gale wind ceiling.",
+          "judge": "Mandatory Rule 16.1f relief check if ball crosses ESA dune stakes."
+        }
+      },
+      {
+        "hole_number": 18,
+        "name": "Hole 18",
+        "par": 3,
+        "championship_yardage": 185,
+        "handicap": 18,
+        "elevation_delta_m": -3,
+        "critical_hazards": {
+          "north_sea_wind": "Severe 22mph North Sea wind shears and cliffside dropoffs",
+          "esa_dunes": "Environmentally Sensitive Area (Rule 16.1f) bordering fairway right"
+        },
+        "agent_directives": {
+          "caddy": "3-DoF Ballistics: 22mph headwind + 6.8m elevation turns 435 yds into 472 yds.",
+          "sticks": "Low-spin utility iron flight below gale wind ceiling.",
+          "judge": "Mandatory Rule 16.1f relief check if ball crosses ESA dune stakes."
+        }
+      }
+    ]
+  },
+  "bernardus_golf": {
+    "course_id": "bernardus_golf",
+    "name": "Bernardus Golf",
+    "cohort": "Netherlands Strategic Cohort",
+    "location": "Cromvoirt, Netherlands",
+    "architect": "Kyle Phillips",
+    "established": 2018,
+    "par": 72,
+    "total_yards": 7425,
+    "elevation_m": 5,
+    "turf_type": "Creeping Bentgrass & Fine Fescue",
+    "firmness_stimp": 12.2,
+    "tactical_profile": "Modern stadium championship track, risk/reward par-5 water hazards",
+    "subagent_focus": "Statty (Strokes Gained EV decision trees on par-5 bailouts)",
+    "holes": [
+      {
+        "hole_number": 1,
+        "name": "Hole 1",
+        "par": 4,
+        "championship_yardage": 170,
+        "handicap": 6,
+        "elevation_delta_m": 0.5,
+        "critical_hazards": {
+          "water_hazards": "Expansive tactical water hazard lateral right"
+        },
+        "agent_directives": {
+          "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
+        }
+      },
+      {
+        "hole_number": 2,
+        "name": "Hole 2",
+        "par": 3,
+        "championship_yardage": 195,
+        "handicap": 8,
+        "elevation_delta_m": 0.5,
+        "critical_hazards": {
+          "water_hazards": "Expansive tactical water hazard lateral right"
+        },
+        "agent_directives": {
+          "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
+        }
+      },
+      {
+        "hole_number": 3,
+        "name": "Hole 3",
+        "par": 4,
+        "championship_yardage": 220,
+        "handicap": 10,
+        "elevation_delta_m": 0.5,
+        "critical_hazards": {
+          "water_hazards": "Expansive tactical water hazard lateral right"
+        },
+        "agent_directives": {
+          "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
+        }
+      },
+      {
+        "hole_number": 4,
+        "name": "Hole 4",
+        "par": 5,
+        "championship_yardage": 245,
+        "handicap": 12,
+        "elevation_delta_m": 0.5,
+        "critical_hazards": {
+          "water_hazards": "Expansive tactical water hazard lateral right"
+        },
+        "agent_directives": {
+          "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
+        }
+      },
+      {
+        "hole_number": 5,
+        "name": "Hole 5",
+        "par": 4,
+        "championship_yardage": 270,
+        "handicap": 14,
+        "elevation_delta_m": 0.5,
+        "critical_hazards": {
+          "water_hazards": "Expansive tactical water hazard lateral right"
+        },
+        "agent_directives": {
+          "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
+        }
+      },
+      {
+        "hole_number": 6,
+        "name": "Hole 6",
+        "par": 4,
+        "championship_yardage": 295,
+        "handicap": 16,
+        "elevation_delta_m": 0.5,
+        "critical_hazards": {
+          "water_hazards": "Expansive tactical water hazard lateral right"
+        },
+        "agent_directives": {
+          "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
+        }
+      },
+      {
+        "hole_number": 7,
+        "name": "Hole 7",
+        "par": 4,
+        "championship_yardage": 320,
+        "handicap": 18,
+        "elevation_delta_m": 0.5,
+        "critical_hazards": {
+          "water_hazards": "Expansive tactical water hazard lateral right"
+        },
+        "agent_directives": {
+          "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
+        }
+      },
+      {
+        "hole_number": 8,
+        "name": "Hole 8",
+        "par": 3,
+        "championship_yardage": 345,
+        "handicap": 2,
+        "elevation_delta_m": 0.5,
+        "critical_hazards": {
+          "water_hazards": "Expansive tactical water hazard lateral right"
+        },
+        "agent_directives": {
+          "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
+        }
+      },
+      {
+        "hole_number": 9,
+        "name": "Hole 9",
+        "par": 4,
+        "championship_yardage": 370,
+        "handicap": 4,
+        "elevation_delta_m": 0.5,
+        "critical_hazards": {
+          "water_hazards": "Expansive tactical water hazard lateral right"
+        },
+        "agent_directives": {
+          "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
+        }
+      },
+      {
+        "hole_number": 10,
+        "name": "Hole 10",
+        "par": 5,
+        "championship_yardage": 395,
+        "handicap": 6,
+        "elevation_delta_m": 0.5,
+        "critical_hazards": {
+          "water_hazards": "Expansive tactical water hazard lateral right"
+        },
+        "agent_directives": {
+          "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
+        }
+      },
+      {
+        "hole_number": 11,
+        "name": "Hole 11",
+        "par": 4,
+        "championship_yardage": 420,
+        "handicap": 8,
+        "elevation_delta_m": 0.5,
+        "critical_hazards": {
+          "water_hazards": "Expansive tactical water hazard lateral right"
+        },
+        "agent_directives": {
+          "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
+        }
+      },
+      {
+        "hole_number": 12,
+        "name": "Hole 12",
+        "par": 4,
+        "championship_yardage": 445,
+        "handicap": 10,
+        "elevation_delta_m": 0.5,
+        "critical_hazards": {
+          "water_hazards": "Expansive tactical water hazard lateral right"
+        },
+        "agent_directives": {
+          "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
+        }
+      },
+      {
+        "hole_number": 13,
+        "name": "Hole 13",
+        "par": 4,
+        "championship_yardage": 470,
+        "handicap": 12,
+        "elevation_delta_m": 0.5,
+        "critical_hazards": {
+          "water_hazards": "Expansive tactical water hazard lateral right"
+        },
+        "agent_directives": {
+          "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
+        }
+      },
+      {
+        "hole_number": 14,
+        "name": "Hole 14",
+        "par": 3,
+        "championship_yardage": 495,
+        "handicap": 14,
+        "elevation_delta_m": 0.5,
+        "critical_hazards": {
+          "water_hazards": "Expansive tactical water hazard lateral right"
+        },
+        "agent_directives": {
+          "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
+        }
+      },
+      {
+        "hole_number": 15,
+        "name": "Hole 15",
+        "par": 4,
+        "championship_yardage": 180,
+        "handicap": 16,
+        "elevation_delta_m": 0.5,
+        "critical_hazards": {
+          "water_hazards": "Expansive tactical water hazard lateral right"
+        },
+        "agent_directives": {
+          "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
+        }
+      },
+      {
+        "hole_number": 16,
+        "name": "Hole 16",
+        "par": 4,
+        "championship_yardage": 205,
+        "handicap": 18,
+        "elevation_delta_m": 0.5,
+        "critical_hazards": {
+          "water_hazards": "Expansive tactical water hazard lateral right"
+        },
+        "agent_directives": {
+          "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
+        }
+      },
+      {
+        "hole_number": 17,
+        "name": "Hole 17",
+        "par": 3,
+        "championship_yardage": 230,
+        "handicap": 2,
+        "elevation_delta_m": 0.5,
+        "critical_hazards": {
+          "water_hazards": "Expansive tactical water hazard lateral right"
+        },
+        "agent_directives": {
+          "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
+        }
+      },
+      {
+        "hole_number": 18,
+        "name": "Hole 18",
+        "par": 5,
+        "championship_yardage": 255,
+        "handicap": 4,
+        "elevation_delta_m": 0.5,
+        "critical_hazards": {
+          "water_hazards": "Expansive tactical water hazard lateral right"
+        },
+        "agent_directives": {
+          "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
+        }
+      }
+    ]
+  }
+}
