@@ -2,19 +2,23 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { generateSocialCopyTemplates } from '../core/media/socialCopyGenerator.js';
 
-test('1. generateSocialCopyTemplates generates Twitter copy under 280 character limit', () => {
+test('1. generateSocialCopyTemplates generates Twitter copy under 280 character limit with Par 4 terminology & URL buffer', () => {
   const result = generateSocialCopyTemplates({
     courseName: "Royal Porthcawl Golf Club",
     hole: 18,
+    par: 4,
     rawDistanceYards: 442,
     playsLikeYards: 482,
-    windDetail: "25.4 mph gale"
+    carryYards: 242,
+    windDetail: "25.4 mph gale",
+    shortUrl: "https://aw.golf/r18"
   });
 
   assert.equal(result.twitter.isCompliant, true);
   assert.ok(result.twitter.charCount <= 280);
-  assert.ok(result.twitter.text.includes('Plays 482y'));
-  assert.ok(result.twitter.text.includes('#AlexWengerGolf'));
+  assert.ok(result.twitter.text.includes('Par 4'));
+  assert.ok(result.twitter.text.includes('Carried 242y into the gale'));
+  assert.ok(result.twitter.text.includes('https://aw.golf/r18'));
 });
 
 test('2. generateSocialCopyTemplates generates technical LinkedIn copy with patent reference', () => {

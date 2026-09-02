@@ -17,13 +17,18 @@ export function generateSocialCopyTemplates(params = {}) {
   const playsLike = params.playsLikeYards || 482;
   const windDetail = params.windDetail || "25.4 mph Bristol Channel Gale";
 
-  const twitterCopy = `⛳ Royal Porthcawl Hole ${hole} (${par}-par, ${rawDist}y).
-💨 Wind: ${windDetail}
-📐 3-DoF Physics Result: Plays ${playsLike}y (+${playsLike - rawDist}y wind drag).
+  const shortUrlBuffer = params.shortUrl ? 24 : 0; // Account for 23-char t.co short link + space
+  const carryDistanceYards = params.carryYards || 242;
 
-Alex Wenger Mesh calculated 3-wood off the tee to clear the links ridge. Audio ducked at -12dB.
+  let twitterCopy = `⛳ ${courseName} Hole ${hole} (Par ${par}, ${rawDist}y).
+💨 Wind: ${windDetail}
+📐 3-DoF Physics Result: Plays ${playsLike}y (+${playsLike - rawDist}y wind drag). Carried ${carryDistanceYards}y into the gale.
 
 #AlexWengerGolf #GolfPhysics #BrehonOS #WO2026150385`;
+
+  if (params.shortUrl) {
+    twitterCopy += ` ${params.shortUrl}`;
+  }
 
   const linkedinCopy = `🏛️ INDUSTRIALIZING GTM MEDIA: 3-DoF BALLISTICS & ZERO-COST RECAP AUTOMATION
 
