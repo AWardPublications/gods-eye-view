@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { microElevationLidarEngine } from '../core/spatial/microElevationLidarEngine.js';
+import { microElevationLidarEngine, MicroElevationLidarEngine, computeLidarReboundVector } from '../core/spatial/microElevationLidarEngine.js';
 import { webBluetoothTelemetryReceiver } from '../core/hardware/webBluetoothTelemetryReceiver.js';
 import { opticalLieClassifierEngine } from '../core/vision/opticalLieClassifierEngine.js';
 
@@ -35,4 +35,26 @@ test('3. Step 3: opticalLieClassifierEngine classifies stance-lock lie in <100ms
   assert.equal(stanceFrame.spinDecayPct, 55);
   assert.ok(stanceFrame.executionLatencyMs < 100.0);
   assert.equal(stanceFrame.isZeroTouch, true);
+});
+
+test('4. Step 4: MicroElevationLidarEngine executes Catmull-Rom bicubic spline evaluation and SHA-256 tile sealing', () => {
+  const buffer = new Float32Array([
+    10.0, 10.2, 10.5, 10.8,
+    10.1, 10.4, 10.7, 11.0,
+    10.3, 10.6, 11.0, 11.4,
+    10.5, 10.9, 11.3, 11.8
+  ]);
+
+  const meta = { crs: 'EPSG:2056', resolutionMeters: 0.5, originX: 2600000, originY: 1200000, width: 4, height: 4, tileId: 'swiss_tile_4x4' };
+  const engine = new MicroElevationLidarEngine(buffer, meta);
+
+  assert.ok(engine.tileSealSha256.length === 64, 'SHA-256 tile seal digest should be 64 hex characters');
+
+  const evalResult = engine.evaluateTerrain(2600000.75, 1199999.25);
+  assert.ok(evalResult.elevationMeters > 10.0 && evalResult.elevationMeters < 11.8);
+  assert.ok(evalResult.normal[2] > 0, 'Surface normal Z component should point upward');
+
+  const vIncident = [30.0, 0.0, -15.0];
+  const rebound = computeLidarReboundVector(vIncident, evalResult.normal, 0.42, 0.35);
+  assert.ok(rebound.length === 3);
 });
