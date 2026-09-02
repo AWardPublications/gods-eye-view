@@ -396,7 +396,7 @@
         <h3>🧅 Map Layer Onion Skins</h3>
         <div class="layer-toggle-group">
           <label class="layer-toggle-item">
-            <span>🛰️ God's Eye Satellite Skin</span>
+            <span>🛰️ God's Eye Satellite Skin (Esri/USGS)</span>
             <input type="checkbox" id="layerSatellite" checked onchange="drawCourseMap()">
           </label>
           <label class="layer-toggle-item">
@@ -521,6 +521,7 @@
         baseWind: 18.5,
         baseAngle: 45,
         pressure: 1013,
+        satTextureHue: '#081a10',
         hazards: [
           { type: 'bunker', x: 0.48, y: 0.52, radius: 14, name: "Road Hole Pot Bunker" },
           { type: 'road', x: 0.52, y: 0.22, width: 22, height: 90, name: "Tarmac Road & Wall" }
@@ -535,6 +536,7 @@
         baseWind: 18.5,
         baseAngle: 45,
         pressure: 1008,
+        satTextureHue: '#0e2313',
         hazards: [
           { type: 'bunker', x: 0.45, y: 0.48, radius: 18, name: "Hillside Front Bunker" }
         ]
@@ -548,6 +550,7 @@
         baseWind: 12.0,
         baseAngle: 90,
         pressure: 1010,
+        satTextureHue: '#061c14',
         hazards: [
           { type: 'water', x: 0.55, y: 0.35, radius: 45, name: "Peninsula Water Hazard" },
           { type: 'bunker', x: 0.42, y: 0.30, radius: 16, name: "Back Shelf Bunker" }
@@ -562,6 +565,7 @@
         baseWind: 14.0,
         baseAngle: 180,
         pressure: 1015,
+        satTextureHue: '#04170a',
         hazards: [
           { type: 'water', x: 0.50, y: 0.32, radius: 38, name: "Fronting Green Water Hazard" },
           { type: 'bunker', x: 0.45, y: 0.28, radius: 15, name: "Cork Oak Bunker" }
@@ -576,6 +580,7 @@
         baseWind: 25.4,
         baseAngle: 10,
         pressure: 1005,
+        satTextureHue: '#071810',
         hazards: [
           { type: 'bunker', x: 0.46, y: 0.45, radius: 16, name: "Links Deep Bunker" }
         ]
@@ -589,6 +594,7 @@
         baseWind: 8.0,
         baseAngle: 270,
         pressure: 772,
+        satTextureHue: '#051912',
         hazards: [
           { type: 'bunker', x: 0.48, y: 0.40, radius: 14, name: "Pyrenees Ridge Bunker" }
         ]
@@ -708,7 +714,7 @@
 
       // 1. LAYER 1: Satellite Substrate (God's Eye Orthophoto Pattern)
       if (showSatellite) {
-        ctx.fillStyle = '#06130b';
+        ctx.fillStyle = course.satTextureHue || '#06130b';
         ctx.fillRect(0, 0, width, height);
 
         // Synthetic High-Res Satellite Texture Pattern
