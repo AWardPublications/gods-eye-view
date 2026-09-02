@@ -74,6 +74,26 @@ export async function renderDemoTacticalReel(options = {}) {
   };
 }
 
+/**
+ * Trigger 19th-Hole Auto-Recap Generator from a flushed USER_MEMORY offline snapshot
+ * @param {object} snapshotPayload
+ * @returns {Promise<object>} Rendered recap asset bundle
+ */
+export async function trigger19thHoleAutoRecapFromSnapshot(snapshotPayload = {}) {
+  console.log(`[Auto-Recap Trigger] Processing flushed offline snapshot for user: ${snapshotPayload.userId || 'anon'}`);
+  const courseId = snapshotPayload.courseId || 'camiral_stadium_course';
+  const holeNumber = snapshotPayload.hole || 11;
+  const outputPath = `./dist/renders/recap_${snapshotPayload.userId || 'anon'}_h${holeNumber}.mp4`;
+
+  return renderDemoTacticalReel({
+    seed: null,
+    output: outputPath,
+    format: 'vertical_9_16',
+    fps: 60,
+    snapshotData: snapshotPayload
+  });
+}
+
 // CLI Direct Execution Handler
 if (import.meta.url === `file:///${process.argv[1]?.replace(/\\/g, '/')}`) {
   const args = Object.fromEntries(

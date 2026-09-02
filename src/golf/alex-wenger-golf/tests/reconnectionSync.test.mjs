@@ -82,3 +82,16 @@ test('3. Edge worker /api/v1/memory/snapshot handles snapshot ingestion with ctx
   assert.equal(data.status, 'PERSISTED');
   assert.ok(data.logKey.includes('user_test_golfer_77'));
 });
+
+test('4. Flushed USER_MEMORY offline snapshot triggers automated 19th-Hole recap reel', async () => {
+  const { trigger19thHoleAutoRecapFromSnapshot } = await import('../../../../scripts/media/renderDemoTacticalReel.js');
+  const recapRes = await trigger19thHoleAutoRecapFromSnapshot({
+    userId: 'user_reconnection_test',
+    courseId: 'camiral_stadium_course',
+    hole: 11,
+    strokesGained: { total: 1.45 }
+  });
+
+  assert.equal(recapRes.status, 'DEBUT_REEL_RENDERED');
+  assert.ok(recapRes.videoPath.includes('recap_user_reconnection_test_h11.mp4'));
+});
