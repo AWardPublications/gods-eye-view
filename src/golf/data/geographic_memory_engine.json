@@ -2,7 +2,16 @@
   "schema_version": "4.2.0",
   "governance_patent": "WO/2026/150385",
   "engine_name": "Geographic Memory Engine - Complete 18-Hole Pilot Cohort Registry",
-  "last_updated": "2026-09-01T21:18:09.734Z",
+  "last_updated": "2026-09-02T11:20:00.000Z",
+  "notebooklm_matrix": {
+    "ireland_heritage": "https://notebook.google.com/notebook/67ffc128-7919-4b97-aef7-7c4eb9b66b14",
+    "scotland_championship": "https://notebook.google.com/notebook/f854adb6-6358-4c55-829f-2efb64b04fbe",
+    "england_championship": "https://notebook.google.com/notebook/d59834ae-d842-42fb-be89-421efd6f3eff",
+    "france_championship": "https://notebook.google.com/notebook/eeaa605d-0b8e-4a64-a3e4-1b75d0d91b9f",
+    "isle_of_man": "https://notebook.google.com/notebook/214b4b48-e743-4a58-abe3-2dd121778d34",
+    "coaching_knowledge_awk_v02": "https://gemini.google.com/notebook/11c2a250-e685-4f53-89f8-785d6e4d68cf",
+    "master_mesh_david_os": "https://notebook.google.com/notebook/ce9be147-e983-416d-ba84-72173504dfef"
+  },
   "courses": {
     "st_andrews_old": {
       "holes": {
