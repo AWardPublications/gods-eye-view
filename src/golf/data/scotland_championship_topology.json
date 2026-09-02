@@ -1,0 +1,67 @@
+{
+  "validator_version": "4.7.0-rc.1",
+  "jurisdiction": "R&A",
+  "notebook_ref": "f854adb6-6358-4c55-829f-2efb64b04fbe",
+  "active_compliance_rules": ["Rule_4.3a_State_4_Judge"],
+  "flagship_venues": {
+    "st_andrews_old": {
+      "uid": "UK-SCO-STA-01",
+      "official_name": "St Andrews Links (The Old Course)",
+      "country_code": "GB",
+      "par": 72,
+      "total_yards": 7297,
+      "established": 1552,
+      "architect": "Nature / Old Tom Morris / Daw Anderson",
+      "routing_type": "out_and_back_loop",
+      "signature_features": {
+        "shared_greens": 7,
+        "swilcan_bridge": { "lat": 56.3438, "lon": -2.8025 },
+        "road_hole_17th": { "par": 4, "yards": 495, "hotel_tee_carry": true, "road_bunker": true }
+      },
+      "atmospheric_profiles": {
+        "fife_coastal_gale": {
+          "elevation_m": 5.0,
+          "temp_c": 12.0,
+          "pressure_pa": 100800,
+          "vapor_pressure_pa": 1150,
+          "calculated_air_density_rho": 1.232
+        }
+      }
+    },
+    "carnoustie_champ": {
+      "uid": "UK-SCO-CAR-02",
+      "official_name": "Carnoustie Golf Links (Championship Course)",
+      "country_code": "GB",
+      "par": 71,
+      "total_yards": 7421,
+      "established": 1842,
+      "architect": "Allan Robertson / Old Tom Morris / James Braid",
+      "signature_features": {
+        "barry_burn_18th": { "lat": 56.4968, "lon": -2.7162, "hazard_type": "tidal_burn" },
+        "spectacle_bunkers_14th": { "bunker_count": 2 }
+      },
+      "atmospheric_profiles": {
+        "angus_easterly_blast": {
+          "elevation_m": 8.0,
+          "temp_c": 11.0,
+          "pressure_pa": 100600,
+          "vapor_pressure_pa": 1080,
+          "calculated_air_density_rho: 1.236
+        }
+      }
+    },
+    "muirfield": {
+      "uid": "UK-SCO-MUI-03",
+      "official_name": "Muirfield (Honourable Company of Edinburgh Golfers)",
+      "country_code": "GB",
+      "par": 71,
+      "total_yards": 7245,
+      "established": 1744,
+      "architect": "Old Tom Morris / Harry Colt",
+      "routing_type": "concentric_loops_concentric",
+      "signature_features": {
+        "wind_shift_routing": "Outer loop clockwise, inner loop counter-clockwise"
+      }
+    }
+  }
+}
