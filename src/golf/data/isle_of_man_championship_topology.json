@@ -1,0 +1,44 @@
+{
+  "validator_version": "4.7.0-rc.1",
+  "jurisdiction": "Isle of Man Golf Union / R&A",
+  "notebook_ref": "214b4b48-e743-4a58-abe3-2dd121778d34",
+  "active_compliance_rules": ["Rule_4.3a_State_4_Judge"],
+  "flagship_venues": {
+    "castletown_links": {
+      "uid": "IM-CAS-CTG-01",
+      "official_name": "Castletown Golf Links (Derbyhaven Peninsula)",
+      "country_code": "IM",
+      "par": 72,
+      "total_yards": 6725,
+      "established": 1891,
+      "architect": "Old Tom Morris (1891) / Philip Mackenzie Ross (1947)",
+      "topographical_type": "peninsular_coastal_links",
+      "signature_features": {
+        "surrounded_by_sea_3_sides": "Irish Sea, Castletown Bay, and Derbyhaven Bay surrounding 17 of 18 holes",
+        "st_michaels_isle_fort_view": "Views of 17th-century fort on St Michael's Isle",
+        "road_hole_18th": "Closing hole playing along the rocky sea wall"
+      },
+      "atmospheric_profiles": {
+        "irish_sea_peninsular_gale": {
+          "elevation_m": 6.0,
+          "temp_c": 11.0,
+          "pressure_pa": 100700,
+          "vapor_pressure_pa": 1100,
+          "calculated_air_density_rho": 1.234
+        }
+      }
+    },
+    "pulrose_golf_club": {
+      "uid": "IM-DOU-PUL-02",
+      "official_name": "Douglas Golf Club (Pulrose)",
+      "country_code": "IM",
+      "par": 70,
+      "total_yards": 6015,
+      "established": 1927,
+      "architect": "Dr. Alister MacKenzie",
+      "signature_features": {
+        "mackenzie_undulating_greens": "Classic Alister MacKenzie multi-tier green contours"
+      }
+    }
+  }
+}
