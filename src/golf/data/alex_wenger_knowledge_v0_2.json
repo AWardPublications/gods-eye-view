@@ -1,0 +1,81 @@
+{
+  "knowledge_version": "AWK-v0.2",
+  "project_id": "ALEX_WENGER",
+  "governance": {
+    "patent": "WO/2026/150385",
+    "compliance_gate": "R&A_Rule_4.3a_State_4_Judge",
+    "exclusively_alex_responsibility": true
+  },
+  "blocks": [
+    {
+      "id": "AWK-CM-001",
+      "domain": "Course Management",
+      "sub_domain": "Strategic Risk vs. Reward Decision Engine",
+      "knowledge_status": "CANONICAL",
+      "origin": "ALEX_WENGER_ORIGINAL",
+      "confidence": 0.95,
+      "canonical_ref": "AW_ACADEMY_MASTER_CANON_v0.1.md §3",
+      "applicability": {
+        "player_level": "Intermediate to Tour / Elite",
+        "situation": "High-consequence hazard clearance / pin-hunting vs. safety bailout",
+        "competition_context": "Stroke Play vs. Match Play"
+      },
+      "content": {
+        "core_principle": "Aggressive swing at a conservative target. Never attempt a recovery shot unless execution probability is >= 70%.",
+        "execution_threshold": 0.70,
+        "take_your_medicine_protocol": true
+      }
+    },
+    {
+      "id": "AWK-SG-001",
+      "domain": "Short Game",
+      "sub_domain": "Greenside Shot Selection & Rollout Protocol",
+      "knowledge_status": "CANONICAL",
+      "origin": "ALEX_WENGER_ORIGINAL",
+      "confidence": 0.92,
+      "canonical_ref": "AWG-CERTIFICATION-FRAMEWORK_v0_1.md",
+      "applicability": {
+        "player_level": "Beginner to Advanced",
+        "situation": "Within 40 yards of putting surface"
+      },
+      "content": {
+        "core_principle": "Simplest effective trajectory first. Minimize air-time variance to eliminate fat/thin double-bogeys.",
+        "selection_hierarchy": ["Putt", "Bump-and-Run", "Chip", "Pitch", "Flop"]
+      }
+    },
+    {
+      "id": "AWK-FIT-001",
+      "domain": "Fitness / Recovery",
+      "sub_domain": "Biomechanical Turf Contact & Center of Pressure",
+      "knowledge_status": "VERIFIED",
+      "origin": "ALEX_WENGER_ORIGINAL",
+      "confidence": 0.88,
+      "canonical_ref": "FOUNDER LANDRACES: THE ANCIENT GREEN / ARTICLE ONE",
+      "applicability": {
+        "player_level": "Competitive Athlete / Tour Grinder"
+      },
+      "content": {
+        "core_principle": "Perfect mechanics are silent; telemetry does not lie to the scorecard.",
+        "tempo_ratio_target": "3:1 backswing-to-downswing cadence",
+        "vertical_force_rate_ms": 200,
+        "non_diagnostic_eu_mdr_compliant": true
+      }
+    },
+    {
+      "id": "AWK-PD-001",
+      "domain": "Practice / Training",
+      "sub_domain": "Career Periodization & Administrative Load Triage",
+      "knowledge_status": "CANONICAL",
+      "origin": "DERIVED_SYSTEM_KNOWLEDGE",
+      "confidence": 0.94,
+      "canonical_ref": "Off-Course Burdens in Professional Golf.pdf",
+      "applicability": {
+        "player_level": "Elite Amateur / Tour Professional"
+      },
+      "content": {
+        "core_principle": "The player sits at the center, but the career is an integration problem.",
+        "weekly_cycle": ["Sunday_travel", "Monday_recovery", "Tuesday_practice", "Wednesday_pro_am", "Thursday_Friday_tournament", "Saturday_Sunday_championship"]
+      }
+    }
+  ]
+}
