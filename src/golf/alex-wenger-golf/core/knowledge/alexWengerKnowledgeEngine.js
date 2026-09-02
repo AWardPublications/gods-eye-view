@@ -11,12 +11,64 @@
  * @module alex-wenger-golf/core/knowledge/alexWengerKnowledgeEngine
  */
 
-import knowledgePayload from '../../../data/alex_wenger_knowledge_v0_2.json' with { type: 'json' };
+import knowledgePayloadV2 from '../../../data/alex_wenger_knowledge_v0_2.json' with { type: 'json' };
+import knowledgePayloadV3 from '../../../data/alex_wenger_knowledge_v0_3.json' with { type: 'json' };
 
 export class AlexWengerKnowledgeEngine {
   constructor() {
-    this.registry = knowledgePayload;
-    this.blocks = new Map(this.registry.blocks.map(b => [b.id, b]));
+    this.registryV2 = knowledgePayloadV2;
+    this.registryV3 = knowledgePayloadV3;
+    this.blocks = new Map([
+      ...this.registryV2.blocks.map(b => [b.id, b]),
+      ...this.registryV3.blocks.map(b => [b.id, b])
+    ]);
+
+    this.prohibitedTerms = [
+      'recommend', 'advise', 'decide', 'approve',
+      'guarantee', 'ensure', 'optimise', 'best'
+    ];
+  }
+
+  /**
+   * Scans and validates synthesized speech text against Prohibited Terms Hard Block (AWK-GOV-001)
+   * @param {string} text - Spoken text string
+   * @returns {object} { isCompliant, detectedProhibitedTerms, sanitizedText }
+   */
+  validateVocabularyGating(text = '') {
+    if (!text || typeof text !== 'string') {
+      return { isCompliant: true, detectedProhibitedTerms: [], sanitizedText: '' };
+    }
+
+    const lower = text.toLowerCase();
+    const detected = [];
+
+    for (const term of this.prohibitedTerms) {
+      const regex = new RegExp(`\\b${term}\\b`, 'i');
+      if (regex.test(lower)) {
+        detected.push(term);
+      }
+    }
+
+    let sanitized = text;
+    if (detected.length > 0) {
+      // Replace prohibited decision verbs with non-authoritative support terms
+      sanitized = sanitized
+        .replace(/\brecommend\b/gi, 'suggest options for')
+        .replace(/\badvise\b/gi, 'share insights on')
+        .replace(/\bdecide\b/gi, 'evaluate choice for')
+        .replace(/\bapprove\b/gi, 'verify')
+        .replace(/\bguarantee\b/gi, 'estimate')
+        .replace(/\bensure\b/gi, 'support')
+        .replace(/\boptimise\b/gi, 'calibrate')
+        .replace(/\bbest\b/gi, 'high-probability');
+    }
+
+    return {
+      isCompliant: detected.length === 0,
+      detectedProhibitedTerms: detected,
+      sanitizedText: sanitized,
+      exclusively_alex_responsibility: true
+    };
   }
 
   /**

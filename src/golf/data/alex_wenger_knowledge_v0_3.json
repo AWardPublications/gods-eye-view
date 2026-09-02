@@ -1,0 +1,55 @@
+{
+  "knowledge_version": "AWK-v0.3",
+  "project_id": "ALEX_WENGER",
+  "governance": {
+    "patent": "WO/2026/150385",
+    "compliance_gate": "R&A_Rule_4.3a_State_4_Judge",
+    "exclusively_alex_responsibility": true,
+    "vocabulary_gating_prohibited_terms": ["recommend", "advise", "decide", "approve", "guarantee", "ensure", "optimise", "best"]
+  },
+  "blocks": [
+    {
+      "id": "AWK-TECH-001",
+      "domain": "Technical System",
+      "sub_domain": "Deterministic DNSL Spine & Reconstruction Principle",
+      "knowledge_status": "CANONICAL",
+      "origin": "NOTEBOOKLM_NOTEBOOK_352D4DCA",
+      "confidence": 0.98,
+      "content": {
+        "spine_nodes_count": 11,
+        "entry_node": "IN-001",
+        "replay_node": "REPLAY-001",
+        "reconstruction_principle": "Nothing is trusted because it happened. Everything is trusted because it can be reconstructed.",
+        "truth_stack": ["Public_Experience_Layer", "Narrative_Consultation_Layer", "Current_Executable_Truth", "Future_Authority_Truth"]
+      }
+    },
+    {
+      "id": "AWK-GOV-001",
+      "domain": "Governance & Vocabulary Gating",
+      "sub_domain": "Prohibited Verbs Hard Block & Support vs Decision Boundary",
+      "knowledge_status": "CANONICAL",
+      "origin": "NOTEBOOKLM_NOTEBOOK_352D4DCA",
+      "confidence": 0.99,
+      "content": {
+        "support_without_authority": true,
+        "decision_sovereignty": "HUMAN_OPERATOR_SOLE_AUTHORITY",
+        "prohibited_terms": ["recommend", "advise", "decide", "approve", "guarantee", "ensure", "optimise", "best"],
+        "aucun_mineur_policy": true,
+        "eu_mdr_non_diagnostic": true
+      }
+    },
+    {
+      "id": "AWK-STAT-001",
+      "domain": "Analytics & Statistics",
+      "sub_domain": "Mark Broadie Strokes Gained & True Averages",
+      "knowledge_status": "CANONICAL",
+      "origin": "NOTEBOOKLM_NOTEBOOK_352D4DCA",
+      "confidence": 0.96,
+      "content": {
+        "analytics_engine": "Mark_Broadie_Strokes_Gained",
+        "baseline_metric": "True_Statistical_Average_Distances",
+        "prohibited_baseline": "Historical_Best_Ever_Outings"
+      }
+    }
+  ]
+}
