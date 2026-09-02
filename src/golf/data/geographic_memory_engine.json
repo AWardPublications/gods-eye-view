@@ -5,6 +5,11 @@
   "last_updated": "2026-09-01T21:18:09.734Z",
   "courses": {
     "st_andrews_old": {
+      "holes": {
+        "18": {
+          "name": "Home (Barry Burn)"
+        }
+      },
       "course_id": "st_andrews_old",
       "name": "St Andrews Links (The Old Course)",
       "country_code": "GB",
@@ -1017,6 +1022,11 @@
       ]
     },
     "muirfield": {
+      "holes": {
+        "18": {
+          "name": "Home (Barry Burn)"
+        }
+      },
       "course_id": "muirfield",
       "name": "Muirfield (HCEG)",
       "country_code": "GB",
@@ -1031,6 +1041,11 @@
       }
     },
     "carnoustie_champ": {
+      "holes": {
+        "18": {
+          "name": "Home (Barry Burn)"
+        }
+      },
       "course_id": "carnoustie_champ",
       "name": "Carnoustie Golf Links (Championship Course)",
       "country_code": "GB",
@@ -3306,6 +3321,11 @@
       ]
     },
     "royal_troon": {
+      "holes": {
+        "18": {
+          "name": "Home (Barry Burn)"
+        }
+      },
       "course_id": "royal_troon",
       "name": "Royal Troon Golf Club (Old Course)",
       "country_code": "GB",
@@ -3320,6 +3340,11 @@
       }
     },
     "royal_birkdale": {
+      "holes": {
+        "18": {
+          "name": "Home (Barry Burn)"
+        }
+      },
       "course_id": "royal_birkdale",
       "name": "Royal Birkdale Golf Club",
       "country_code": "GB",
@@ -3334,6 +3359,11 @@
       }
     },
     "royal_lytham": {
+      "holes": {
+        "18": {
+          "name": "Home (Barry Burn)"
+        }
+      },
       "course_id": "royal_lytham",
       "name": "Royal Lytham & St Annes Golf Club",
       "country_code": "GB",
@@ -3348,6 +3378,11 @@
       }
     },
     "turnberry_alisa": {
+      "holes": {
+        "18": {
+          "name": "Home (Barry Burn)"
+        }
+      },
       "course_id": "turnberry_alisa",
       "name": "Trump Turnberry (Ailsa Course)",
       "country_code": "GB",
@@ -3362,6 +3397,11 @@
       }
     },
     "royal_liverpool": {
+      "holes": {
+        "18": {
+          "name": "Home (Barry Burn)"
+        }
+      },
       "course_id": "royal_liverpool",
       "name": "Royal Liverpool Golf Club (Hoylake)",
       "country_code": "GB",
@@ -3376,6 +3416,11 @@
       }
     },
     "royal_cinque_ports": {
+      "holes": {
+        "18": {
+          "name": "Home (Barry Burn)"
+        }
+      },
       "course_id": "royal_cinque_ports",
       "name": "Royal Cinque Ports Golf Club (Deal)",
       "country_code": "GB",
@@ -3390,6 +3435,11 @@
       }
     },
     "sunningdale_old": {
+      "holes": {
+        "18": {
+          "name": "Home (Barry Burn)"
+        }
+      },
       "course_id": "sunningdale_old",
       "name": "Sunningdale Golf Club (Old Course)",
       "country_code": "GB",
@@ -3404,6 +3454,11 @@
       }
     },
     "walton_heath_old": {
+      "holes": {
+        "18": {
+          "name": "Home (Barry Burn)"
+        }
+      },
       "course_id": "walton_heath_old",
       "name": "Walton Heath Golf Club (Old Course)",
       "country_code": "GB",
@@ -3418,6 +3473,11 @@
       }
     },
     "wentworth_west": {
+      "holes": {
+        "18": {
+          "name": "Home (Barry Burn)"
+        }
+      },
       "course_id": "wentworth_west",
       "name": "Wentworth Club (West Course)",
       "country_code": "GB",
@@ -3432,6 +3492,11 @@
       }
     },
     "kingsbarns_links": {
+      "holes": {
+        "18": {
+          "name": "Home (Barry Burn)"
+        }
+      },
       "course_id": "kingsbarns_links",
       "name": "Kingsbarns Golf Links",
       "country_code": "GB",
@@ -3446,6 +3511,11 @@
       }
     },
     "castle_stuart": {
+      "holes": {
+        "18": {
+          "name": "Home (Barry Burn)"
+        }
+      },
       "course_id": "castle_stuart",
       "name": "Cabot Highlands (Castle Stuart)",
       "country_code": "GB",
@@ -3460,6 +3530,11 @@
       }
     },
     "western_gailes": {
+      "holes": {
+        "18": {
+          "name": "Home (Barry Burn)"
+        }
+      },
       "course_id": "western_gailes",
       "name": "Western Gailes Golf Club",
       "country_code": "GB",
@@ -3474,6 +3549,11 @@
       }
     },
     "prestwick_gc": {
+      "holes": {
+        "18": {
+          "name": "Home (Barry Burn)"
+        }
+      },
       "course_id": "prestwick_gc",
       "name": "Prestwick Golf Club (Birthplace of The Open)",
       "country_code": "GB",

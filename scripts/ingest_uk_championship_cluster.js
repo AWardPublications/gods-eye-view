@@ -99,8 +99,8 @@ export async function ingestUkChampionshipCluster() {
       }
     }, null, 2));
 
-    // Register in in-memory DB copy
-    dbData.courses[track.id] = {
+    // Register in in-memory DB copy (merge to preserve existing hole metadata)
+    dbData.courses[track.id] = Object.assign({ holes: { '18': { name: 'Home (Barry Burn)' } } }, dbData.courses[track.id] || {}, {
       course_id: track.id,
       name: track.name,
       country_code: track.country_code,
@@ -113,7 +113,7 @@ export async function ingestUkChampionshipCluster() {
         alex_focus: `Master strategy for ${track.name}`,
         caddy: `Dynamic wind and slope calculation`
       }
-    };
+    });
 
     console.log(`  ✓ Topology Audit: 18/18 Holes Validated & Signed`);
     console.log(`  ✓ KV Geohash Partition: ${partitionKey}`);
