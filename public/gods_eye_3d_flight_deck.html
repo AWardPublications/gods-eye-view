@@ -291,7 +291,7 @@
       scene.add(dirLight);
 
       // 3D Procedural Terrain Mesh
-      const terrainGeo = new THREE.PlaneBufferGeometry(120, 350, 64, 64);
+      const terrainGeo = new THREE.PlaneGeometry(120, 350, 64, 64);
       terrainGeo.rotateX(-Math.PI / 2);
 
       const pos = terrainGeo.attributes.position;
