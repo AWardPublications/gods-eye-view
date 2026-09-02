@@ -1,0 +1,65 @@
+{
+  "validator_version": "4.7.0-rc.1",
+  "jurisdiction": "R&A",
+  "notebook_ref": "d59834ae-d842-42fb-be89-421efd6f3eff",
+  "active_compliance_rules": ["Rule_4.3a_State_4_Judge"],
+  "flagship_venues": {
+    "royal_st_georges": {
+      "uid": "UK-ENG-RSG-01",
+      "official_name": "Royal St George's Golf Club (Sandwich)",
+      "country_code": "GB",
+      "par": 70,
+      "total_yards": 7204,
+      "established": 1887,
+      "architect": "Laidlaw Purves",
+      "signature_features": {
+        "tallest_bunker_in_england_4th": { "bunker_height_ft": 40.0, "description": "Massive wooden sleeper bunker on 4th hole" },
+        "dune_hollows": "Wild, undulating dunes with blind tee shots"
+      },
+      "atmospheric_profiles": {
+        "kent_channel_breeze": {
+          "elevation_m": 12.0,
+          "temp_c": 15.0,
+          "pressure_pa": 101200,
+          "vapor_pressure_pa": 1200,
+          "calculated_air_density_rho": 1.219
+        }
+      }
+    },
+    "sunningdale_old": {
+      "uid": "UK-ENG-SUN-02",
+      "official_name": "Sunningdale Golf Club (Old Course)",
+      "country_code": "GB",
+      "par": 70,
+      "total_yards": 6627,
+      "established": 1900,
+      "architect": "Willie Park Jr. / Harry Colt",
+      "course_type": "inland_heathland",
+      "signature_features": {
+        "heather_and_pines": "Fairways carved through mature Scots pines and purple heather",
+        "sand_subsoil": "Pure sand subsoil giving links-like firm turf conditions inland"
+      },
+      "atmospheric_profiles": {
+        "berkshire_pine_canopy": {
+          "elevation_m": 45.0,
+          "temp_c": 17.0,
+          "pressure_pa": 100900,
+          "vapor_pressure_pa": 1250,
+          "calculated_air_density_rho": 1.208
+        }
+      }
+    },
+    "royal_birkdale": {
+      "uid": "UK-ENG-RBK-03",
+      "official_name": "Royal Birkdale Golf Club",
+      "country_code": "GB",
+      "par": 70,
+      "total_yards": 7156,
+      "established": 1889,
+      "architect": "George Lowe / Fred Hawtree / J.H. Taylor",
+      "signature_features": {
+        "dune_valleys": "Fairways run strictly between massive towering sand dunes rather than over them"
+      }
+    }
+  }
+}
