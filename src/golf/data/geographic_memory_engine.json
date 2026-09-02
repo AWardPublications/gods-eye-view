@@ -2,7 +2,7 @@
   "schema_version": "4.2.0",
   "governance_patent": "WO/2026/150385",
   "engine_name": "Geographic Memory Engine - Complete 18-Hole Pilot Cohort Registry",
-  "last_updated": "2026-09-02T11:20:00.000Z",
+  "last_updated": "2026-09-02T10:17:19.232Z",
   "notebooklm_matrix": {
     "ireland_heritage": "https://notebook.google.com/notebook/67ffc128-7919-4b97-aef7-7c4eb9b66b14",
     "scotland_championship": "https://notebook.google.com/notebook/f854adb6-6358-4c55-829f-2efb64b04fbe",
@@ -3065,272 +3065,146 @@
     },
     "bernardus_golf": {
       "course_id": "bernardus_golf",
-      "name": "Bernardus Golf",
-      "cohort": "Netherlands Strategic Cohort",
-      "location": "Cromvoirt, Netherlands",
-      "architect": "Kyle Phillips",
-      "established": 2018,
-      "par": 72,
+      "name": "Bernardus Golf (KLM Open Host)",
+      "country_code": "NL",
+      "location": {
+        "lat": 51.6567,
+        "lng": 5.2289,
+        "elevation_m": 8,
+        "country": "NL"
+      },
       "total_yards": 7425,
-      "elevation_m": 5,
-      "turf_type": "Creeping Bentgrass & Fine Fescue",
-      "firmness_stimp": 12.2,
-      "tactical_profile": "Modern stadium championship track, risk/reward par-5 water hazards",
-      "subagent_focus": "Statty (Strokes Gained EV decision trees on par-5 bailouts)",
-      "holes": [
-        {
-          "hole_number": 1,
+      "par": 72,
+      "hole_count": 18,
+      "geohash_partition": "course_idx_NL_u15pt",
+      "holes": {
+        "1": {
+          "number": 1,
           "name": "Hole 1",
           "par": 4,
-          "championship_yardage": 170,
-          "handicap": 6,
-          "elevation_delta_m": 0.5,
-          "critical_hazards": {
-            "water_hazards": "Expansive tactical water hazard lateral right"
-          },
-          "agent_directives": {
-            "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
-          }
+          "yards": 422,
+          "handicap": 1
         },
-        {
-          "hole_number": 2,
+        "2": {
+          "number": 2,
           "name": "Hole 2",
-          "par": 3,
-          "championship_yardage": 195,
-          "handicap": 8,
-          "elevation_delta_m": 0.5,
-          "critical_hazards": {
-            "water_hazards": "Expansive tactical water hazard lateral right"
-          },
-          "agent_directives": {
-            "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
-          }
+          "par": 4,
+          "yards": 422,
+          "handicap": 2
         },
-        {
-          "hole_number": 3,
+        "3": {
+          "number": 3,
           "name": "Hole 3",
-          "par": 4,
-          "championship_yardage": 220,
-          "handicap": 10,
-          "elevation_delta_m": 0.5,
-          "critical_hazards": {
-            "water_hazards": "Expansive tactical water hazard lateral right"
-          },
-          "agent_directives": {
-            "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
-          }
+          "par": 3,
+          "yards": 372,
+          "handicap": 3
         },
-        {
-          "hole_number": 4,
+        "4": {
+          "number": 4,
           "name": "Hole 4",
-          "par": 5,
-          "championship_yardage": 245,
-          "handicap": 12,
-          "elevation_delta_m": 0.5,
-          "critical_hazards": {
-            "water_hazards": "Expansive tactical water hazard lateral right"
-          },
-          "agent_directives": {
-            "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
-          }
+          "par": 4,
+          "yards": 422,
+          "handicap": 4
         },
-        {
-          "hole_number": 5,
+        "5": {
+          "number": 5,
           "name": "Hole 5",
-          "par": 4,
-          "championship_yardage": 270,
-          "handicap": 14,
-          "elevation_delta_m": 0.5,
-          "critical_hazards": {
-            "water_hazards": "Expansive tactical water hazard lateral right"
-          },
-          "agent_directives": {
-            "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
-          }
+          "par": 5,
+          "yards": 472,
+          "handicap": 5
         },
-        {
-          "hole_number": 6,
+        "6": {
+          "number": 6,
           "name": "Hole 6",
-          "par": 4,
-          "championship_yardage": 295,
-          "handicap": 16,
-          "elevation_delta_m": 0.5,
-          "critical_hazards": {
-            "water_hazards": "Expansive tactical water hazard lateral right"
-          },
-          "agent_directives": {
-            "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
-          }
+          "par": 3,
+          "yards": 372,
+          "handicap": 6
         },
-        {
-          "hole_number": 7,
+        "7": {
+          "number": 7,
           "name": "Hole 7",
           "par": 4,
-          "championship_yardage": 320,
-          "handicap": 18,
-          "elevation_delta_m": 0.5,
-          "critical_hazards": {
-            "water_hazards": "Expansive tactical water hazard lateral right"
-          },
-          "agent_directives": {
-            "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
-          }
+          "yards": 422,
+          "handicap": 7
         },
-        {
-          "hole_number": 8,
+        "8": {
+          "number": 8,
           "name": "Hole 8",
-          "par": 3,
-          "championship_yardage": 345,
-          "handicap": 2,
-          "elevation_delta_m": 0.5,
-          "critical_hazards": {
-            "water_hazards": "Expansive tactical water hazard lateral right"
-          },
-          "agent_directives": {
-            "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
-          }
-        },
-        {
-          "hole_number": 9,
-          "name": "Hole 9",
           "par": 4,
-          "championship_yardage": 370,
-          "handicap": 4,
-          "elevation_delta_m": 0.5,
-          "critical_hazards": {
-            "water_hazards": "Expansive tactical water hazard lateral right"
-          },
-          "agent_directives": {
-            "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
-          }
+          "yards": 422,
+          "handicap": 8
         },
-        {
-          "hole_number": 10,
+        "9": {
+          "number": 9,
+          "name": "Hole 9",
+          "par": 3,
+          "yards": 372,
+          "handicap": 9
+        },
+        "10": {
+          "number": 10,
           "name": "Hole 10",
           "par": 5,
-          "championship_yardage": 395,
-          "handicap": 6,
-          "elevation_delta_m": 0.5,
-          "critical_hazards": {
-            "water_hazards": "Expansive tactical water hazard lateral right"
-          },
-          "agent_directives": {
-            "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
-          }
+          "yards": 472,
+          "handicap": 10
         },
-        {
-          "hole_number": 11,
+        "11": {
+          "number": 11,
           "name": "Hole 11",
           "par": 4,
-          "championship_yardage": 420,
-          "handicap": 8,
-          "elevation_delta_m": 0.5,
-          "critical_hazards": {
-            "water_hazards": "Expansive tactical water hazard lateral right"
-          },
-          "agent_directives": {
-            "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
-          }
+          "yards": 422,
+          "handicap": 11
         },
-        {
-          "hole_number": 12,
+        "12": {
+          "number": 12,
           "name": "Hole 12",
-          "par": 4,
-          "championship_yardage": 445,
-          "handicap": 10,
-          "elevation_delta_m": 0.5,
-          "critical_hazards": {
-            "water_hazards": "Expansive tactical water hazard lateral right"
-          },
-          "agent_directives": {
-            "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
-          }
+          "par": 3,
+          "yards": 372,
+          "handicap": 12
         },
-        {
-          "hole_number": 13,
+        "13": {
+          "number": 13,
           "name": "Hole 13",
           "par": 4,
-          "championship_yardage": 470,
-          "handicap": 12,
-          "elevation_delta_m": 0.5,
-          "critical_hazards": {
-            "water_hazards": "Expansive tactical water hazard lateral right"
-          },
-          "agent_directives": {
-            "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
-          }
+          "yards": 422,
+          "handicap": 13
         },
-        {
-          "hole_number": 14,
+        "14": {
+          "number": 14,
           "name": "Hole 14",
-          "par": 3,
-          "championship_yardage": 495,
-          "handicap": 14,
-          "elevation_delta_m": 0.5,
-          "critical_hazards": {
-            "water_hazards": "Expansive tactical water hazard lateral right"
-          },
-          "agent_directives": {
-            "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
-          }
-        },
-        {
-          "hole_number": 15,
-          "name": "Hole 15",
           "par": 4,
-          "championship_yardage": 180,
-          "handicap": 16,
-          "elevation_delta_m": 0.5,
-          "critical_hazards": {
-            "water_hazards": "Expansive tactical water hazard lateral right"
-          },
-          "agent_directives": {
-            "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
-          }
+          "yards": 422,
+          "handicap": 14
         },
-        {
-          "hole_number": 16,
+        "15": {
+          "number": 15,
+          "name": "Hole 15",
+          "par": 5,
+          "yards": 372,
+          "handicap": 15
+        },
+        "16": {
+          "number": 16,
           "name": "Hole 16",
           "par": 4,
-          "championship_yardage": 205,
-          "handicap": 18,
-          "elevation_delta_m": 0.5,
-          "critical_hazards": {
-            "water_hazards": "Expansive tactical water hazard lateral right"
-          },
-          "agent_directives": {
-            "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
-          }
+          "yards": 422,
+          "handicap": 16
         },
-        {
-          "hole_number": 17,
+        "17": {
+          "number": 17,
           "name": "Hole 17",
-          "par": 3,
-          "championship_yardage": 230,
-          "handicap": 2,
-          "elevation_delta_m": 0.5,
-          "critical_hazards": {
-            "water_hazards": "Expansive tactical water hazard lateral right"
-          },
-          "agent_directives": {
-            "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
-          }
+          "par": 4,
+          "yards": 422,
+          "handicap": 17
         },
-        {
-          "hole_number": 18,
+        "18": {
+          "number": 18,
           "name": "Hole 18",
-          "par": 5,
-          "championship_yardage": 255,
-          "handicap": 4,
-          "elevation_delta_m": 0.5,
-          "critical_hazards": {
-            "water_hazards": "Expansive tactical water hazard lateral right"
-          },
-          "agent_directives": {
-            "statty": "Conservative left fairway bailout yields +0.28 EV over aggressive water carry."
-          }
+          "par": 3,
+          "yards": 372,
+          "handicap": 18
         }
-      ]
+      }
     },
     "royal_troon": {
       "holes": {
@@ -3633,6 +3507,2723 @@
       "agent_directives": {
         "alex_focus": "Sandbelt links strategy for Kingston Heath Golf Club",
         "caddy": "Port Phillip Bay wind shear & Stimp 13 micro-contour breaks"
+      }
+    },
+    "marco_simone": {
+      "course_id": "marco_simone",
+      "name": "Marco Simone Golf & Country Club (2023 Ryder Cup)",
+      "country_code": "IT",
+      "location": {
+        "lat": 41.9567,
+        "lng": 12.63,
+        "elevation_m": 75,
+        "country": "IT"
+      },
+      "total_yards": 7268,
+      "par": 72,
+      "hole_count": 18,
+      "geohash_partition": "course_idx_IT_sr2yx",
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Hole 1",
+          "par": 4,
+          "yards": 413,
+          "handicap": 1
+        },
+        "2": {
+          "number": 2,
+          "name": "Hole 2",
+          "par": 4,
+          "yards": 413,
+          "handicap": 2
+        },
+        "3": {
+          "number": 3,
+          "name": "Hole 3",
+          "par": 3,
+          "yards": 363,
+          "handicap": 3
+        },
+        "4": {
+          "number": 4,
+          "name": "Hole 4",
+          "par": 4,
+          "yards": 413,
+          "handicap": 4
+        },
+        "5": {
+          "number": 5,
+          "name": "Hole 5",
+          "par": 5,
+          "yards": 463,
+          "handicap": 5
+        },
+        "6": {
+          "number": 6,
+          "name": "Hole 6",
+          "par": 3,
+          "yards": 363,
+          "handicap": 6
+        },
+        "7": {
+          "number": 7,
+          "name": "Hole 7",
+          "par": 4,
+          "yards": 413,
+          "handicap": 7
+        },
+        "8": {
+          "number": 8,
+          "name": "Hole 8",
+          "par": 4,
+          "yards": 413,
+          "handicap": 8
+        },
+        "9": {
+          "number": 9,
+          "name": "Hole 9",
+          "par": 3,
+          "yards": 363,
+          "handicap": 9
+        },
+        "10": {
+          "number": 10,
+          "name": "Hole 10",
+          "par": 5,
+          "yards": 463,
+          "handicap": 10
+        },
+        "11": {
+          "number": 11,
+          "name": "Hole 11",
+          "par": 4,
+          "yards": 413,
+          "handicap": 11
+        },
+        "12": {
+          "number": 12,
+          "name": "Hole 12",
+          "par": 3,
+          "yards": 363,
+          "handicap": 12
+        },
+        "13": {
+          "number": 13,
+          "name": "Hole 13",
+          "par": 4,
+          "yards": 413,
+          "handicap": 13
+        },
+        "14": {
+          "number": 14,
+          "name": "Hole 14",
+          "par": 4,
+          "yards": 413,
+          "handicap": 14
+        },
+        "15": {
+          "number": 15,
+          "name": "Hole 15",
+          "par": 5,
+          "yards": 363,
+          "handicap": 15
+        },
+        "16": {
+          "number": 16,
+          "name": "Hole 16",
+          "par": 4,
+          "yards": 413,
+          "handicap": 16
+        },
+        "17": {
+          "number": 17,
+          "name": "Hole 17",
+          "par": 4,
+          "yards": 413,
+          "handicap": 17
+        },
+        "18": {
+          "number": 18,
+          "name": "Hole 18",
+          "par": 3,
+          "yards": 363,
+          "handicap": 18
+        }
+      }
+    },
+    "golf_club_milano": {
+      "course_id": "golf_club_milano",
+      "name": "Golf Club Milano (Monza - Italian Open)",
+      "country_code": "IT",
+      "location": {
+        "lat": 45.59,
+        "lng": 9.28,
+        "elevation_m": 162,
+        "country": "IT"
+      },
+      "total_yards": 7215,
+      "par": 72,
+      "hole_count": 18,
+      "geohash_partition": "course_idx_IT_u0ndh",
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Hole 1",
+          "par": 4,
+          "yards": 410,
+          "handicap": 1
+        },
+        "2": {
+          "number": 2,
+          "name": "Hole 2",
+          "par": 4,
+          "yards": 410,
+          "handicap": 2
+        },
+        "3": {
+          "number": 3,
+          "name": "Hole 3",
+          "par": 3,
+          "yards": 360,
+          "handicap": 3
+        },
+        "4": {
+          "number": 4,
+          "name": "Hole 4",
+          "par": 4,
+          "yards": 410,
+          "handicap": 4
+        },
+        "5": {
+          "number": 5,
+          "name": "Hole 5",
+          "par": 5,
+          "yards": 460,
+          "handicap": 5
+        },
+        "6": {
+          "number": 6,
+          "name": "Hole 6",
+          "par": 3,
+          "yards": 360,
+          "handicap": 6
+        },
+        "7": {
+          "number": 7,
+          "name": "Hole 7",
+          "par": 4,
+          "yards": 410,
+          "handicap": 7
+        },
+        "8": {
+          "number": 8,
+          "name": "Hole 8",
+          "par": 4,
+          "yards": 410,
+          "handicap": 8
+        },
+        "9": {
+          "number": 9,
+          "name": "Hole 9",
+          "par": 3,
+          "yards": 360,
+          "handicap": 9
+        },
+        "10": {
+          "number": 10,
+          "name": "Hole 10",
+          "par": 5,
+          "yards": 460,
+          "handicap": 10
+        },
+        "11": {
+          "number": 11,
+          "name": "Hole 11",
+          "par": 4,
+          "yards": 410,
+          "handicap": 11
+        },
+        "12": {
+          "number": 12,
+          "name": "Hole 12",
+          "par": 3,
+          "yards": 360,
+          "handicap": 12
+        },
+        "13": {
+          "number": 13,
+          "name": "Hole 13",
+          "par": 4,
+          "yards": 410,
+          "handicap": 13
+        },
+        "14": {
+          "number": 14,
+          "name": "Hole 14",
+          "par": 4,
+          "yards": 410,
+          "handicap": 14
+        },
+        "15": {
+          "number": 15,
+          "name": "Hole 15",
+          "par": 5,
+          "yards": 360,
+          "handicap": 15
+        },
+        "16": {
+          "number": 16,
+          "name": "Hole 16",
+          "par": 4,
+          "yards": 410,
+          "handicap": 16
+        },
+        "17": {
+          "number": 17,
+          "name": "Hole 17",
+          "par": 4,
+          "yards": 410,
+          "handicap": 17
+        },
+        "18": {
+          "number": 18,
+          "name": "Hole 18",
+          "par": 3,
+          "yards": 360,
+          "handicap": 18
+        }
+      }
+    },
+    "gut_laerchenhof": {
+      "course_id": "gut_laerchenhof",
+      "name": "Golf Club Gut Lärchenhof (Cologne)",
+      "country_code": "DE",
+      "location": {
+        "lat": 51.0542,
+        "lng": 6.8125,
+        "elevation_m": 52,
+        "country": "DE"
+      },
+      "total_yards": 7229,
+      "par": 72,
+      "hole_count": 18,
+      "geohash_partition": "course_idx_DE_u1c37",
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Hole 1",
+          "par": 4,
+          "yards": 411,
+          "handicap": 1
+        },
+        "2": {
+          "number": 2,
+          "name": "Hole 2",
+          "par": 4,
+          "yards": 411,
+          "handicap": 2
+        },
+        "3": {
+          "number": 3,
+          "name": "Hole 3",
+          "par": 3,
+          "yards": 361,
+          "handicap": 3
+        },
+        "4": {
+          "number": 4,
+          "name": "Hole 4",
+          "par": 4,
+          "yards": 411,
+          "handicap": 4
+        },
+        "5": {
+          "number": 5,
+          "name": "Hole 5",
+          "par": 5,
+          "yards": 461,
+          "handicap": 5
+        },
+        "6": {
+          "number": 6,
+          "name": "Hole 6",
+          "par": 3,
+          "yards": 361,
+          "handicap": 6
+        },
+        "7": {
+          "number": 7,
+          "name": "Hole 7",
+          "par": 4,
+          "yards": 411,
+          "handicap": 7
+        },
+        "8": {
+          "number": 8,
+          "name": "Hole 8",
+          "par": 4,
+          "yards": 411,
+          "handicap": 8
+        },
+        "9": {
+          "number": 9,
+          "name": "Hole 9",
+          "par": 3,
+          "yards": 361,
+          "handicap": 9
+        },
+        "10": {
+          "number": 10,
+          "name": "Hole 10",
+          "par": 5,
+          "yards": 461,
+          "handicap": 10
+        },
+        "11": {
+          "number": 11,
+          "name": "Hole 11",
+          "par": 4,
+          "yards": 411,
+          "handicap": 11
+        },
+        "12": {
+          "number": 12,
+          "name": "Hole 12",
+          "par": 3,
+          "yards": 361,
+          "handicap": 12
+        },
+        "13": {
+          "number": 13,
+          "name": "Hole 13",
+          "par": 4,
+          "yards": 411,
+          "handicap": 13
+        },
+        "14": {
+          "number": 14,
+          "name": "Hole 14",
+          "par": 4,
+          "yards": 411,
+          "handicap": 14
+        },
+        "15": {
+          "number": 15,
+          "name": "Hole 15",
+          "par": 5,
+          "yards": 361,
+          "handicap": 15
+        },
+        "16": {
+          "number": 16,
+          "name": "Hole 16",
+          "par": 4,
+          "yards": 411,
+          "handicap": 16
+        },
+        "17": {
+          "number": 17,
+          "name": "Hole 17",
+          "par": 4,
+          "yards": 411,
+          "handicap": 17
+        },
+        "18": {
+          "number": 18,
+          "name": "Hole 18",
+          "par": 3,
+          "yards": 361,
+          "handicap": 18
+        }
+      }
+    },
+    "st_leon_rot": {
+      "course_id": "st_leon_rot",
+      "name": "Golf Club St. Leon-Rot (Solheim Cup Host)",
+      "country_code": "DE",
+      "location": {
+        "lat": 49.2558,
+        "lng": 8.6189,
+        "elevation_m": 108,
+        "country": "DE"
+      },
+      "total_yards": 7380,
+      "par": 72,
+      "hole_count": 18,
+      "geohash_partition": "course_idx_DE_u0e8w",
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Hole 1",
+          "par": 4,
+          "yards": 420,
+          "handicap": 1
+        },
+        "2": {
+          "number": 2,
+          "name": "Hole 2",
+          "par": 4,
+          "yards": 420,
+          "handicap": 2
+        },
+        "3": {
+          "number": 3,
+          "name": "Hole 3",
+          "par": 3,
+          "yards": 370,
+          "handicap": 3
+        },
+        "4": {
+          "number": 4,
+          "name": "Hole 4",
+          "par": 4,
+          "yards": 420,
+          "handicap": 4
+        },
+        "5": {
+          "number": 5,
+          "name": "Hole 5",
+          "par": 5,
+          "yards": 470,
+          "handicap": 5
+        },
+        "6": {
+          "number": 6,
+          "name": "Hole 6",
+          "par": 3,
+          "yards": 370,
+          "handicap": 6
+        },
+        "7": {
+          "number": 7,
+          "name": "Hole 7",
+          "par": 4,
+          "yards": 420,
+          "handicap": 7
+        },
+        "8": {
+          "number": 8,
+          "name": "Hole 8",
+          "par": 4,
+          "yards": 420,
+          "handicap": 8
+        },
+        "9": {
+          "number": 9,
+          "name": "Hole 9",
+          "par": 3,
+          "yards": 370,
+          "handicap": 9
+        },
+        "10": {
+          "number": 10,
+          "name": "Hole 10",
+          "par": 5,
+          "yards": 470,
+          "handicap": 10
+        },
+        "11": {
+          "number": 11,
+          "name": "Hole 11",
+          "par": 4,
+          "yards": 420,
+          "handicap": 11
+        },
+        "12": {
+          "number": 12,
+          "name": "Hole 12",
+          "par": 3,
+          "yards": 370,
+          "handicap": 12
+        },
+        "13": {
+          "number": 13,
+          "name": "Hole 13",
+          "par": 4,
+          "yards": 420,
+          "handicap": 13
+        },
+        "14": {
+          "number": 14,
+          "name": "Hole 14",
+          "par": 4,
+          "yards": 420,
+          "handicap": 14
+        },
+        "15": {
+          "number": 15,
+          "name": "Hole 15",
+          "par": 5,
+          "yards": 370,
+          "handicap": 15
+        },
+        "16": {
+          "number": 16,
+          "name": "Hole 16",
+          "par": 4,
+          "yards": 420,
+          "handicap": 16
+        },
+        "17": {
+          "number": 17,
+          "name": "Hole 17",
+          "par": 4,
+          "yards": 420,
+          "handicap": 17
+        },
+        "18": {
+          "number": 18,
+          "name": "Hole 18",
+          "par": 3,
+          "yards": 370,
+          "handicap": 18
+        }
+      }
+    },
+    "green_eagle": {
+      "course_id": "green_eagle",
+      "name": "Green Eagle Golf Courses (Porsche European Open)",
+      "country_code": "DE",
+      "location": {
+        "lat": 53.3083,
+        "lng": 10.1583,
+        "elevation_m": 24,
+        "country": "DE"
+      },
+      "total_yards": 7803,
+      "par": 73,
+      "hole_count": 18,
+      "geohash_partition": "course_idx_DE_u1x1h",
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Hole 1",
+          "par": 4,
+          "yards": 443,
+          "handicap": 1
+        },
+        "2": {
+          "number": 2,
+          "name": "Hole 2",
+          "par": 4,
+          "yards": 443,
+          "handicap": 2
+        },
+        "3": {
+          "number": 3,
+          "name": "Hole 3",
+          "par": 3,
+          "yards": 393,
+          "handicap": 3
+        },
+        "4": {
+          "number": 4,
+          "name": "Hole 4",
+          "par": 4,
+          "yards": 443,
+          "handicap": 4
+        },
+        "5": {
+          "number": 5,
+          "name": "Hole 5",
+          "par": 5,
+          "yards": 493,
+          "handicap": 5
+        },
+        "6": {
+          "number": 6,
+          "name": "Hole 6",
+          "par": 3,
+          "yards": 393,
+          "handicap": 6
+        },
+        "7": {
+          "number": 7,
+          "name": "Hole 7",
+          "par": 4,
+          "yards": 443,
+          "handicap": 7
+        },
+        "8": {
+          "number": 8,
+          "name": "Hole 8",
+          "par": 4,
+          "yards": 443,
+          "handicap": 8
+        },
+        "9": {
+          "number": 9,
+          "name": "Hole 9",
+          "par": 3,
+          "yards": 393,
+          "handicap": 9
+        },
+        "10": {
+          "number": 10,
+          "name": "Hole 10",
+          "par": 5,
+          "yards": 493,
+          "handicap": 10
+        },
+        "11": {
+          "number": 11,
+          "name": "Hole 11",
+          "par": 4,
+          "yards": 443,
+          "handicap": 11
+        },
+        "12": {
+          "number": 12,
+          "name": "Hole 12",
+          "par": 3,
+          "yards": 393,
+          "handicap": 12
+        },
+        "13": {
+          "number": 13,
+          "name": "Hole 13",
+          "par": 4,
+          "yards": 443,
+          "handicap": 13
+        },
+        "14": {
+          "number": 14,
+          "name": "Hole 14",
+          "par": 4,
+          "yards": 443,
+          "handicap": 14
+        },
+        "15": {
+          "number": 15,
+          "name": "Hole 15",
+          "par": 5,
+          "yards": 393,
+          "handicap": 15
+        },
+        "16": {
+          "number": 16,
+          "name": "Hole 16",
+          "par": 4,
+          "yards": 443,
+          "handicap": 16
+        },
+        "17": {
+          "number": 17,
+          "name": "Hole 17",
+          "par": 4,
+          "yards": 443,
+          "handicap": 17
+        },
+        "18": {
+          "number": 18,
+          "name": "Hole 18",
+          "par": 3,
+          "yards": 393,
+          "handicap": 18
+        }
+      }
+    },
+    "the_international_nl": {
+      "course_id": "the_international_nl",
+      "name": "The International (Amsterdam)",
+      "country_code": "NL",
+      "location": {
+        "lat": 52.3167,
+        "lng": 4.75,
+        "elevation_m": -2,
+        "country": "NL"
+      },
+      "total_yards": 7190,
+      "par": 72,
+      "hole_count": 18,
+      "geohash_partition": "course_idx_NL_u173x",
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Hole 1",
+          "par": 4,
+          "yards": 409,
+          "handicap": 1
+        },
+        "2": {
+          "number": 2,
+          "name": "Hole 2",
+          "par": 4,
+          "yards": 409,
+          "handicap": 2
+        },
+        "3": {
+          "number": 3,
+          "name": "Hole 3",
+          "par": 3,
+          "yards": 359,
+          "handicap": 3
+        },
+        "4": {
+          "number": 4,
+          "name": "Hole 4",
+          "par": 4,
+          "yards": 409,
+          "handicap": 4
+        },
+        "5": {
+          "number": 5,
+          "name": "Hole 5",
+          "par": 5,
+          "yards": 459,
+          "handicap": 5
+        },
+        "6": {
+          "number": 6,
+          "name": "Hole 6",
+          "par": 3,
+          "yards": 359,
+          "handicap": 6
+        },
+        "7": {
+          "number": 7,
+          "name": "Hole 7",
+          "par": 4,
+          "yards": 409,
+          "handicap": 7
+        },
+        "8": {
+          "number": 8,
+          "name": "Hole 8",
+          "par": 4,
+          "yards": 409,
+          "handicap": 8
+        },
+        "9": {
+          "number": 9,
+          "name": "Hole 9",
+          "par": 3,
+          "yards": 359,
+          "handicap": 9
+        },
+        "10": {
+          "number": 10,
+          "name": "Hole 10",
+          "par": 5,
+          "yards": 459,
+          "handicap": 10
+        },
+        "11": {
+          "number": 11,
+          "name": "Hole 11",
+          "par": 4,
+          "yards": 409,
+          "handicap": 11
+        },
+        "12": {
+          "number": 12,
+          "name": "Hole 12",
+          "par": 3,
+          "yards": 359,
+          "handicap": 12
+        },
+        "13": {
+          "number": 13,
+          "name": "Hole 13",
+          "par": 4,
+          "yards": 409,
+          "handicap": 13
+        },
+        "14": {
+          "number": 14,
+          "name": "Hole 14",
+          "par": 4,
+          "yards": 409,
+          "handicap": 14
+        },
+        "15": {
+          "number": 15,
+          "name": "Hole 15",
+          "par": 5,
+          "yards": 359,
+          "handicap": 15
+        },
+        "16": {
+          "number": 16,
+          "name": "Hole 16",
+          "par": 4,
+          "yards": 409,
+          "handicap": 16
+        },
+        "17": {
+          "number": 17,
+          "name": "Hole 17",
+          "par": 4,
+          "yards": 409,
+          "handicap": 17
+        },
+        "18": {
+          "number": 18,
+          "name": "Hole 18",
+          "par": 3,
+          "yards": 359,
+          "handicap": 18
+        }
+      }
+    },
+    "kennemer_golf": {
+      "course_id": "kennemer_golf",
+      "name": "Kennemer Golf & Country Club",
+      "country_code": "NL",
+      "location": {
+        "lat": 52.3667,
+        "lng": 4.5667,
+        "elevation_m": 4,
+        "country": "NL"
+      },
+      "total_yards": 6845,
+      "par": 72,
+      "hole_count": 18,
+      "geohash_partition": "course_idx_NL_u1735",
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Hole 1",
+          "par": 4,
+          "yards": 390,
+          "handicap": 1
+        },
+        "2": {
+          "number": 2,
+          "name": "Hole 2",
+          "par": 4,
+          "yards": 390,
+          "handicap": 2
+        },
+        "3": {
+          "number": 3,
+          "name": "Hole 3",
+          "par": 3,
+          "yards": 340,
+          "handicap": 3
+        },
+        "4": {
+          "number": 4,
+          "name": "Hole 4",
+          "par": 4,
+          "yards": 390,
+          "handicap": 4
+        },
+        "5": {
+          "number": 5,
+          "name": "Hole 5",
+          "par": 5,
+          "yards": 440,
+          "handicap": 5
+        },
+        "6": {
+          "number": 6,
+          "name": "Hole 6",
+          "par": 3,
+          "yards": 340,
+          "handicap": 6
+        },
+        "7": {
+          "number": 7,
+          "name": "Hole 7",
+          "par": 4,
+          "yards": 390,
+          "handicap": 7
+        },
+        "8": {
+          "number": 8,
+          "name": "Hole 8",
+          "par": 4,
+          "yards": 390,
+          "handicap": 8
+        },
+        "9": {
+          "number": 9,
+          "name": "Hole 9",
+          "par": 3,
+          "yards": 340,
+          "handicap": 9
+        },
+        "10": {
+          "number": 10,
+          "name": "Hole 10",
+          "par": 5,
+          "yards": 440,
+          "handicap": 10
+        },
+        "11": {
+          "number": 11,
+          "name": "Hole 11",
+          "par": 4,
+          "yards": 390,
+          "handicap": 11
+        },
+        "12": {
+          "number": 12,
+          "name": "Hole 12",
+          "par": 3,
+          "yards": 340,
+          "handicap": 12
+        },
+        "13": {
+          "number": 13,
+          "name": "Hole 13",
+          "par": 4,
+          "yards": 390,
+          "handicap": 13
+        },
+        "14": {
+          "number": 14,
+          "name": "Hole 14",
+          "par": 4,
+          "yards": 390,
+          "handicap": 14
+        },
+        "15": {
+          "number": 15,
+          "name": "Hole 15",
+          "par": 5,
+          "yards": 340,
+          "handicap": 15
+        },
+        "16": {
+          "number": 16,
+          "name": "Hole 16",
+          "par": 4,
+          "yards": 390,
+          "handicap": 16
+        },
+        "17": {
+          "number": 17,
+          "name": "Hole 17",
+          "par": 4,
+          "yards": 390,
+          "handicap": 17
+        },
+        "18": {
+          "number": 18,
+          "name": "Hole 18",
+          "par": 3,
+          "yards": 340,
+          "handicap": 18
+        }
+      }
+    },
+    "dom_pedro_victoria": {
+      "course_id": "dom_pedro_victoria",
+      "name": "Dom Pedro Victoria Golf Course (Vilamoura)",
+      "country_code": "PT",
+      "location": {
+        "lat": 37.1,
+        "lng": -8.1167,
+        "elevation_m": 35,
+        "country": "PT"
+      },
+      "total_yards": 7209,
+      "par": 72,
+      "hole_count": 18,
+      "geohash_partition": "course_idx_PT_eydb9",
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Hole 1",
+          "par": 4,
+          "yards": 410,
+          "handicap": 1
+        },
+        "2": {
+          "number": 2,
+          "name": "Hole 2",
+          "par": 4,
+          "yards": 410,
+          "handicap": 2
+        },
+        "3": {
+          "number": 3,
+          "name": "Hole 3",
+          "par": 3,
+          "yards": 360,
+          "handicap": 3
+        },
+        "4": {
+          "number": 4,
+          "name": "Hole 4",
+          "par": 4,
+          "yards": 410,
+          "handicap": 4
+        },
+        "5": {
+          "number": 5,
+          "name": "Hole 5",
+          "par": 5,
+          "yards": 460,
+          "handicap": 5
+        },
+        "6": {
+          "number": 6,
+          "name": "Hole 6",
+          "par": 3,
+          "yards": 360,
+          "handicap": 6
+        },
+        "7": {
+          "number": 7,
+          "name": "Hole 7",
+          "par": 4,
+          "yards": 410,
+          "handicap": 7
+        },
+        "8": {
+          "number": 8,
+          "name": "Hole 8",
+          "par": 4,
+          "yards": 410,
+          "handicap": 8
+        },
+        "9": {
+          "number": 9,
+          "name": "Hole 9",
+          "par": 3,
+          "yards": 360,
+          "handicap": 9
+        },
+        "10": {
+          "number": 10,
+          "name": "Hole 10",
+          "par": 5,
+          "yards": 460,
+          "handicap": 10
+        },
+        "11": {
+          "number": 11,
+          "name": "Hole 11",
+          "par": 4,
+          "yards": 410,
+          "handicap": 11
+        },
+        "12": {
+          "number": 12,
+          "name": "Hole 12",
+          "par": 3,
+          "yards": 360,
+          "handicap": 12
+        },
+        "13": {
+          "number": 13,
+          "name": "Hole 13",
+          "par": 4,
+          "yards": 410,
+          "handicap": 13
+        },
+        "14": {
+          "number": 14,
+          "name": "Hole 14",
+          "par": 4,
+          "yards": 410,
+          "handicap": 14
+        },
+        "15": {
+          "number": 15,
+          "name": "Hole 15",
+          "par": 5,
+          "yards": 360,
+          "handicap": 15
+        },
+        "16": {
+          "number": 16,
+          "name": "Hole 16",
+          "par": 4,
+          "yards": 410,
+          "handicap": 16
+        },
+        "17": {
+          "number": 17,
+          "name": "Hole 17",
+          "par": 4,
+          "yards": 410,
+          "handicap": 17
+        },
+        "18": {
+          "number": 18,
+          "name": "Hole 18",
+          "par": 3,
+          "yards": 360,
+          "handicap": 18
+        }
+      }
+    },
+    "oitavos_dunes": {
+      "course_id": "oitavos_dunes",
+      "name": "Oitavos Dunes Golf Course (Cascais)",
+      "country_code": "PT",
+      "location": {
+        "lat": 38.7083,
+        "lng": -9.4667,
+        "elevation_m": 22,
+        "country": "PT"
+      },
+      "total_yards": 7064,
+      "par": 71,
+      "hole_count": 18,
+      "geohash_partition": "course_idx_PT_eychm",
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Hole 1",
+          "par": 4,
+          "yards": 402,
+          "handicap": 1
+        },
+        "2": {
+          "number": 2,
+          "name": "Hole 2",
+          "par": 4,
+          "yards": 402,
+          "handicap": 2
+        },
+        "3": {
+          "number": 3,
+          "name": "Hole 3",
+          "par": 3,
+          "yards": 352,
+          "handicap": 3
+        },
+        "4": {
+          "number": 4,
+          "name": "Hole 4",
+          "par": 4,
+          "yards": 402,
+          "handicap": 4
+        },
+        "5": {
+          "number": 5,
+          "name": "Hole 5",
+          "par": 5,
+          "yards": 452,
+          "handicap": 5
+        },
+        "6": {
+          "number": 6,
+          "name": "Hole 6",
+          "par": 3,
+          "yards": 352,
+          "handicap": 6
+        },
+        "7": {
+          "number": 7,
+          "name": "Hole 7",
+          "par": 4,
+          "yards": 402,
+          "handicap": 7
+        },
+        "8": {
+          "number": 8,
+          "name": "Hole 8",
+          "par": 4,
+          "yards": 402,
+          "handicap": 8
+        },
+        "9": {
+          "number": 9,
+          "name": "Hole 9",
+          "par": 3,
+          "yards": 352,
+          "handicap": 9
+        },
+        "10": {
+          "number": 10,
+          "name": "Hole 10",
+          "par": 5,
+          "yards": 452,
+          "handicap": 10
+        },
+        "11": {
+          "number": 11,
+          "name": "Hole 11",
+          "par": 4,
+          "yards": 402,
+          "handicap": 11
+        },
+        "12": {
+          "number": 12,
+          "name": "Hole 12",
+          "par": 3,
+          "yards": 352,
+          "handicap": 12
+        },
+        "13": {
+          "number": 13,
+          "name": "Hole 13",
+          "par": 4,
+          "yards": 402,
+          "handicap": 13
+        },
+        "14": {
+          "number": 14,
+          "name": "Hole 14",
+          "par": 4,
+          "yards": 402,
+          "handicap": 14
+        },
+        "15": {
+          "number": 15,
+          "name": "Hole 15",
+          "par": 5,
+          "yards": 352,
+          "handicap": 15
+        },
+        "16": {
+          "number": 16,
+          "name": "Hole 16",
+          "par": 4,
+          "yards": 402,
+          "handicap": 16
+        },
+        "17": {
+          "number": 17,
+          "name": "Hole 17",
+          "par": 4,
+          "yards": 402,
+          "handicap": 17
+        },
+        "18": {
+          "number": 18,
+          "name": "Hole 18",
+          "par": 3,
+          "yards": 352,
+          "handicap": 18
+        }
+      }
+    },
+    "west_cliffs": {
+      "course_id": "west_cliffs",
+      "name": "West Cliffs Golf Links (Óbidos)",
+      "country_code": "PT",
+      "location": {
+        "lat": 39.3833,
+        "lng": -9.2833,
+        "elevation_m": 48,
+        "country": "PT"
+      },
+      "total_yards": 7001,
+      "par": 72,
+      "hole_count": 18,
+      "geohash_partition": "course_idx_PT_eycsx",
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Hole 1",
+          "par": 4,
+          "yards": 398,
+          "handicap": 1
+        },
+        "2": {
+          "number": 2,
+          "name": "Hole 2",
+          "par": 4,
+          "yards": 398,
+          "handicap": 2
+        },
+        "3": {
+          "number": 3,
+          "name": "Hole 3",
+          "par": 3,
+          "yards": 348,
+          "handicap": 3
+        },
+        "4": {
+          "number": 4,
+          "name": "Hole 4",
+          "par": 4,
+          "yards": 398,
+          "handicap": 4
+        },
+        "5": {
+          "number": 5,
+          "name": "Hole 5",
+          "par": 5,
+          "yards": 448,
+          "handicap": 5
+        },
+        "6": {
+          "number": 6,
+          "name": "Hole 6",
+          "par": 3,
+          "yards": 348,
+          "handicap": 6
+        },
+        "7": {
+          "number": 7,
+          "name": "Hole 7",
+          "par": 4,
+          "yards": 398,
+          "handicap": 7
+        },
+        "8": {
+          "number": 8,
+          "name": "Hole 8",
+          "par": 4,
+          "yards": 398,
+          "handicap": 8
+        },
+        "9": {
+          "number": 9,
+          "name": "Hole 9",
+          "par": 3,
+          "yards": 348,
+          "handicap": 9
+        },
+        "10": {
+          "number": 10,
+          "name": "Hole 10",
+          "par": 5,
+          "yards": 448,
+          "handicap": 10
+        },
+        "11": {
+          "number": 11,
+          "name": "Hole 11",
+          "par": 4,
+          "yards": 398,
+          "handicap": 11
+        },
+        "12": {
+          "number": 12,
+          "name": "Hole 12",
+          "par": 3,
+          "yards": 348,
+          "handicap": 12
+        },
+        "13": {
+          "number": 13,
+          "name": "Hole 13",
+          "par": 4,
+          "yards": 398,
+          "handicap": 13
+        },
+        "14": {
+          "number": 14,
+          "name": "Hole 14",
+          "par": 4,
+          "yards": 398,
+          "handicap": 14
+        },
+        "15": {
+          "number": 15,
+          "name": "Hole 15",
+          "par": 5,
+          "yards": 348,
+          "handicap": 15
+        },
+        "16": {
+          "number": 16,
+          "name": "Hole 16",
+          "par": 4,
+          "yards": 398,
+          "handicap": 16
+        },
+        "17": {
+          "number": 17,
+          "name": "Hole 17",
+          "par": 4,
+          "yards": 398,
+          "handicap": 17
+        },
+        "18": {
+          "number": 18,
+          "name": "Hole 18",
+          "par": 3,
+          "yards": 348,
+          "handicap": 18
+        }
+      }
+    },
+    "bro_hof_slott": {
+      "course_id": "bro_hof_slott",
+      "name": "Bro Hof Slott Golf Club (Stadium Course)",
+      "country_code": "SE",
+      "location": {
+        "lat": 59.5167,
+        "lng": 17.55,
+        "elevation_m": 18,
+        "country": "SE"
+      },
+      "total_yards": 7543,
+      "par": 72,
+      "hole_count": 18,
+      "geohash_partition": "course_idx_SE_u6s4y",
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Hole 1",
+          "par": 4,
+          "yards": 429,
+          "handicap": 1
+        },
+        "2": {
+          "number": 2,
+          "name": "Hole 2",
+          "par": 4,
+          "yards": 429,
+          "handicap": 2
+        },
+        "3": {
+          "number": 3,
+          "name": "Hole 3",
+          "par": 3,
+          "yards": 379,
+          "handicap": 3
+        },
+        "4": {
+          "number": 4,
+          "name": "Hole 4",
+          "par": 4,
+          "yards": 429,
+          "handicap": 4
+        },
+        "5": {
+          "number": 5,
+          "name": "Hole 5",
+          "par": 5,
+          "yards": 479,
+          "handicap": 5
+        },
+        "6": {
+          "number": 6,
+          "name": "Hole 6",
+          "par": 3,
+          "yards": 379,
+          "handicap": 6
+        },
+        "7": {
+          "number": 7,
+          "name": "Hole 7",
+          "par": 4,
+          "yards": 429,
+          "handicap": 7
+        },
+        "8": {
+          "number": 8,
+          "name": "Hole 8",
+          "par": 4,
+          "yards": 429,
+          "handicap": 8
+        },
+        "9": {
+          "number": 9,
+          "name": "Hole 9",
+          "par": 3,
+          "yards": 379,
+          "handicap": 9
+        },
+        "10": {
+          "number": 10,
+          "name": "Hole 10",
+          "par": 5,
+          "yards": 479,
+          "handicap": 10
+        },
+        "11": {
+          "number": 11,
+          "name": "Hole 11",
+          "par": 4,
+          "yards": 429,
+          "handicap": 11
+        },
+        "12": {
+          "number": 12,
+          "name": "Hole 12",
+          "par": 3,
+          "yards": 379,
+          "handicap": 12
+        },
+        "13": {
+          "number": 13,
+          "name": "Hole 13",
+          "par": 4,
+          "yards": 429,
+          "handicap": 13
+        },
+        "14": {
+          "number": 14,
+          "name": "Hole 14",
+          "par": 4,
+          "yards": 429,
+          "handicap": 14
+        },
+        "15": {
+          "number": 15,
+          "name": "Hole 15",
+          "par": 5,
+          "yards": 379,
+          "handicap": 15
+        },
+        "16": {
+          "number": 16,
+          "name": "Hole 16",
+          "par": 4,
+          "yards": 429,
+          "handicap": 16
+        },
+        "17": {
+          "number": 17,
+          "name": "Hole 17",
+          "par": 4,
+          "yards": 429,
+          "handicap": 17
+        },
+        "18": {
+          "number": 18,
+          "name": "Hole 18",
+          "par": 3,
+          "yards": 379,
+          "handicap": 18
+        }
+      }
+    },
+    "ullna_gc": {
+      "course_id": "ullna_gc",
+      "name": "Ullna Golf & Country Club (Scandinavian Mixed)",
+      "country_code": "SE",
+      "location": {
+        "lat": 59.5,
+        "lng": 18.1833,
+        "elevation_m": 25,
+        "country": "SE"
+      },
+      "total_yards": 7120,
+      "par": 72,
+      "hole_count": 18,
+      "geohash_partition": "course_idx_SE_u6s9x",
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Hole 1",
+          "par": 4,
+          "yards": 405,
+          "handicap": 1
+        },
+        "2": {
+          "number": 2,
+          "name": "Hole 2",
+          "par": 4,
+          "yards": 405,
+          "handicap": 2
+        },
+        "3": {
+          "number": 3,
+          "name": "Hole 3",
+          "par": 3,
+          "yards": 355,
+          "handicap": 3
+        },
+        "4": {
+          "number": 4,
+          "name": "Hole 4",
+          "par": 4,
+          "yards": 405,
+          "handicap": 4
+        },
+        "5": {
+          "number": 5,
+          "name": "Hole 5",
+          "par": 5,
+          "yards": 455,
+          "handicap": 5
+        },
+        "6": {
+          "number": 6,
+          "name": "Hole 6",
+          "par": 3,
+          "yards": 355,
+          "handicap": 6
+        },
+        "7": {
+          "number": 7,
+          "name": "Hole 7",
+          "par": 4,
+          "yards": 405,
+          "handicap": 7
+        },
+        "8": {
+          "number": 8,
+          "name": "Hole 8",
+          "par": 4,
+          "yards": 405,
+          "handicap": 8
+        },
+        "9": {
+          "number": 9,
+          "name": "Hole 9",
+          "par": 3,
+          "yards": 355,
+          "handicap": 9
+        },
+        "10": {
+          "number": 10,
+          "name": "Hole 10",
+          "par": 5,
+          "yards": 455,
+          "handicap": 10
+        },
+        "11": {
+          "number": 11,
+          "name": "Hole 11",
+          "par": 4,
+          "yards": 405,
+          "handicap": 11
+        },
+        "12": {
+          "number": 12,
+          "name": "Hole 12",
+          "par": 3,
+          "yards": 355,
+          "handicap": 12
+        },
+        "13": {
+          "number": 13,
+          "name": "Hole 13",
+          "par": 4,
+          "yards": 405,
+          "handicap": 13
+        },
+        "14": {
+          "number": 14,
+          "name": "Hole 14",
+          "par": 4,
+          "yards": 405,
+          "handicap": 14
+        },
+        "15": {
+          "number": 15,
+          "name": "Hole 15",
+          "par": 5,
+          "yards": 355,
+          "handicap": 15
+        },
+        "16": {
+          "number": 16,
+          "name": "Hole 16",
+          "par": 4,
+          "yards": 405,
+          "handicap": 16
+        },
+        "17": {
+          "number": 17,
+          "name": "Hole 17",
+          "par": 4,
+          "yards": 405,
+          "handicap": 17
+        },
+        "18": {
+          "number": 18,
+          "name": "Hole 18",
+          "par": 3,
+          "yards": 355,
+          "handicap": 18
+        }
+      }
+    },
+    "falsterbo_gk": {
+      "course_id": "falsterbo_gk",
+      "name": "Falsterbo Golf Klubb (Links)",
+      "country_code": "SE",
+      "location": {
+        "lat": 55.3833,
+        "lng": 12.8333,
+        "elevation_m": 2,
+        "country": "SE"
+      },
+      "total_yards": 6730,
+      "par": 71,
+      "hole_count": 18,
+      "geohash_partition": "course_idx_SE_u389v",
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Hole 1",
+          "par": 4,
+          "yards": 383,
+          "handicap": 1
+        },
+        "2": {
+          "number": 2,
+          "name": "Hole 2",
+          "par": 4,
+          "yards": 383,
+          "handicap": 2
+        },
+        "3": {
+          "number": 3,
+          "name": "Hole 3",
+          "par": 3,
+          "yards": 333,
+          "handicap": 3
+        },
+        "4": {
+          "number": 4,
+          "name": "Hole 4",
+          "par": 4,
+          "yards": 383,
+          "handicap": 4
+        },
+        "5": {
+          "number": 5,
+          "name": "Hole 5",
+          "par": 5,
+          "yards": 433,
+          "handicap": 5
+        },
+        "6": {
+          "number": 6,
+          "name": "Hole 6",
+          "par": 3,
+          "yards": 333,
+          "handicap": 6
+        },
+        "7": {
+          "number": 7,
+          "name": "Hole 7",
+          "par": 4,
+          "yards": 383,
+          "handicap": 7
+        },
+        "8": {
+          "number": 8,
+          "name": "Hole 8",
+          "par": 4,
+          "yards": 383,
+          "handicap": 8
+        },
+        "9": {
+          "number": 9,
+          "name": "Hole 9",
+          "par": 3,
+          "yards": 333,
+          "handicap": 9
+        },
+        "10": {
+          "number": 10,
+          "name": "Hole 10",
+          "par": 5,
+          "yards": 433,
+          "handicap": 10
+        },
+        "11": {
+          "number": 11,
+          "name": "Hole 11",
+          "par": 4,
+          "yards": 383,
+          "handicap": 11
+        },
+        "12": {
+          "number": 12,
+          "name": "Hole 12",
+          "par": 3,
+          "yards": 333,
+          "handicap": 12
+        },
+        "13": {
+          "number": 13,
+          "name": "Hole 13",
+          "par": 4,
+          "yards": 383,
+          "handicap": 13
+        },
+        "14": {
+          "number": 14,
+          "name": "Hole 14",
+          "par": 4,
+          "yards": 383,
+          "handicap": 14
+        },
+        "15": {
+          "number": 15,
+          "name": "Hole 15",
+          "par": 5,
+          "yards": 333,
+          "handicap": 15
+        },
+        "16": {
+          "number": 16,
+          "name": "Hole 16",
+          "par": 4,
+          "yards": 383,
+          "handicap": 16
+        },
+        "17": {
+          "number": 17,
+          "name": "Hole 17",
+          "par": 4,
+          "yards": 383,
+          "handicap": 17
+        },
+        "18": {
+          "number": 18,
+          "name": "Hole 18",
+          "par": 3,
+          "yards": 333,
+          "handicap": 18
+        }
+      }
+    },
+    "himmerland": {
+      "course_id": "himmerland",
+      "name": "HimmerLand (Danish Golf Championship)",
+      "country_code": "DK",
+      "location": {
+        "lat": 56.84,
+        "lng": 9.68,
+        "elevation_m": 32,
+        "country": "DK"
+      },
+      "total_yards": 7382,
+      "par": 71,
+      "hole_count": 18,
+      "geohash_partition": "course_idx_DK_u4nre",
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Hole 1",
+          "par": 4,
+          "yards": 420,
+          "handicap": 1
+        },
+        "2": {
+          "number": 2,
+          "name": "Hole 2",
+          "par": 4,
+          "yards": 420,
+          "handicap": 2
+        },
+        "3": {
+          "number": 3,
+          "name": "Hole 3",
+          "par": 3,
+          "yards": 370,
+          "handicap": 3
+        },
+        "4": {
+          "number": 4,
+          "name": "Hole 4",
+          "par": 4,
+          "yards": 420,
+          "handicap": 4
+        },
+        "5": {
+          "number": 5,
+          "name": "Hole 5",
+          "par": 5,
+          "yards": 470,
+          "handicap": 5
+        },
+        "6": {
+          "number": 6,
+          "name": "Hole 6",
+          "par": 3,
+          "yards": 370,
+          "handicap": 6
+        },
+        "7": {
+          "number": 7,
+          "name": "Hole 7",
+          "par": 4,
+          "yards": 420,
+          "handicap": 7
+        },
+        "8": {
+          "number": 8,
+          "name": "Hole 8",
+          "par": 4,
+          "yards": 420,
+          "handicap": 8
+        },
+        "9": {
+          "number": 9,
+          "name": "Hole 9",
+          "par": 3,
+          "yards": 370,
+          "handicap": 9
+        },
+        "10": {
+          "number": 10,
+          "name": "Hole 10",
+          "par": 5,
+          "yards": 470,
+          "handicap": 10
+        },
+        "11": {
+          "number": 11,
+          "name": "Hole 11",
+          "par": 4,
+          "yards": 420,
+          "handicap": 11
+        },
+        "12": {
+          "number": 12,
+          "name": "Hole 12",
+          "par": 3,
+          "yards": 370,
+          "handicap": 12
+        },
+        "13": {
+          "number": 13,
+          "name": "Hole 13",
+          "par": 4,
+          "yards": 420,
+          "handicap": 13
+        },
+        "14": {
+          "number": 14,
+          "name": "Hole 14",
+          "par": 4,
+          "yards": 420,
+          "handicap": 14
+        },
+        "15": {
+          "number": 15,
+          "name": "Hole 15",
+          "par": 5,
+          "yards": 370,
+          "handicap": 15
+        },
+        "16": {
+          "number": 16,
+          "name": "Hole 16",
+          "par": 4,
+          "yards": 420,
+          "handicap": 16
+        },
+        "17": {
+          "number": 17,
+          "name": "Hole 17",
+          "par": 4,
+          "yards": 420,
+          "handicap": 17
+        },
+        "18": {
+          "number": 18,
+          "name": "Hole 18",
+          "par": 3,
+          "yards": 370,
+          "handicap": 18
+        }
+      }
+    },
+    "great_northern": {
+      "course_id": "great_northern",
+      "name": "Great Northern Golf Club (Kerteminde)",
+      "country_code": "DK",
+      "location": {
+        "lat": 55.45,
+        "lng": 10.66,
+        "elevation_m": 15,
+        "country": "DK"
+      },
+      "total_yards": 7310,
+      "par": 72,
+      "hole_count": 18,
+      "geohash_partition": "course_idx_DK_u3cb4",
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Hole 1",
+          "par": 4,
+          "yards": 416,
+          "handicap": 1
+        },
+        "2": {
+          "number": 2,
+          "name": "Hole 2",
+          "par": 4,
+          "yards": 416,
+          "handicap": 2
+        },
+        "3": {
+          "number": 3,
+          "name": "Hole 3",
+          "par": 3,
+          "yards": 366,
+          "handicap": 3
+        },
+        "4": {
+          "number": 4,
+          "name": "Hole 4",
+          "par": 4,
+          "yards": 416,
+          "handicap": 4
+        },
+        "5": {
+          "number": 5,
+          "name": "Hole 5",
+          "par": 5,
+          "yards": 466,
+          "handicap": 5
+        },
+        "6": {
+          "number": 6,
+          "name": "Hole 6",
+          "par": 3,
+          "yards": 366,
+          "handicap": 6
+        },
+        "7": {
+          "number": 7,
+          "name": "Hole 7",
+          "par": 4,
+          "yards": 416,
+          "handicap": 7
+        },
+        "8": {
+          "number": 8,
+          "name": "Hole 8",
+          "par": 4,
+          "yards": 416,
+          "handicap": 8
+        },
+        "9": {
+          "number": 9,
+          "name": "Hole 9",
+          "par": 3,
+          "yards": 366,
+          "handicap": 9
+        },
+        "10": {
+          "number": 10,
+          "name": "Hole 10",
+          "par": 5,
+          "yards": 466,
+          "handicap": 10
+        },
+        "11": {
+          "number": 11,
+          "name": "Hole 11",
+          "par": 4,
+          "yards": 416,
+          "handicap": 11
+        },
+        "12": {
+          "number": 12,
+          "name": "Hole 12",
+          "par": 3,
+          "yards": 366,
+          "handicap": 12
+        },
+        "13": {
+          "number": 13,
+          "name": "Hole 13",
+          "par": 4,
+          "yards": 416,
+          "handicap": 13
+        },
+        "14": {
+          "number": 14,
+          "name": "Hole 14",
+          "par": 4,
+          "yards": 416,
+          "handicap": 14
+        },
+        "15": {
+          "number": 15,
+          "name": "Hole 15",
+          "par": 5,
+          "yards": 366,
+          "handicap": 15
+        },
+        "16": {
+          "number": 16,
+          "name": "Hole 16",
+          "par": 4,
+          "yards": 416,
+          "handicap": 16
+        },
+        "17": {
+          "number": 17,
+          "name": "Hole 17",
+          "par": 4,
+          "yards": 416,
+          "handicap": 17
+        },
+        "18": {
+          "number": 18,
+          "name": "Hole 18",
+          "par": 3,
+          "yards": 366,
+          "handicap": 18
+        }
+      }
+    },
+    "diamond_country_club": {
+      "course_id": "diamond_country_club",
+      "name": "Diamond Country Club (Austrian Open Host)",
+      "country_code": "AT",
+      "location": {
+        "lat": 48.33,
+        "lng": 15.93,
+        "elevation_m": 185,
+        "country": "AT"
+      },
+      "total_yards": 7458,
+      "par": 72,
+      "hole_count": 18,
+      "geohash_partition": "course_idx_AT_u2edh",
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Hole 1",
+          "par": 4,
+          "yards": 424,
+          "handicap": 1
+        },
+        "2": {
+          "number": 2,
+          "name": "Hole 2",
+          "par": 4,
+          "yards": 424,
+          "handicap": 2
+        },
+        "3": {
+          "number": 3,
+          "name": "Hole 3",
+          "par": 3,
+          "yards": 374,
+          "handicap": 3
+        },
+        "4": {
+          "number": 4,
+          "name": "Hole 4",
+          "par": 4,
+          "yards": 424,
+          "handicap": 4
+        },
+        "5": {
+          "number": 5,
+          "name": "Hole 5",
+          "par": 5,
+          "yards": 474,
+          "handicap": 5
+        },
+        "6": {
+          "number": 6,
+          "name": "Hole 6",
+          "par": 3,
+          "yards": 374,
+          "handicap": 6
+        },
+        "7": {
+          "number": 7,
+          "name": "Hole 7",
+          "par": 4,
+          "yards": 424,
+          "handicap": 7
+        },
+        "8": {
+          "number": 8,
+          "name": "Hole 8",
+          "par": 4,
+          "yards": 424,
+          "handicap": 8
+        },
+        "9": {
+          "number": 9,
+          "name": "Hole 9",
+          "par": 3,
+          "yards": 374,
+          "handicap": 9
+        },
+        "10": {
+          "number": 10,
+          "name": "Hole 10",
+          "par": 5,
+          "yards": 474,
+          "handicap": 10
+        },
+        "11": {
+          "number": 11,
+          "name": "Hole 11",
+          "par": 4,
+          "yards": 424,
+          "handicap": 11
+        },
+        "12": {
+          "number": 12,
+          "name": "Hole 12",
+          "par": 3,
+          "yards": 374,
+          "handicap": 12
+        },
+        "13": {
+          "number": 13,
+          "name": "Hole 13",
+          "par": 4,
+          "yards": 424,
+          "handicap": 13
+        },
+        "14": {
+          "number": 14,
+          "name": "Hole 14",
+          "par": 4,
+          "yards": 424,
+          "handicap": 14
+        },
+        "15": {
+          "number": 15,
+          "name": "Hole 15",
+          "par": 5,
+          "yards": 374,
+          "handicap": 15
+        },
+        "16": {
+          "number": 16,
+          "name": "Hole 16",
+          "par": 4,
+          "yards": 424,
+          "handicap": 16
+        },
+        "17": {
+          "number": 17,
+          "name": "Hole 17",
+          "par": 4,
+          "yards": 424,
+          "handicap": 17
+        },
+        "18": {
+          "number": 18,
+          "name": "Hole 18",
+          "par": 3,
+          "yards": 374,
+          "handicap": 18
+        }
+      }
+    },
+    "albatross_golf": {
+      "course_id": "albatross_golf",
+      "name": "Albatross Golf Resort (Prague - Czech Masters)",
+      "country_code": "CZ",
+      "location": {
+        "lat": 50.0167,
+        "lng": 14.1833,
+        "elevation_m": 350,
+        "country": "CZ"
+      },
+      "total_yards": 7467,
+      "par": 72,
+      "hole_count": 18,
+      "geohash_partition": "course_idx_CZ_u2f4x",
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Hole 1",
+          "par": 4,
+          "yards": 424,
+          "handicap": 1
+        },
+        "2": {
+          "number": 2,
+          "name": "Hole 2",
+          "par": 4,
+          "yards": 424,
+          "handicap": 2
+        },
+        "3": {
+          "number": 3,
+          "name": "Hole 3",
+          "par": 3,
+          "yards": 374,
+          "handicap": 3
+        },
+        "4": {
+          "number": 4,
+          "name": "Hole 4",
+          "par": 4,
+          "yards": 424,
+          "handicap": 4
+        },
+        "5": {
+          "number": 5,
+          "name": "Hole 5",
+          "par": 5,
+          "yards": 474,
+          "handicap": 5
+        },
+        "6": {
+          "number": 6,
+          "name": "Hole 6",
+          "par": 3,
+          "yards": 374,
+          "handicap": 6
+        },
+        "7": {
+          "number": 7,
+          "name": "Hole 7",
+          "par": 4,
+          "yards": 424,
+          "handicap": 7
+        },
+        "8": {
+          "number": 8,
+          "name": "Hole 8",
+          "par": 4,
+          "yards": 424,
+          "handicap": 8
+        },
+        "9": {
+          "number": 9,
+          "name": "Hole 9",
+          "par": 3,
+          "yards": 374,
+          "handicap": 9
+        },
+        "10": {
+          "number": 10,
+          "name": "Hole 10",
+          "par": 5,
+          "yards": 474,
+          "handicap": 10
+        },
+        "11": {
+          "number": 11,
+          "name": "Hole 11",
+          "par": 4,
+          "yards": 424,
+          "handicap": 11
+        },
+        "12": {
+          "number": 12,
+          "name": "Hole 12",
+          "par": 3,
+          "yards": 374,
+          "handicap": 12
+        },
+        "13": {
+          "number": 13,
+          "name": "Hole 13",
+          "par": 4,
+          "yards": 424,
+          "handicap": 13
+        },
+        "14": {
+          "number": 14,
+          "name": "Hole 14",
+          "par": 4,
+          "yards": 424,
+          "handicap": 14
+        },
+        "15": {
+          "number": 15,
+          "name": "Hole 15",
+          "par": 5,
+          "yards": 374,
+          "handicap": 15
+        },
+        "16": {
+          "number": 16,
+          "name": "Hole 16",
+          "par": 4,
+          "yards": 424,
+          "handicap": 16
+        },
+        "17": {
+          "number": 17,
+          "name": "Hole 17",
+          "par": 4,
+          "yards": 424,
+          "handicap": 17
+        },
+        "18": {
+          "number": 18,
+          "name": "Hole 18",
+          "par": 3,
+          "yards": 374,
+          "handicap": 18
+        }
+      }
+    },
+    "crans_sur_sierre": {
+      "course_id": "crans_sur_sierre",
+      "name": "Golf Club Crans-sur-Sierre (Omega European Masters)",
+      "country_code": "CH",
+      "location": {
+        "lat": 46.3125,
+        "lng": 7.4833,
+        "elevation_m": 1500,
+        "country": "CH"
+      },
+      "total_yards": 6838,
+      "par": 70,
+      "hole_count": 18,
+      "geohash_partition": "course_idx_CH_u0m9x",
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Hole 1",
+          "par": 4,
+          "yards": 389,
+          "handicap": 1
+        },
+        "2": {
+          "number": 2,
+          "name": "Hole 2",
+          "par": 4,
+          "yards": 389,
+          "handicap": 2
+        },
+        "3": {
+          "number": 3,
+          "name": "Hole 3",
+          "par": 3,
+          "yards": 339,
+          "handicap": 3
+        },
+        "4": {
+          "number": 4,
+          "name": "Hole 4",
+          "par": 4,
+          "yards": 389,
+          "handicap": 4
+        },
+        "5": {
+          "number": 5,
+          "name": "Hole 5",
+          "par": 5,
+          "yards": 439,
+          "handicap": 5
+        },
+        "6": {
+          "number": 6,
+          "name": "Hole 6",
+          "par": 3,
+          "yards": 339,
+          "handicap": 6
+        },
+        "7": {
+          "number": 7,
+          "name": "Hole 7",
+          "par": 4,
+          "yards": 389,
+          "handicap": 7
+        },
+        "8": {
+          "number": 8,
+          "name": "Hole 8",
+          "par": 4,
+          "yards": 389,
+          "handicap": 8
+        },
+        "9": {
+          "number": 9,
+          "name": "Hole 9",
+          "par": 3,
+          "yards": 339,
+          "handicap": 9
+        },
+        "10": {
+          "number": 10,
+          "name": "Hole 10",
+          "par": 5,
+          "yards": 439,
+          "handicap": 10
+        },
+        "11": {
+          "number": 11,
+          "name": "Hole 11",
+          "par": 4,
+          "yards": 389,
+          "handicap": 11
+        },
+        "12": {
+          "number": 12,
+          "name": "Hole 12",
+          "par": 3,
+          "yards": 339,
+          "handicap": 12
+        },
+        "13": {
+          "number": 13,
+          "name": "Hole 13",
+          "par": 4,
+          "yards": 389,
+          "handicap": 13
+        },
+        "14": {
+          "number": 14,
+          "name": "Hole 14",
+          "par": 4,
+          "yards": 389,
+          "handicap": 14
+        },
+        "15": {
+          "number": 15,
+          "name": "Hole 15",
+          "par": 5,
+          "yards": 339,
+          "handicap": 15
+        },
+        "16": {
+          "number": 16,
+          "name": "Hole 16",
+          "par": 4,
+          "yards": 389,
+          "handicap": 16
+        },
+        "17": {
+          "number": 17,
+          "name": "Hole 17",
+          "par": 4,
+          "yards": 389,
+          "handicap": 17
+        },
+        "18": {
+          "number": 18,
+          "name": "Hole 18",
+          "par": 3,
+          "yards": 339,
+          "handicap": 18
+        }
+      }
+    },
+    "rinkven_golf": {
+      "course_id": "rinkven_golf",
+      "name": "Rinkven International Golf Club (Antwerp)",
+      "country_code": "BE",
+      "location": {
+        "lat": 51.2833,
+        "lng": 4.5667,
+        "elevation_m": 12,
+        "country": "BE"
+      },
+      "total_yards": 6924,
+      "par": 71,
+      "hole_count": 18,
+      "geohash_partition": "course_idx_BE_u150x",
+      "holes": {
+        "1": {
+          "number": 1,
+          "name": "Hole 1",
+          "par": 4,
+          "yards": 394,
+          "handicap": 1
+        },
+        "2": {
+          "number": 2,
+          "name": "Hole 2",
+          "par": 4,
+          "yards": 394,
+          "handicap": 2
+        },
+        "3": {
+          "number": 3,
+          "name": "Hole 3",
+          "par": 3,
+          "yards": 344,
+          "handicap": 3
+        },
+        "4": {
+          "number": 4,
+          "name": "Hole 4",
+          "par": 4,
+          "yards": 394,
+          "handicap": 4
+        },
+        "5": {
+          "number": 5,
+          "name": "Hole 5",
+          "par": 5,
+          "yards": 444,
+          "handicap": 5
+        },
+        "6": {
+          "number": 6,
+          "name": "Hole 6",
+          "par": 3,
+          "yards": 344,
+          "handicap": 6
+        },
+        "7": {
+          "number": 7,
+          "name": "Hole 7",
+          "par": 4,
+          "yards": 394,
+          "handicap": 7
+        },
+        "8": {
+          "number": 8,
+          "name": "Hole 8",
+          "par": 4,
+          "yards": 394,
+          "handicap": 8
+        },
+        "9": {
+          "number": 9,
+          "name": "Hole 9",
+          "par": 3,
+          "yards": 344,
+          "handicap": 9
+        },
+        "10": {
+          "number": 10,
+          "name": "Hole 10",
+          "par": 5,
+          "yards": 444,
+          "handicap": 10
+        },
+        "11": {
+          "number": 11,
+          "name": "Hole 11",
+          "par": 4,
+          "yards": 394,
+          "handicap": 11
+        },
+        "12": {
+          "number": 12,
+          "name": "Hole 12",
+          "par": 3,
+          "yards": 344,
+          "handicap": 12
+        },
+        "13": {
+          "number": 13,
+          "name": "Hole 13",
+          "par": 4,
+          "yards": 394,
+          "handicap": 13
+        },
+        "14": {
+          "number": 14,
+          "name": "Hole 14",
+          "par": 4,
+          "yards": 394,
+          "handicap": 14
+        },
+        "15": {
+          "number": 15,
+          "name": "Hole 15",
+          "par": 5,
+          "yards": 344,
+          "handicap": 15
+        },
+        "16": {
+          "number": 16,
+          "name": "Hole 16",
+          "par": 4,
+          "yards": 394,
+          "handicap": 16
+        },
+        "17": {
+          "number": 17,
+          "name": "Hole 17",
+          "par": 4,
+          "yards": 394,
+          "handicap": 17
+        },
+        "18": {
+          "number": 18,
+          "name": "Hole 18",
+          "par": 3,
+          "yards": 344,
+          "handicap": 18
+        }
       }
     }
   }
