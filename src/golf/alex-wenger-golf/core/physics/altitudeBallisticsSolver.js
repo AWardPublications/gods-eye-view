@@ -86,10 +86,25 @@ export class AltitudeBallisticsEngine {
       };
       const speedRel = Math.hypot(vRel.x, vRel.y, vRel.z);
 
-      // 2. Dynamic Cd and Cl curves
-      const spinFactor = (this.R_ball * spin) / Math.max(speedRel, 1.0);
-      const Cl = 0.58 * Math.pow(spinFactor, 0.4);
-      const Cd = 0.22 + 0.12 * Math.pow(spinFactor, 0.7);
+      // 2. Dynamic Cd and Cl curves parameterized by Reynolds number (Re) and Spin Factor (Sp)
+      const muVisc = 1.789e-5; // Dynamic viscosity of air, Pa·s
+      const dBall = 0.04267;   // Ball diameter (m)
+      const rBall = dBall / 2;
+      const Re = (rho * speedRel * dBall) / muVisc;
+      const Sp = (rBall * spin) / Math.max(speedRel, 1.0);
+
+      // Titleist ProV1 / Tour Dimple Model Constants
+      const cdSupercriticalMin = 0.215;
+      const cdSubcritical = 0.45;
+      const reCrit = 8.5e4;
+      const kd = 0.118;
+      const gammaD = 0.72;
+      const clMax = 0.325;
+      const alphaL = 3.85;
+
+      const cdBase = Re < reCrit ? cdSubcritical : cdSupercriticalMin;
+      const Cd = cdBase + kd * Math.pow(Sp, gammaD);
+      const Cl = clMax * (1 - Math.exp(-alphaL * Sp));
 
       // 3. Acceleration components
       const dragMag = 0.5 * rho * Cd * this.A_ball * Math.pow(speedRel, 2);

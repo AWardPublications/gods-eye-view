@@ -1,0 +1,69 @@
+{
+  "schema_version": "v4.7.0",
+  "governance": {
+    "patent": "WO/2026/150385",
+    "compliance_gate": "R&A_Rule_4.3a_State_4_Judge",
+    "exclusively_alex_responsibility": true
+  },
+  "ball_aerodynamics": {
+    "titleist_prov1": {
+      "dimple_count": 388,
+      "mass_kg": 0.04593,
+      "diameter_m": 0.04267,
+      "drag_model": {
+        "cd_base_subcritical": 0.45,
+        "cd_supercritical_min": 0.215,
+        "reynolds_critical": 8.5e4,
+        "reynolds_transition_width": 1.2e4,
+        "spin_drag_factor_kd": 0.118,
+        "spin_drag_exponent": 0.72
+      },
+      "lift_model": {
+        "cl_max": 0.325,
+        "alpha_l": 3.85,
+        "spin_decay_constant": 0.016
+      }
+    },
+    "taylormade_tp5": {
+      "dimple_count": 322,
+      "mass_kg": 0.04590,
+      "diameter_m": 0.04267,
+      "drag_model": {
+        "cd_base_subcritical": 0.44,
+        "cd_supercritical_min": 0.222,
+        "reynolds_critical": 8.1e4,
+        "reynolds_transition_width": 1.1e4,
+        "spin_drag_factor_kd": 0.105,
+        "spin_drag_exponent": 0.70
+      },
+      "lift_model": {
+        "cl_max": 0.340,
+        "alpha_l": 4.10,
+        "spin_decay_constant": 0.018
+      }
+    }
+  },
+  "turf_friction_matrices": {
+    "creeping_bentgrass": {
+      "base_friction_mu": 0.052,
+      "moisture_drag_beta": 0.28,
+      "lateral_grain_influence": 0.03,
+      "rebound_elasticity_normal": 0.78,
+      "rebound_tangential_friction": 0.22
+    },
+    "bermuda_tifeagle": {
+      "base_friction_mu": 0.068,
+      "moisture_drag_beta": 0.42,
+      "lateral_grain_influence": 0.28,
+      "rebound_elasticity_normal": 0.74,
+      "rebound_tangential_friction": 0.32
+    },
+    "coastal_fescue": {
+      "base_friction_mu": 0.044,
+      "moisture_drag_beta": 0.19,
+      "lateral_grain_influence": 0.05,
+      "rebound_elasticity_normal": 0.86,
+      "rebound_tangential_friction": 0.18
+    }
+  }
+}
