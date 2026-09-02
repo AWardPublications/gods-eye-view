@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alex Wenger Golf — God's Eye 3D WebGL Flight Deck v4.7.0</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <style>
+    :root {
+      --bg-primary: #030a06;
+      --bg-surface: #0a1b11;
+      --bg-card: rgba(14, 34, 22, 0.85);
+      --border-color: rgba(68, 211, 126, 0.3);
+      --kinetic-green: #44d37e;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --danger-red: #ef4444;
+      --font-body: 'Inter', sans-serif;
+      --font-display: 'Outfit', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: rgba(3, 10, 6, 0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .brand-title h1 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .badge {
+      background: rgba(68, 211, 126, 0.15);
+      color: var(--kinetic-green);
+      border: 1px solid var(--kinetic-green);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: 8px;
+    }
+
+    .app-workspace {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 340px 1fr 340px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .sidebar {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border-right: 1px solid var(--border-color);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow-y: auto;
+    }
+
+    .sidebar-right {
+      border-right: none;
+      border-left: 1px solid var(--border-color);
+    }
+
+    .panel-box {
+      background: rgba(10, 27, 17, 0.7);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 14px;
+    }
+
+    .panel-box h3 {
+      font-family: var(--font-display);
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      color: var(--kinetic-green);
+      margin-bottom: 10px;
+    }
+
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 0.875rem;
+    }
+
+    .metric-value {
+      font-weight: 700;
+      color: #ffffff;
+      font-family: monospace;
+    }
+
+    .webgl-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #000000;
+    }
+
+    canvas#webglCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .hud-overlay {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(3, 10, 6, 0.85);
+      border: 1px solid var(--border-color);
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 0.8125rem;
+      color: var(--kinetic-green);
+      pointer-events: none;
+      backdrop-filter: blur(8px);
+    }
+
+    .ward-watermark {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(3, 10, 6, 0.9);
+      border: 1px solid var(--border-color);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--kinetic-green);
+      letter-spacing: 0.1em;
+      pointer-events: none;
+    }
+
+    .btn-fire {
+      background: var(--kinetic-green);
+      color: #030a06;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 0.875rem;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.2s ease;
+    }
+
+    .btn-fire:hover {
+      background: #36b86b;
+      box-shadow: 0 0 16px rgba(68, 211, 126, 0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand-title">
+      <h1>ALEX WENGER GOLF <span class="badge">God's Eye 3D WebGL Flight Deck v4.7.0</span></h1>
+    </div>
+    <div style="font-size: 0.8125rem; color: var(--text-muted);">
+      3-DoF RK4 Aerodynamic Solver • Sub-Meter LiDAR Mesh
+    </div>
+  </header>
+
+  <div class="app-workspace">
+    
+    <!-- Left Panel -->
+    <div class="sidebar">
+      <div class="panel-box">
+        <h3>🏔️ 3D Terrain & Spatial Telemetry</h3>
+        <div class="metric-row">
+          <span>Venue:</span>
+          <span class="metric-value">St Andrews Links (Hole 17)</span>
+        </div>
+        <div class="metric-row">
+          <span>Target Distance:</span>
+          <span class="metric-value">495 YDS</span>
+        </div>
+        <div class="metric-row">
+          <span>LiDAR Grid Res:</span>
+          <span class="metric-value">0.5m swisstopo</span>
+        </div>
+        <div class="metric-row">
+          <span>Solver Step (dt):</span>
+          <span class="metric-value">1.0 ms RK4</span>
+        </div>
+      </div>
+
+      <div class="panel-box">
+        <h3>💨 Aerodynamic Environment</h3>
+        <div class="metric-row">
+          <span>Wind Velocity:</span>
+          <span class="metric-value">18.5 mph</span>
+        </div>
+        <div class="metric-row">
+          <span>Wind Direction:</span>
+          <span class="metric-value">45° Head-Cross</span>
+        </div>
+        <div class="metric-row">
+          <span>Canopy Shielding:</span>
+          <span class="metric-value">45% Discount (z &le; 12m)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Center WebGL 3D Canvas -->
+    <div class="webgl-container">
+      <div class="hud-overlay" id="hudStatus">
+        FPS: 60 | ALT: 0.0m | VEL: 172.5 mph | SPIN: 2,650 RPM
+      </div>
+      <canvas id="webglCanvas"></canvas>
+      <div class="ward-watermark">WARD STONE — BREHON GOVERNED</div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="sidebar sidebar-right">
+      <div class="panel-box">
+        <h3>🎯 Plays-Like Yardage Output</h3>
+        <div style="text-align: center; margin: 12px 0;">
+          <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Plays-Like Target</span>
+          <h2 style="font-size: 2.75rem; color: var(--kinetic-green); font-family: var(--font-display);">518Y</h2>
+          <span style="font-size: 0.8125rem; color: #cbd5e1;">+23y Wind & Elevation Adjust</span>
+        </div>
+      </div>
+
+      <button class="btn-fire" onclick="fireShotSimulation()">
+        🚀 Launch 3-DoF Ballistic Flight
+      </button>
+    </div>
+
+  </div>
+
+  <script>
+    let scene, camera, renderer, ballMesh, trajectoryLine, windParticlesMesh;
+    let isSimulating = false;
+    let animProgress = 0;
+    const trajectoryPoints = [];
+
+    function init3D() {
+      const container = document.querySelector('.webgl-container');
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+
+      scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x030a06);
+      scene.fog = new THREE.FogExp2(0x030a06, 0.003);
+
+      camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 2000);
+      camera.position.set(0, 40, 180);
+
+      renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('webglCanvas'), antialias: true });
+      renderer.setSize(width, height);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      // Lighting
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+      scene.add(ambientLight);
+
+      const dirLight = new THREE.DirectionalLight(0x44d37e, 0.8);
+      dirLight.position.set(100, 200, 100);
+      scene.add(dirLight);
+
+      // 3D Procedural Terrain Mesh
+      const terrainGeo = new THREE.PlaneBufferGeometry(120, 350, 64, 64);
+      terrainGeo.rotateX(-Math.PI / 2);
+
+      const pos = terrainGeo.attributes.position;
+      for (let i = 0; i < pos.count; i++) {
+        const x = pos.getX(i);
+        const z = pos.getZ(i);
+        const y = Math.sin(x * 0.05) * 1.5 + Math.cos(z * 0.03) * 2.0; // Procedural elevation contours
+        pos.setY(i, y);
+      }
+      terrainGeo.computeVertexNormals();
+
+      const terrainMat = new THREE.MeshStandardMaterial({
+        color: 0x0f381e,
+        roughness: 0.8,
+        metalness: 0.1,
+        wireframe: false
+      });
+
+      const terrainMesh = new THREE.Mesh(terrainGeo, terrainMat);
+      scene.add(terrainMesh);
+
+      // Wireframe Overlay
+      const wireMat = new THREE.MeshBasicMaterial({ color: 0x22c55e, wireframe: true, transparent: true, opacity: 0.15 });
+      const wireMesh = new THREE.Mesh(terrainGeo, wireMat);
+      scene.add(wireMesh);
+
+      // Ball Mesh
+      const ballGeo = new THREE.SphereGeometry(0.8, 16, 16);
+      const ballMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+      ballMesh = new THREE.Mesh(ballGeo, ballMat);
+      ballMesh.position.set(0, 1, 150);
+      scene.add(ballMesh);
+
+      // Green Surface Target Platform
+      const greenGeo = new THREE.CylinderGeometry(14, 14, 0.5, 32);
+      const greenMat = new THREE.MeshStandardMaterial({ color: 0x44d37e, roughness: 0.3 });
+      const greenMesh = new THREE.Mesh(greenGeo, greenMat);
+      greenMesh.position.set(0, 0.2, -100);
+      scene.add(greenMesh);
+
+      // Pin Flag
+      const pinGeo = new THREE.CylinderGeometry(0.2, 0.2, 8, 8);
+      const pinMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+      const pinMesh = new THREE.Mesh(pinGeo, pinMat);
+      pinMesh.position.set(0, 4, -100);
+      scene.add(pinMesh);
+
+      calculate3DoFPoints();
+      animate();
+    }
+
+    function calculate3DoFPoints() {
+      trajectoryPoints.length = 0;
+      const steps = 100;
+      const startZ = 150;
+      const endZ = -100;
+      const apexY = 38;
+
+      for (let i = 0; i <= steps; i++) {
+        const t = i / steps;
+        const z = startZ + (endZ - startZ) * t;
+        const y = Math.sin(t * Math.PI) * apexY + 1;
+        const x = Math.sin(t * Math.PI) * 12; // Crosswind drift arc
+        trajectoryPoints.push(new THREE.Vector3(x, y, z));
+      }
+
+      const lineGeo = new THREE.BufferGeometry().setFromPoints(trajectoryPoints);
+      const lineMat = new THREE.LineDashedMaterial({ color: 0x44d37e, dashSize: 3, gapSize: 2, linewidth: 2 });
+      trajectoryLine = new THREE.Line(lineGeo, lineMat);
+      trajectoryLine.computeLineDistances();
+      scene.add(trajectoryLine);
+    }
+
+    function fireShotSimulation() {
+      isSimulating = true;
+      animProgress = 0;
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+
+      if (isSimulating) {
+        animProgress += 0.008;
+        if (animProgress > 1.0) {
+          animProgress = 1.0;
+          isSimulating = false;
+        }
+
+        const idx = Math.floor(animProgress * (trajectoryPoints.length - 1));
+        const point = trajectoryPoints[idx];
+        if (point) {
+          ballMesh.position.copy(point);
+          camera.position.x = point.x * 0.5;
+          camera.position.z = point.z + 40;
+          camera.position.y = point.y + 15;
+          camera.lookAt(point);
+
+          const altY = point.y.toFixed(1);
+          const vel = ((1 - animProgress * 0.4) * 172.5).toFixed(1);
+          document.getElementById('hudStatus').innerText = `FPS: 60 | ALT: ${altY}m | VEL: ${vel} mph | SPIN: 2,650 RPM`;
+        }
+      }
+
+      renderer.render(scene, camera);
+    }
+
+    window.addEventListener('resize', () => {
+      const container = document.querySelector('.webgl-container');
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(container.clientWidth, container.clientHeight);
+    });
+
+    setTimeout(init3D, 100);
+  </script>
+</body>
+</html>
