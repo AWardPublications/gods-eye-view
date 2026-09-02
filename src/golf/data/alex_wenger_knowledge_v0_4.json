@@ -1,0 +1,76 @@
+{
+  "knowledge_version": "AWK-v0.4",
+  "project_id": "ALEX_WENGER",
+  "governance": {
+    "patent": "WO/2026/150385",
+    "compliance_gate": "R&A_Rule_4.3a_State_4_Judge",
+    "exclusively_alex_responsibility": true,
+    "primary_launch_vector": "2026-09-26 (Ryder Cup Launch Sprint)"
+  },
+  "blocks": [
+    {
+      "id": "AWK-CAR-001",
+      "domain": "Career / Player Development",
+      "sub_domain": "Tour Transition, Multi-Stakeholder Continuity & Cognitive Shielding",
+      "canonical_ref": "The Rising Star View: Architectural Solutions for Professional Continuity.pdf",
+      "knowledge_status": "CANONICAL",
+      "confidence": 0.95,
+      "content": {
+        "core_principle": "Young touring professionals do not fail from a lack of talent; they fail from a collapse of operations. Alex Wenger serves as the immutable institutional memory across agent, coach, caddie, and family transitions.",
+        "architectural_mechanisms": {
+          "data_fragmentation_prevention": "Consolidates launch monitor files, TrackMan combine logs, 3D kinematic captures, and physical therapy constraints into a sovereign player repository owned by the golfer, not the agency.",
+          "cognitive_offloading": "Generates deterministic weekly operating plans to eliminate travel-induced decision fatigue.",
+          "team_handoff_protocol": "Translates high-performance coach prescriptions into daily range drills; provides incoming tournament caddies with historical club dispersion baselines."
+        }
+      }
+    },
+    {
+      "id": "AWK-INST-001",
+      "domain": "Practice / Training",
+      "sub_domain": "Lesson-Tee Kinematic Transfer & On-Course Behavioral Anchoring",
+      "canonical_ref": "COACH AND CLUB PROFESSIONAL VIEW: THE CONNECTIVE ARCHITECTURE OF ELITE PERFORMANCE.pdf",
+      "knowledge_status": "CANONICAL",
+      "confidence": 0.96,
+      "content": {
+        "core_principle": "The biggest drop-off in golf performance occurs between the back of the driving range and the 1st tee. The connective architecture enforces the coach's primary feels in the field without introducing paralysis by analysis.",
+        "operational_rules": {
+          "instructional_fidelity": "Locks the coach's specific lesson-tee focus into memory. When in Coach Mode, Alex delivers this exact focal cue.",
+          "exposed_contradiction_handling": "If launch monitor telemetry conflicts with a player's reported feel, the system flags an 'Exposed Contradiction' card for review.",
+          "hitl_academy_moat": "In academy environments, the coach operates the sovereign terminal. Students receive structured verbal instruction; zero minor accounts created."
+        }
+      }
+    },
+    {
+      "id": "AWK-CAD-001",
+      "domain": "Course Management",
+      "sub_domain": "Historical Yardage Book Intelligence, Micro-Terrain Memory & Wind Drift",
+      "canonical_ref": "The CADDIE VIEW: Institutional Memory for Elite Golf Performance.pdf",
+      "knowledge_status": "CANONICAL",
+      "confidence": 0.98,
+      "content": {
+        "core_principle": "A world-class caddie does not just give yardage; they give certainty. Institutional memory records how specific green complexes and fairway chutes behave under varying wind azimuths and turf moisture levels over decades.",
+        "caddying_parameters": {
+          "topographical_memory": "Indexes firm rollout speed chutes, penal collection basins, and true false-front boundaries using 1m LiDAR DTM rasters.",
+          "plays_like_integration": "Caddy calculates real-time 3-DoF trajectory: incorporates air density (rho), altitude delta (Delta z), and lateral Magnus cross-drift in under 15ms.",
+          "caddie_hitl_parity": "During tournament rounds, the caddie accesses raw distances and pre-calculated strategic zones on the mobile terminal."
+        }
+      }
+    },
+    {
+      "id": "AWK-GOLF-001",
+      "domain": "Mental Performance",
+      "sub_domain": "Hands-Free Audio HUD, Pre-Shot Autonomic Grounding & Flow State",
+      "canonical_ref": "GOLFER VIEW: THE CONTINUOUS PERFORMANCE ARCHITECTURE.pdf",
+      "knowledge_status": "CANONICAL",
+      "confidence": 0.95,
+      "content": {
+        "core_principle": "The golfer's eyes must remain on the course, not buried in a screen. Audio is the ultimate low-friction, high-empathy interface. One concise cue spoken at the right second builds unbreakable commitment.",
+        "haptic_and_audio_flow": {
+          "interaction_loop": "Golfer speaks natural query -> Whisper STT parses intent in <20ms -> 6-State Pipeline evaluates terrain -> Alex speaks concise coaching cue in <50ms.",
+          "pre_shot_cadence": "Zenner synchronizes HRV 4-7-8 breathing cues if autonomic stress triggers pulse elevation > 115 BPM over the ball.",
+          "post_shot_hygiene": "Enforces 10-yard emotional release boundary: golfer has 10 paces to process frustration, after which Alex redirects focus."
+        }
+      }
+    }
+  ]
+}
