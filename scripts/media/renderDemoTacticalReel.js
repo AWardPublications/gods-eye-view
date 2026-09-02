@@ -70,6 +70,13 @@ export async function renderDemoTacticalReel(options = {}) {
     videoPath: outputPath,
     voicePath: wavPath,
     subtitlesPath: srtPath,
+    branding: {
+      standard: 'BREHON GROUP BRANDING STANDARD v1.0',
+      dark_fairway: '#051009',
+      kinetic_green: '#44d37e',
+      ward_stone_watermark: 'WARD STONE — BREHON GOVERNED',
+      jurisdictional_taxonomy: 'FLAG_ENTITY_DOT_FORMAT'
+    },
     seedData
   };
 }
