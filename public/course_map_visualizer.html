@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alex Wenger Golf — Interactive 2D Vector Course Map Engine v4.7.0</title>
+  <title>Alex Wenger Golf — God's Eye Multi-Layer Map Engine v4.7.0</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -11,17 +11,14 @@
     :root {
       --bg-primary: #051009; /* Dark Fairway */
       --bg-surface: #0a1b11;
-      --bg-card: rgba(14, 34, 22, 0.75);
-      --border-color: rgba(68, 211, 126, 0.2);
-      --border-glow: rgba(68, 211, 126, 0.4);
+      --bg-card: rgba(14, 34, 22, 0.85);
+      --border-color: rgba(68, 211, 126, 0.25);
+      --border-glow: rgba(68, 211, 126, 0.5);
       --kinetic-green: #44d37e;
-      --green-glow: rgba(68, 211, 126, 0.3);
+      --green-glow: rgba(68, 211, 126, 0.35);
       --fairway-green: #22c55e;
-      --rough-green: #14532d;
       --bunker-sand: #d97706;
       --water-blue: #0284c7;
-      --tee-purple: #a855f7;
-      --tree-green: #166534;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --danger-red: #ef4444;
@@ -46,10 +43,9 @@
       flex-direction: column;
     }
 
-    /* Top Navigation Bar */
     header {
       background: rgba(5, 16, 9, 0.95);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-color);
       padding: 12px 24px;
       display: flex;
@@ -68,7 +64,6 @@
       font-family: var(--font-display);
       font-size: 1.25rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
       color: var(--text-main);
     }
 
@@ -80,7 +75,6 @@
       border-radius: 4px;
       font-size: 0.75rem;
       font-weight: 600;
-      text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
@@ -100,11 +94,6 @@
       font-family: var(--font-body);
       outline: none;
       cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .course-select:hover {
-      border-color: var(--kinetic-green);
     }
 
     .rule-toggle-btn {
@@ -119,17 +108,15 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      transition: all 0.2s ease;
     }
 
     .rule-toggle-btn.active {
       background: var(--danger-red);
       color: #ffffff;
-      border-color: var(--danger-red);
       box-shadow: 0 0 12px rgba(239, 68, 68, 0.5);
     }
 
-    /* Main Workspace Layout */
+    /* Main Workspace */
     .app-workspace {
       flex: 1;
       display: grid;
@@ -138,23 +125,23 @@
       position: relative;
     }
 
-    /* Left Sidebar: Hole Controls & Environmental Telemetry */
+    /* Left Sidebar */
     .sidebar-left {
       background: var(--bg-card);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(16px);
       border-right: 1px solid var(--border-color);
       padding: 20px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 18px;
       overflow-y: auto;
     }
 
     .panel-box {
-      background: rgba(10, 27, 17, 0.6);
+      background: rgba(10, 27, 17, 0.7);
       border: 1px solid var(--border-color);
       border-radius: 8px;
-      padding: 16px;
+      padding: 14px;
     }
 
     .panel-box h3 {
@@ -163,32 +150,52 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: var(--kinetic-green);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
+    }
+
+    /* Multi-Layer Onion Toggle Switches */
+    .layer-toggle-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .layer-toggle-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background: rgba(5, 16, 9, 0.8);
+      border: 1px solid var(--border-color);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.8125rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .layer-toggle-item:hover {
+      border-color: var(--kinetic-green);
+    }
+
+    .layer-toggle-item input[type="checkbox"] {
+      accent-color: var(--kinetic-green);
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
     }
 
     .metric-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       font-size: 0.875rem;
-    }
-
-    .metric-row:last-child {
-      margin-bottom: 0;
     }
 
     .metric-value {
       font-weight: 700;
       color: #ffffff;
       font-family: monospace;
-    }
-
-    .slider-control {
-      margin-top: 8px;
     }
 
     .slider-control label {
@@ -204,10 +211,10 @@
       accent-color: var(--kinetic-green);
     }
 
-    /* Center: 2D Vector Map Canvas Container */
+    /* Center Map Canvas Container */
     .map-canvas-container {
       position: relative;
-      background: #030a06;
+      background: #020604;
       width: 100%;
       height: 100%;
       display: flex;
@@ -222,12 +229,12 @@
       cursor: crosshair;
     }
 
-    /* Ward Stone Watermark Stamp */
+    /* Ward Stone Watermark */
     .ward-stone-watermark {
       position: absolute;
       bottom: 20px;
       right: 20px;
-      background: rgba(5, 16, 9, 0.85);
+      background: rgba(5, 16, 9, 0.9);
       border: 1px solid var(--border-glow);
       padding: 6px 14px;
       border-radius: 20px;
@@ -252,7 +259,6 @@
       box-shadow: 0 0 8px var(--kinetic-green);
     }
 
-    /* Tournament Lockout Banner */
     .rule-banner {
       position: absolute;
       top: 20px;
@@ -269,28 +275,22 @@
       box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
       display: none;
       z-index: 50;
-      animation: pulseBanner 2s infinite;
     }
 
-    @keyframes pulseBanner {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.85; }
-    }
-
-    /* Right Sidebar: Target Envelope & Caddy Briefing */
+    /* Right Sidebar */
     .sidebar-right {
       background: var(--bg-card);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(16px);
       border-left: 1px solid var(--border-color);
       padding: 20px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 18px;
       overflow-y: auto;
     }
 
     .plays-like-card {
-      background: linear-gradient(135deg, rgba(68, 211, 126, 0.15) 0%, rgba(10, 27, 17, 0.8) 100%);
+      background: linear-gradient(135deg, rgba(68, 211, 126, 0.2) 0%, rgba(10, 27, 17, 0.9) 100%);
       border: 1px solid var(--kinetic-green);
       border-radius: 12px;
       padding: 20px;
@@ -311,7 +311,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
-      margin-top: 12px;
+      margin-top: 10px;
     }
 
     .envelope-box {
@@ -327,7 +327,6 @@
       font-size: 0.6875rem;
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
     }
 
     .envelope-box span {
@@ -358,10 +357,6 @@
       cursor: pointer;
       width: 100%;
       transition: all 0.2s ease;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
     }
 
     .btn-action:hover {
@@ -372,11 +367,10 @@
 </head>
 <body>
 
-  <!-- Top Header -->
   <header>
     <div class="brand-title">
       <h1>ALEX WENGER GOLF</h1>
-      <span class="badge">2D Vector Map Engine v4.7.0</span>
+      <span class="badge">God's Eye Onion Map Engine v4.7.0</span>
     </div>
     <div class="header-controls">
       <select class="course-select" id="courseSelector" onchange="changeCourse(this.value)">
@@ -389,18 +383,67 @@
         <option value="soldeu_5">Golf Soldeu — Hole 5 (Andorra Alpine 2,250m)</option>
       </select>
       <button class="rule-toggle-btn" id="ruleToggleBtn" onclick="toggleRule43a()">
-        🛡️ Rule 4.3a Tournament Lockout
+        🛡️ Rule 4.3a Lockout
       </button>
     </div>
   </header>
 
-  <!-- Main Workspace -->
   <div class="app-workspace">
 
-    <!-- Left Sidebar Controls -->
+    <!-- Left Sidebar: Multi-Layer Onion Controls & Telemetry -->
     <div class="sidebar-left">
       <div class="panel-box">
-        <h3>📍 Hole Parameters</h3>
+        <h3>🧅 Map Layer Onion Skins</h3>
+        <div class="layer-toggle-group">
+          <label class="layer-toggle-item">
+            <span>🛰️ God's Eye Satellite Skin</span>
+            <input type="checkbox" id="layerSatellite" checked onchange="drawCourseMap()">
+          </label>
+          <label class="layer-toggle-item">
+            <span>🗺️ Vector Topography Polygons</span>
+            <input type="checkbox" id="layerVector" checked onchange="drawCourseMap()">
+          </label>
+          <label class="layer-toggle-item">
+            <span>🏔️ 0.5m LiDAR Slope Contours</span>
+            <input type="checkbox" id="layerContours" checked onchange="drawCourseMap()">
+          </label>
+          <label class="layer-toggle-item">
+            <span>💨 Live Wind Particle Vectors</span>
+            <input type="checkbox" id="layerWindParticles" checked onchange="drawCourseMap()">
+          </label>
+          <label class="layer-toggle-item">
+            <span>🌧️ Doppler Rain Radar Heatmap</span>
+            <input type="checkbox" id="layerDoppler" onchange="drawCourseMap()">
+          </label>
+          <label class="layer-toggle-item">
+            <span>🌾 Soil Moisture (VWC%) Heatmap</span>
+            <input type="checkbox" id="layerAgronomic" onchange="drawCourseMap()">
+          </label>
+          <label class="layer-toggle-item">
+            <span>🎯 3-DoF Trajectory & Envelopes</span>
+            <input type="checkbox" id="layerTrajectory" checked onchange="drawCourseMap()">
+          </label>
+        </div>
+      </div>
+
+      <div class="panel-box">
+        <h3>🌤️ Climate & Atmosphere</h3>
+        <div class="slider-control">
+          <label>Wind Speed: <span id="windValText">18.5 mph</span></label>
+          <input type="range" id="windSlider" min="0" max="40" value="18.5" step="0.5" oninput="updateTelemetry()">
+        </div>
+        <div class="slider-control">
+          <label>Wind Direction: <span id="windAngleText">45° (Head-Cross)</span></label>
+          <input type="range" id="windAngleSlider" min="0" max="360" value="45" step="5" oninput="updateTelemetry()">
+        </div>
+        <div class="slider-control">
+          <label>Air Pressure: <span id="pressureText">1013 hPa</span></label>
+          <input type="range" id="pressureSlider" min="750" max="1025" value="1013" step="5" oninput="updateTelemetry()">
+        </div>
+      </div>
+
+      <div class="panel-box">
+        <h3>📍 Hole Metadata</h3>
         <div class="metric-row">
           <span>Venue:</span>
           <span class="metric-value" id="venueNameText">St Andrews Links</span>
@@ -413,62 +456,26 @@
           <span>Scorecard Distance:</span>
           <span class="metric-value" id="scorecardDistText">495 Yards</span>
         </div>
-        <div class="metric-row">
-          <span>Elevation Delta (Δz):</span>
-          <span class="metric-value" id="elevationDeltaText">+2.4m</span>
-        </div>
-      </div>
-
-      <div class="panel-box">
-        <h3>🌤️ Micro-Climate Telemetry</h3>
-        <div class="slider-control">
-          <label>Wind Velocity: <span id="windValText">18.5 mph</span></label>
-          <input type="range" id="windSlider" min="0" max="40" value="18.5" step="0.5" oninput="updateTelemetry()">
-        </div>
-        <div class="slider-control">
-          <label>Wind Angle: <span id="windAngleText">45° (Head-Cross)</span></label>
-          <input type="range" id="windAngleSlider" min="0" max="360" value="45" step="5" oninput="updateTelemetry()">
-        </div>
-        <div class="slider-control">
-          <label>Altitude Pressure: <span id="pressureText">1013 hPa</span></label>
-          <input type="range" id="pressureSlider" min="750" max="1025" value="1013" step="5" oninput="updateTelemetry()">
-        </div>
-      </div>
-
-      <div class="panel-box">
-        <h3>🌾 Turf & Stance Lie</h3>
-        <div class="metric-row">
-          <span>Surface Lie:</span>
-          <span class="metric-value" id="lieText">Clean Fairway</span>
-        </div>
-        <div class="metric-row">
-          <span>Spin Decay (k_lie):</span>
-          <span class="metric-value" id="kLieText">1.00 (100%)</span>
-        </div>
-        <div class="metric-row">
-          <span>Stimp Firmness:</span>
-          <span class="metric-value" id="stimpText">11.5 Stimp</span>
-        </div>
       </div>
     </div>
 
-    <!-- Center Interactive 2D Canvas -->
+    <!-- Center Canvas Map -->
     <div class="map-canvas-container">
       <div class="rule-banner" id="ruleBanner">RULE 4.3a TOURNAMENT LOCKOUT ACTIVE</div>
       <canvas id="courseCanvas"></canvas>
       <div class="ward-stone-watermark">WARD STONE — BREHON GOVERNED</div>
     </div>
 
-    <!-- Right Sidebar Target & Caddy Briefing -->
+    <!-- Right Sidebar -->
     <div class="sidebar-right">
       <div class="plays-like-card">
-        <label style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">Net Plays-Like Distance</label>
+        <label style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted);">Net Plays-Like Distance</label>
         <h2 id="playsLikeDisplay">518Y</h2>
         <span style="font-size: 0.8125rem; color: #cbd5e1;" id="playsLikeAdjText">+23y (Wind & Elevation)</span>
       </div>
 
       <div class="panel-box">
-        <h3>🎯 4-Point Target Window Envelope</h3>
+        <h3>🎯 Target Window Envelope</h3>
         <div class="target-envelope-grid">
           <div class="envelope-box">
             <label>Front Edge</label>
@@ -514,7 +521,6 @@
         baseWind: 18.5,
         baseAngle: 45,
         pressure: 1013,
-        fairwayWidth: 38,
         hazards: [
           { type: 'bunker', x: 0.48, y: 0.52, radius: 14, name: "Road Hole Pot Bunker" },
           { type: 'road', x: 0.52, y: 0.22, width: 22, height: 90, name: "Tarmac Road & Wall" }
@@ -529,7 +535,6 @@
         baseWind: 18.5,
         baseAngle: 45,
         pressure: 1008,
-        fairwayWidth: 34,
         hazards: [
           { type: 'bunker', x: 0.45, y: 0.48, radius: 18, name: "Hillside Front Bunker" }
         ]
@@ -543,7 +548,6 @@
         baseWind: 12.0,
         baseAngle: 90,
         pressure: 1010,
-        fairwayWidth: 30,
         hazards: [
           { type: 'water', x: 0.55, y: 0.35, radius: 45, name: "Peninsula Water Hazard" },
           { type: 'bunker', x: 0.42, y: 0.30, radius: 16, name: "Back Shelf Bunker" }
@@ -558,7 +562,6 @@
         baseWind: 14.0,
         baseAngle: 180,
         pressure: 1015,
-        fairwayWidth: 32,
         hazards: [
           { type: 'water', x: 0.50, y: 0.32, radius: 38, name: "Fronting Green Water Hazard" },
           { type: 'bunker', x: 0.45, y: 0.28, radius: 15, name: "Cork Oak Bunker" }
@@ -573,7 +576,6 @@
         baseWind: 25.4,
         baseAngle: 10,
         pressure: 1005,
-        fairwayWidth: 36,
         hazards: [
           { type: 'bunker', x: 0.46, y: 0.45, radius: 16, name: "Links Deep Bunker" }
         ]
@@ -587,7 +589,6 @@
         baseWind: 8.0,
         baseAngle: 270,
         pressure: 772,
-        fairwayWidth: 35,
         hazards: [
           { type: 'bunker', x: 0.48, y: 0.40, radius: 14, name: "Pyrenees Ridge Bunker" }
         ]
@@ -597,9 +598,20 @@
     let currentCourseKey = 'st_andrews_17';
     let isRule43aActive = false;
     let targetOffset = { x: 0, y: 0 };
+    let windParticles = [];
 
     const canvas = document.getElementById('courseCanvas');
     const ctx = canvas.getContext('2d');
+
+    // Initialize Wind Particles
+    for (let i = 0; i < 45; i++) {
+      windParticles.push({
+        x: Math.random(),
+        y: Math.random(),
+        speed: 0.002 + Math.random() * 0.003,
+        length: 15 + Math.random() * 20
+      });
+    }
 
     function resizeCanvas() {
       const container = canvas.parentElement;
@@ -617,8 +629,7 @@
       document.getElementById('venueNameText').innerText = course.name;
       document.getElementById('holeNumText').innerText = `${course.hole} (Par ${course.par})`;
       document.getElementById('scorecardDistText').innerText = `${course.rawYards} Yards`;
-      document.getElementById('elevationDeltaText').innerText = `${course.elevationDelta > 0 ? '+' : ''}${course.elevationDelta}m`;
-      
+
       document.getElementById('windSlider').value = course.baseWind;
       document.getElementById('windAngleSlider').value = course.baseAngle;
       document.getElementById('pressureSlider').value = course.pressure;
@@ -653,7 +664,6 @@
       document.getElementById('windAngleText').innerText = `${windAngle}°`;
       document.getElementById('pressureText').innerText = `${pressure} hPa`;
 
-      // 3-DoF Plays-Like Calculation
       let playsLike = course.rawYards;
       if (!isRule43aActive) {
         const windEffect = windSpeed * 1.4 * Math.cos(windAngle * Math.PI / 180);
@@ -666,13 +676,11 @@
       document.getElementById('playsLikeDisplay').innerText = `${playsLike}Y`;
       document.getElementById('playsLikeAdjText').innerText = isRule43aActive ? "RULE 4.3a LOCKOUT ACTIVE" : `${diff >= 0 ? '+' : ''}${diff}y (Wind & Elevation)`;
 
-      // Target Envelope
       document.getElementById('envFront').innerText = `${playsLike - 36}y`;
       document.getElementById('envCover').innerText = `${playsLike - 20}y`;
       document.getElementById('envPin').innerText = `${playsLike}y`;
       document.getElementById('envBack').innerText = `${playsLike + 16}y`;
 
-      // Speech Text
       const speech = isRule43aActive 
         ? `Tournament lockout active under Rule 4.3a. Raw yardage is ${course.rawYards} yards.` 
         : `"${course.rawYards} yards to the pin. Into a ${windSpeed} knot wind. Plays ${playsLike}. Cover front hazard at ${playsLike - 20} yards. Back shelf runs off at ${playsLike + 16}."`;
@@ -689,129 +697,190 @@
 
       ctx.clearRect(0, 0, width, height);
 
-      // 1. Background Rough (#051009)
-      ctx.fillStyle = '#051009';
-      ctx.fillRect(0, 0, width, height);
+      // Layer Toggles
+      const showSatellite = document.getElementById('layerSatellite').checked;
+      const showVector = document.getElementById('layerVector').checked;
+      const showContours = document.getElementById('layerContours').checked;
+      const showWind = document.getElementById('layerWindParticles').checked;
+      const showDoppler = document.getElementById('layerDoppler').checked;
+      const showAgronomic = document.getElementById('layerAgronomic').checked;
+      const showTrajectory = document.getElementById('layerTrajectory').checked;
 
-      // Grid Pattern Overlay
-      ctx.strokeStyle = 'rgba(68, 211, 126, 0.05)';
-      ctx.lineWidth = 1;
-      const gridSize = 40;
-      for (let x = 0; x < width; x += gridSize) {
-        ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, height);
-        ctx.stroke();
+      // 1. LAYER 1: Satellite Substrate (God's Eye Orthophoto Pattern)
+      if (showSatellite) {
+        ctx.fillStyle = '#06130b';
+        ctx.fillRect(0, 0, width, height);
+
+        // Synthetic High-Res Satellite Texture Pattern
+        const satGradient = ctx.createRadialGradient(width * 0.5, height * 0.5, 50, width * 0.5, height * 0.5, width * 0.7);
+        satGradient.addColorStop(0, '#0c2617');
+        satGradient.addColorStop(0.5, '#07190e');
+        satGradient.addColorStop(1, '#030a06');
+        ctx.fillStyle = satGradient;
+        ctx.fillRect(0, 0, width, height);
+      } else {
+        ctx.fillStyle = '#020604';
+        ctx.fillRect(0, 0, width, height);
       }
-      for (let y = 0; y < height; y += gridSize) {
-        ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(width, y);
-        ctx.stroke();
+
+      // 2. LAYER 2: Doppler Rain Radar or Agronomic Moisture Heatmap Overlay
+      if (showDoppler) {
+        const dopplerGrad = ctx.createRadialGradient(width * 0.45, height * 0.35, 10, width * 0.45, height * 0.35, 180);
+        dopplerGrad.addColorStop(0, 'rgba(6, 182, 212, 0.4)');
+        dopplerGrad.addColorStop(0.5, 'rgba(59, 130, 246, 0.25)');
+        dopplerGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        ctx.fillStyle = dopplerGrad;
+        ctx.fillRect(0, 0, width, height);
+      }
+
+      if (showAgronomic) {
+        const agroGrad = ctx.createRadialGradient(width * 0.5, height * 0.2, 5, width * 0.5, height * 0.2, 90);
+        agroGrad.addColorStop(0, 'rgba(245, 158, 11, 0.45)'); // High VWC % moisture zone
+        agroGrad.addColorStop(0.7, 'rgba(16, 185, 129, 0.2)');
+        agroGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        ctx.fillStyle = agroGrad;
+        ctx.fillRect(0, 0, width, height);
       }
 
       // Centerline Geometry
       const startX = width * 0.5;
-      const startY = height * 0.85; // Tee Box
+      const startY = height * 0.85;
       const pinX = width * 0.5 + targetOffset.x;
-      const pinY = height * 0.20 + targetOffset.y; // Green Center
+      const pinY = height * 0.20 + targetOffset.y;
 
-      // 2. Fairway Ribbon Draw (#22c55e)
-      ctx.fillStyle = '#14532d'; // Primary Rough Outer
-      ctx.beginPath();
-      ctx.ellipse(startX, (startY + pinY) / 2, width * 0.18, (startY - pinY) * 0.55, 0, 0, Math.PI * 2);
-      ctx.fill();
+      // 3. LAYER 3: Vector Topography Polygons
+      if (showVector) {
+        // Fairway Ribbon
+        ctx.fillStyle = 'rgba(20, 83, 45, 0.85)'; // Rough Outer
+        ctx.beginPath();
+        ctx.ellipse(startX, (startY + pinY) / 2, width * 0.18, (startY - pinY) * 0.55, 0, 0, Math.PI * 2);
+        ctx.fill();
 
-      ctx.fillStyle = '#22c55e'; // Fairway Inner
-      ctx.beginPath();
-      ctx.ellipse(startX, (startY + pinY) / 2, width * 0.12, (startY - pinY) * 0.50, 0, 0, Math.PI * 2);
-      ctx.fill();
+        ctx.fillStyle = showSatellite ? 'rgba(34, 197, 94, 0.65)' : '#22c55e'; // Fairway Inner
+        ctx.beginPath();
+        ctx.ellipse(startX, (startY + pinY) / 2, width * 0.12, (startY - pinY) * 0.50, 0, 0, Math.PI * 2);
+        ctx.fill();
 
-      // 3. Green Surface (#44d37e)
-      ctx.fillStyle = '#44d37e';
-      ctx.shadowColor = 'rgba(68, 211, 126, 0.4)';
-      ctx.shadowBlur = 16;
-      ctx.beginPath();
-      ctx.ellipse(pinX, pinY, 45, 35, -0.2, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.shadowBlur = 0;
+        // Green Surface
+        ctx.fillStyle = '#44d37e';
+        ctx.shadowColor = 'rgba(68, 211, 126, 0.5)';
+        ctx.shadowBlur = 18;
+        ctx.beginPath();
+        ctx.ellipse(pinX, pinY, 48, 36, -0.2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.shadowBlur = 0;
 
-      // Green Fringe Border
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-      ctx.lineWidth = 2;
-      ctx.stroke();
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+        ctx.lineWidth = 2;
+        ctx.stroke();
 
-      // 4. Hazards (Bunkers & Water)
-      course.hazards.forEach(h => {
-        const hX = width * h.x;
-        const hY = height * h.y;
+        // Hazards
+        course.hazards.forEach(h => {
+          const hX = width * h.x;
+          const hY = height * h.y;
 
-        if (h.type === 'bunker') {
-          ctx.fillStyle = '#d97706'; // Bunker Sand
+          if (h.type === 'bunker') {
+            ctx.fillStyle = '#d97706';
+            ctx.beginPath();
+            ctx.ellipse(hX, hY, h.radius, h.radius * 0.7, 0.3, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = '#92400e';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+          } else if (h.type === 'water') {
+            ctx.fillStyle = '#0284c7';
+            ctx.beginPath();
+            ctx.ellipse(hX, hY, h.radius * 1.2, h.radius * 0.8, -0.4, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = '#38bdf8';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+          } else if (h.type === 'road') {
+            ctx.fillStyle = '#475569';
+            ctx.fillRect(hX, hY, h.width, h.height);
+          }
+        });
+
+        // Tee Box
+        ctx.fillStyle = '#a855f7';
+        ctx.fillRect(startX - 20, startY - 10, 40, 20);
+      }
+
+      // 4. LAYER 4: 0.5m LiDAR Slope Elevation Contours
+      if (showContours) {
+        ctx.strokeStyle = 'rgba(68, 211, 126, 0.35)';
+        ctx.lineWidth = 1;
+
+        for (let r = 20; r <= 140; r += 20) {
           ctx.beginPath();
-          ctx.ellipse(hX, hY, h.radius, h.radius * 0.7, 0.3, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.strokeStyle = '#92400e';
-          ctx.lineWidth = 2;
+          ctx.ellipse(pinX, pinY, r * 1.2, r * 0.9, -0.2, 0, Math.PI * 2);
           ctx.stroke();
-        } else if (h.type === 'water') {
-          ctx.fillStyle = '#0284c7'; // Water Hazard
-          ctx.beginPath();
-          ctx.ellipse(hX, hY, h.radius * 1.2, h.radius * 0.8, -0.4, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.strokeStyle = '#38bdf8';
-          ctx.lineWidth = 2;
-          ctx.stroke();
-        } else if (h.type === 'road') {
-          ctx.fillStyle = '#475569'; // Road
-          ctx.fillRect(hX, hY, h.width, h.height);
         }
-      });
+      }
 
-      // 5. Tee Box (#a855f7)
-      ctx.fillStyle = '#a855f7';
-      ctx.fillRect(startX - 20, startY - 10, 40, 20);
-      ctx.fillStyle = '#ffffff';
-      ctx.font = '10px monospace';
-      ctx.fillText('TEE', startX - 10, startY + 4);
+      // 5. LAYER 5: Live Wind Particle Velocity Vectors
+      if (showWind) {
+        const windSpeed = parseFloat(document.getElementById('windSlider').value);
+        const windAngle = parseFloat(document.getElementById('windAngleSlider').value);
+        const angleRad = windAngle * Math.PI / 180;
 
-      // 6. 3-DoF Trajectory Path Curve
-      ctx.beginPath();
-      ctx.moveTo(startX, startY);
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+        ctx.lineWidth = 1.5;
 
-      // Curve midpoint with wind drift arc
-      const windSpeed = parseFloat(document.getElementById('windSlider').value);
-      const windAngle = parseFloat(document.getElementById('windAngleSlider').value);
-      const driftX = (windSpeed * Math.sin(windAngle * Math.PI / 180)) * 2.5;
+        windParticles.forEach(p => {
+          const px = p.x * width;
+          const py = p.y * height;
+          const pTargetX = px + Math.sin(angleRad) * p.length;
+          const pTargetY = py - Math.cos(angleRad) * p.length;
 
-      const controlX = (startX + pinX) / 2 + driftX;
-      const controlY = (startY + pinY) / 2 - 40;
+          ctx.beginPath();
+          ctx.moveTo(px, py);
+          ctx.lineTo(pTargetX, pTargetY);
+          ctx.stroke();
 
-      ctx.quadraticCurveTo(controlX, controlY, pinX, pinY);
+          // Advance particles
+          p.x += Math.sin(angleRad) * p.speed * (windSpeed / 15);
+          p.y -= Math.cos(angleRad) * p.speed * (windSpeed / 15);
 
-      ctx.strokeStyle = isRule43aActive ? '#ef4444' : '#44d37e';
-      ctx.lineWidth = 3;
-      ctx.setLineDash([8, 6]);
-      ctx.stroke();
-      ctx.setLineDash([]);
+          if (p.x < 0) p.x = 1;
+          if (p.x > 1) p.x = 0;
+          if (p.y < 0) p.y = 1;
+          if (p.y > 1) p.y = 0;
+        });
+      }
 
-      // 7. Pin & Target Envelope Indicator
-      ctx.fillStyle = '#ef4444'; // Flag Pin
-      ctx.beginPath();
-      ctx.arc(pinX, pinY, 6, 0, Math.PI * 2);
-      ctx.fill();
+      // 6. LAYER 6: 3-DoF Trajectory & Target Envelopes
+      if (showTrajectory) {
+        ctx.beginPath();
+        ctx.moveTo(startX, startY);
 
-      ctx.strokeStyle = '#ffffff';
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.arc(pinX, pinY, 14, 0, Math.PI * 2);
-      ctx.stroke();
+        const windSpeed = parseFloat(document.getElementById('windSlider').value);
+        const windAngle = parseFloat(document.getElementById('windAngleSlider').value);
+        const driftX = (windSpeed * Math.sin(windAngle * Math.PI / 180)) * 2.5;
 
-      // Flag Text
-      ctx.fillStyle = '#ffffff';
-      ctx.font = '12px Outfit, sans-serif';
-      ctx.fontWeight = '700';
-      ctx.fillText('17 PIN', pinX + 18, pinY + 4);
+        const controlX = (startX + pinX) / 2 + driftX;
+        const controlY = (startY + pinY) / 2 - 40;
+
+        ctx.quadraticCurveTo(controlX, controlY, pinX, pinY);
+
+        ctx.strokeStyle = isRule43aActive ? '#ef4444' : '#44d37e';
+        ctx.lineWidth = 3;
+        ctx.setLineDash([8, 6]);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Target Pin
+        ctx.fillStyle = '#ef4444';
+        ctx.beginPath();
+        ctx.arc(pinX, pinY, 6, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(pinX, pinY, 14, 0, Math.PI * 2);
+        ctx.stroke();
+      }
     }
 
     canvas.addEventListener('click', (e) => {
@@ -831,17 +900,24 @@
         window.speechSynthesis.cancel();
         const msg = new SpeechSynthesisUtterance(text);
         msg.rate = 0.95;
-        msg.pitch = 1.0;
         window.speechSynthesis.speak(msg);
       } else {
         alert("Synthesized Alex Voice: " + text);
       }
     }
 
-    // Initialize
+    // Animation Loop for Live Wind Vector Stream
+    function animationLoop() {
+      if (document.getElementById('layerWindParticles').checked) {
+        drawCourseMap();
+      }
+      requestAnimationFrame(animationLoop);
+    }
+
     setTimeout(() => {
       resizeCanvas();
       changeCourse('st_andrews_17');
+      requestAnimationFrame(animationLoop);
     }, 100);
   </script>
 </body>
