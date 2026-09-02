@@ -1,0 +1,70 @@
+{
+  "version": "1.0.0",
+  "governance": "DaVinciA+ Spatial Video Registry",
+  "courses": {
+    "st_andrews_old_course": {
+      "courseName": "St Andrews Links (Old Course)",
+      "location": "St Andrews, Fife, Scotland",
+      "holes": {
+        "1": {
+          "holeNumber": 1,
+          "holeName": "Burn",
+          "par": 4,
+          "yardage": 376,
+          "clipUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+          "durationSeconds": 15.0,
+          "waypoints": [
+            { "time": 0.0, "label": "Tee Box (Granny Clark's Bend)", "coord": [56.3411, -2.8005] },
+            { "time": 7.5, "label": "Wide Fairway Corridor", "coord": [56.3425, -2.8020] },
+            { "time": 15.0, "label": "Swilcan Burn & Green Platform", "coord": [56.3438, -2.8035] }
+          ]
+        },
+        "17": {
+          "holeNumber": 17,
+          "holeName": "Road Hole",
+          "par": 4,
+          "yardage": 495,
+          "clipUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+          "durationSeconds": 14.5,
+          "waypoints": [
+            { "time": 0.0, "label": "Tee Box (Old Course Hotel Line)", "coord": [56.3421, -2.8015] },
+            { "time": 6.2, "label": "Landing Zone (Fairway Plateau)", "coord": [56.3435, -2.8042] },
+            { "time": 14.5, "label": "Road Bunker & Pot Green", "coord": [56.3448, -2.8061] }
+          ]
+        },
+        "18": {
+          "holeNumber": 18,
+          "holeName": "Tom Morris",
+          "par": 4,
+          "yardage": 357,
+          "clipUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+          "durationSeconds": 12.0,
+          "waypoints": [
+            { "time": 0.0, "label": "Tee Box (Valley of Sin View)", "coord": [56.3448, -2.8061] },
+            { "time": 6.0, "label": "Swilcan Bridge Crossing", "coord": [56.3435, -2.8035] },
+            { "time": 12.0, "label": "18th Green & R&A Clubhouse", "coord": [56.3411, -2.8005] }
+          ]
+        }
+      }
+    },
+    "crans_sur_sierre": {
+      "courseName": "Crans-sur-Sierre Golf Club",
+      "location": "Crans-Montana, Valais, Switzerland",
+      "holes": {
+        "7": {
+          "holeNumber": 7,
+          "holeName": "Alpine Vista",
+          "par": 4,
+          "yardage": 331,
+          "clipUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+          "durationSeconds": 14.0,
+          "waypoints": [
+            { "time": 0.0, "label": "Tee Box (Matterhorn Panorama)", "coord": [46.3125, 7.4812] },
+            { "time": 7.0, "label": "Cliffside Fairway Corridor", "coord": [46.3138, 7.4835] },
+            { "time": 14.0, "label": "Infinity Green Edge", "coord": [46.3150, 7.4858] }
+          ]
+        }
+      }
+    }
+  }
+}

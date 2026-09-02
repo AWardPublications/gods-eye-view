@@ -217,6 +217,21 @@
       </div>
 
       <div class="panel-box">
+        <h3>🎥 Pre-Recorded Hole Flyover Clip</h3>
+        <div style="position: relative; width: 100%; height: 140px; background: #000; border-radius: 6px; overflow: hidden; margin: 8px 0;">
+          <video id="holeMiniClip" style="width: 100%; height: 100%; object-fit: cover;" loop muted playsinline poster="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=600&q=80">
+            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+          </video>
+          <div style="position: absolute; bottom: 6px; left: 8px; font-size: 0.75rem; color: #44d37e; font-family: monospace; background: rgba(3,10,6,0.85); padding: 2px 6px; border-radius: 4px;">
+            🎬 15s Hole 17 Flyover
+          </div>
+        </div>
+        <button onclick="toggleHoleClip()" style="width: 100%; background: rgba(68, 211, 126, 0.15); color: #44d37e; border: 1px solid #44d37e; padding: 6px; border-radius: 4px; font-weight: 600; font-size: 0.8125rem; cursor: pointer;">
+          ▶️ Play / Pause Pre-Recorded Clip
+        </button>
+      </div>
+
+      <div class="panel-box">
         <h3>💨 Aerodynamic Environment</h3>
         <div class="metric-row">
           <span>Wind Velocity:</span>
@@ -239,7 +254,7 @@
         FPS: 60 | ALT: 0.0m | VEL: 172.5 mph | SPIN: 2,650 RPM
       </div>
       <canvas id="webglCanvas"></canvas>
-      <div class="ward-watermark">WARD STONE — BREHON GOVERNED</div>
+      <div class="ward-watermark">E PLURIBUS UNUM — MULTI-ROLE TELEMETRY SYNCHRONIZED</div>
     </div>
 
     <!-- Right Panel -->
@@ -250,6 +265,26 @@
           <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Plays-Like Target</span>
           <h2 style="font-size: 2.75rem; color: var(--kinetic-green); font-family: var(--font-display);">518Y</h2>
           <span style="font-size: 0.8125rem; color: #cbd5e1;">+23y Wind & Elevation Adjust</span>
+        </div>
+      </div>
+
+      <div class="panel-box">
+        <h3>🤝 Multi-Role Telemetry Mesh</h3>
+        <div class="metric-row">
+          <span>Sync Status:</span>
+          <span class="metric-value" style="color: #44d37e;">LOCKED (0.4ms)</span>
+        </div>
+        <div class="metric-row">
+          <span>Active Role:</span>
+          <span class="metric-value">CADDIE / PLAYER</span>
+        </div>
+        <div class="metric-row">
+          <span>Spotter Lie Index:</span>
+          <span class="metric-value">95/100 (Fairway)</span>
+        </div>
+        <div class="metric-row">
+          <span>GAMP 5 SHA-256:</span>
+          <span class="metric-value" style="font-size: 0.7rem;">a888ba28...</span>
         </div>
       </div>
 
@@ -363,6 +398,17 @@
       trajectoryLine = new THREE.Line(lineGeo, lineMat);
       trajectoryLine.computeLineDistances();
       scene.add(trajectoryLine);
+    }
+
+    function toggleHoleClip() {
+      const vid = document.getElementById('holeMiniClip');
+      if (vid) {
+        if (vid.paused) {
+          vid.play();
+        } else {
+          vid.pause();
+        }
+      }
     }
 
     function fireShotSimulation() {
