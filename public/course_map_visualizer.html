@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alex Wenger Golf — Interactive 2D Vector Course Map Engine v4.7.0</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #051009; /* Dark Fairway */
+      --bg-surface: #0a1b11;
+      --bg-card: rgba(14, 34, 22, 0.75);
+      --border-color: rgba(68, 211, 126, 0.2);
+      --border-glow: rgba(68, 211, 126, 0.4);
+      --kinetic-green: #44d37e;
+      --green-glow: rgba(68, 211, 126, 0.3);
+      --fairway-green: #22c55e;
+      --rough-green: #14532d;
+      --bunker-sand: #d97706;
+      --water-blue: #0284c7;
+      --tee-purple: #a855f7;
+      --tree-green: #166534;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --danger-red: #ef4444;
+      --warning-amber: #f59e0b;
+      --font-body: 'Inter', sans-serif;
+      --font-display: 'Outfit', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Navigation Bar */
+    header {
+      background: rgba(5, 16, 9, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-title h1 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+    }
+
+    .brand-title span.badge {
+      background: rgba(68, 211, 126, 0.15);
+      color: var(--kinetic-green);
+      border: 1px solid var(--border-glow);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .course-select {
+      background: var(--bg-surface);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-family: var(--font-body);
+      outline: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .course-select:hover {
+      border-color: var(--kinetic-green);
+    }
+
+    .rule-toggle-btn {
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--danger-red);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .rule-toggle-btn.active {
+      background: var(--danger-red);
+      color: #ffffff;
+      border-color: var(--danger-red);
+      box-shadow: 0 0 12px rgba(239, 68, 68, 0.5);
+    }
+
+    /* Main Workspace Layout */
+    .app-workspace {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 340px 1fr 360px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Left Sidebar: Hole Controls & Environmental Telemetry */
+    .sidebar-left {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border-right: 1px solid var(--border-color);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      overflow-y: auto;
+    }
+
+    .panel-box {
+      background: rgba(10, 27, 17, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .panel-box h3 {
+      font-family: var(--font-display);
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--kinetic-green);
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 0.875rem;
+    }
+
+    .metric-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .metric-value {
+      font-weight: 700;
+      color: #ffffff;
+      font-family: monospace;
+    }
+
+    .slider-control {
+      margin-top: 8px;
+    }
+
+    .slider-control label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .slider-control input[type="range"] {
+      width: 100%;
+      accent-color: var(--kinetic-green);
+    }
+
+    /* Center: 2D Vector Map Canvas Container */
+    .map-canvas-container {
+      position: relative;
+      background: #030a06;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    canvas#courseCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: crosshair;
+    }
+
+    /* Ward Stone Watermark Stamp */
+    .ward-stone-watermark {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(5, 16, 9, 0.85);
+      border: 1px solid var(--border-glow);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--kinetic-green);
+      pointer-events: none;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ward-stone-watermark::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--kinetic-green);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--kinetic-green);
+    }
+
+    /* Tournament Lockout Banner */
+    .rule-banner {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(239, 68, 68, 0.95);
+      color: #ffffff;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 0.875rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+      display: none;
+      z-index: 50;
+      animation: pulseBanner 2s infinite;
+    }
+
+    @keyframes pulseBanner {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.85; }
+    }
+
+    /* Right Sidebar: Target Envelope & Caddy Briefing */
+    .sidebar-right {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border-left: 1px solid var(--border-color);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      overflow-y: auto;
+    }
+
+    .plays-like-card {
+      background: linear-gradient(135deg, rgba(68, 211, 126, 0.15) 0%, rgba(10, 27, 17, 0.8) 100%);
+      border: 1px solid var(--kinetic-green);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .plays-like-card h2 {
+      font-family: var(--font-display);
+      font-size: 2.75rem;
+      font-weight: 800;
+      color: var(--kinetic-green);
+      line-height: 1;
+      margin: 8px 0;
+      text-shadow: 0 0 16px rgba(68, 211, 126, 0.4);
+    }
+
+    .target-envelope-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .envelope-box {
+      background: rgba(5, 16, 9, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .envelope-box label {
+      display: block;
+      font-size: 0.6875rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .envelope-box span {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .speech-box {
+      background: rgba(10, 27, 17, 0.9);
+      border: 1px solid var(--border-glow);
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      color: #e2e8f0;
+      font-style: italic;
+    }
+
+    .btn-action {
+      background: var(--kinetic-green);
+      color: #051009;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.875rem;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.2s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-action:hover {
+      background: #36b86b;
+      box-shadow: 0 0 16px rgba(68, 211, 126, 0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header -->
+  <header>
+    <div class="brand-title">
+      <h1>ALEX WENGER GOLF</h1>
+      <span class="badge">2D Vector Map Engine v4.7.0</span>
+    </div>
+    <div class="header-controls">
+      <select class="course-select" id="courseSelector" onchange="changeCourse(this.value)">
+        <option value="st_andrews_17">St Andrews Links (Old Course) — Hole 17 (Road Hole)</option>
+        <option value="marco_simone_14">Marco Simone Golf & Country Club — Hole 14 (Rome)</option>
+        <option value="camiral_17">Camiral Golf & Wellness — Hole 17 (Ryder Ridge)</option>
+
+        <option value="valderrama_17">Real Club Valderrama — Hole 17 (Sotogrande)</option>
+        <option value="royal_porthcawl_18">Royal Porthcawl Golf Club — Hole 18 (Links)</option>
+        <option value="soldeu_5">Golf Soldeu — Hole 5 (Andorra Alpine 2,250m)</option>
+      </select>
+      <button class="rule-toggle-btn" id="ruleToggleBtn" onclick="toggleRule43a()">
+        🛡️ Rule 4.3a Tournament Lockout
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Workspace -->
+  <div class="app-workspace">
+
+    <!-- Left Sidebar Controls -->
+    <div class="sidebar-left">
+      <div class="panel-box">
+        <h3>📍 Hole Parameters</h3>
+        <div class="metric-row">
+          <span>Venue:</span>
+          <span class="metric-value" id="venueNameText">St Andrews Links</span>
+        </div>
+        <div class="metric-row">
+          <span>Hole Number:</span>
+          <span class="metric-value" id="holeNumText">17 (Par 4)</span>
+        </div>
+        <div class="metric-row">
+          <span>Scorecard Distance:</span>
+          <span class="metric-value" id="scorecardDistText">495 Yards</span>
+        </div>
+        <div class="metric-row">
+          <span>Elevation Delta (Δz):</span>
+          <span class="metric-value" id="elevationDeltaText">+2.4m</span>
+        </div>
+      </div>
+
+      <div class="panel-box">
+        <h3>🌤️ Micro-Climate Telemetry</h3>
+        <div class="slider-control">
+          <label>Wind Velocity: <span id="windValText">18.5 mph</span></label>
+          <input type="range" id="windSlider" min="0" max="40" value="18.5" step="0.5" oninput="updateTelemetry()">
+        </div>
+        <div class="slider-control">
+          <label>Wind Angle: <span id="windAngleText">45° (Head-Cross)</span></label>
+          <input type="range" id="windAngleSlider" min="0" max="360" value="45" step="5" oninput="updateTelemetry()">
+        </div>
+        <div class="slider-control">
+          <label>Altitude Pressure: <span id="pressureText">1013 hPa</span></label>
+          <input type="range" id="pressureSlider" min="750" max="1025" value="1013" step="5" oninput="updateTelemetry()">
+        </div>
+      </div>
+
+      <div class="panel-box">
+        <h3>🌾 Turf & Stance Lie</h3>
+        <div class="metric-row">
+          <span>Surface Lie:</span>
+          <span class="metric-value" id="lieText">Clean Fairway</span>
+        </div>
+        <div class="metric-row">
+          <span>Spin Decay (k_lie):</span>
+          <span class="metric-value" id="kLieText">1.00 (100%)</span>
+        </div>
+        <div class="metric-row">
+          <span>Stimp Firmness:</span>
+          <span class="metric-value" id="stimpText">11.5 Stimp</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Center Interactive 2D Canvas -->
+    <div class="map-canvas-container">
+      <div class="rule-banner" id="ruleBanner">RULE 4.3a TOURNAMENT LOCKOUT ACTIVE</div>
+      <canvas id="courseCanvas"></canvas>
+      <div class="ward-stone-watermark">WARD STONE — BREHON GOVERNED</div>
+    </div>
+
+    <!-- Right Sidebar Target & Caddy Briefing -->
+    <div class="sidebar-right">
+      <div class="plays-like-card">
+        <label style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">Net Plays-Like Distance</label>
+        <h2 id="playsLikeDisplay">518Y</h2>
+        <span style="font-size: 0.8125rem; color: #cbd5e1;" id="playsLikeAdjText">+23y (Wind & Elevation)</span>
+      </div>
+
+      <div class="panel-box">
+        <h3>🎯 4-Point Target Window Envelope</h3>
+        <div class="target-envelope-grid">
+          <div class="envelope-box">
+            <label>Front Edge</label>
+            <span id="envFront">482y</span>
+          </div>
+          <div class="envelope-box">
+            <label>Cover Hazard</label>
+            <span id="envCover">498y</span>
+          </div>
+          <div class="envelope-box">
+            <label>Pin Location</label>
+            <span id="envPin">518y</span>
+          </div>
+          <div class="envelope-box">
+            <label>Back Runoff</label>
+            <span id="envBack">534y</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-box">
+        <h3>🎙️ Alex Wenger Speech Briefing</h3>
+        <div class="speech-box" id="caddySpeechText">
+          "495 yards to the pin. Into an 18.5 knot quartering gale. Plays 518. Cover the right pot bunker at 498 yards. Back shelf runs off at 534."
+        </div>
+      </div>
+
+      <button class="btn-action" onclick="triggerVoiceBriefing()">
+        🔊 Synthesize Alex Voice Briefing
+      </button>
+    </div>
+
+  </div>
+
+  <script>
+    const COURSES = {
+      st_andrews_17: {
+        name: "St Andrews Links (Old Course)",
+        hole: "Hole 17 (Road Hole)",
+        par: 4,
+        rawYards: 495,
+        elevationDelta: 2.4,
+        baseWind: 18.5,
+        baseAngle: 45,
+        pressure: 1013,
+        fairwayWidth: 38,
+        hazards: [
+          { type: 'bunker', x: 0.48, y: 0.52, radius: 14, name: "Road Hole Pot Bunker" },
+          { type: 'road', x: 0.52, y: 0.22, width: 22, height: 90, name: "Tarmac Road & Wall" }
+        ]
+      },
+      marco_simone_14: {
+        name: "Marco Simone Golf & Country Club",
+        hole: "Hole 14 (Rome)",
+        par: 4,
+        rawYards: 385,
+        elevationDelta: 14.2,
+        baseWind: 18.5,
+        baseAngle: 45,
+        pressure: 1008,
+        fairwayWidth: 34,
+        hazards: [
+          { type: 'bunker', x: 0.45, y: 0.48, radius: 18, name: "Hillside Front Bunker" }
+        ]
+      },
+      camiral_17: {
+        name: "Camiral Golf & Wellness",
+        hole: "Hole 17 (Ryder Ridge)",
+        par: 3,
+        rawYards: 215,
+        elevationDelta: 4.8,
+        baseWind: 12.0,
+        baseAngle: 90,
+        pressure: 1010,
+        fairwayWidth: 30,
+        hazards: [
+          { type: 'water', x: 0.55, y: 0.35, radius: 45, name: "Peninsula Water Hazard" },
+          { type: 'bunker', x: 0.42, y: 0.30, radius: 16, name: "Back Shelf Bunker" }
+        ]
+      },
+      valderrama_17: {
+        name: "Real Club Valderrama",
+        hole: "Hole 17 (Sotogrande)",
+        par: 5,
+        rawYards: 535,
+        elevationDelta: -6.2,
+        baseWind: 14.0,
+        baseAngle: 180,
+        pressure: 1015,
+        fairwayWidth: 32,
+        hazards: [
+          { type: 'water', x: 0.50, y: 0.32, radius: 38, name: "Fronting Green Water Hazard" },
+          { type: 'bunker', x: 0.45, y: 0.28, radius: 15, name: "Cork Oak Bunker" }
+        ]
+      },
+      royal_porthcawl_18: {
+        name: "Royal Porthcawl Golf Club",
+        hole: "Hole 18 (Links)",
+        par: 4,
+        rawYards: 442,
+        elevationDelta: 3.1,
+        baseWind: 25.4,
+        baseAngle: 10,
+        pressure: 1005,
+        fairwayWidth: 36,
+        hazards: [
+          { type: 'bunker', x: 0.46, y: 0.45, radius: 16, name: "Links Deep Bunker" }
+        ]
+      },
+      soldeu_5: {
+        name: "Golf Soldeu (Andorra)",
+        hole: "Hole 5 (Alpine 2,250m)",
+        par: 4,
+        rawYards: 350,
+        elevationDelta: 8.5,
+        baseWind: 8.0,
+        baseAngle: 270,
+        pressure: 772,
+        fairwayWidth: 35,
+        hazards: [
+          { type: 'bunker', x: 0.48, y: 0.40, radius: 14, name: "Pyrenees Ridge Bunker" }
+        ]
+      }
+    };
+
+    let currentCourseKey = 'st_andrews_17';
+    let isRule43aActive = false;
+    let targetOffset = { x: 0, y: 0 };
+
+    const canvas = document.getElementById('courseCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      const container = canvas.parentElement;
+      canvas.width = container.clientWidth;
+      canvas.height = container.clientHeight;
+      drawCourseMap();
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+
+    function changeCourse(key) {
+      currentCourseKey = key;
+      const course = COURSES[key];
+      
+      document.getElementById('venueNameText').innerText = course.name;
+      document.getElementById('holeNumText').innerText = `${course.hole} (Par ${course.par})`;
+      document.getElementById('scorecardDistText').innerText = `${course.rawYards} Yards`;
+      document.getElementById('elevationDeltaText').innerText = `${course.elevationDelta > 0 ? '+' : ''}${course.elevationDelta}m`;
+      
+      document.getElementById('windSlider').value = course.baseWind;
+      document.getElementById('windAngleSlider').value = course.baseAngle;
+      document.getElementById('pressureSlider').value = course.pressure;
+
+      targetOffset = { x: 0, y: 0 };
+      updateTelemetry();
+    }
+
+    function toggleRule43a() {
+      isRule43aActive = !isRule43aActive;
+      const btn = document.getElementById('ruleToggleBtn');
+      const banner = document.getElementById('ruleBanner');
+
+      if (isRule43aActive) {
+        btn.classList.add('active');
+        banner.style.display = 'block';
+      } else {
+        btn.classList.remove('active');
+        banner.style.display = 'none';
+      }
+
+      updateTelemetry();
+    }
+
+    function updateTelemetry() {
+      const course = COURSES[currentCourseKey];
+      const windSpeed = parseFloat(document.getElementById('windSlider').value);
+      const windAngle = parseFloat(document.getElementById('windAngleSlider').value);
+      const pressure = parseFloat(document.getElementById('pressureSlider').value);
+
+      document.getElementById('windValText').innerText = `${windSpeed} mph`;
+      document.getElementById('windAngleText').innerText = `${windAngle}°`;
+      document.getElementById('pressureText').innerText = `${pressure} hPa`;
+
+      // 3-DoF Plays-Like Calculation
+      let playsLike = course.rawYards;
+      if (!isRule43aActive) {
+        const windEffect = windSpeed * 1.4 * Math.cos(windAngle * Math.PI / 180);
+        const elevEffect = course.elevationDelta * 1.1;
+        const pressureEffect = (1013 - pressure) * 0.12;
+        playsLike = Math.round(course.rawYards + windEffect + elevEffect - pressureEffect);
+      }
+
+      const diff = playsLike - course.rawYards;
+      document.getElementById('playsLikeDisplay').innerText = `${playsLike}Y`;
+      document.getElementById('playsLikeAdjText').innerText = isRule43aActive ? "RULE 4.3a LOCKOUT ACTIVE" : `${diff >= 0 ? '+' : ''}${diff}y (Wind & Elevation)`;
+
+      // Target Envelope
+      document.getElementById('envFront').innerText = `${playsLike - 36}y`;
+      document.getElementById('envCover').innerText = `${playsLike - 20}y`;
+      document.getElementById('envPin').innerText = `${playsLike}y`;
+      document.getElementById('envBack').innerText = `${playsLike + 16}y`;
+
+      // Speech Text
+      const speech = isRule43aActive 
+        ? `Tournament lockout active under Rule 4.3a. Raw yardage is ${course.rawYards} yards.` 
+        : `"${course.rawYards} yards to the pin. Into a ${windSpeed} knot wind. Plays ${playsLike}. Cover front hazard at ${playsLike - 20} yards. Back shelf runs off at ${playsLike + 16}."`;
+
+      document.getElementById('caddySpeechText').innerText = speech;
+
+      drawCourseMap();
+    }
+
+    function drawCourseMap() {
+      const width = canvas.width;
+      const height = canvas.height;
+      const course = COURSES[currentCourseKey];
+
+      ctx.clearRect(0, 0, width, height);
+
+      // 1. Background Rough (#051009)
+      ctx.fillStyle = '#051009';
+      ctx.fillRect(0, 0, width, height);
+
+      // Grid Pattern Overlay
+      ctx.strokeStyle = 'rgba(68, 211, 126, 0.05)';
+      ctx.lineWidth = 1;
+      const gridSize = 40;
+      for (let x = 0; x < width; x += gridSize) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, height);
+        ctx.stroke();
+      }
+      for (let y = 0; y < height; y += gridSize) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(width, y);
+        ctx.stroke();
+      }
+
+      // Centerline Geometry
+      const startX = width * 0.5;
+      const startY = height * 0.85; // Tee Box
+      const pinX = width * 0.5 + targetOffset.x;
+      const pinY = height * 0.20 + targetOffset.y; // Green Center
+
+      // 2. Fairway Ribbon Draw (#22c55e)
+      ctx.fillStyle = '#14532d'; // Primary Rough Outer
+      ctx.beginPath();
+      ctx.ellipse(startX, (startY + pinY) / 2, width * 0.18, (startY - pinY) * 0.55, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#22c55e'; // Fairway Inner
+      ctx.beginPath();
+      ctx.ellipse(startX, (startY + pinY) / 2, width * 0.12, (startY - pinY) * 0.50, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // 3. Green Surface (#44d37e)
+      ctx.fillStyle = '#44d37e';
+      ctx.shadowColor = 'rgba(68, 211, 126, 0.4)';
+      ctx.shadowBlur = 16;
+      ctx.beginPath();
+      ctx.ellipse(pinX, pinY, 45, 35, -0.2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      // Green Fringe Border
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      // 4. Hazards (Bunkers & Water)
+      course.hazards.forEach(h => {
+        const hX = width * h.x;
+        const hY = height * h.y;
+
+        if (h.type === 'bunker') {
+          ctx.fillStyle = '#d97706'; // Bunker Sand
+          ctx.beginPath();
+          ctx.ellipse(hX, hY, h.radius, h.radius * 0.7, 0.3, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.strokeStyle = '#92400e';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        } else if (h.type === 'water') {
+          ctx.fillStyle = '#0284c7'; // Water Hazard
+          ctx.beginPath();
+          ctx.ellipse(hX, hY, h.radius * 1.2, h.radius * 0.8, -0.4, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.strokeStyle = '#38bdf8';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        } else if (h.type === 'road') {
+          ctx.fillStyle = '#475569'; // Road
+          ctx.fillRect(hX, hY, h.width, h.height);
+        }
+      });
+
+      // 5. Tee Box (#a855f7)
+      ctx.fillStyle = '#a855f7';
+      ctx.fillRect(startX - 20, startY - 10, 40, 20);
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '10px monospace';
+      ctx.fillText('TEE', startX - 10, startY + 4);
+
+      // 6. 3-DoF Trajectory Path Curve
+      ctx.beginPath();
+      ctx.moveTo(startX, startY);
+
+      // Curve midpoint with wind drift arc
+      const windSpeed = parseFloat(document.getElementById('windSlider').value);
+      const windAngle = parseFloat(document.getElementById('windAngleSlider').value);
+      const driftX = (windSpeed * Math.sin(windAngle * Math.PI / 180)) * 2.5;
+
+      const controlX = (startX + pinX) / 2 + driftX;
+      const controlY = (startY + pinY) / 2 - 40;
+
+      ctx.quadraticCurveTo(controlX, controlY, pinX, pinY);
+
+      ctx.strokeStyle = isRule43aActive ? '#ef4444' : '#44d37e';
+      ctx.lineWidth = 3;
+      ctx.setLineDash([8, 6]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // 7. Pin & Target Envelope Indicator
+      ctx.fillStyle = '#ef4444'; // Flag Pin
+      ctx.beginPath();
+      ctx.arc(pinX, pinY, 6, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(pinX, pinY, 14, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // Flag Text
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '12px Outfit, sans-serif';
+      ctx.fontWeight = '700';
+      ctx.fillText('17 PIN', pinX + 18, pinY + 4);
+    }
+
+    canvas.addEventListener('click', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const clickY = e.clientY - rect.top;
+
+      targetOffset.x = clickX - canvas.width * 0.5;
+      targetOffset.y = clickY - canvas.height * 0.20;
+
+      updateTelemetry();
+    });
+
+    function triggerVoiceBriefing() {
+      const text = document.getElementById('caddySpeechText').innerText;
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const msg = new SpeechSynthesisUtterance(text);
+        msg.rate = 0.95;
+        msg.pitch = 1.0;
+        window.speechSynthesis.speak(msg);
+      } else {
+        alert("Synthesized Alex Voice: " + text);
+      }
+    }
+
+    // Initialize
+    setTimeout(() => {
+      resizeCanvas();
+      changeCourse('st_andrews_17');
+    }, 100);
+  </script>
+</body>
+</html>
