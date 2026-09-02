@@ -3486,6 +3486,34 @@
         "alex_focus": "Master strategy for Prestwick Golf Club (Birthplace of The Open)",
         "caddy": "Dynamic wind and slope calculation"
       }
+    },
+    "royal_st_davids": {
+      "course_id": "royal_st_davids",
+      "name": "Royal St David's Golf Club (Harlech)",
+      "country_code": "GB",
+      "elevation_m": 106,
+      "total_yards": 6500,
+      "par": 69,
+      "hole_count": 18,
+      "geohash_partition": "course_idx_GB_gcmhd",
+      "agent_directives": {
+        "alex_focus": "Welsh links strategy for Royal St David's Golf Club (Harlech)",
+        "caddy": "Coastal wind & dune elevation trajectory modeling"
+      }
+    },
+    "royal_porthcawl": {
+      "course_id": "royal_porthcawl",
+      "name": "Royal Porthcawl Golf Club",
+      "country_code": "GB",
+      "elevation_m": 103,
+      "total_yards": 7152,
+      "par": 72,
+      "hole_count": 18,
+      "geohash_partition": "course_idx_GB_gcjkg",
+      "agent_directives": {
+        "alex_focus": "Welsh links strategy for Royal Porthcawl Golf Club",
+        "caddy": "Coastal wind & dune elevation trajectory modeling"
+      }
     }
   }
 }

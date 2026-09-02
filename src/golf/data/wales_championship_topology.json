@@ -1,0 +1,85 @@
+{
+  "validator_version": "4.7.0-rc.1",
+  "jurisdiction": "R&A",
+  "active_compliance_rules": ["Rule_4.3a_State_4_Judge"],
+  "flagship_venues": {
+    "royal_st_davids": {
+      "uid": "UK-WAL-RSD-01",
+      "name": "Royal St David's Golf Club (Harlech)",
+      "country_code": "GB",
+      "par": 69,
+      "total_yards": 6500,
+      "routing_type": "zigzag_non_traditional",
+      "atmospheric_profiles": {
+        "damp_harlech_morning": {
+          "elevation_m": 9.0,
+          "temp_c": 10.0,
+          "pressure_pa": 100500.0,
+          "vapor_pressure_pa": 1050.0,
+          "calculated_density_kg_m3": 1.238
+        }
+      },
+      "spatial_markers": {
+        "harlech_castle_rock_precipice": {
+          "latitude": 52.8601,
+          "longitude": -4.1084,
+          "relative_elevation": 60.0,
+          "aerodynamic_obstruction": true,
+          "description": "Medieval Castle on rock precipice directly guarding the links."
+        },
+        "tremadog_bay_shoreline": {
+          "bearing_vector": 315.0,
+          "primary_wind_exposure": "westerly_unpredictable"
+        },
+        "flat_terrain_zone": {
+          "holes": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+          "topographical_variance": "low_exposed"
+        },
+        "dune_terrain_zone": {
+          "holes": [13, 14, 15, 16, 17, 18],
+          "topographical_variance": "high_undulating_rippling"
+        },
+        "signature_hazard_15th": {
+          "hole": 15,
+          "tee_type": "elevated_dune",
+          "landing_zone_variance": "narrow_fairway",
+          "bunkering_count": 0,
+          "green_protection": "nestled_dune_obscured_blind_approach"
+        }
+      }
+    },
+    "royal_porthcawl": {
+      "uid": "UK-WAL-RPC-02",
+      "name": "Royal Porthcawl Golf Club",
+      "country_code": "GB",
+      "par": 72,
+      "total_yards": 7152,
+      "routing_type": "seaside_coastal_grid",
+      "atmospheric_profiles": {
+        "dry_westerly_gale": {
+          "elevation_m": 18.0,
+          "temp_c": 16.0,
+          "pressure_pa": 101100.0,
+          "vapor_pressure_pa": 1100.0,
+          "calculated_density_kg_m3": 1.218
+        }
+      },
+      "spatial_markers": {
+        "bristol_channel_border": {
+          "bearing_vector": 180.0,
+          "primary_wind_exposure": "high_gale_exposure"
+        },
+        "locks_common_historic_origin": {
+          "latitude": 51.4883,
+          "longitude": -3.7161,
+          "elevation": 12.0
+        },
+        "infrastructure_limitation_flag": {
+          "narrow_roads": true,
+          "open_championship_compatible": false,
+          "logistical_note": "R&A decision to exclude from The Open Rota due to local logistics."
+        }
+      }
+    }
+  }
+}
