@@ -90,7 +90,7 @@ export class MasterOrchestratorEcosystem {
     // 6. Synthesize Canonical Alex Wenger Voice Response
     let spokenText = `Mais oui, my friend! `;
     if (playsLikeSuppressed) {
-      spokenText = `[HARD TOURNAMENT LOCKOUT ACTIVE] Hole Target: ${rawYards.toFixed(0)} yards. ${targetWindow.window_text}. Wind/Elevation disabled per USGA Rule 4.3a.`;
+      spokenText += `[HARD TOURNAMENT LOCKOUT ACTIVE] Hole Target: ${rawYards.toFixed(0)} yards. ${targetWindow.window_text}. Wind/Elevation disabled per USGA Rule 4.3a.`;
     } else {
       spokenText += `Target laser is ${rawYards.toFixed(0)} yards. ${targetWindow.window_text}. ${riskReward.alexAdvice}`;
     }
