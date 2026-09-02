@@ -1,0 +1,33 @@
+{
+  "knowledge_version": "AWK-v0.5",
+  "project_id": "ALEX_WENGER",
+  "governance": {
+    "patent": "WO/2026/150385",
+    "compliance_gate": "R&A_Rule_4.3a_State_4_Judge",
+    "exclusively_alex_responsibility": true
+  },
+  "blocks": [
+    {
+      "id": "AWK-STEW-001",
+      "domain": "Stewardship & Agronomy",
+      "sub_domain": "Cross-Role Translation & Daily Course Manifest Ingestion",
+      "canonical_ref": "Stewardship & Cross-Role Translation Doctrine",
+      "knowledge_status": "CANONICAL",
+      "confidence": 0.98,
+      "content": {
+        "core_principle": "The four roles (Groundsman, Greenkeeper/Agronomist, Architect, Golfer/Caddy) share a unified spatial reality. The Daily Course Manifest translates morning TDR 350 moisture probes, GS3 Stimp rolls, and QGIS vector master plans into real-time Caddy/PUTTSER rollout numbers.",
+        "dual_use_tools": [
+          "POGO_Turf_Pro_TDR_350_VWC_Moisture_Probe",
+          "USGA_Deacon_GS3_Ball_Drop_Profiler",
+          "QGIS_Open_Source_Spatial_Authoring",
+          "Daily_Course_Manifest_Schema"
+        ],
+        "cross_role_triggers": {
+          "high_moisture_vwc": "Reduces rollout distance by 18 inches per 10% VWC increase; prompts aerial carry strategy.",
+          "gs3_firmness": "Modulates normal rebound vector in 3-DoF solver.",
+          "illegal_pin_warning": "Flags warning if Stimp speed exceeds stopping threshold on >3% green grade."
+        }
+      }
+    }
+  ]
+}

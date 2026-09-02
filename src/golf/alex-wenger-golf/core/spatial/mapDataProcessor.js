@@ -9,11 +9,78 @@
  * @module alex-wenger-golf/core/spatial/mapDataProcessor
  */
 
-import { decodeTerrainRGB, decodeTerrariumRGB, calculateNDVI } from './spatialIngestionEngine.js';
-
 export class MapDataProcessor {
   constructor(options = {}) {
-    this.supportedFormats = ['GEOJSON', 'OSM_OVERPASS', 'TERRAIN_RGB', 'TERRARIUM_DEM', 'SATELLITE_NDVI'];
+    this.supportedFormats = ['GEOJSON', 'OSM_OVERPASS', 'TERRAIN_RGB', 'TERRARIUM_DEM', 'SATELLITE_NDVI', 'DAILY_MANIFEST'];
+  }
+
+  /**
+   * 0. Ingests and overrides daily course manifest data (daily_course_manifest.json)
+   * @param {object} manifest - Daily course manifest payload
+   * @param {object} courseMapData - Active course map dataset
+   * @returns {object} { updatedMapData, warnings, manifestAudit }
+   */
+  ingestDailyManifest(manifest = {}, courseMapData = {}) {
+    if (!manifest || !manifest.course_uid) {
+      throw new Error('Invalid daily manifest payload: course_uid and course_conditions required');
+    }
+
+    const warnings = [];
+    const conditions = manifest.course_conditions || {};
+    const pins = manifest.pin_sheet || [];
+    const gurPolygons = manifest.temporary_ground_under_repair || [];
+
+    const updatedMapData = {
+      ...courseMapData,
+      daily_conditions: {
+        measured_stimpmeter: conditions.measured_stimpmeter ?? 12.0,
+        soil_moisture_vwc_avg_pct: conditions.soil_moisture_vwc_avg_pct ?? 16.0,
+        aeration_status: conditions.aeration_status ?? 'none',
+        bunker_condition: conditions.bunker_condition ?? 'normal',
+        cutting_height_greens_mm: conditions.cutting_height_greens_mm ?? 3.2,
+        ingestedAt: new Date().toISOString(),
+        operator: manifest.operator?.name || 'Grounds Crew'
+      },
+      active_pins: new Map(),
+      ground_under_repair: gurPolygons
+    };
+
+    // Process pin sheet and evaluate illegal pin warning (>3% slope on >11.5 Stimp)
+    const stimp = updatedMapData.daily_conditions.measured_stimpmeter;
+
+    for (const pin of pins) {
+      const slope = pin.relative_slope_pct || 0.0;
+      if (stimp >= 11.5 && slope > 3.0) {
+        warnings.push({
+          type: 'ILLEGAL_PIN_WARNING',
+          hole: pin.hole,
+          slope_pct: slope,
+          stimp: stimp,
+          message: `Illegal pin placement warning on Hole ${pin.hole}: Stimp ${stimp} on ${slope}% grade exceeds stopping threshold.`
+        });
+      }
+
+      updatedMapData.active_pins.set(String(pin.hole), {
+        hole: pin.hole,
+        quadrant: pin.quadrant,
+        paces_on: pin.paces_on,
+        paces_from_edge: pin.paces_from_edge,
+        relative_slope_pct: slope,
+        architectural_intent: pin.architectural_intent || 'Standard daily pin placement'
+      });
+    }
+
+    return {
+      updatedMapData,
+      warnings,
+      manifestAudit: {
+        course_uid: manifest.course_uid,
+        pins_overridden: pins.length,
+        gur_polygons_added: gurPolygons.length,
+        warnings_flagged: warnings.length,
+        exclusively_alex_responsibility: true
+      }
+    };
   }
 
   /**
