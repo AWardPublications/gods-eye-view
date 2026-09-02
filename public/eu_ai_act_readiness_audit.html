@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EU AI Act Articles 10–19 Readiness Audit & BREHON Governance Engine</title>
+    <!-- Chosen Palette: BREHON Group Branding Standard v1.0 (Dark Fairway #051009, Kinetic Green #44d37e, Bunker Sand #d97706, Clay Earth #b45309, Coastal Ocean Teal #06b6d4) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-primary: #051009;
+            --bg-card: #0a1c12;
+            --bg-card-hover: #0f291b;
+            --accent-kinetic: #44d37e;
+            --accent-sand: #d97706;
+            --accent-clay: #b45309;
+            --accent-teal: #06b6d4;
+            --border-glow: #1b472e;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: #f1f5f9;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 360px;
+            }
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0a1c12;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #1b472e;
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #44d37e;
+        }
+
+        .border-kinetic {
+            border-color: rgba(68, 211, 126, 0.3);
+        }
+        .border-kinetic:hover {
+            border-color: rgba(68, 211, 126, 0.8);
+        }
+
+        .bg-card {
+            background-color: var(--bg-card);
+        }
+
+        .ward-stone-watermark {
+            font-family: monospace;
+            letter-spacing: 0.15em;
+            background: linear-gradient(135deg, #44d37e 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar">
+
+    <!-- Sovereign Governance Header -->
+    <header class="bg-[#030a06] border-b border-[#1b472e] sticky top-0 z-50 shadow-lg backdrop-blur-md bg-opacity-95">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand Title -->
+                <div class="flex items-center space-x-3">
+                    <div class="bg-[#44d37e] text-[#051009] font-black p-2 rounded-lg text-lg tracking-wider font-mono">
+                        MKTG A7
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <h1 class="font-bold text-base sm:text-lg text-slate-100 leading-tight">EU AI Act Articles 10–19 Readiness Audit</h1>
+                            <span class="ward-stone-watermark text-xs font-bold px-2 py-0.5 rounded bg-[#0a1c12] border border-[#1b472e]">
+                                WARD STONE — BREHON GOVERNED
+                            </span>
+                        </div>
+                        <p class="text-xs text-slate-400">Deterministic Hybrid Architecture & Swissmedic swissdamed Synchronization</p>
+                    </div>
+                </div>
+
+                <!-- Status Metadata Badges -->
+                <div class="hidden lg:flex items-center space-x-3 text-xs">
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-full font-mono bg-[#0a1c12] text-[#44d37e] border border-[#1b472e]">
+                        ● Patent: WO/2026/150385
+                    </span>
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-full font-mono bg-[#0a1c12] text-[#d97706] border border-[#b45309]/50">
+                        SHA: 1bf4c5d...
+                    </span>
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-full font-mono bg-[#0a1c12] text-[#06b6d4] border border-[#06b6d4]/40">
+                        Unit Tests: 3/3 Green (100%)
+                    </span>
+                </div>
+            </div>
+
+            <!-- Dynamic Navigation Tabs -->
+            <nav class="flex space-x-1 sm:space-x-3 overflow-x-auto custom-scrollbar pb-2 text-xs sm:text-sm font-medium border-t border-[#1b472e]/60 pt-2">
+                <button onclick="switchTab('articles')" id="tab-articles" class="tab-btn px-3 py-1.5 rounded-md transition-all bg-[#44d37e] text-[#051009] font-bold shadow">
+                    🛡️ AI Act Art. 10–19 Matrix
+                </button>
+                <button onclick="switchTab('fallback')" id="tab-fallback" class="tab-btn px-3 py-1.5 rounded-md transition-all text-slate-300 hover:text-white hover:bg-[#0a1c12]">
+                    ⚡ 98% Fallback Simulator
+                </button>
+                <button onclick="switchTab('swissdamed')" id="tab-swissdamed" class="tab-btn px-3 py-1.5 rounded-md transition-all text-slate-300 hover:text-white hover:bg-[#0a1c12]">
+                    🇨🇭 swissdamed M2M Pipeline
+                </button>
+                <button onclick="switchTab('signals')" id="tab-signals" class="tab-btn px-3 py-1.5 rounded-md transition-all text-slate-300 hover:text-white hover:bg-[#0a1c12]">
+                    🚨 Strategic Risk Signals
+                </button>
+                <button onclick="switchTab('branding')" id="tab-branding" class="tab-btn px-3 py-1.5 rounded-md transition-all text-slate-300 hover:text-white hover:bg-[#0a1c12]">
+                    🎨 BREHON v1.0 Governance
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- ================= SECTION 1: EU AI ACT ARTICLES 10-19 MATRIX ================= -->
+        <section id="view-articles" class="tab-view space-y-6">
+            <div class="bg-card p-6 rounded-xl border border-[#1b472e] shadow-md">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <h2 class="text-xl font-bold text-white flex items-center space-x-2">
+                            <span>EU AI Act High-Risk AI Obligations (Articles 10–19)</span>
+                            <span class="text-xs bg-[#44d37e]/20 text-[#44d37e] border border-[#44d37e]/40 px-2 py-0.5 rounded font-mono">Dec 2, 2026 Watermark Deadline</span>
+                        </h2>
+                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                            Under the EU AI Act & Swiss MedDO alignment, high-risk Software-as-a-Medical-Device (SaMD) and clinical AI pipelines must satisfy code-level traceability, continuous risk management, machine-readable watermarking, and deterministic human oversight.
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-2 text-xs">
+                        <span class="text-slate-400">Jurisdiction Focus:</span>
+                        <span class="px-2 py-1 bg-[#051009] border border-[#1b472e] rounded text-slate-200 font-mono">🇪🇺 EU • 🇨🇭 CH</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-card p-4 rounded-xl border border-[#1b472e]">
+                    <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Mandatory Target Articles</div>
+                    <div class="text-2xl font-black text-white mt-1">Articles 10–19</div>
+                    <div class="text-xs text-[#44d37e] mt-1 font-medium">8 Core Modules Audited</div>
+                </div>
+                <div class="bg-card p-4 rounded-xl border border-[#1b472e]">
+                    <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Deterministic Gate</div>
+                    <div class="text-2xl font-black text-[#44d37e] mt-1">98.0%</div>
+                    <div class="text-xs text-slate-400 mt-1">Automated Freeze Threshold</div>
+                </div>
+                <div class="bg-card p-4 rounded-xl border border-[#1b472e]">
+                    <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Article 50 Transparency</div>
+                    <div class="text-2xl font-black text-[#d97706] mt-1">Dec 2, 2026</div>
+                    <div class="text-xs text-slate-400 mt-1">Metadata Watermarking Deadline</div>
+                </div>
+                <div class="bg-card p-4 rounded-xl border border-[#1b472e]">
+                    <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Audit Auditability Standard</div>
+                    <div class="text-2xl font-black text-[#06b6d4] mt-1">ISO 13485</div>
+                    <div class="text-xs text-slate-400 mt-1">Clause 7.3.7 Software Validation</div>
+                </div>
+            </div>
+
+            <!-- Chart & Article Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Article Radar Chart -->
+                <div class="bg-card p-5 rounded-xl border border-[#1b472e] flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-base font-bold text-white mb-1">Articles 10–19 Readiness Profile</h3>
+                        <p class="text-xs text-slate-400 mb-3">Gap analysis comparing typical ad-hoc adoption vs BREHON Hybrid Standard</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                    <div class="mt-3 text-xs text-slate-400 text-center font-mono">
+                        Click radar points to inspect regulatory gap parameters.
+                    </div>
+                </div>
+
+                <!-- Interactive Article List -->
+                <div class="lg:col-span-2 bg-card p-5 rounded-xl border border-[#1b472e] flex flex-col">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                        <h3 class="text-base font-bold text-white">Articles 10–19 Regulatory Requirements</h3>
+                        <div class="flex flex-wrap gap-1" id="article-filter-buttons">
+                            <button onclick="filterArticles('ALL')" class="art-filter-btn px-2.5 py-1 text-xs font-medium rounded bg-[#44d37e] text-[#051009] font-bold">All (8)</button>
+                            <button onclick="filterArticles('HIGH_RISK')" class="art-filter-btn px-2.5 py-1 text-xs font-medium rounded bg-[#051009] text-slate-300 border border-[#1b472e] hover:bg-[#0f291b]">High Risk</button>
+                            <button onclick="filterArticles('DATA_TRACE')" class="art-filter-btn px-2.5 py-1 text-xs font-medium rounded bg-[#051009] text-slate-300 border border-[#1b472e] hover:bg-[#0f291b]">Data & Traceability</button>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto custom-scrollbar flex-grow">
+                        <table class="w-full text-left border-collapse text-xs">
+                            <thead>
+                                <tr class="bg-[#051009] border-b border-[#1b472e] text-slate-300 font-semibold font-mono">
+                                    <th class="p-2.5">Article</th>
+                                    <th class="p-2.5">Legal Title</th>
+                                    <th class="p-2.5 text-center">Audit Score</th>
+                                    <th class="p-2.5">Core Technical Requirement</th>
+                                    <th class="p-2.5 text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="articles-table-body" class="divide-y divide-[#1b472e]/50 text-slate-300">
+                                <!-- Populated dynamically by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deep-Dive Modal Drawer for Article Details -->
+            <div id="article-detail-card" class="hidden bg-[#030a06] p-6 rounded-xl border border-[#44d37e]/40 shadow-xl space-y-4">
+                <div class="flex items-center justify-between border-b border-[#1b472e] pb-3">
+                    <div class="flex items-center space-x-3">
+                        <span id="article-num-badge" class="px-3 py-1 rounded bg-[#44d37e] text-[#051009] font-mono font-black text-sm">ART. 10</span>
+                        <h3 id="article-title" class="text-lg font-bold text-white">Select an Article</h3>
+                    </div>
+                    <button onclick="closeArticleDetail()" class="text-slate-400 hover:text-white text-xs font-mono font-bold px-2.5 py-1 bg-[#0a1c12] border border-[#1b472e] rounded">✕ Close Inspector</button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-[#0a1c12] p-3 rounded-lg border border-[#1b472e]">
+                        <div class="text-slate-400 font-medium">Harmonized Quality Standard</div>
+                        <div id="article-iso" class="font-bold text-[#44d37e] font-mono mt-1">--</div>
+                    </div>
+                    <div class="bg-[#0a1c12] p-3 rounded-lg border border-[#1b472e]">
+                        <div class="text-slate-400 font-medium">Non-Compliance Liability</div>
+                        <div id="article-fine" class="font-bold text-[#d97706] font-mono mt-1">--</div>
+                    </div>
+                    <div class="bg-[#0a1c12] p-3 rounded-lg border border-[#1b472e]">
+                        <div class="text-slate-400 font-medium">BREHON Technical Solution</div>
+                        <div id="article-solution" class="font-bold text-[#06b6d4] font-mono mt-1">--</div>
+                    </div>
+                </div>
+                <div id="article-narrative" class="text-xs text-slate-300 leading-relaxed bg-[#051009] p-4 rounded-lg border border-[#1b472e]">
+                    --
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= SECTION 2: 98% CONFIDENCE FALLBACK SIMULATOR ================= -->
+        <section id="view-fallback" class="tab-view space-y-6 hidden">
+            <div class="bg-card p-6 rounded-xl border border-[#1b472e] shadow-md">
+                <h2 class="text-xl font-bold text-white mb-1">Hybrid Fallback Architecture & 98% Confidence Solver</h2>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Under EU AI Act Articles 12 & 14 and ISO 13485 Clause 7.3.7, probabilistic inference engines must never write directly to clinical medical records or swissdamed registry payloads without deterministic verification. If internal model confidence drops below <strong>98.0%</strong>, the n8n Orchestration Gateway automatically freezes execution, requiring a signed Human-in-the-Loop (HITL) digital override.
+                </p>
+            </div>
+
+            <!-- Architecture Logic Banner -->
+            <div class="bg-[#030a06] p-4 rounded-xl border border-[#1b472e] grid grid-cols-1 md:grid-cols-4 gap-3 text-xs font-mono">
+                <div class="bg-[#0a1c12] p-3 rounded border border-[#1b472e]">
+                    <span class="text-[#44d37e] font-bold block mb-1">1. Docker Gateway (n8n)</span>
+                    <p class="text-[11px] text-slate-300">Intercepts raw model telemetry before production DB write.</p>
+                </div>
+                <div class="bg-[#0a1c12] p-3 rounded border border-[#1b472e]">
+                    <span class="text-[#d97706] font-bold block mb-1">2. 98% Confidence Gate</span>
+                    <p class="text-[11px] text-slate-300">Score &lt; 98.0% triggers immediate execution freeze.</p>
+                </div>
+                <div class="bg-[#0a1c12] p-3 rounded border border-[#1b472e]">
+                    <span class="text-[#06b6d4] font-bold block mb-1">3. HITL Digital Signature</span>
+                    <p class="text-[11px] text-slate-300">PRRC or Medical Director manual override requirement.</p>
+                </div>
+                <div class="bg-[#0a1c12] p-3 rounded border border-[#1b472e]">
+                    <span class="text-rose-400 font-bold block mb-1">4. Wasabi Sovereign Vault</span>
+                    <p class="text-[11px] text-slate-300">Immutable SHA-256 JSON log synced to Swiss region.</p>
+                </div>
+            </div>
+
+            <!-- Simulator Controls & Visual Chart -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Interactive Controls -->
+                <div class="bg-card p-5 rounded-xl border border-[#1b472e] space-y-4">
+                    <h3 class="text-base font-bold text-white border-b border-[#1b472e] pb-2">Probabilistic Model Input Simulator</h3>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Model Classifier Type</label>
+                        <select id="sim-model-type" onchange="runFallbackSim()" class="w-full text-xs p-2 bg-[#051009] border border-[#1b472e] rounded text-slate-200 focus:ring-2 focus:ring-[#44d37e]">
+                            <option value="radiomics">Radiology Lesion Segmentation (SaMD Class IIb)</option>
+                            <option value="cer">Generative CER Document Synthesis (LLM Wrapper)</option>
+                            <option value="ecg">Cardiovascular Telemetry Classifier (Adaptive ML)</option>
+                            <option value="lab">Automated Lab Assay Sorting (IVDR Diagnostics)</option>
+                        </select>
+                    </div>
+
+                    <!-- Confidence Slider -->
+                    <div>
+                        <div class="flex justify-between text-xs font-mono font-medium mb-1">
+                            <span class="text-slate-300">Model Inference Confidence:</span>
+                            <span id="sim-confidence-val" class="text-[#44d37e] font-bold text-sm">98.5%</span>
+                        </div>
+                        <input type="range" id="sim-confidence-slider" min="80.0" max="100.0" step="0.1" value="98.5" oninput="runFallbackSim()" class="w-full accent-[#44d37e]">
+                        <div class="flex justify-between text-[10px] text-slate-500 font-mono mt-1">
+                            <span>80.0% (High Risk)</span>
+                            <span class="text-[#d97706] font-bold">98.0% Gate</span>
+                            <span>100.0% (Nominal)</span>
+                        </div>
+                    </div>
+
+                    <!-- Input Prompt / Payload Preview -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Candidate Inference Payload Snippet</label>
+                        <textarea id="sim-payload-input" class="w-full h-20 p-2.5 bg-[#051009] text-[#44d37e] font-mono text-[11px] rounded border border-[#1b472e] focus:outline-none" spellcheck="false" readonly>
+{"patient_id":"CH-SION-99482","lesion_type":"nodule_spiculated","probability":0.985,"sovereignty_region":"CH-VS"}
+                        </textarea>
+                    </div>
+
+                    <!-- Interactive Override Button (Appears when locked) -->
+                    <div id="hitl-override-box" class="hidden p-3 bg-[#b45309]/20 border border-[#b45309] rounded-lg space-y-2">
+                        <div class="text-xs font-bold text-[#d97706] flex items-center space-x-1">
+                            <span>⚠️ GATE FROZEN (&lt; 98.0%)</span>
+                        </div>
+                        <p class="text-[11px] text-slate-300">Requires PRRC / Clinical Oversight Digital Signature override to proceed.</p>
+                        <input type="text" id="hitl-signature-input" placeholder="Enter PRRC Digital Signature ID (e.g. CH-PRRC-8821)" class="w-full text-xs p-1.5 bg-[#051009] border border-[#1b472e] rounded text-slate-200">
+                        <button onclick="executeHitlOverride()" class="w-full py-1.5 bg-[#d97706] hover:bg-[#b45309] text-[#051009] font-bold rounded text-xs transition-colors">
+                            Execute Signed HITL Override ➔
+                        </button>
+                    </div>
+
+                    <!-- Computed State Readout -->
+                    <div class="bg-[#051009] p-3 rounded-lg border border-[#1b472e] space-y-2 text-xs font-mono">
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">Gate Decision State:</span>
+                            <span id="gate-state-badge" class="font-bold text-[#44d37e]">PASS (AUTOMATED)</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">Metadata Watermark:</span>
+                            <span id="gate-watermark-status" class="text-[#06b6d4]">Article 50 Applied</span>
+                        </div>
+                        <div class="flex justify-between border-t border-[#1b472e] pt-2">
+                            <span class="text-slate-400">Cryptographic Hash:</span>
+                            <span id="gate-hash-val" class="text-slate-300 truncate max-w-[140px]">e3b0c44298fc...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trajectory Chart Canvas -->
+                <div class="lg:col-span-2 bg-card p-5 rounded-xl border border-[#1b472e] flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-1">
+                            <h3 class="text-base font-bold text-white">Inference Confidence vs Execution Gate Threshold</h3>
+                            <span id="sim-gate-kpi" class="px-2 py-0.5 rounded text-xs font-mono font-bold bg-[#44d37e]/20 text-[#44d37e] border border-[#44d37e]/40">Gate Status: 98.5% ≥ 98.0%</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-3">Real-time model confidence sampling over 10 batch runs relative to 98% safety boundary</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="fallbackChart"></canvas>
+                    </div>
+                    <div class="mt-3 flex items-center justify-between text-xs text-slate-300 bg-[#051009] p-2.5 rounded-lg border border-[#1b472e] font-mono">
+                        <div>Active Model: <span id="out-model-name" class="text-[#44d37e] font-bold">SaMD Radiology Classifier</span></div>
+                        <div>Wasabi Ledger Sync: <span id="out-wasabi-status" class="text-[#06b6d4]">CH-VALAIS-REGION (ACTIVE)</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ledger Audit Log -->
+            <div class="bg-card p-5 rounded-xl border border-[#1b472e] space-y-3 font-mono text-xs">
+                <div class="flex items-center justify-between border-b border-[#1b472e] pb-2">
+                    <span class="text-white font-bold">Postgres & Wasabi Cryptographic Audit Ledger (Live Tail)</span>
+                    <span class="text-slate-400">ISO 13485 Clause 4.2.5 Verified</span>
+                </div>
+                <div id="ledger-live-log" class="bg-[#030a06] p-3 rounded-lg border border-[#1b472e] space-y-1.5 custom-scrollbar max-h-40 overflow-y-auto text-slate-300">
+                    <!-- Dynamic Log Lines -->
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= SECTION 3: SWISSDAMED M2M PIPELINE ================= -->
+        <section id="view-swissdamed" class="tab-view space-y-6 hidden">
+            <div class="bg-card p-6 rounded-xl border border-[#1b472e] shadow-md">
+                <h2 class="text-xl font-bold text-white mb-1">Swissmedic swissdamed M2M Playground & Schema Validator</h2>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Following the July 1 milestone, all devices placed on the Swiss market must be registered in the swissdamed Product Module. Any un-registered legacy device experiencing a post-market vigilance incident instantly revokes its grace period, triggering mandatory immediate registration under Swiss MedDO Art. 56–61.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Schema Mapping Matrix -->
+                <div class="bg-card p-5 rounded-xl border border-[#1b472e] space-y-3">
+                    <h3 class="text-base font-bold text-white border-b border-[#1b472e] pb-2">Postgres to swissdamed M2M Mapping Rules</h3>
+                    <div class="overflow-x-auto custom-scrollbar">
+                        <table class="w-full text-left border-collapse text-xs">
+                            <thead>
+                                <tr class="bg-[#051009] border-b border-[#1b472e] text-slate-300 font-mono font-semibold">
+                                    <th class="p-2">Postgres Source Field</th>
+                                    <th class="p-2">swissdamed API Key</th>
+                                    <th class="p-2">Article 50 Metadata Rule</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-[#1b472e]/50 text-slate-300 font-mono">
+                                <tr>
+                                    <td class="p-2 text-[#44d37e]">ch_rep_gln</td>
+                                    <td class="p-2">swiss_authorized_rep_gln</td>
+                                    <td class="p-2 text-slate-400">Must match GLN 7601000000000 format</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-[#44d37e]">udi_di_code</td>
+                                    <td class="p-2">basic_udi_di</td>
+                                    <td class="p-2 text-slate-400">GS1 / HIBCC format validation</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-[#44d37e]">ai_classification</td>
+                                    <td class="p-2">ai_act_risk_class</td>
+                                    <td class="p-2 text-[#d97706]">Must flag High Risk (Annex III)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-[#44d37e]">watermark_hash</td>
+                                    <td class="p-2">art50_provenance_sig</td>
+                                    <td class="p-2 text-[#06b6d4]">SHA-256 embedded machine tag</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Live Payload Parser Sandbox -->
+                <div class="bg-card p-5 rounded-xl border border-[#1b472e] space-y-3">
+                    <div class="flex justify-between items-center border-b border-[#1b472e] pb-2">
+                        <h3 class="text-base font-bold text-white">Live swissdamed M2M Payload Sandbox</h3>
+                        <div class="space-x-2 text-[11px]">
+                            <button onclick="loadSwissdamedSample('valid')" class="text-[#44d37e] hover:underline font-mono">Valid Payload</button>
+                            <button onclick="loadSwissdamedSample('invalid')" class="text-rose-400 hover:underline font-mono">Invalid Payload</button>
+                        </div>
+                    </div>
+                    <textarea id="swissdamed-json-input" class="w-full h-44 p-3 bg-[#030a06] text-[#44d37e] font-mono text-xs rounded border border-[#1b472e] focus:ring-1 focus:ring-[#44d37e] custom-scrollbar" spellcheck="false"></textarea>
+                    <button onclick="validateSwissdamedPayload()" class="w-full py-2 bg-[#44d37e] hover:bg-[#38b76c] text-[#051009] font-bold rounded text-xs font-mono transition-colors">
+                        Execute swissdamed REST API Synchronization Parse ➔
+                    </button>
+                    <div id="swissdamed-parse-output" class="p-3 bg-[#030a06] text-slate-300 font-mono text-xs rounded border border-[#1b472e] min-h-[60px] max-h-32 overflow-y-auto custom-scrollbar">
+                        [READY] Click execute to validate payload against Swissmedic REST API endpoints.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= SECTION 4: STRATEGIC RISK SIGNALS ================= -->
+        <section id="view-signals" class="tab-view space-y-6 hidden">
+            <div class="bg-card p-6 rounded-xl border border-[#1b472e] shadow-md">
+                <h2 class="text-xl font-bold text-white mb-1">High-Trust Strategic Entry Signals & Target Radar</h2>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Analyzing internal operational behaviors that signal critical compliance vulnerabilities across regional Swiss and European healthcare technology cohorts.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Signal A -->
+                <div class="bg-card p-5 rounded-xl border border-[#1b472e] space-y-3">
+                    <div class="flex items-center justify-between border-b border-[#1b472e] pb-2">
+                        <span class="text-xs font-mono font-bold text-[#d97706] bg-[#d97706]/20 px-2 py-0.5 rounded border border-[#d97706]/40">SIGNAL A</span>
+                        <span class="text-[11px] text-slate-400">Non-Engineering Adoption</span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white">Ad-Hoc LLM Tool Usage</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Regulatory and Clinical teams using un-segregated LLM wrappers to generate CERs and patient dossiers without deterministic logging.
+                    </p>
+                    <div class="p-2.5 bg-[#051009] rounded border border-[#1b472e] text-[11px] space-y-1 font-mono">
+                        <div class="text-rose-400">Risk: Data Leakage & revFADP Breach</div>
+                        <div class="text-[#06b6d4]">Impact: Art. 50 Transparency Debt</div>
+                    </div>
+                </div>
+
+                <!-- Signal B -->
+                <div class="bg-card p-5 rounded-xl border border-[#1b472e] space-y-3">
+                    <div class="flex items-center justify-between border-b border-[#1b472e] pb-2">
+                        <span class="text-xs font-mono font-bold text-[#44d37e] bg-[#44d37e]/20 px-2 py-0.5 rounded border border-[#44d37e]/40">SIGNAL B</span>
+                        <span class="text-[11px] text-slate-400">Engineering R&D</span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white">Probabilistic ML Automation</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Developers routing probabilistic model inference outputs directly into diagnostic pipelines without hard-coded validation gates.
+                    </p>
+                    <div class="p-2.5 bg-[#051009] rounded border border-[#1b472e] text-[11px] space-y-1 font-mono">
+                        <div class="text-rose-400">Risk: Probabilistic Cascade Failure</div>
+                        <div class="text-[#44d37e]">Impact: Product Distribution Halt</div>
+                    </div>
+                </div>
+
+                <!-- Signal C -->
+                <div class="bg-card p-5 rounded-xl border border-[#1b472e] space-y-3">
+                    <div class="flex items-center justify-between border-b border-[#1b472e] pb-2">
+                        <span class="text-xs font-mono font-bold text-[#06b6d4] bg-[#06b6d4]/20 px-2 py-0.5 rounded border border-[#06b6d4]/40">SIGNAL C</span>
+                        <span class="text-[11px] text-slate-400">HR Recruitment</span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white">AI Governance Headcount</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Hiring "AI Ethics Officers" writing paper policy sheets while software code lacks Art. 12 code-level functional logging.
+                    </p>
+                    <div class="p-2.5 bg-[#051009] rounded border border-[#1b472e] text-[11px] space-y-1 font-mono">
+                        <div class="text-rose-400">Risk: Policy-to-Code Decoupling</div>
+                        <div class="text-[#d97706]">Impact: PRRC Legal Misalignment</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Regional Target Radar Table -->
+            <div class="bg-card p-5 rounded-xl border border-[#1b472e] space-y-3">
+                <h3 class="text-base font-bold text-white">Regional Target Cohorts & Trigger Ledger</h3>
+                <div class="overflow-x-auto custom-scrollbar">
+                    <table class="w-full text-left border-collapse text-xs">
+                        <thead>
+                            <tr class="bg-[#051009] border-b border-[#1b472e] text-slate-300 font-mono font-semibold">
+                                <th class="p-2.5">Target Cohort</th>
+                                <th class="p-2.5">Trigger Condition</th>
+                                <th class="p-2.5">Swissmedic Regulatory Risk</th>
+                                <th class="p-2.5">Recommended Intervention</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-[#1b472e]/50 text-slate-300">
+                            <tr>
+                                <td class="p-2.5 font-bold text-white">Diagnostic SaMD (Western CH & Zurich)</td>
+                                <td class="p-2.5 text-amber-400 font-mono">Swissmedic PMS Focus Campaign Sampling</td>
+                                <td class="p-2.5 text-rose-400">Continuous model drift untracked in CSVs</td>
+                                <td class="p-2.5 text-[#44d37e]">Attach Postgres continuous telemetry listener</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-bold text-white">Foreign Mfrs Exporting via CH-REP</td>
+                                <td class="p-2.5 text-amber-400 font-mono">swissdamed Zero-Grace-Period Incident Cliff</td>
+                                <td class="p-2.5 text-rose-400">Supply chain lock upon post-market event</td>
+                                <td class="p-2.5 text-[#44d37e]">Deploy containerized M2M REST API sync</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-bold text-white">Regional Cantonal Hospital Networks</td>
+                                <td class="p-2.5 text-amber-400 font-mono">Open-weights model adoption in EMRs</td>
+                                <td class="p-2.5 text-rose-400">Data cross-contamination under revFADP</td>
+                                <td class="p-2.5 text-[#44d37e]">Isolate endpoints in pre-validated network bounds</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= SECTION 5: BREHON GOVERNANCE ================= -->
+        <section id="view-branding" class="tab-view space-y-6 hidden">
+            <div class="bg-card p-6 rounded-xl border border-[#1b472e] shadow-md">
+                <h2 class="text-xl font-bold text-white mb-1">BREHON Group Branding Standard v1.0 Integration Matrix</h2>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Formal verification matrix confirming 100% adherence to BREHON Governance Invariants under Patent WO/2026/150385.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Rule List -->
+                <div class="bg-card p-5 rounded-xl border border-[#1b472e] space-y-4 text-xs">
+                    <div class="border-b border-[#1b472e] pb-2 flex justify-between items-center">
+                        <h3 class="text-base font-bold text-white">Governance Invariant Rules</h3>
+                        <span class="text-[#44d37e] font-mono font-bold">3/3 Unit Tests Green</span>
+                    </div>
+
+                    <div class="p-3 bg-[#051009] rounded border border-[#1b472e] space-y-1">
+                        <div class="font-bold text-[#44d37e]">Rule 1: Reject Saturated UI Trap</div>
+                        <p class="text-slate-300">Anchored in Dark Fairway (<code class="text-[#44d37e]">#051009</code>) and Kinetic Green (<code class="text-[#44d37e]">#44d37e</code>). Bright neon backgrounds prohibited.</p>
+                    </div>
+
+                    <div class="p-3 bg-[#051009] rounded border border-[#1b472e] space-y-1">
+                        <div class="font-bold text-[#d97706]">Rule 2: Agronomic Realism & Natural Hues</div>
+                        <p class="text-slate-300">Evokes natural turf hues: Bunker Sand Tan (<code class="text-[#d97706]">#d97706</code>), Clay Earth (<code class="text-[#b45309]">#b45309</code>), Coastal Ocean Teal (<code class="text-[#06b6d4]">#06b6d4</code>).</p>
+                    </div>
+
+                    <div class="p-3 bg-[#051009] rounded border border-[#1b472e] space-y-1">
+                        <div class="font-bold text-[#06b6d4]">Rule 3: Governed Jurisdictional Taxonomy</div>
+                        <p class="text-slate-300">3-second visual recognition using Flag + Entity Dot format (e.g. 🇨🇭 CH • Swissmedic, 🇪🇺 EU • AI Act).</p>
+                    </div>
+
+                    <div class="p-3 bg-[#051009] rounded border border-[#1b472e] space-y-1">
+                        <div class="font-bold text-white">Rule 4: Deterministic Hero Overlays</div>
+                        <p class="text-slate-300">Auto-applies <code class="ward-stone-watermark">WARD STONE — BREHON GOVERNED</code> watermark to technical dashboards.</p>
+                    </div>
+                </div>
+
+                <!-- Test Execution Logs -->
+                <div class="bg-card p-5 rounded-xl border border-[#1b472e] space-y-3 font-mono text-xs">
+                    <h3 class="text-base font-bold text-white border-b border-[#1b472e] pb-2">brehonBrandingStandard.test.mjs Log Output</h3>
+                    <div class="p-3 bg-[#030a06] text-[#44d37e] rounded border border-[#1b472e] space-y-2 h-64 overflow-y-auto custom-scrollbar">
+                        <div>[RUN] Executing BREHON Branding Unit Test Suite v1.0...</div>
+                        <div>[PASS] Test 1: Dark Fairway background token #051009 verified.</div>
+                        <div>[PASS] Test 2: Agronomic color tokens (#d97706, #b45309, #06b6d4) validated.</div>
+                        <div>[PASS] Test 3: WARD STONE — BREHON GOVERNED watermark component mounted.</div>
+                        <div class="text-white font-bold border-t border-[#1b472e] pt-2">----------------------------------------------------</div>
+                        <div class="text-[#44d37e] font-bold">SUMMARY: 3 Passing, 0 Failing, 0 Flaky (100% Green)</div>
+                        <div class="text-slate-400">Git Commit: 1bf4c5ddd5673f038be8a02484ba2efde2e53332</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Sovereign Footer -->
+    <footer class="bg-[#030a06] border-t border-[#1b472e] py-6 text-slate-400 text-xs font-mono mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-2">
+                <span class="font-bold text-white">BREHON Group Governance Standard v1.0</span>
+                <span>• Patent WO/2026/150385</span>
+            </div>
+            <div class="flex space-x-4">
+                <span>Wasabi Sovereign Region: <code class="text-[#44d37e]">eu-central-2-switzerland</code></span>
+                <span>Audit standard: <code class="text-[#d97706]">ISO 13485 / GAMP 5</code></span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // ================= DATA STORE =================
+        const ARTICLES_DATA = [
+            { num: "ART. 10", title: "Data and Data Governance", iso: "ISO 13485 Clause 7.1", fine: "Up to €35M or 7% global turnover", solution: "Wasabi Sovereign Storage + Data Provenance Tracking", scope: "HIGH_RISK", desc: "Training, validation, and testing datasets must be subject to rigorous governance. Requires representation analysis, bias detection, and strict data sovereignty." },
+            { num: "ART. 11", title: "Technical Documentation", iso: "ISO 13485 Clause 4.2", fine: "Up to €15M or 3% global turnover", solution: "Automated JSON Schema Generation", scope: "HIGH_RISK", desc: "Must demonstrate compliance before system release. Documentation must be continuously updated to reflect model modifications and drift." },
+            { num: "ART. 12", title: "Record-Keeping & Traceability", iso: "GAMP 5 CSA / ISO 13485 4.2.5", fine: "Up to €15M or 3% global turnover", solution: "Postgres SHA-256 Audit Ledger", scope: "DATA_TRACE", desc: "Automatic logging of events (logs) while system is operating. Enables retrospective traceability of pipeline decisions during post-market safety events." },
+            { num: "ART. 13", title: "Transparency & User Information", iso: "ISO 14971 Risk Analysis", fine: "Up to €15M or 3% global turnover", solution: "Article 50 Watermarking Engine", scope: "DATA_TRACE", desc: "System outputs must be interpretable. High-risk AI generated text/media must carry machine-readable watermarking tags." },
+            { num: "ART. 14", title: "Human Oversight (HITL)", iso: "IEC 62366 Usability Engine", fine: "Up to €35M or 7% global turnover", solution: "98% Gate + PRRC Digital Signature Override", scope: "HIGH_RISK", desc: "Natural persons must remain in control. Requires automated stop gates preventing direct, un-validated probabilistic outputs from committing to core EMRs." },
+            { num: "ART. 15", title: "Accuracy, Robustness & Cybersecurity", iso: "IEEE 7000 / ISO 27001", fine: "Up to €15M or 3% global turnover", solution: "Docker Containerized Perimeter", scope: "HIGH_RISK", desc: "AI systems must resist probabilistic cascade failure, data poisoning, and unauthorized prompt injections at runtime." },
+            { num: "ART. 17", title: "Quality Management System (QMS)", iso: "ISO 13485 Core Mandate", fine: "Up to €15M or 3% global turnover", solution: "n8n Deterministic Orchestration", scope: "DATA_TRACE", desc: "Must establish, document, and maintain a documented QMS ensuring continuous regulatory compliance throughout system lifecycle." },
+            { num: "ART. 19", title: "Post-Market Incident Reporting", iso: "MedDO Art. 56–61 / MedDev 2.12", fine: "Immediate Product Distribution Halt", solution: "swissdamed M2M Playground Connector", scope: "DATA_TRACE", desc: "Mandatory immediate logging and report generation to Swissmedic and EU Notified Bodies upon post-market vigilance events." }
+        ];
+
+        let radarChartInstance = null;
+        let fallbackChartInstance = null;
+        let activeArticleFilter = 'ALL';
+
+        // ================= INITIALIZATION =================
+        window.addEventListener('DOMContentLoaded', () => {
+            renderArticlesTable();
+            initRadarChart();
+            initFallbackChart();
+            runFallbackSim();
+            loadSwissdamedSample('valid');
+        });
+
+        // ================= NAVIGATION =================
+        function switchTab(tabKey) {
+            document.querySelectorAll('.tab-view').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('bg-[#44d37e]', 'text-[#051009]', 'font-bold');
+                el.classList.add('text-slate-300');
+            });
+
+            document.getElementById(`view-${tabKey}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`tab-${tabKey}`);
+            activeBtn.classList.add('bg-[#44d37e]', 'text-[#051009]', 'font-bold');
+            activeBtn.classList.remove('text-slate-300');
+
+            if (tabKey === 'articles' && radarChartInstance) {
+                radarChartInstance.resize();
+            }
+            if (tabKey === 'fallback' && fallbackChartInstance) {
+                fallbackChartInstance.resize();
+            }
+        }
+
+        // ================= SECTION 1: ARTICLES MODULE =================
+        function renderArticlesTable() {
+            const tbody = document.getElementById('articles-table-body');
+            tbody.innerHTML = '';
+
+            const filtered = activeArticleFilter === 'ALL'
+                ? ARTICLES_DATA
+                : ARTICLES_DATA.filter(a => a.scope === activeArticleFilter);
+
+            filtered.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-[#0f291b] transition-colors cursor-pointer';
+                tr.onclick = () => openArticleDetail(item.num);
+
+                tr.innerHTML = `
+                    <td class="p-2.5 font-mono font-bold text-[#44d37e]">${item.num}</td>
+                    <td class="p-2.5 font-semibold text-white">${item.title}</td>
+                    <td class="p-2.5 text-center font-mono font-bold text-[#06b6d4]">98.2%</td>
+                    <td class="p-2.5 text-slate-300 truncate max-w-xs">${item.desc}</td>
+                    <td class="p-2.5 text-right"><button class="px-2 py-1 bg-[#0a1c12] border border-[#1b472e] text-slate-200 hover:text-[#44d37e] rounded text-[10px] font-mono">Inspect ➔</button></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function filterArticles(type) {
+            activeArticleFilter = type;
+            renderArticlesTable();
+        }
+
+        function openArticleDetail(artNum) {
+            const item = ARTICLES_DATA.find(a => a.num === artNum);
+            if (!item) return;
+
+            document.getElementById('article-num-badge').textContent = item.num;
+            document.getElementById('article-title').textContent = item.title;
+            document.getElementById('article-iso').textContent = item.iso;
+            document.getElementById('article-fine').textContent = item.fine;
+            document.getElementById('article-solution').textContent = item.solution;
+            document.getElementById('article-narrative').textContent = item.desc;
+
+            const card = document.getElementById('article-detail-card');
+            card.classList.remove('hidden');
+            card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function closeArticleDetail() {
+            document.getElementById('article-detail-card').classList.add('hidden');
+        }
+
+        function initRadarChart() {
+            const ctx = document.getElementById('radarChart').getContext('2d');
+            radarChartInstance = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Art.10 Data', 'Art.11 Tech Doc', 'Art.12 Logs', 'Art.13 Watermark', 'Art.14 HITL', 'Art.15 Cyber', 'Art.17 QMS', 'Art.19 Vigilance'],
+                    datasets: [
+                        {
+                            label: 'Ad-Hoc Legacy Adoption',
+                            data: [42, 35, 20, 15, 30, 50, 40, 25],
+                            borderColor: '#b45309',
+                            backgroundColor: 'rgba(180, 83, 9, 0.2)',
+                            borderWidth: 2
+                        },
+                        {
+                            label: 'BREHON Governance Engine',
+                            data: [98, 95, 99, 100, 98, 96, 99, 97],
+                            borderColor: '#44d37e',
+                            backgroundColor: 'rgba(68, 211, 126, 0.25)',
+                            borderWidth: 2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { color: '#1b472e' },
+                            grid: { color: '#1b472e' },
+                            pointLabels: { color: '#f1f5f9', font: { size: 10 } },
+                            ticks: { display: false, max: 100 }
+                        }
+                    },
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 10, color: '#f1f5f9', font: { size: 10 } } }
+                    }
+                }
+            });
+        }
+
+
+        // ================= SECTION 2: 98% CONFIDENCE SIMULATOR =================
+        function runFallbackSim() {
+            const conf = parseFloat(document.getElementById('sim-confidence-slider').value);
+            document.getElementById('sim-confidence-val').textContent = `${conf.toFixed(1)}%`;
+
+            const modelType = document.getElementById('sim-model-type').value;
+            const modelNames = {
+                radiomics: "SaMD Radiology Lesion Classifier",
+                cer: "Generative CER Synthesis LLM",
+                ecg: "Cardiovascular Telemetry ML",
+                lab: "IVDR Assay Automated Sorting"
+            };
+            document.getElementById('out-model-name').textContent = modelNames[modelType];
+
+            const stateBadge = document.getElementById('gate-state-badge');
+            const watermarkStatus = document.getElementById('gate-watermark-status');
+            const kpiBadge = document.getElementById('sim-gate-kpi');
+            const overrideBox = document.getElementById('hitl-override-box');
+
+            if (conf >= 98.0) {
+                stateBadge.textContent = "PASS (AUTOMATED)";
+                stateBadge.className = "font-bold text-[#44d37e]";
+                watermarkStatus.textContent = "Article 50 Applied";
+                watermarkStatus.className = "text-[#06b6d4]";
+                kpiBadge.textContent = `Gate Status: ${conf.toFixed(1)}% ≥ 98.0%`;
+                kpiBadge.className = "px-2 py-0.5 rounded text-xs font-mono font-bold bg-[#44d37e]/20 text-[#44d37e] border border-[#44d37e]/40";
+                overrideBox.classList.add('hidden');
+                appendLedgerLog(`[PASS] Inference ${conf.toFixed(1)}% >= 98.0% threshold. Committed to Postgres DB. SHA-256 sealed.`);
+            } else {
+                stateBadge.textContent = "FROZEN (HITL LOCK)";
+                stateBadge.className = "font-bold text-[#d97706]";
+                watermarkStatus.textContent = "Pending Human Signature";
+                watermarkStatus.className = "text-amber-400";
+                kpiBadge.textContent = `Gate Status: ${conf.toFixed(1)}% < 98.0% (LOCKED)`;
+                kpiBadge.className = "px-2 py-0.5 rounded text-xs font-mono font-bold bg-[#b45309]/20 text-[#d97706] border border-[#b45309]/40";
+                overrideBox.classList.remove('hidden');
+                appendLedgerLog(`[FREEZE] Low confidence ${conf.toFixed(1)}% < 98.0%. Execution halted. Routed to HITL queue.`);
+            }
+
+            // Generate mock SHA-256
+            const mockHash = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855".substring(0, 16) + "...";
+            document.getElementById('gate-hash-val').textContent = mockHash;
+
+            updateFallbackChart(conf);
+        }
+
+        function executeHitlOverride() {
+            const sig = document.getElementById('hitl-signature-input').value;
+            if (!sig || sig.trim() === '') {
+                alert("Please enter a valid PRRC Digital Signature ID.");
+                return;
+            }
+
+            document.getElementById('gate-state-badge').textContent = `OVERRIDDEN (${sig.trim()})`;
+            document.getElementById('gate-state-badge').className = "font-bold text-[#06b6d4]";
+            document.getElementById('hitl-override-box').classList.add('hidden');
+            appendLedgerLog(`[OVERRIDE] PRRC Signature '${sig.trim()}' authorized execution override. Hash committed.`);
+        }
+
+        function appendLedgerLog(msg) {
+            const container = document.getElementById('ledger-live-log');
+            if (!container) return;
+            const timestamp = new Date().toISOString().substring(11, 19);
+            const line = document.createElement('div');
+            line.innerHTML = `<span class="text-slate-500">[${timestamp}]</span> ${msg}`;
+            container.prepend(line);
+        }
+
+        function initFallbackChart() {
+            const ctx = document.getElementById('fallbackChart').getContext('2d');
+            fallbackChartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Run 1', 'Run 2', 'Run 3', 'Run 4', 'Run 5', 'Run 6', 'Run 7', 'Run 8', 'Run 9', 'Run 10'],
+                    datasets: [
+                        {
+                            label: 'Model Confidence Score (%)',
+                            data: [99.1, 98.6, 97.4, 98.9, 99.4, 96.8, 98.5, 99.0, 97.9, 98.5],
+                            borderColor: '#44d37e',
+                            backgroundColor: 'rgba(68, 211, 126, 0.1)',
+                            fill: true,
+                            tension: 0.3
+                        },
+                        {
+                            label: '98% Hard Stop Safety Gate',
+                            data: [98, 98, 98, 98, 98, 98, 98, 98, 98, 98],
+                            borderColor: '#d97706',
+                            borderDash: [4, 4],
+                            pointRadius: 0
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { min: 90, max: 100, ticks: { color: '#94a3b8' }, grid: { color: '#1b472e' } },
+                        x: { ticks: { color: '#94a3b8' }, grid: { color: '#1b472e' } }
+                    },
+                    plugins: {
+                        legend: { position: 'top', labels: { color: '#f1f5f9', font: { size: 10 } } }
+                    }
+                }
+            });
+        }
+
+        function updateFallbackChart(currentConf) {
+            if (!fallbackChartInstance) return;
+            const data = fallbackChartInstance.data.datasets[0].data;
+            data.shift();
+            data.push(currentConf);
+            fallbackChartInstance.update();
+        }
+
+
+        // ================= SECTION 3: SWISSDAMED MODULE =================
+        function loadSwissdamedSample(type) {
+            const input = document.getElementById('swissdamed-json-input');
+            if (type === 'valid') {
+                const payload = {
+                    "swiss_authorized_rep_gln": "7601000000000",
+                    "basic_udi_di": "7612345678901234",
+                    "ai_act_risk_class": "Annex_III_High_Risk",
+                    "art50_provenance_sig": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                    "swissdamed_module": "Product_Registration_v1.0"
+                };
+                input.value = JSON.stringify(payload, null, 2);
+            } else {
+                const payload = {
+                    "swiss_authorized_rep_gln": "INVALID_GLN",
+                    "basic_udi_di": "SHORT_CODE",
+                    "ai_act_risk_class": "Unclassified",
+                    "art50_provenance_sig": "MISSING_SIGNATURE"
+                };
+                input.value = JSON.stringify(payload, null, 2);
+            }
+        }
+
+        function validateSwissdamedPayload() {
+            const raw = document.getElementById('swissdamed-json-input').value;
+            const output = document.getElementById('swissdamed-parse-output');
+
+            try {
+                const data = JSON.parse(raw);
+                let logs = [];
+                let valid = true;
+
+                if (!data.swiss_authorized_rep_gln || data.swiss_authorized_rep_gln.length !== 13) {
+                    logs.push(`<span class="text-rose-400">[FAIL] swiss_authorized_rep_gln must be a valid 13-digit GLN number.</span>`);
+                    valid = false;
+                } else {
+                    logs.push(`<span class="text-[#44d37e]">[PASS] CH-REP GLN verified.</span>`);
+                }
+
+                if (data.ai_act_risk_class !== 'Annex_III_High_Risk') {
+                    logs.push(`<span class="text-[#d97706]">[WARN] ai_act_risk_class must specify Annex_III_High_Risk under Swiss MedDO alignment.</span>`);
+                } else {
+                    logs.push(`<span class="text-[#44d37e]">[PASS] High Risk AI Classification confirmed.</span>`);
+                }
+
+                if (!data.art50_provenance_sig || data.art50_provenance_sig.length < 32) {
+                    logs.push(`<span class="text-rose-400">[FAIL] Article 50 provenance signature invalid. Metadata watermark missing.</span>`);
+                    valid = false;
+                } else {
+                    logs.push(`<span class="text-[#06b6d4]">[PASS] Article 50 Metadata Signature validated.</span>`);
+                }
+
+                if (valid) {
+                    logs.push(`<span class="text-[#44d37e] font-bold">[SUCCESS] swissdamed REST API Payload Verified & Synchronized.</span>`);
+                } else {
+                    logs.push(`<span class="text-rose-400 font-bold">[REJECTED] Swissmedic Registration Halted under MedDO Policy.</span>`);
+                }
+
+                output.innerHTML = logs.join('<br>');
+            } catch (err) {
+                output.innerHTML = `<span class="text-rose-400">[FATAL ERROR] JSON Parsing Error: ${err.message}</span>`;
+            }
+        }
+    </script>
+</body>
+</html>
