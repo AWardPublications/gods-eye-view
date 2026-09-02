@@ -56,6 +56,10 @@ export class CourseTopologyValidator {
       criticalErrors: [],
       warnings: [],
       apacDualGreenVerified: false,
+      governanceAudit: {
+        patentStandard: 'WO/2026/150385',
+        exclusively_alex_responsibility: true
+      },
       timestamp: new Date().toISOString()
     };
 
