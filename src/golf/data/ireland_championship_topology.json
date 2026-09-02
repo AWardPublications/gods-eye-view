@@ -1,0 +1,67 @@
+{
+  "validator_version": "4.7.0-rc.1",
+  "jurisdiction": "Golf Ireland / R&A",
+  "notebook_ref": "67ffc128-7919-4b97-aef7-7c4eb9b66b14",
+  "active_compliance_rules": ["Rule_4.3a_State_4_Judge"],
+  "flagship_venues": {
+    "adare_manor": {
+      "uid": "IE-LIM-ADA-01",
+      "official_name": "Adare Manor Golf Resort",
+      "country_code": "IE",
+      "par": 72,
+      "total_yards": 7509,
+      "established": 1995,
+      "architect": "Robert Trent Jones Sr. (1995) / Tom Fazio (2017 redesign)",
+      "major_events": ["2027 Ryder Cup Host Venue", "JP McManus Pro-Am"],
+      "signature_features": {
+        "tudor_revival_calendar_house": "365 windows, 52 chimneys, 7 stone pillars, 4 towers representing days, weeks, days of week, and seasons",
+        "sub_air_green_ventilation": "Precision temperature and moisture controlled green sub-structure"
+      },
+      "atmospheric_profiles": {
+        "shannon_river_valley": {
+          "elevation_m": 22.0,
+          "temp_c": 14.0,
+          "pressure_pa": 101000,
+          "vapor_pressure_pa": 1180,
+          "calculated_air_density_rho": 1.226
+        }
+      }
+    },
+    "royal_county_down": {
+      "uid": "UK-NIR-RCD-01",
+      "official_name": "Royal County Down Golf Club (Championship Course)",
+      "country_code": "GB",
+      "par": 71,
+      "total_yards": 7186,
+      "established": 1889,
+      "architect": "Old Tom Morris / George Combe / Harry Colt",
+      "global_rank": "Ranked #1 Golf Course in the World (Golf Digest)",
+      "signature_features": {
+        "mountains_of_mourne_backdrop": "Dramatically framed beneath the Mountains of Mourne",
+        "bearded_bunkers": "Deep red fescue bearded bunker edges and severe blind drives"
+      },
+      "atmospheric_profiles": {
+        "dundrum_bay_maritime": {
+          "elevation_m": 4.0,
+          "temp_c": 11.0,
+          "pressure_pa": 100600,
+          "vapor_pressure_pa": 1100,
+          "calculated_air_density_rho": 1.235
+        }
+      }
+    },
+    "old_head_kinsale": {
+      "uid": "IE-COR-OHK-02",
+      "official_name": "Old Head Golf Links (Kinsale Peninsula)",
+      "country_code": "IE",
+      "par": 72,
+      "total_yards": 7215,
+      "established": 1997,
+      "architect": "Ron Kirby / Paddy Merrigan / Liam Higgins",
+      "signature_features": {
+        "300ft_ocean_cliffs": "18 holes perched high above 300ft vertical Atlantic ocean cliffs",
+        "lighthouse_backdrop": "17th-century lighthouse framing the closing stretch"
+      }
+    }
+  }
+}
