@@ -9,6 +9,8 @@
  * @module alex-wenger-golf/core/spatial/mapDataProcessor
  */
 
+import { decodeTerrainRGB, decodeTerrariumRGB, calculateNDVI } from './spatialIngestionEngine.js';
+
 export class MapDataProcessor {
   constructor(options = {}) {
     this.supportedFormats = ['GEOJSON', 'OSM_OVERPASS', 'TERRAIN_RGB', 'TERRARIUM_DEM', 'SATELLITE_NDVI', 'DAILY_MANIFEST'];
