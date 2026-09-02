@@ -40,6 +40,59 @@ export class AltitudeBallisticsEngine {
   }
 
   /**
+   * Calculates empirical Lie-to-Spin Decay for flyer lies in rough & wet grass
+   * @param {object} params - { lieType, moisturePct, grassDepthMm, baseSpinRpm }
+   * @returns {object} { effectiveSpinRpm, isFlyerLie, extraFlyerCarryYards, spinDecayPct }
+   */
+  calculateLieSpinDecay({ lieType = 'fairway', moisturePct = 15.0, grassDepthMm = 10, baseSpinRpm = 6800 } = {}) {
+    let spinMultiplier = 1.0;
+    let isFlyerLie = false;
+
+    if (lieType === 'first_cut' || lieType === 'light_rough') {
+      spinMultiplier = 0.55; // Flyer lie reduces spin down to ~3700 RPM
+      isFlyerLie = true;
+    } else if (lieType === 'deep_rough' || lieType === 'heavy_rough') {
+      spinMultiplier = 0.40; // Heavy rough reduces spin down to ~2700 RPM
+      isFlyerLie = true;
+    }
+
+    if (moisturePct > 20.0 && lieType !== 'fairway') {
+      spinMultiplier *= 0.75; // Wet grass traps extra moisture, dropping spin further to ~2100 RPM
+      isFlyerLie = true;
+    }
+
+    const effectiveSpinRpm = Math.max(1500, Math.round(baseSpinRpm * spinMultiplier));
+    const spinDecayPct = Math.round((1.0 - spinMultiplier) * 100);
+
+    // Flyer lies jump higher and roll farther due to reduced backspin lift & braking
+    const extraFlyerCarryYards = isFlyerLie ? Math.round(12 + (6800 - effectiveSpinRpm) / 350) : 0;
+
+    return {
+      effectiveSpinRpm,
+      isFlyerLie,
+      extraFlyerCarryYards,
+      spinDecayPct,
+      exclusively_alex_responsibility: true
+    };
+  }
+
+  /**
+   * Computes Tour-Grade Target Windows (Front Edge, Cover Number, Pin Distance, Back Runoff)
+   * @param {object} params - { rawDistanceYards, playsLikeYards, frontBunkerDepth, backRunoffDepth }
+   * @returns {object} Target Window breakdown
+   */
+  calculateTargetWindow({ rawDistanceYards = 160, playsLikeYards = 164, frontBunkerDepth = 12, backRunoffDepth = 15 } = {}) {
+    return {
+      front_edge: Math.round(playsLikeYards - frontBunkerDepth),
+      cover_bunker: Math.round(playsLikeYards - frontBunkerDepth + 4),
+      pin_distance: Math.round(playsLikeYards),
+      back_runoff: Math.round(playsLikeYards + backRunoffDepth),
+      window_text: `Front: ${Math.round(playsLikeYards - frontBunkerDepth)}y | Cover: ${Math.round(playsLikeYards - frontBunkerDepth + 4)}y | Pin: ${Math.round(playsLikeYards)}y | Back: ${Math.round(playsLikeYards + backRunoffDepth)}y`,
+      exclusively_alex_responsibility: true
+    };
+  }
+
+  /**
    * 4th-Order Runge-Kutta (RK4) 3-DoF Projectile Integration
    * @param {object} params - Launch parameters and environment
    * @returns {object} Flight metrics (carryYards, finalDescentAngleDeg, densityKgM3, totalFlightTime)

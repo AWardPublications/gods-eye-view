@@ -96,6 +96,11 @@ export function ingestEuContinentalCluster() {
       par: course.par,
       hole_count: 18,
       geohash_partition: course.geohash,
+      agent_directives: {
+        alex_focus: `Master strategy for ${course.name}`,
+        caddy: 'Dynamic 3-DoF wind and slope calculation',
+        state_4_judge: 'USGA / R&A Rule 4.3a Hard-Suppression active'
+      },
       holes: holes
     };
 

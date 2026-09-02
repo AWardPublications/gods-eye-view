@@ -20,6 +20,45 @@ export class ActiveAudioDriver {
     this.recognition = null;
     this.isListening = false;
     this.onTranscriptCallback = null;
+
+    // Tour-Hardened Reality Controls
+    this.addressMuteLockActive = false; // Hard Address Mute Lock: Zero audio during takeaway/backswing
+    this.pgaTourPostureMode = false;   // PGA Tour Posture Mode: Strips conversational filler for cold tactical facts
+  }
+
+  /**
+   * Sets Address Mute Lock state (e.g. when IMU detects address posture or club alignment)
+   * @param {boolean} isLocked
+   */
+  setAddressMuteLock(isLocked = true) {
+    this.addressMuteLockActive = !!isLocked;
+    if (this.addressMuteLockActive && this.synth) {
+      this.synth.cancel(); // Instantly abort any active speech in the earpiece
+    }
+  }
+
+  /**
+   * Toggles PGA Tour Posture Mode (Cold, clinical, low-syllable facts vs conversational coaching)
+   * @param {boolean} isEnabled
+   */
+  setPgaTourPostureMode(isEnabled = true) {
+    this.pgaTourPostureMode = !!isEnabled;
+  }
+
+  /**
+   * Sanitizes speech text under PGA Tour Posture Mode
+   * @param {string} text
+   * @returns {string} Sanitized clinical text
+   */
+  applyPgaTourPostureFilter(text = '') {
+    if (!this.pgaTourPostureMode || !text) return text;
+
+    return text
+      .replace(/Mais oui, my friend!\s*/gi, '')
+      .replace(/Looking down at the green from here, she looks beautiful, but do not let the layout deceive you\.?\s*/gi, '')
+      .replace(/Take your medicine, my friend!\s*/gi, '')
+      .replace(/One shot at a time!\s*/gi, '')
+      .trim();
   }
 
   /**
@@ -41,16 +80,22 @@ export class ActiveAudioDriver {
    * @returns {Promise<boolean>} Resolves when audio playback initiates
    */
   async speak(text, options = {}) {
+    if (this.addressMuteLockActive) {
+      if (this.synth) this.synth.cancel();
+      return false; // Hard Address Mute Lock: Zero audio during takeaway/backswing
+    }
+
     this.initAudioContext();
     const speakerName = options.speaker || this.speaker;
-    const payload = generateSSMLSpeechPayload(speakerName, text);
+    const filteredText = this.applyPgaTourPostureFilter(text);
+    const payload = generateSSMLSpeechPayload(speakerName, filteredText);
 
     // If browser SpeechSynthesis is available
     if (this.synth) {
       return new Promise((resolve) => {
         this.synth.cancel(); // Stop active playback
 
-        const utterance = new SpeechSynthesisUtterance(text);
+        const utterance = new SpeechSynthesisUtterance(filteredText);
         utterance.rate = parseFloat(VOICE_PROFILES[speakerName]?.default_ssml_rate || 1.05);
         utterance.pitch = 1.0;
 

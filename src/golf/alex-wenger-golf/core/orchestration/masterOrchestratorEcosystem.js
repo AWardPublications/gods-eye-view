@@ -34,20 +34,38 @@ export class MasterOrchestratorEcosystem {
    */
   processGolfQuery(input = {}) {
     const rawYards = input.rawLaserYards || 150.0;
-    const isTournamentMode = input.mode === 'MATCHPLAY_COMPETITION' || input.isTournament === true;
+    const isTournamentMode = input.mode === 'MATCHPLAY_COMPETITION' || input.isTournament === true || input.tournamentPinLocked === true;
 
-    // 1. Calculate 3-DoF Ballistics Trajectory in Background
+    // 1. Calculate Lie-to-Spin Decay for rough & wet lies
+    const lieSpinDecay = this.ballistics.calculateLieSpinDecay({
+      lieType: input.lieType || 'fairway',
+      moisturePct: input.gmcPct || input.environment?.humidityPct || 15.0,
+      baseSpinRpm: input.spinRpm || 6800
+    });
+
+    // 2. Calculate 3-DoF Ballistics Trajectory in Background
     const flight = this.ballistics.simulateFlight({
       launchSpeedMps: input.launchSpeedMps || 50.0,
       launchAngleDeg: input.launchAngleDeg || 18.0,
-      spinRpm: input.spinRpm || 7000,
+      spinRpm: lieSpinDecay.effectiveSpinRpm,
       environment: input.environment || { pressureHpa: 1013.25, tempC: 15.0, humidityPct: 50.0, windVx: -3 }
     });
 
-    // 2. Evaluate AWK-v0.2 Knowledge Blocks
+    const rawPlaysLike = rawYards + (flight.carryYards - 150.0) + lieSpinDecay.extraFlyerCarryYards;
+
+    // 3. Tour-Grade Target Window Calculation
+    const targetWindow = this.ballistics.calculateTargetWindow({
+      rawDistanceYards: rawYards,
+      playsLikeYards: isTournamentMode ? rawYards : rawPlaysLike,
+      frontBunkerDepth: input.frontBunkerDepth || 12,
+      backRunoffDepth: input.backRunoffDepth || 15
+    });
+
+    // 4. Evaluate AWK-v0.2 Knowledge Blocks
     const riskReward = this.knowledge.evaluateRiskRewardGate({
       executionProbability: input.executionProbability ?? 0.75,
       rewardYards: 20,
+      penaltyYards: 15,
       hazardPenaltyYards: 40
     });
 
@@ -58,7 +76,7 @@ export class MasterOrchestratorEcosystem {
       turfCondition: input.turfCondition || 'firm_links'
     });
 
-    // 3. State 4 Judge Gate Compliance Filter (USGA Rule 4.3a)
+    // 5. State 4 Judge Gate Compliance Filter (USGA Rule 4.3a Hard Tournament Lockout)
     let spokenDistanceYards = rawYards;
     let playsLikeSuppressed = false;
 
@@ -66,15 +84,15 @@ export class MasterOrchestratorEcosystem {
       spokenDistanceYards = rawYards; // Hard suppression of plays-like assistance
       playsLikeSuppressed = true;
     } else {
-      spokenDistanceYards = flight.carryYards;
+      spokenDistanceYards = targetWindow.pin_distance;
     }
 
-    // 4. Synthesize Canonical Alex Wenger Voice Response
+    // 6. Synthesize Canonical Alex Wenger Voice Response
     let spokenText = `Mais oui, my friend! `;
     if (playsLikeSuppressed) {
-      spokenText += `You are locked into official tournament mode on this target. Your legal straight-line distance is ${spokenDistanceYards.toFixed(0)} yards. Stick to your baseline routine and trust your swing line.`;
+      spokenText = `[HARD TOURNAMENT LOCKOUT ACTIVE] Hole Target: ${rawYards.toFixed(0)} yards. ${targetWindow.window_text}. Wind/Elevation disabled per USGA Rule 4.3a.`;
     } else {
-      spokenText += `Your target laser is ${rawYards.toFixed(0)} yards, but accounting for the altitude and air density, it plays like ${flight.carryYards.toFixed(0)} yards. ${riskReward.alexAdvice}`;
+      spokenText += `Target laser is ${rawYards.toFixed(0)} yards. ${targetWindow.window_text}. ${riskReward.alexAdvice}`;
     }
 
     return {
@@ -83,10 +101,13 @@ export class MasterOrchestratorEcosystem {
       governance: {
         patent: this.patent,
         rule_4_3a_compliant: true,
+        rule_4_3a_status: playsLikeSuppressed ? 'DISCONNECTED_HARD_LOCKOUT' : 'OPERATIONAL',
         plays_like_suppressed: playsLikeSuppressed,
         exclusively_alex_responsibility: true
       },
       ballistics: flight,
+      lie_spin_decay: lieSpinDecay,
+      target_window: targetWindow,
       risk_reward_decision: riskReward,
       short_game_recommendation: shortGame,
       spoken_distance_yards: spokenDistanceYards,

@@ -2,7 +2,7 @@
   "schema_version": "4.2.0",
   "governance_patent": "WO/2026/150385",
   "engine_name": "Geographic Memory Engine - Complete 18-Hole Pilot Cohort Registry",
-  "last_updated": "2026-09-02T10:17:19.232Z",
+  "last_updated": "2026-09-02T10:27:20.568Z",
   "notebooklm_matrix": {
     "ireland_heritage": "https://notebook.google.com/notebook/67ffc128-7919-4b97-aef7-7c4eb9b66b14",
     "scotland_championship": "https://notebook.google.com/notebook/f854adb6-6358-4c55-829f-2efb64b04fbe",
@@ -3077,6 +3077,11 @@
       "par": 72,
       "hole_count": 18,
       "geohash_partition": "course_idx_NL_u15pt",
+      "agent_directives": {
+        "alex_focus": "Master strategy for Bernardus Golf (KLM Open Host)",
+        "caddy": "Dynamic 3-DoF wind and slope calculation",
+        "state_4_judge": "USGA / R&A Rule 4.3a Hard-Suppression active"
+      },
       "holes": {
         "1": {
           "number": 1,
@@ -3523,6 +3528,11 @@
       "par": 72,
       "hole_count": 18,
       "geohash_partition": "course_idx_IT_sr2yx",
+      "agent_directives": {
+        "alex_focus": "Master strategy for Marco Simone Golf & Country Club (2023 Ryder Cup)",
+        "caddy": "Dynamic 3-DoF wind and slope calculation",
+        "state_4_judge": "USGA / R&A Rule 4.3a Hard-Suppression active"
+      },
       "holes": {
         "1": {
           "number": 1,
@@ -3666,6 +3676,11 @@
       "par": 72,
       "hole_count": 18,
       "geohash_partition": "course_idx_IT_u0ndh",
+      "agent_directives": {
+        "alex_focus": "Master strategy for Golf Club Milano (Monza - Italian Open)",
+        "caddy": "Dynamic 3-DoF wind and slope calculation",
+        "state_4_judge": "USGA / R&A Rule 4.3a Hard-Suppression active"
+      },
       "holes": {
         "1": {
           "number": 1,
@@ -3809,6 +3824,11 @@
       "par": 72,
       "hole_count": 18,
       "geohash_partition": "course_idx_DE_u1c37",
+      "agent_directives": {
+        "alex_focus": "Master strategy for Golf Club Gut Lärchenhof (Cologne)",
+        "caddy": "Dynamic 3-DoF wind and slope calculation",
+        "state_4_judge": "USGA / R&A Rule 4.3a Hard-Suppression active"
+      },
       "holes": {
         "1": {
           "number": 1,
@@ -3952,6 +3972,11 @@
       "par": 72,
       "hole_count": 18,
       "geohash_partition": "course_idx_DE_u0e8w",
+      "agent_directives": {
+        "alex_focus": "Master strategy for Golf Club St. Leon-Rot (Solheim Cup Host)",
+        "caddy": "Dynamic 3-DoF wind and slope calculation",
+        "state_4_judge": "USGA / R&A Rule 4.3a Hard-Suppression active"
+      },
       "holes": {
         "1": {
           "number": 1,
@@ -4095,6 +4120,11 @@
       "par": 73,
       "hole_count": 18,
       "geohash_partition": "course_idx_DE_u1x1h",
+      "agent_directives": {
+        "alex_focus": "Master strategy for Green Eagle Golf Courses (Porsche European Open)",
+        "caddy": "Dynamic 3-DoF wind and slope calculation",
+        "state_4_judge": "USGA / R&A Rule 4.3a Hard-Suppression active"
+      },
       "holes": {
         "1": {
           "number": 1,
@@ -4238,6 +4268,11 @@
       "par": 72,
       "hole_count": 18,
       "geohash_partition": "course_idx_NL_u173x",
+      "agent_directives": {
+        "alex_focus": "Master strategy for The International (Amsterdam)",
+        "caddy": "Dynamic 3-DoF wind and slope calculation",
+        "state_4_judge": "USGA / R&A Rule 4.3a Hard-Suppression active"
+      },
       "holes": {
         "1": {
           "number": 1,
@@ -4381,6 +4416,11 @@
       "par": 72,
       "hole_count": 18,
       "geohash_partition": "course_idx_NL_u1735",
+      "agent_directives": {
+        "alex_focus": "Master strategy for Kennemer Golf & Country Club",
+        "caddy": "Dynamic 3-DoF wind and slope calculation",
+        "state_4_judge": "USGA / R&A Rule 4.3a Hard-Suppression active"
+      },
       "holes": {
         "1": {
           "number": 1,
@@ -4524,6 +4564,11 @@
       "par": 72,
       "hole_count": 18,
       "geohash_partition": "course_idx_PT_eydb9",
+      "agent_directives": {
+        "alex_focus": "Master strategy for Dom Pedro Victoria Golf Course (Vilamoura)",
+        "caddy": "Dynamic 3-DoF wind and slope calculation",
+        "state_4_judge": "USGA / R&A Rule 4.3a Hard-Suppression active"
+      },
       "holes": {
         "1": {
           "number": 1,
@@ -4667,6 +4712,11 @@
       "par": 71,
       "hole_count": 18,
       "geohash_partition": "course_idx_PT_eychm",
+      "agent_directives": {
+        "alex_focus": "Master strategy for Oitavos Dunes Golf Course (Cascais)",
+        "caddy": "Dynamic 3-DoF wind and slope calculation",
+        "state_4_judge": "USGA / R&A Rule 4.3a Hard-Suppression active"
+      },
       "holes": {
         "1": {
           "number": 1,
@@ -4810,6 +4860,11 @@
       "par": 72,
       "hole_count": 18,
       "geohash_partition": "course_idx_PT_eycsx",
+      "agent_directives": {
+        "alex_focus": "Master strategy for West Cliffs Golf Links (Óbidos)",
+        "caddy": "Dynamic 3-DoF wind and slope calculation",
+        "state_4_judge": "USGA / R&A Rule 4.3a Hard-Suppression active"
+      },
       "holes": {
         "1": {
           "number": 1,
@@ -4953,6 +5008,11 @@
       "par": 72,
       "hole_count": 18,
       "geohash_partition": "course_idx_SE_u6s4y",
+      "agent_directives": {
+        "alex_focus": "Master strategy for Bro Hof Slott Golf Club (Stadium Course)",
+        "caddy": "Dynamic 3-DoF wind and slope calculation",
+        "state_4_judge": "USGA / R&A Rule 4.3a Hard-Suppression active"
+      },
       "holes": {
         "1": {
           "number": 1,
@@ -5096,6 +5156,11 @@
       "par": 72,
       "hole_count": 18,
       "geohash_partition": "course_idx_SE_u6s9x",
+      "agent_directives": {
+        "alex_focus": "Master strategy for Ullna Golf & Country Club (Scandinavian Mixed)",
+        "caddy": "Dynamic 3-DoF wind and slope calculation",
+        "state_4_judge": "USGA / R&A Rule 4.3a Hard-Suppression active"
+      },
       "holes": {
         "1": {
           "number": 1,
@@ -5239,6 +5304,11 @@
       "par": 71,
       "hole_count": 18,
       "geohash_partition": "course_idx_SE_u389v",
+      "agent_directives": {
+        "alex_focus": "Master strategy for Falsterbo Golf Klubb (Links)",
+        "caddy": "Dynamic 3-DoF wind and slope calculation",
+        "state_4_judge": "USGA / R&A Rule 4.3a Hard-Suppression active"
+      },
       "holes": {
         "1": {
           "number": 1,
@@ -5382,6 +5452,11 @@
       "par": 71,
       "hole_count": 18,
       "geohash_partition": "course_idx_DK_u4nre",
+      "agent_directives": {
+        "alex_focus": "Master strategy for HimmerLand (Danish Golf Championship)",
+        "caddy": "Dynamic 3-DoF wind and slope calculation",
+        "state_4_judge": "USGA / R&A Rule 4.3a Hard-Suppression active"
+      },
       "holes": {
         "1": {
           "number": 1,
@@ -5525,6 +5600,11 @@
       "par": 72,
       "hole_count": 18,
       "geohash_partition": "course_idx_DK_u3cb4",
+      "agent_directives": {
+        "alex_focus": "Master strategy for Great Northern Golf Club (Kerteminde)",
+        "caddy": "Dynamic 3-DoF wind and slope calculation",
+        "state_4_judge": "USGA / R&A Rule 4.3a Hard-Suppression active"
+      },
       "holes": {
         "1": {
           "number": 1,
@@ -5668,6 +5748,11 @@
       "par": 72,
       "hole_count": 18,
       "geohash_partition": "course_idx_AT_u2edh",
+      "agent_directives": {
+        "alex_focus": "Master strategy for Diamond Country Club (Austrian Open Host)",
+        "caddy": "Dynamic 3-DoF wind and slope calculation",
+        "state_4_judge": "USGA / R&A Rule 4.3a Hard-Suppression active"
+      },
       "holes": {
         "1": {
           "number": 1,
@@ -5811,6 +5896,11 @@
       "par": 72,
       "hole_count": 18,
       "geohash_partition": "course_idx_CZ_u2f4x",
+      "agent_directives": {
+        "alex_focus": "Master strategy for Albatross Golf Resort (Prague - Czech Masters)",
+        "caddy": "Dynamic 3-DoF wind and slope calculation",
+        "state_4_judge": "USGA / R&A Rule 4.3a Hard-Suppression active"
+      },
       "holes": {
         "1": {
           "number": 1,
@@ -5954,6 +6044,11 @@
       "par": 70,
       "hole_count": 18,
       "geohash_partition": "course_idx_CH_u0m9x",
+      "agent_directives": {
+        "alex_focus": "Master strategy for Golf Club Crans-sur-Sierre (Omega European Masters)",
+        "caddy": "Dynamic 3-DoF wind and slope calculation",
+        "state_4_judge": "USGA / R&A Rule 4.3a Hard-Suppression active"
+      },
       "holes": {
         "1": {
           "number": 1,
@@ -6097,6 +6192,11 @@
       "par": 71,
       "hole_count": 18,
       "geohash_partition": "course_idx_BE_u150x",
+      "agent_directives": {
+        "alex_focus": "Master strategy for Rinkven International Golf Club (Antwerp)",
+        "caddy": "Dynamic 3-DoF wind and slope calculation",
+        "state_4_judge": "USGA / R&A Rule 4.3a Hard-Suppression active"
+      },
       "holes": {
         "1": {
           "number": 1,
