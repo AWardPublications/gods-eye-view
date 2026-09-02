@@ -1,0 +1,65 @@
+{
+  "validator_version": "4.7.0-rc.1",
+  "jurisdiction": "fvgolf / R&A",
+  "notebook_ref": "eeaa605d-0b8e-4a64-a3e4-1b75d0d91b9f",
+  "active_compliance_rules": ["Rule_4.3a_State_4_Judge"],
+  "flagship_venues": {
+    "le_golf_national": {
+      "uid": "FR-PAR-LGN-01",
+      "official_name": "Le Golf National (L'Albatros)",
+      "country_code": "FR",
+      "par": 71,
+      "total_yards": 7331,
+      "established": 1990,
+      "architect": "Hubert Chesneau / Robert Von Hagge",
+      "signature_features": {
+        "stadium_mounding": "Massive spectator amphitheater mounds framing target fairways",
+        "island_water_hazards_15_18": "Holes 15, 16, 17, and 18 surrounded by expansive water hazards"
+      },
+      "atmospheric_profiles": {
+        "paris_basin_continental": {
+          "elevation_m": 156.0,
+          "temp_c": 22.0,
+          "pressure_pa": 99500,
+          "vapor_pressure_pa": 1400,
+          "calculated_air_density_rho": 1.168
+        }
+      }
+    },
+    "golf_de_morfontaine": {
+      "uid": "FR-OIS-MOR-02",
+      "official_name": "Golf de Morfontaine (Grand Parcours)",
+      "country_code": "FR",
+      "par": 70,
+      "total_yards": 6601,
+      "established": 1913,
+      "architect": "Tom Simpson (1927 redesign)",
+      "continental_rank": "Ranked #1 Golf Course in Continental Europe",
+      "signature_features": {
+        "heather_and_rock_outcrops": "Fairways carved through ancient pine forests and giant moss-covered granite boulders",
+        "small_undulating_greens": "Precision green complexes requiring shape-shot control"
+      },
+      "atmospheric_profiles": {
+        "ile_de_france_forest_canopy": {
+          "elevation_m": 85.0,
+          "temp_c": 19.0,
+          "pressure_pa": 100400,
+          "vapor_pressure_pa": 1300,
+          "calculated_air_density_rho": 1.189
+        }
+      }
+    },
+    "golf_de_chantilly": {
+      "uid": "FR-OIS-CHA-03",
+      "official_name": "Golf de Chantilly (Grand Vallon)",
+      "country_code": "FR",
+      "par": 71,
+      "total_yards": 7010,
+      "established": 1909,
+      "architect": "Tom Simpson",
+      "signature_features": {
+        "deep_cross_bunkering": "Strategic cross bunkers punishing misplayed layups"
+      }
+    }
+  }
+}
