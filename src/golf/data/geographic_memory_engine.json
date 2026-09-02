@@ -3594,6 +3594,34 @@
         "alex_focus": "Welsh links strategy for Royal Porthcawl Golf Club",
         "caddy": "Coastal wind & dune elevation trajectory modeling"
       }
+    },
+    "au_royal_melbourne_west": {
+      "course_id": "au_royal_melbourne_west",
+      "name": "Royal Melbourne Golf Club (West Course)",
+      "country_code": "AU",
+      "elevation_m": 25,
+      "total_yards": 6635,
+      "par": 72,
+      "hole_count": 18,
+      "geohash_partition": "course_idx_AU_r1r0h",
+      "agent_directives": {
+        "alex_focus": "Sandbelt links strategy for Royal Melbourne Golf Club (West Course)",
+        "caddy": "Port Phillip Bay wind shear & Stimp 13.2 micro-contour breaks"
+      }
+    },
+    "au_kingston_heath": {
+      "course_id": "au_kingston_heath",
+      "name": "Kingston Heath Golf Club",
+      "country_code": "AU",
+      "elevation_m": 25,
+      "total_yards": 6816,
+      "par": 72,
+      "hole_count": 18,
+      "geohash_partition": "course_idx_AU_r1r0j",
+      "agent_directives": {
+        "alex_focus": "Sandbelt links strategy for Kingston Heath Golf Club",
+        "caddy": "Port Phillip Bay wind shear & Stimp 13 micro-contour breaks"
+      }
     }
   }
 }
