@@ -1,0 +1,55 @@
+{
+  "schema_version": "v4.7.0",
+  "governance": {
+    "patent": "WO/2026/150385",
+    "tier": "Tier_2_Micro_Nation",
+    "region": "Luxembourg",
+    "exclusively_alex_responsibility": true
+  },
+  "courses": {
+    "lu_grand_ducal": {
+      "course_id": "lu_grand_ducal",
+      "name": "Golf Club Grand Ducal (Senningerberg)",
+      "established": 1935,
+      "country_code": "LU",
+      "elevation_m": 375,
+      "par": 71,
+      "total_yards": 6775,
+      "geohash_partition": "course_idx_LU_u0u6m",
+      "location": {
+        "lat": 49.6385,
+        "lng": 6.2241,
+        "region": "Senningerberg",
+        "country": "Luxembourg"
+      },
+      "hole_count": 18,
+      "holes": {
+        "1": { "name": "Le Chateau", "par": 4, "yardage": 395, "handicap": 7 },
+        "2": { "name": "Les Chenes", "par": 3, "yardage": 185, "handicap": 15 },
+        "18": { "name": "L'Empereur", "par": 5, "yardage": 545, "handicap": 2 }
+      }
+    },
+    "lu_kikuoka": {
+      "course_id": "lu_kikuoka",
+      "name": "Kikuoka Country Club (Canach)",
+      "established": 1991,
+      "country_code": "LU",
+      "elevation_m": 290,
+      "par": 72,
+      "total_yards": 7163,
+      "geohash_partition": "course_idx_LU_u0u7k",
+      "location": {
+        "lat": 49.6102,
+        "lng": 6.3315,
+        "region": "Canach",
+        "country": "Luxembourg"
+      },
+      "hole_count": 18,
+      "holes": {
+        "1": { "name": "Les Bunkers", "par": 4, "yardage": 410, "handicap": 5 },
+        "9": { "name": "Le Lac", "par": 4, "yardage": 430, "handicap": 1 },
+        "18": { "name": "Le Finish", "par": 5, "yardage": 555, "handicap": 3 }
+      }
+    }
+  }
+}
