@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RM-10 Room of Refusal — Sovereign Embassy</title>
+  <title>RM-10 Room of Refusal & Human Approval Dais — Sovereign Embassy</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Outfit:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
   <style>
     :root {
@@ -11,6 +11,7 @@
       --panel-bg: #10141d;
       --accent-bronze: #cd7f32;
       --accent-gold: #d4af37;
+      --accent-oak: #8b5a2b;
       --accent-slate: #1e293b;
       --accent-red: #ef4444;
       --accent-green: #10b981;
@@ -77,7 +78,27 @@
       font-family: 'Cinzel', serif;
     }
     
-    /* Sanctuary Elevation View */
+    /* Sanctuary Elevation View & Tab Selector */
+    .tab-bar {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 0.5rem;
+      background: #1e293b;
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--accent-oak), var(--accent-bronze));
+      color: #fff;
+      font-weight: 700;
+    }
     .sanctuary-preview {
       position: relative;
       width: 100%;
@@ -178,31 +199,36 @@
 <body>
   <header>
     <div class="header-title">
-      <h1>🏛️ RM-10 ROOM OF REFUSAL</h1>
-      <p>Decoupled Physical Veto Sanctuary & Human Authority Core</p>
+      <h1>🏛️ RM-10 ROOM OF REFUSAL & HUMAN APPROVAL DAIS</h1>
+      <p>Decoupled Physical Veto Sanctuary & Stone Plinth Authority Core</p>
     </div>
-    <div class="badge">DVA-RM10-REFUSAL-v1.0</div>
+    <div class="badge">DVA-RM10-DAIS-v1.0</div>
   </header>
 
   <main>
-    <!-- Left Panel: Concept Elevation & Inscription -->
+    <!-- Left Panel: Concept Elevation Mocks & Tabs -->
     <div class="card">
       <div class="card-title">
-        <span>🖼️ REAR WALL ELEVATION & INSCRIBED MANDATE</span>
-        <span style="font-size:0.8rem; color:var(--text-muted);">NC-25 Acoustic Quiet Zone</span>
+        <span>🖼️ ARCHITECTURAL ELEVATIONS</span>
+        <span style="font-size:0.8rem; color:var(--text-muted);">NC-25 Acoustic Sanctuary</span>
+      </div>
+
+      <div class="tab-bar">
+        <button id="tabWallBtn" class="tab-btn active">WALL: Inscribed Mandate (RM-10)</button>
+        <button id="tabDaisBtn" class="tab-btn">DAIS: Human Approval Desk & Plinth</button>
       </div>
 
       <div class="sanctuary-preview">
-        <img src="/room_of_refusal_rm10.png" alt="Room of Refusal Elevation">
-        <div class="inscription-overlay">
+        <img id="sanctuaryImage" src="/room_of_refusal_rm10.png" alt="Room Elevation">
+        <div class="inscription-overlay" id="overlayBox">
           "Should this decision have been automated at all?"
         </div>
       </div>
     </div>
 
-    <!-- Right Panel: Refusal Console Controls -->
+    <!-- Right Panel: Refusal Console & Dais Controls -->
     <div class="card">
-      <div class="card-title"><span>🎛️ REFUSAL LECTERN CONSOLE</span></div>
+      <div class="card-title"><span>🎛️ REFUSAL & APPROVAL CONSOLE</span></div>
 
       <div class="control-group">
         <label>Active Human Steward:</label>
@@ -210,7 +236,7 @@
       </div>
 
       <div class="control-group">
-        <label>Target Automation Action to Discard:</label>
+        <label>Target Action or Document:</label>
         <select id="actionSelect">
           <option value="act_n8n_email_dispatch_104">n8n Batch Email Dispatch (#104)</option>
           <option value="act_media_gen_wc26_09">AI Media Generation Execution (#09)</option>
@@ -228,7 +254,7 @@
         <input type="number" id="forceInput" value="15.0" step="0.5">
       </div>
 
-      <button id="depressLeverBtn" class="btn-bronze">⚙️ DEPRESS 15N BRONZE LEVER</button>
+      <button id="depressLeverBtn" class="btn-bronze">⚙️ DEPRESS 15N BRONZE LEVER (VETO)</button>
 
       <div id="statusAlert" class="status-alert alert-success">
         STATUS: SANCTUARY READY · Awaiting Physical Lever Actuation
@@ -251,6 +277,25 @@
 
     let prevHash = '0000000000000000000000000000000000000000000000000000000000000000';
     let refusalSeq = 0;
+
+    const tabWallBtn = document.getElementById('tabWallBtn');
+    const tabDaisBtn = document.getElementById('tabDaisBtn');
+    const sanctuaryImage = document.getElementById('sanctuaryImage');
+    const overlayBox = document.getElementById('overlayBox');
+
+    tabWallBtn.addEventListener('click', () => {
+      tabWallBtn.className = 'tab-btn active';
+      tabDaisBtn.className = 'tab-btn';
+      sanctuaryImage.src = '/room_of_refusal_rm10.png';
+      overlayBox.style.display = 'block';
+    });
+
+    tabDaisBtn.addEventListener('click', () => {
+      tabDaisBtn.className = 'tab-btn active';
+      tabWallBtn.className = 'tab-btn';
+      sanctuaryImage.src = '/human_approval_room_dais.png';
+      overlayBox.style.display = 'none';
+    });
 
     const shieldCheckbox = document.getElementById('shieldCheckbox');
     const forceInput = document.getElementById('forceInput');
