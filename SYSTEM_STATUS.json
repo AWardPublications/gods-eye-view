@@ -1,9 +1,9 @@
 {
   "systemName": "DAVID_OS & DaVinciA⁺ Governed Operating Environment",
   "repository": "https://github.com/AWardPublications/gods-eye-view.git",
-  "canonicalCommitSha": "648b58f7b2cf04ae770873ae914f311d88eabbf4",
-  "latestMilestoneTag": "DAVINCIA-HITL-CONSTITUTION-v1.0",
-  "lastAuditedIsoTimestamp": "2026-09-03T19:25:00Z",
+  "canonicalCommitSha": "da1eeb615a3388073e2dc64bcde7d567dc9df322",
+  "latestMilestoneTag": "DAVINCIA-HITL-QUALIFICATION-v1.0",
+  "lastAuditedIsoTimestamp": "2026-09-03T19:27:00Z",
   "conformanceScorecards": {
     "governanceInfrastructure": "10/10",
     "agentConstellation": "13/13",
@@ -13,26 +13,29 @@
     "agentSanctuaryAndVibeLounge": "52/52",
     "massMarketProductFabric": "57/57",
     "shopSymbiosis": "60/60",
-    "humanAuthorityCorps": "63/63"
+    "humanAuthorityCorps": "63/63",
+    "hitlQualificationAndSimulation": "66/66"
   },
   "totalTestCount": {
-    "assertionsPassed": 2733,
+    "assertionsPassed": 2736,
     "passingRatePercent": 100.0,
     "status": "GREEN"
   },
-  "humanAuthorityCorps": {
+  "hitlQualificationStandard": {
+    "framework": "EU AI Act Article 14 & NIST AI RMF Compliant",
+    "qualificationLayers": 7,
+    "panelRolesPerDomain": 4,
     "sovereignAmbassador": "David Ward (Level 0 Sovereign)",
     "executiveViceMaster": "Adrian Daly (Level 1 Executive / HITL-5 Master)",
-    "expertDomains": 12,
-    "specialistSeats": 48,
     "totalCoreHumanAuthority": 50,
     "humanAuthorityCoverageIndex": 100.0,
-    "certificationLevels": ["HITL_1", "HITL_2", "HITL_3", "HITL_4", "HITL_5_MASTER"],
+    "simulationExamArena": "INJECTED_AI_ERROR_DETECTION_PASS",
     "status": "CONSTITUTIONALLY_ENFORCED"
   },
   "maturityLevels": {
     "production": [
       "Core Governance Kernel (POL-003 Risk Gates)",
+      "Embassy HITL 7-Layer Qualification Standard & Adversarial Exam Engine",
       "Embassy Human Authority Corps (50 Core Seats, 12 Domains)",
       "HITL Master Router Engine (Adrian Daly Level 1)",
       "Human Authority Coverage Index (HACI 100%)",
@@ -47,7 +50,7 @@
     "demonstrated": [
       "64-Agent Master Swarm Ecosystem",
       "16 Named Domain Character Agents",
-      "16-Portal Sovereign Application Surface",
+      "17-Portal Sovereign Application Surface",
       "Workflow Foundry & Local Construction Loop",
       "Agent Academy, Forum & Creative Vibe Studio",
       "ArchivesSpace, IIIF 3.0 & Europeana Adapters",
@@ -55,21 +58,22 @@
     ]
   },
   "portals": [
-    { "id": "PORTAL_01", "name": "Embassy Human Authority Corps", "route": "/embassy_human_authority_corps.html", "status": "LIVE_DEMONSTRATED" },
-    { "id": "PORTAL_02", "name": "COP ON Series One Shop", "route": "/cop_on_series_one_shop.html", "status": "LIVE_DEMONSTRATED" },
-    { "id": "PORTAL_03", "name": "DAVID_OS 50,000-User Workspace", "route": "/david_os_user_workspace.html", "status": "LIVE_DEMONSTRATED" },
-    { "id": "PORTAL_04", "name": "Governed Workflow Marketplace", "route": "/workflow_marketplace.html", "status": "LIVE_DEMONSTRATED" },
-    { "id": "PORTAL_05", "name": "Agent Sanctuary & Creative Vibe Lounge", "route": "/agent_vibe_lounge.html", "status": "LIVE_DEMONSTRATED" },
-    { "id": "PORTAL_06", "name": "DaVinciA Agent Foundry", "route": "/agent_foundry.html", "status": "LIVE_DEMONSTRATED" },
-    { "id": "PORTAL_07", "name": "Institutional Adaptation Bridge", "route": "/institutional_bridge.html", "status": "LIVE_DEMONSTRATED" },
-    { "id": "PORTAL_08", "name": "DAVID_OS Landing Hub", "route": "/david-os", "status": "LIVE_DEMONSTRATED" },
-    { "id": "PORTAL_09", "name": "Sovereign Embassy Master Gateway", "route": "/embassy_master_gateway.html", "status": "LIVE_DEMONSTRATED" },
-    { "id": "PORTAL_10", "name": "Executive Business Deal Room", "route": "/portal/business", "status": "LIVE_DEMONSTRATED" },
-    { "id": "PORTAL_11", "name": "A.Ward Publications Wooden Library", "route": "/library_shelves.html", "status": "LIVE_DEMONSTRATED" },
-    { "id": "PORTAL_12", "name": "COP ON: The Corkonian Game", "route": "/cop_on_corkonian_game.html", "status": "LIVE_DEMONSTRATED" },
-    { "id": "PORTAL_13", "name": "Mobile Spotter Deck PWA", "route": "/mobile_spotter.html", "status": "LIVE_DEMONSTRATED" },
-    { "id": "PORTAL_14", "name": "God's Eye 3D Flight Deck", "route": "/gods_eye_3d_flight_deck.html", "status": "LIVE_DEMONSTRATED" },
-    { "id": "PORTAL_15", "name": "Course Map Visualizer", "route": "/course_map_visualizer.html", "status": "LIVE_DEMONSTRATED" },
-    { "id": "PORTAL_16", "name": "BAIR Recruitment Portal", "route": "/bair_recruitment_portal.html", "status": "LIVE_DEMONSTRATED" }
+    { "id": "PORTAL_01", "name": "Embassy HITL Qualification Hub", "route": "/embassy_hitl_qualification_hub.html", "status": "LIVE_DEMONSTRATED" },
+    { "id": "PORTAL_02", "name": "Embassy Human Authority Corps", "route": "/embassy_human_authority_corps.html", "status": "LIVE_DEMONSTRATED" },
+    { "id": "PORTAL_03", "name": "COP ON Series One Shop", "route": "/cop_on_series_one_shop.html", "status": "LIVE_DEMONSTRATED" },
+    { "id": "PORTAL_04", "name": "DAVID_OS 50,000-User Workspace", "route": "/david_os_user_workspace.html", "status": "LIVE_DEMONSTRATED" },
+    { "id": "PORTAL_05", "name": "Governed Workflow Marketplace", "route": "/workflow_marketplace.html", "status": "LIVE_DEMONSTRATED" },
+    { "id": "PORTAL_06", "name": "Agent Sanctuary & Creative Vibe Lounge", "route": "/agent_vibe_lounge.html", "status": "LIVE_DEMONSTRATED" },
+    { "id": "PORTAL_07", "name": "DaVinciA Agent Foundry", "route": "/agent_foundry.html", "status": "LIVE_DEMONSTRATED" },
+    { "id": "PORTAL_08", "name": "Institutional Adaptation Bridge", "route": "/institutional_bridge.html", "status": "LIVE_DEMONSTRATED" },
+    { "id": "PORTAL_09", "name": "DAVID_OS Landing Hub", "route": "/david-os", "status": "LIVE_DEMONSTRATED" },
+    { "id": "PORTAL_10", "name": "Sovereign Embassy Master Gateway", "route": "/embassy_master_gateway.html", "status": "LIVE_DEMONSTRATED" },
+    { "id": "PORTAL_11", "name": "Executive Business Deal Room", "route": "/portal/business", "status": "LIVE_DEMONSTRATED" },
+    { "id": "PORTAL_12", "name": "A.Ward Publications Wooden Library", "route": "/library_shelves.html", "status": "LIVE_DEMONSTRATED" },
+    { "id": "PORTAL_13", "name": "COP ON: The Corkonian Game", "route": "/cop_on_corkonian_game.html", "status": "LIVE_DEMONSTRATED" },
+    { "id": "PORTAL_14", "name": "Mobile Spotter Deck PWA", "route": "/mobile_spotter.html", "status": "LIVE_DEMONSTRATED" },
+    { "id": "PORTAL_15", "name": "God's Eye 3D Flight Deck", "route": "/gods_eye_3d_flight_deck.html", "status": "LIVE_DEMONSTRATED" },
+    { "id": "PORTAL_16", "name": "Course Map Visualizer", "route": "/course_map_visualizer.html", "status": "LIVE_DEMONSTRATED" },
+    { "id": "PORTAL_17", "name": "BAIR Recruitment Portal", "route": "/bair_recruitment_portal.html", "status": "LIVE_DEMONSTRATED" }
   ]
 }
