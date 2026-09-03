@@ -19,6 +19,7 @@ console.log("  ✓ BAIS DEMPE Transfer Pricing & Stripe Payment Rails Active!");
 console.log("\n  [4/4] Launching Vite Dev-Server & Opening Review Control Portals...");
 
 const portals = [
+  'http://localhost:4173/david-os/index.html',
   'http://localhost:4173/portal/business/index.html',
   'http://localhost:4173/master_review_control_center.html',
   'http://localhost:4173/tri_universe_world_explorer.html',
