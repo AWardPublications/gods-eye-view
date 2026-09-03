@@ -15,6 +15,8 @@
       --davincia-pink: #ec4899;
       --shelves-wood: #d8b354;
       --spotter-teal: #10b981;
+      --flight-cyan: #06b6d4;
+      --course-lime: #84cc16;
       --text: #f8fafc;
       --sub: #94a3b8;
     }
@@ -31,7 +33,7 @@
     }
     .header h1 {
       font-size: 2.6rem;
-      background: linear-gradient(to right, var(--embassy-blue), var(--cork-gold), var(--golf-green), var(--bair-purple), var(--davincia-pink), var(--spotter-teal));
+      background: linear-gradient(to right, var(--embassy-blue), var(--cork-gold), var(--golf-green), var(--bair-purple), var(--davincia-pink), var(--flight-cyan));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 8px;
@@ -55,6 +57,8 @@
     .gateway-card.embassy { border-top: 4px solid var(--embassy-blue); }
     .gateway-card.shelves { border-top: 4px solid var(--shelves-wood); }
     .gateway-card.spotter { border-top: 4px solid var(--spotter-teal); }
+    .gateway-card.flight { border-top: 4px solid var(--flight-cyan); }
+    .gateway-card.course { border-top: 4px solid var(--course-lime); }
 
     .portal-name {
       font-size: 1.5rem;
@@ -88,7 +92,7 @@
 
   <div class="header">
     <h1>🏰 DAVID_OS EMBASSY — MASTER PORTAL GATEWAY</h1>
-    <p>The Central Sovereign Embassy Switcher Routing to Corkonian, Alex Wenger, BAIR, DaVinciA DVA, Mobile Spotter & Embassy Deal Rooms</p>
+    <p>The Central Sovereign Embassy Switcher Routing to Corkonian, Alex Wenger, BAIR, DaVinciA DVA, 3D Flight Deck, Course Map & Embassy Deal Rooms</p>
   </div>
 
   <div class="gateway-grid">
@@ -109,15 +113,31 @@
       <a href="/golf-resort" class="btn-enter">Enter Alpine Golf Resort Portal →</a>
     </div>
 
-    <!-- PORTAL 3: MOBILE SPOTTER DECK -->
+    <!-- PORTAL 3: GOD'S EYE 3D FLIGHT DECK -->
+    <div class="gateway-card flight">
+      <h2 class="portal-name">✈️ GOD'S EYE 3D FLIGHT DECK</h2>
+      <div class="portal-theme">Cesium 3D Air & Satellite Telemetry Deck</div>
+      <div class="hitl-tag">HITL Steward: Air Telemetry Commander</div>
+      <a href="/gods_eye_3d_flight_deck.html" class="btn-enter">Open 3D Flight Deck (/gods_eye_3d_flight_deck.html) →</a>
+    </div>
+
+    <!-- PORTAL 4: COURSE MAP VISUALIZER -->
+    <div class="gateway-card course">
+      <h2 class="portal-name">🗺️ COURSE MAP VISUALIZER</h2>
+      <div class="portal-theme">Golf Course Polygon & Terrain Topography Inspector</div>
+      <div class="hitl-tag">HITL Steward: PGA Course Topology Architect</div>
+      <a href="/course_map_visualizer.html" class="btn-enter">Open Course Map Visualizer (/course_map_visualizer.html) →</a>
+    </div>
+
+    <!-- PORTAL 5: MOBILE SPOTTER DECK -->
     <div class="gateway-card spotter">
       <h2 class="portal-name">📱 MOBILE SPOTTER DECK</h2>
-      <div class="portal-theme">Touch-First On-Course 2D Shot Telemetry & Lie PWA</div>
+      <div class="portal-theme">Touch-First On-Course 2D Shot Telemetry PWA</div>
       <div class="hitl-tag">HITL Steward: PGA Field Spotter Marshal</div>
       <a href="/mobile_spotter.html" class="btn-enter">Open Mobile Spotter App (/mobile_spotter.html) →</a>
     </div>
 
-    <!-- PORTAL 4: BAIR ACADEMY -->
+    <!-- PORTAL 6: BAIR ACADEMY -->
     <div class="gateway-card bair">
       <h2 class="portal-name">🎓 BAIR (Brehon AI Research)</h2>
       <div class="portal-theme">BAIR Storybook Academy & PGA Contractor Onboarding</div>
@@ -125,7 +145,7 @@
       <a href="/bair-academy" class="btn-enter">Enter BAIR Research Academy →</a>
     </div>
 
-    <!-- PORTAL 5: DAVINCIA DVA -->
+    <!-- PORTAL 7: DAVINCIA DVA -->
     <div class="gateway-card davincia">
       <h2 class="portal-name">🧠 DAVINCIA DVA (DaVinciA⁺)</h2>
       <div class="portal-theme">15-Agent Capital Constellation & Governed Kernel</div>
@@ -133,7 +153,7 @@
       <a href="/davincia-dva" class="btn-enter">Enter DaVinciA DVA Kernel →</a>
     </div>
 
-    <!-- PORTAL 6: LIBRARY SHELVES -->
+    <!-- PORTAL 8: LIBRARY SHELVES -->
     <div class="gateway-card shelves">
       <h2 class="portal-name">📚 DAVID_OS LIBRARY SHELVES</h2>
       <div class="portal-theme">Visual Wooden Bookshelf & Publishing Vaults</div>
@@ -141,7 +161,7 @@
       <a href="/library_shelves.html" class="btn-enter">Enter 3D/2D Wooden Library Shelves →</a>
     </div>
 
-    <!-- PORTAL 7: DAVID_OS EMBASSY -->
+    <!-- PORTAL 9: DAVID_OS EMBASSY -->
     <div class="gateway-card embassy">
       <h2 class="portal-name">🏰 DAVID_OS EMBASSY</h2>
       <div class="portal-theme">Master Sovereign Embassy & Series A Deal Rooms</div>

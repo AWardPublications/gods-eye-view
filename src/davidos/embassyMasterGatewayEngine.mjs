@@ -14,6 +14,8 @@ export class EmbassyMasterGatewayEngine {
     this.embassyGatewayPortals = [
       { id: 'PORTAL_CORKONIAN', name: 'CORKONIAN OS', theme: 'The Island & Multilingual Civic Tech', route: '/corkonian-island', hitl: 'City Ambassador (CorkMan)' },
       { id: 'PORTAL_ALEX_WENGER', name: 'ALEX WENGER OS', theme: 'Alpine Golf Resort & Aero Physics', route: '/golf-resort', hitl: 'Resort Director (Alex Wenger)' },
+      { id: 'PORTAL_FLIGHT_DECK', name: 'GODS EYE 3D FLIGHT DECK', theme: 'Cesium 3D Air & Satellite Telemetry Deck', route: '/gods_eye_3d_flight_deck.html', hitl: 'Air Telemetry Commander' },
+      { id: 'PORTAL_COURSE_MAP', name: 'COURSE MAP VISUALIZER', theme: 'Golf Course Polygon & Terrain Inspector', route: '/course_map_visualizer.html', hitl: 'PGA Course Topology Architect' },
       { id: 'PORTAL_MOBILE_SPOTTER', name: 'MOBILE SPOTTER DECK', theme: 'Touch-First On-Course 2D Shot Telemetry PWA', route: '/mobile_spotter.html', hitl: 'PGA Field Spotter Marshal' },
       { id: 'PORTAL_BAIR', name: 'BAIR (Brehon AI Research)', theme: 'BAIR Storybook Academy & Contractor Onboarding', route: '/bair-academy', hitl: 'PGA Master Contractor Chair' },
       { id: 'PORTAL_DAVINCIA_DVA', name: 'DAVINCIA DVA (DaVinciA⁺)', theme: '15-Agent Capital Constellation & Governed Kernel', route: '/davincia-dva', hitl: 'DaVinciA⁺ Circuit Breaker' },
