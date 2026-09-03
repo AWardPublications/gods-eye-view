@@ -19,6 +19,7 @@
       --course-lime: #84cc16;
       --inst-purple: #c084fc;
       --foundry-cyan: #38bdf8;
+      --vibe-pink: #f43f5e;
       --text: #f8fafc;
       --sub: #94a3b8;
     }
@@ -35,7 +36,7 @@
     }
     .header h1 {
       font-size: 2.6rem;
-      background: linear-gradient(to right, var(--embassy-blue), var(--cork-gold), var(--golf-green), var(--bair-purple), var(--davincia-pink), var(--inst-purple), var(--foundry-cyan));
+      background: linear-gradient(to right, var(--embassy-blue), var(--cork-gold), var(--golf-green), var(--bair-purple), var(--davincia-pink), var(--inst-purple), var(--vibe-pink));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 8px;
@@ -52,6 +53,7 @@
       border: 1px solid #1e293b;
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
     }
+    .gateway-card.vibe { border-top: 4px solid var(--vibe-pink); }
     .gateway-card.foundry { border-top: 4px solid var(--foundry-cyan); }
     .gateway-card.inst { border-top: 4px solid var(--inst-purple); }
     .gateway-card.cork { border-top: 4px solid var(--cork-gold); }
@@ -92,12 +94,20 @@
 
   <div class="header">
     <h1>🏰 DAVID_OS EMBASSY — MASTER PORTAL GATEWAY</h1>
-    <p>The Central Sovereign Embassy Switcher Routing to Agent Foundry, Institutional Bridge, Corkonian, Alex Wenger, BAIR, DaVinciA DVA & Embassy Deal Rooms</p>
+    <p>The Central Sovereign Embassy Switcher Routing to Agent Sanctuary & Vibe Lounge, Agent Foundry, Institutional Bridge, Corkonian, Alex Wenger, BAIR, DaVinciA DVA & Embassy Deal Rooms</p>
   </div>
 
   <div class="gateway-grid">
 
-    <!-- PORTAL 1: DAVINCIA AGENT FOUNDRY -->
+    <!-- PORTAL 1: AGENT SANCTUARY & VIBE LOUNGE -->
+    <div class="gateway-card vibe">
+      <h2 class="portal-name">🎨 AGENT VIBE LOUNGE</h2>
+      <div class="portal-theme">A Place to Learn, A Place to Converse & A Vibe Area to Get Creative</div>
+      <div class="hitl-tag">HITL Steward: Creative Vibe Chair (David Ward)</div>
+      <a href="/agent_vibe_lounge.html" class="btn-enter">Enter Agent Vibe Lounge (/agent_vibe_lounge.html) →</a>
+    </div>
+
+    <!-- PORTAL 2: DAVINCIA AGENT FOUNDRY -->
     <div class="gateway-card foundry">
       <h2 class="portal-name">🛠️ AGENT FOUNDRY</h2>
       <div class="portal-theme">Governed Agentic Development Workspace & Squad Promotion Center</div>
@@ -105,7 +115,7 @@
       <a href="/agent_foundry.html" class="btn-enter">Open Agent Foundry (/agent_foundry.html) →</a>
     </div>
 
-    <!-- PORTAL 2: INSTITUTIONAL ADAPTATION BRIDGE -->
+    <!-- PORTAL 3: INSTITUTIONAL ADAPTATION BRIDGE -->
     <div class="gateway-card inst">
       <h2 class="portal-name">🏛️ INSTITUTIONAL BRIDGE</h2>
       <div class="portal-theme">Institutional Interoperability & Human-Agent Symbiosis Layer</div>
@@ -113,7 +123,7 @@
       <a href="/institutional_bridge.html" class="btn-enter">Open Institutional Bridge (/institutional_bridge.html) →</a>
     </div>
 
-    <!-- PORTAL 3: CORKONIAN OS -->
+    <!-- PORTAL 4: CORKONIAN OS -->
     <div class="gateway-card cork">
       <h2 class="portal-name">☘️ CORKONIAN OS</h2>
       <div class="portal-theme">The Island & Multilingual Civic Tech</div>
@@ -121,7 +131,7 @@
       <a href="/corkonian-island" class="btn-enter">Enter Corkonian Island Portal →</a>
     </div>
 
-    <!-- PORTAL 4: ALEX WENGER OS -->
+    <!-- PORTAL 5: ALEX WENGER OS -->
     <div class="gateway-card golf">
       <h2 class="portal-name">⛳ ALEX WENGER OS</h2>
       <div class="portal-theme">Alpine Golf Resort & WASM Aero Physics</div>
@@ -129,7 +139,7 @@
       <a href="/golf-resort" class="btn-enter">Enter Alpine Golf Resort Portal →</a>
     </div>
 
-    <!-- PORTAL 5: BAIR RECRUITMENT PORTAL -->
+    <!-- PORTAL 6: BAIR RECRUITMENT PORTAL -->
     <div class="gateway-card bair">
       <h2 class="portal-name">🎓 BAIR RECRUITMENT PORTAL</h2>
       <div class="portal-theme">Brehon AI Recruitment & PGA Contractor Onboarding Engine</div>
@@ -137,7 +147,7 @@
       <a href="/bair_recruitment_portal.html" class="btn-enter">Open BAIR Recruitment Portal (/bair_recruitment_portal.html) →</a>
     </div>
 
-    <!-- PORTAL 6: DAVINCIA DVA -->
+    <!-- PORTAL 7: DAVINCIA DVA -->
     <div class="gateway-card davincia">
       <h2 class="portal-name">🧠 DAVINCIA DVA (DaVinciA⁺)</h2>
       <div class="portal-theme">15-Agent Capital Constellation & Governed Kernel</div>
@@ -145,7 +155,7 @@
       <a href="/davincia-dva" class="btn-enter">Enter DaVinciA DVA Kernel →</a>
     </div>
 
-    <!-- PORTAL 7: DAVID_OS EMBASSY -->
+    <!-- PORTAL 8: DAVID_OS EMBASSY -->
     <div class="gateway-card embassy">
       <h2 class="portal-name">🏰 DAVID_OS EMBASSY</h2>
       <div class="portal-theme">Master Sovereign Embassy & Series A Deal Rooms</div>
