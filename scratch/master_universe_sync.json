@@ -1,0 +1,43 @@
+{
+  "name": "Master Universe Nora GPG Consent Sync Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "v1/reviewer/nora/sign_off",
+        "options": {}
+      },
+      "name": "Webhook Nora Sign Off",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "const crypto = require('crypto');\nconst payload = items[0].json;\nconst gpgKey = '0x80D0ADA1';\nconst hash = crypto.createHash('sha256').update(JSON.stringify(payload) + gpgKey).digest('hex');\nreturn [{ json: { status: 'GnuPG_SIGNED', operator: 'Adrian Daly (0x80D0ADA1)', payload_hash: hash } }];"
+      },
+      "name": "GnuPG Signer Node",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO bait_telemetry_ingestion_log (session_id, operator_gpg_key, slope_angle_deg, wind_velocity_mps, distance_to_target_meters, execution_state) VALUES ('nora_review_01', '0x80D0ADA1', 0.0, 0.0, 0.0, 'CONTINUE');"
+      },
+      "name": "PostgreSQL Commit Node",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 1,
+      "position": [650, 300]
+    }
+  ],
+  "connections": {
+    "Webhook Nora Sign Off": {
+      "main": [[{ "node": "GnuPG Signer Node", "type": "main", "index": 0 }]]
+    },
+    "GnuPG Signer Node": {
+      "main": [[{ "node": "PostgreSQL Commit Node", "type": "main", "index": 0 }]]
+    }
+  }
+}
