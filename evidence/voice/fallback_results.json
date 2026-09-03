@@ -1,7 +1,7 @@
 {
   "test": "REAL_TONE_AND_FALLBACK_VALIDATION",
   "status": "PASSED",
-  "timestamp_utc": "2026-09-03T19:06:17.716Z",
+  "timestamp_utc": "2026-09-03T19:25:13.671Z",
   "tone_modulations": {
     "baseline": {
       "speed": 1,
