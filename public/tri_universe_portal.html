@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tri-Universe Governed Operating System Portal — DAVID_OS / ALEX WENGER OS / CORKONIAN OS</title>
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --card-bg: #1e293b;
+      --accent-embassy: #0284c7;
+      --accent-golf: #16a34a;
+      --accent-cork: #db2777;
+      --text-light: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    body {
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      margin: 0;
+      padding: 24px;
+    }
+    .header {
+      text-align: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #334155;
+    }
+    .header h1 {
+      font-size: 2.2rem;
+      color: var(--accent-embassy);
+      margin: 0 0 8px 0;
+    }
+    .header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .tab-btn {
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: var(--card-bg);
+      color: var(--text-light);
+      transition: all 0.3s ease;
+    }
+    .tab-btn.active-embassy { background-color: var(--accent-embassy); }
+    .tab-btn.active-golf { background-color: var(--accent-golf); }
+    .tab-btn.active-cork { background-color: var(--accent-cork); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid #334155;
+    }
+    .card h3 {
+      margin-top: 0;
+      font-size: 1.3rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    .badge-hitl { background-color: #78350f; color: #fde68a; }
+    .badge-approved { background-color: #064e3b; color: #a7f3d0; }
+
+    .console {
+      background-color: #020617;
+      border-radius: 8px;
+      padding: 16px;
+      font-family: monospace;
+      font-size: 0.9rem;
+      color: #38bdf8;
+      height: 200px;
+      overflow-y: auto;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>🌐☘️⛳ TRI-UNIVERSE GOVERNED OPERATING SYSTEM PORTAL</h1>
+    <p>Zero-Waste Governed AI Architecture • 3 Products • 3 HITL Ambassador Roles • Cross-Universe Adapter Engine</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active-embassy" onclick="switchUniverse('DAVID_OS')">🏰 DAVID_OS (The Embassy)</button>
+    <button class="tab-btn" onclick="switchUniverse('ALEX_WENGER_OS')">⛳ ALEX WENGER OS (Alpine Golf Resort)</button>
+    <button class="tab-btn" onclick="switchUniverse('CORKONIAN_OS')">☘️ CORKONIAN OS (The Island)</button>
+  </div>
+
+  <div class="grid" id="universe-content">
+    <!-- Dynamic Cards -->
+  </div>
+
+  <h2>📡 LIVE CROSS-UNIVERSE WORKFLOW MESSENGER & ADAPTER LEDGER</h2>
+  <div class="console" id="audit-console">
+    [2026-09-03T15:25:00Z] Messenger Agent Adrian Daly (GPG 0x80D0ADA1) initialized cross-universe channel.<br>
+    [2026-09-03T15:25:01Z] DaVinciA⁺ Adapter morphed RK4 Ballistics Workflow into Bisse du Ro Hydrology Pipeline (Zero Waste).<br>
+    [2026-09-03T15:25:02Z] HITL Hard Pause Gate active for Embassy Ambassador (David Ward) on €50.0M Venture Grant Allocation.<br>
+  </div>
+
+  <script>
+    const universes = {
+      DAVID_OS: {
+        title: "🏰 DAVID_OS (The Sovereign Embassy)",
+        hitl: "Embassy Ambassador / Executive Chair (David Ward)",
+        accent: "var(--accent-embassy)",
+        characters: [
+          { name: "Executive Strategy Agent", role: "Venture Capital & Deal Structuring", status: "AUTONOMOUS_APPROVED" },
+          { name: "Deal Room Diligence Agent", role: "Series A Diligence & Data Room", status: "HITL_PAUSE_ACTIVE" }
+        ]
+      },
+      ALEX_WENGER_OS: {
+        title: "⛳ ALEX WENGER OS (The Alpine Golf Resort)",
+        hitl: "Golf Resort Director / Head Pro (Alex Wenger)",
+        accent: "var(--accent-golf)",
+        characters: [
+          { name: "PGA Master Coaching Agent", role: "Swing Mechanics & RK4 Physics", status: "AUTONOMOUS_APPROVED" },
+          { name: "Links Fescue Turf Science Agent", role: "Turf Moisture & Aerodynamics", status: "AUTONOMOUS_APPROVED" }
+        ]
+      },
+      CORKONIAN_OS: {
+        title: "☘️ CORKONIAN OS (The Island)",
+        hitl: "City Ambassador / Civic Steward (CorkMan / Aidy)",
+        accent: "var(--accent-cork)",
+        characters: [
+          { name: "CorkSwam Archetype Agent", role: "Civic Intelligence & Cultural Lore", status: "AUTONOMOUS_APPROVED" },
+          { name: "Lee Side Hydrology Agent", role: "Alpine-Atlantic Waterways", status: "AUTONOMOUS_APPROVED" }
+        ]
+      }
+    };
+
+    function switchUniverse(id) {
+      const data = universes[id];
+      const container = document.getElementById('universe-content');
+      container.innerHTML = `
+        <div class="card" style="border-left: 4px solid ${data.accent}">
+          <h3>${data.title}</h3>
+          <p><strong>Human-in-the-Loop Steward:</strong> ${data.hitl}</p>
+        </div>
+      ` + data.characters.map(c => `
+        <div class="card">
+          <h3>${c.name}</h3>
+          <p><strong>Role:</strong> ${c.role}</p>
+          <p><span class="badge ${c.status === 'HITL_PAUSE_ACTIVE' ? 'badge-hitl' : 'badge-approved'}">${c.status}</span></p>
+        </div>
+      `).join('');
+    }
+
+    switchUniverse('DAVID_OS');
+  </script>
+</body>
+</html>
