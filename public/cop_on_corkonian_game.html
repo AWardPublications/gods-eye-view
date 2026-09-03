@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COP ON: The Corkonian Game — Phygital TCG & Governance Card Engine</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #131c2e;
+      --gold: #fbbf24;
+      --text: #f8fafc;
+      --sub: #94a3b8;
+    }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 32px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .header h1 {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .deck-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .tcg-card {
+      background-color: var(--card-bg);
+      border-radius: 16px;
+      padding: 20px;
+      border: 2px solid var(--gold);
+      box-shadow: 0 10px 25px -5px rgba(251, 191, 36, 0.2);
+      text-align: center;
+    }
+    .tcg-card h3 {
+      margin-top: 0;
+      font-size: 1.4rem;
+      color: var(--gold);
+    }
+    .power-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-weight: bold;
+      background-color: #78350f;
+      color: #fde68a;
+      margin: 10px 0;
+    }
+    .ability {
+      font-size: 0.85rem;
+      color: var(--sub);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .btn-play {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #d97706, #b45309);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>☘️ COP ON: THE CORKONIAN GAME</h1>
+    <p>Phygital TCG Engine • Book Vol 3 (ISBN 978-1-918501-02-5) • CorkMan vs Cork Gollum Challenge</p>
+  </div>
+
+  <div class="deck-grid">
+
+    <div class="tcg-card">
+      <h3>🦸 CorkMan (Aidy O'Dalaigh)</h3>
+      <p><em>City Ambassador Hero</em></p>
+      <div class="power-badge">POWER: 95</div>
+      <div class="ability">
+        <strong>Governance Ability:</strong><br>L1 Sovereign Messenger Seal (GPG 0x80D0ADA1)
+      </div>
+      <button class="btn-play" onclick="playTurn('CorkMan', 'Cork Gollum')">Play Governance Action →</button>
+    </div>
+
+    <div class="tcg-card">
+      <h3>👹 Cork Gollum</h3>
+      <p><em>Vault Guardian</em></p>
+      <div class="power-badge">POWER: 88</div>
+      <div class="ability">
+        <strong>Governance Ability:</strong><br>Secret Vault Shield & Lore Lock
+      </div>
+      <button class="btn-play" onclick="playTurn('Cork Gollum', 'Lee Side Hydrologist')">Defend Secret Vault →</button>
+    </div>
+
+    <div class="tcg-card">
+      <h3>🦢 CorkSwam Archetype</h3>
+      <p><em>Civic Intelligence</em></p>
+      <div class="power-badge">POWER: 85</div>
+      <div class="ability">
+        <strong>Governance Ability:</strong><br>Multilingual Civic Broadcast
+      </div>
+    </div>
+
+    <div class="tcg-card">
+      <h3>🌊 Lee Side Hydrologist</h3>
+      <p><em>Alpine Waterkeeper</em></p>
+      <div class="power-badge">POWER: 82</div>
+      <div class="ability">
+        <strong>Governance Ability:</strong><br>Bisse du Ro Hydrology Flow
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function playTurn(player, opponent) {
+      alert(`🎮 COP ON GAME TURN EXECUTED:\n\nPlayer Card: ${player}\nOpponent Card: ${opponent}\nResult: GOVERNANCE VICTORY! GPG Record Signed.`);
+    }
+  </script>
+</body>
+</html>
