@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RM-10 Room of Refusal — Sovereign Embassy</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Outfit:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+  <style>
+    :root {
+      --bg-dark: #07090e;
+      --panel-bg: #10141d;
+      --accent-bronze: #cd7f32;
+      --accent-gold: #d4af37;
+      --accent-slate: #1e293b;
+      --accent-red: #ef4444;
+      --accent-green: #10b981;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: #1e293b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Outfit', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: var(--panel-bg);
+      border-bottom: 2px solid var(--accent-bronze);
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header-title h1 { font-size: 1.5rem; color: var(--accent-bronze); font-weight: 700; font-family: 'Cinzel', serif; }
+    .header-title p { font-size: 0.85rem; color: var(--text-muted); }
+    .badge {
+      background: rgba(205, 127, 50, 0.15);
+      color: var(--accent-bronze);
+      border: 1px solid var(--accent-bronze);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      max-width: 1600px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .card {
+      background: var(--panel-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--accent-bronze);
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Cinzel', serif;
+    }
+    
+    /* Sanctuary Elevation View */
+    .sanctuary-preview {
+      position: relative;
+      width: 100%;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      background: #000;
+      height: 480px;
+    }
+    .sanctuary-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .inscription-overlay {
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 85%;
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      color: #e2e8f0;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+      letter-spacing: 1px;
+      background: rgba(0,0,0,0.6);
+      padding: 1rem;
+      border-radius: 6px;
+      border: 1px solid rgba(205, 127, 50, 0.4);
+    }
+
+    /* Console Controls */
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .control-group label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    input, select, button {
+      width: 100%;
+      padding: 0.75rem;
+      background: #0f172a;
+      border: 1px solid var(--border-color);
+      color: #fff;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+    button.btn-bronze {
+      background: linear-gradient(135deg, #8b5a2b, var(--accent-bronze));
+      color: #fff;
+      font-weight: 700;
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(205, 127, 50, 0.3);
+      transition: transform 0.1s;
+    }
+    button.btn-bronze:active { transform: scale(0.98); }
+
+    .shield-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: #1e293b;
+      padding: 0.75rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .log-box {
+      background: #020617;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--accent-green);
+      height: 220px;
+      overflow-y: auto;
+    }
+    .log-item { margin-bottom: 0.4rem; border-bottom: 1px dotted #334155; padding-bottom: 0.2rem; }
+    .status-alert {
+      padding: 0.75rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .status-alert.alert-success { background: rgba(16, 185, 129, 0.15); border: 1px solid var(--accent-green); color: var(--accent-green); }
+    .status-alert.alert-blocked { background: rgba(239, 68, 68, 0.15); border: 1px solid var(--accent-red); color: var(--accent-red); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-title">
+      <h1>🏛️ RM-10 ROOM OF REFUSAL</h1>
+      <p>Decoupled Physical Veto Sanctuary & Human Authority Core</p>
+    </div>
+    <div class="badge">DVA-RM10-REFUSAL-v1.0</div>
+  </header>
+
+  <main>
+    <!-- Left Panel: Concept Elevation & Inscription -->
+    <div class="card">
+      <div class="card-title">
+        <span>🖼️ REAR WALL ELEVATION & INSCRIBED MANDATE</span>
+        <span style="font-size:0.8rem; color:var(--text-muted);">NC-25 Acoustic Quiet Zone</span>
+      </div>
+
+      <div class="sanctuary-preview">
+        <img src="/room_of_refusal_rm10.png" alt="Room of Refusal Elevation">
+        <div class="inscription-overlay">
+          "Should this decision have been automated at all?"
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel: Refusal Console Controls -->
+    <div class="card">
+      <div class="card-title"><span>🎛️ REFUSAL LECTERN CONSOLE</span></div>
+
+      <div class="control-group">
+        <label>Active Human Steward:</label>
+        <input type="text" id="stewardInput" value="usr_david_001 (David Ward)">
+      </div>
+
+      <div class="control-group">
+        <label>Target Automation Action to Discard:</label>
+        <select id="actionSelect">
+          <option value="act_n8n_email_dispatch_104">n8n Batch Email Dispatch (#104)</option>
+          <option value="act_media_gen_wc26_09">AI Media Generation Execution (#09)</option>
+          <option value="act_grant_auto_submit_22">Autonomous Grant Submission (#22)</option>
+        </select>
+      </div>
+
+      <div class="shield-toggle">
+        <input type="checkbox" id="shieldCheckbox" checked>
+        <label for="shieldCheckbox" style="color:#fff; cursor:pointer;">Lift Polycarbonate Safety Shield (Two-Stage Safety)</label>
+      </div>
+
+      <div class="control-group">
+        <label>Applied Lever Force (Required: 15.0 N):</label>
+        <input type="number" id="forceInput" value="15.0" step="0.5">
+      </div>
+
+      <button id="depressLeverBtn" class="btn-bronze">⚙️ DEPRESS 15N BRONZE LEVER</button>
+
+      <div id="statusAlert" class="status-alert alert-success">
+        STATUS: SANCTUARY READY · Awaiting Physical Lever Actuation
+      </div>
+
+      <div class="card-title" style="margin-top:0.5rem;"><span>📜 POSTGRESQL APPEND-ONLY LEDGER</span></div>
+      <div class="log-box" id="ledgerLogBox">
+        <div class="log-item">SYSTEM: Null Genesis Hash Verified</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    async function sha256(message) {
+      const msgUint8 = new TextEncoder().encode(message);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    let prevHash = '0000000000000000000000000000000000000000000000000000000000000000';
+    let refusalSeq = 0;
+
+    const shieldCheckbox = document.getElementById('shieldCheckbox');
+    const forceInput = document.getElementById('forceInput');
+    const stewardInput = document.getElementById('stewardInput');
+    const actionSelect = document.getElementById('actionSelect');
+    const depressLeverBtn = document.getElementById('depressLeverBtn');
+    const statusAlert = document.getElementById('statusAlert');
+    const ledgerLogBox = document.getElementById('ledgerLogBox');
+
+    depressLeverBtn.addEventListener('click', async () => {
+      if (!shieldCheckbox.checked) {
+        statusAlert.className = 'status-alert alert-blocked';
+        statusAlert.innerText = 'VETO ABORTED: Polycarbonate safety shield is closed.';
+        return;
+      }
+
+      const force = parseFloat(forceInput.value);
+      if (force < 15.0) {
+        statusAlert.className = 'status-alert alert-blocked';
+        statusAlert.innerText = `VETO ABORTED: Force of ${force}N is below required 15N threshold.`;
+        return;
+      }
+
+      // Successful physical refusal commit!
+      refusalSeq++;
+      const timestamp = new Date().toISOString().substring(11, 19);
+      const targetAction = actionSelect.value;
+      const steward = stewardInput.value;
+
+      const entryHash = await sha256(`${steward}:${targetAction}:${timestamp}:${prevHash}`);
+      prevHash = entryHash;
+
+      statusAlert.className = 'status-alert alert-success';
+      statusAlert.innerText = `HUMAN DISCARD COMMITTED · Automation Token ${targetAction} REVOKED`;
+
+      const item = document.createElement('div');
+      item.className = 'log-item';
+      item.innerHTML = `[SEQ #${refusalSeq}] <b>VETO CONFIRMED</b> · Action: ${targetAction} · HASH: ${entryHash.substring(0, 16)}...`;
+      ledgerLogBox.appendChild(item);
+    });
+  </script>
+</body>
+</html>
