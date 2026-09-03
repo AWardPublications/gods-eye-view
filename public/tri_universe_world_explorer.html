@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tri-Universe World Blueprint Explorer — DAVID_OS / ALEX WENGER OS / CORKONIAN OS</title>
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #161e2e;
+      --embassy-glow: #0284c7;
+      --golf-glow: #16a34a;
+      --cork-glow: #db2777;
+      --text-main: #f1f5f9;
+      --text-sub: #94a3b8;
+    }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      margin: 0;
+      padding: 32px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .header h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(to right, #38bdf8, #4ade80, #f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+    .grid-worlds {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 24px;
+    }
+    .world-card {
+      background-color: var(--card-bg);
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid #1e293b;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    }
+    .world-card.embassy { border-top: 4px solid var(--embassy-glow); }
+    .world-card.golf { border-top: 4px solid var(--golf-glow); }
+    .world-card.cork { border-top: 4px solid var(--cork-glow); }
+    
+    .world-title {
+      font-size: 1.5rem;
+      margin: 0 0 12px 0;
+    }
+    .hitl-box {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+    .section-label {
+      font-weight: 700;
+      color: var(--text-sub);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pill {
+      background-color: #1e293b;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+    }
+    .agent-item {
+      background-color: #0f172a;
+      border-radius: 8px;
+      padding: 12px;
+      margin-top: 8px;
+      font-size: 0.9rem;
+      border-left: 3px solid #38bdf8;
+    }
+    .agent-gate {
+      color: #fbbf24;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>🌍 MASTER TRI-UNIVERSE WORLD EXPLORER</h1>
+    <p>Zero-Waste Architecture • 3 Governed Worlds • 3 HITL Ambassador Desks • Cross-World Workflows</p>
+  </div>
+
+  <div class="grid-worlds">
+    
+    <!-- WORLD 1: DAVID_OS EMBASSY -->
+    <div class="world-card embassy">
+      <h2 class="world-title">🏰 DAVID_OS: The Embassy</h2>
+      <div class="hitl-box">
+        <strong>HITL Desk:</strong> The Ambassador Desk (David Ward - Executive Chair)
+      </div>
+
+      <div class="section-label">Spatial Locations</div>
+      <div class="pill-list">
+        <span class="pill">Executive Boardroom</span>
+        <span class="pill">Series A Deal Room</span>
+        <span class="pill">GAMP 5 Audit Vault</span>
+        <span class="pill">Capital Control Center</span>
+      </div>
+
+      <div class="section-label">Character Agents & Pause Gates</div>
+      <div class="agent-item">
+        <strong>Executive Strategy Agent</strong><br>
+        Deal Structuring & Valuation<br>
+        <span class="agent-gate">HITL Gate: Action Value > €50,000</span>
+      </div>
+      <div class="agent-item">
+        <strong>Data Room Diligence Agent</strong><br>
+        Series A Diligence & Data Room<br>
+        <span class="agent-gate">HITL Gate: Confidential Release</span>
+      </div>
+
+      <div class="section-label">Workflow Backbone</div>
+      <p style="font-size: 0.9rem; color: var(--text-sub);">n8n Sovereign Venture Provisioning & Capital Acquisition Fabric</p>
+    </div>
+
+    <!-- WORLD 2: ALEX WENGER OS GOLF RESORT -->
+    <div class="world-card golf">
+      <h2 class="world-title">⛳ ALEX WENGER OS: Golf Resort</h2>
+      <div class="hitl-box">
+        <strong>HITL Desk:</strong> The Director Desk (Alex Wenger - Resort Director)
+      </div>
+
+      <div class="section-label">Spatial Locations</div>
+      <div class="pill-list">
+        <span class="pill">Valais 18-Hole Links</span>
+        <span class="pill">3-DoF Ballistics Range</span>
+        <span class="pill">Fescue Turf Soil Lab</span>
+        <span class="pill">PGA Telemetry Suite</span>
+      </div>
+
+      <div class="section-label">Character Agents & Pause Gates</div>
+      <div class="agent-item">
+        <strong>PGA Coaching Agent</strong><br>
+        Swing Mechanics & Video Audit<br>
+        <span class="agent-gate">HITL Gate: Player Plan Sign-off</span>
+      </div>
+      <div class="agent-item">
+        <strong>RK4 Aerodynamics Agent</strong><br>
+        WASM Ballistics & Wind Vectors<br>
+        <span class="agent-gate">HITL Gate: Physics Model Update</span>
+      </div>
+
+      <div class="section-label">Workflow Backbone</div>
+      <p style="font-size: 0.9rem; color: var(--text-sub);">n8n RK4 Ballistics & Course Topology Validation Pipeline</p>
+    </div>
+
+    <!-- WORLD 3: CORKONIAN OS ISLAND -->
+    <div class="world-card cork">
+      <h2 class="world-title">☘️ CORKONIAN OS: The Island</h2>
+      <div class="hitl-box">
+        <strong>HITL Desk:</strong> The Ambassador Desk (CorkMan / Aidy - City Ambassador)
+      </div>
+
+      <div class="section-label">Spatial Locations</div>
+      <div class="pill-list">
+        <span class="pill">Lee Side Hydrology</span>
+        <span class="pill">Shandon Bell Tower</span>
+        <span class="pill">CorkMan TCG Academy</span>
+        <span class="pill">Cork Tail Pavilion</span>
+      </div>
+
+      <div class="section-label">Character Agents & Pause Gates</div>
+      <div class="agent-item">
+        <strong>CorkSwam Archetype Agent</strong><br>
+        Civic Intelligence & Lore<br>
+        <span class="agent-gate">HITL Gate: Public Broadcast Release</span>
+      </div>
+      <div class="agent-item">
+        <strong>Lee Side Hydrologist Agent</strong><br>
+        Alpine-Atlantic Waterways<br>
+        <span class="agent-gate">HITL Gate: Environmental Alert</span>
+      </div>
+
+      <div class="section-label">Workflow Backbone</div>
+      <p style="font-size: 0.9rem; color: var(--text-sub);">n8n Multilingual Civic Intelligence & Phygital TCG Sync Pipeline</p>
+    </div>
+
+  </div>
+
+</body>
+</html>
