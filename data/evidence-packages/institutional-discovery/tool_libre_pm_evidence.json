@@ -1,0 +1,10 @@
+{
+  "tool_id": "tool_libre_pm",
+  "name": "LibrePM / Project Open",
+  "score": 87,
+  "classification": "ADAPT",
+  "license": "GPL-2.0",
+  "recommended_action": "ADAPT",
+  "evaluated_at": "2026-09-03T16:35:49.289Z",
+  "hash": "72fa49e1befe740f785430f5f9f3c9fefb88363073c2e2aed8f576756a6ed04c"
+}

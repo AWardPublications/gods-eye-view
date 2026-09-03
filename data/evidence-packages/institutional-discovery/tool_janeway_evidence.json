@@ -1,0 +1,10 @@
+{
+  "tool_id": "tool_janeway",
+  "name": "Janeway Publishing Platform",
+  "score": 85,
+  "classification": "ADAPT",
+  "license": "AGPL-3.0",
+  "recommended_action": "BRIDGE",
+  "evaluated_at": "2026-09-03T16:35:49.347Z",
+  "hash": "f3471d243f9de636013b363c62200bb686de50278071ab55036647201ddd27ea"
+}

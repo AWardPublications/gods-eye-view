@@ -1,0 +1,10 @@
+{
+  "tool_id": "tool_collective_access",
+  "name": "CollectiveAccess",
+  "score": 90,
+  "classification": "STRATEGIC_ADOPT",
+  "license": "GPL-3.0",
+  "recommended_action": "ADAPT",
+  "evaluated_at": "2026-09-03T16:35:49.258Z",
+  "hash": "a1aa79a274bbedffa30a6cfdbb538308492f6145e8735c46b0899b565c860629"
+}

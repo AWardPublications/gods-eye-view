@@ -1,0 +1,10 @@
+{
+  "tool_id": "tool_dspace",
+  "name": "DSpace Institutional Repository",
+  "score": 87,
+  "classification": "ADAPT",
+  "license": "BSD-3-Clause",
+  "recommended_action": "BRIDGE",
+  "evaluated_at": "2026-09-03T16:35:49.343Z",
+  "hash": "097afe74097f6b021d03836173ba37ddf22b2ea89738ece6cc7a37f7ba92ed6e"
+}

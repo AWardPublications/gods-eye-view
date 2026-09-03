@@ -1,0 +1,10 @@
+{
+  "tool_id": "tool_omeka_s",
+  "name": "Omeka S",
+  "score": 85,
+  "classification": "ADAPT",
+  "license": "GPL-3.0",
+  "recommended_action": "BRIDGE",
+  "evaluated_at": "2026-09-03T16:35:49.299Z",
+  "hash": "bdcde02d09a8731a8617dfcb7746fff7771d64c19702af1a2fe81227fcfc9d28"
+}

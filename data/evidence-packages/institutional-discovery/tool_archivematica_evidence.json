@@ -1,0 +1,10 @@
+{
+  "tool_id": "tool_archivematica",
+  "name": "Archivematica",
+  "score": 91,
+  "classification": "STRATEGIC_ADOPT",
+  "license": "GPL-3.0",
+  "recommended_action": "ADAPT",
+  "evaluated_at": "2026-09-03T16:35:49.304Z",
+  "hash": "ecd62884943a3251078ad5fd3ed1f06298584b8d17684cde24719cf9dc57debc"
+}

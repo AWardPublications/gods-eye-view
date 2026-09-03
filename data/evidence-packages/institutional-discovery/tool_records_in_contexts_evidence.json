@@ -1,0 +1,10 @@
+{
+  "tool_id": "tool_records_in_contexts",
+  "name": "RiC (Records in Contexts - ICA)",
+  "score": 90,
+  "classification": "STRATEGIC_ADOPT",
+  "license": "CC-BY 4.0 / Open Standard",
+  "recommended_action": "ADAPT",
+  "evaluated_at": "2026-09-03T16:35:49.358Z",
+  "hash": "57be7ea202fed974f424e689a5b0035eadb0ee3ccd49078738378c940d4811ae"
+}

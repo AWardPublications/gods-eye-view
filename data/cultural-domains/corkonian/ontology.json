@@ -1,0 +1,25 @@
+{
+  "domain_id": "domain_corkonian",
+  "name": "CORKONIAN OS — Cork Sovereign Cultural Domain",
+  "version": "1.0.0",
+  "description": "Civic tech, Bisse du Ro hydrology, Lee Side heritage, CorkMan TCG, and Shandon Bell lore.",
+  "entities": [
+    { "type": "Hero", "name": "CorkMan (Aidy O'Dalaigh)" },
+    { "type": "Guardian", "name": "Cork Gollum" },
+    { "type": "Swarm", "name": "CorkSwam Civic Intelligence" },
+    { "type": "Hydrology", "name": "Bisse du Ro Alpine-Atlantic Flow" },
+    { "type": "Beacon", "name": "Shandon Bell Ringer" }
+  ],
+  "authorities": [
+    { "name": "Aidy O'Dalaigh", "role": "City Ambassador & Sovereign Signer", "gpgKey": "0x80D0ADA1" }
+  ],
+  "rights": {
+    "default_rights_statement": "http://rightsstatements.org/vocab/InC/1.0/",
+    "default_license": "CC-BY-SA-4.0"
+  },
+  "policies": [
+    "POL-001: Protect Lee Side Archival Integrity",
+    "POL-002: Mandate Bisse du Ro Hydrology Flow Balance",
+    "POL-003: Pause High-Risk Actions for City Ambassador Review"
+  ]
+}

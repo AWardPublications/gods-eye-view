@@ -1,0 +1,10 @@
+{
+  "tool_id": "tool_civicrm_grant",
+  "name": "CiviCRM / CiviGrant",
+  "score": 82,
+  "classification": "ADAPT",
+  "license": "AGPL-3.0",
+  "recommended_action": "BRIDGE",
+  "evaluated_at": "2026-09-03T16:35:49.285Z",
+  "hash": "e334788146afb6c01b9eb086b76057afa672889657d39f7b7f51cd9bd65e7894"
+}

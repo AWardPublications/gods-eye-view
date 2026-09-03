@@ -1,0 +1,10 @@
+{
+  "tool_id": "tool_isni_api",
+  "name": "ISNI (International Standard Name Identifier)",
+  "score": 89,
+  "classification": "ADAPT",
+  "license": "ISO 27729 / Open Access",
+  "recommended_action": "BRIDGE",
+  "evaluated_at": "2026-09-03T16:35:49.324Z",
+  "hash": "608c8a9a2c7bde7192bdb3c1bbaca8e40e98ae6bc9fcfc121b4cc1430d29a06a"
+}

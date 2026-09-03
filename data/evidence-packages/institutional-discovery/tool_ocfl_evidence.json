@@ -1,0 +1,10 @@
+{
+  "tool_id": "tool_ocfl",
+  "name": "OCFL (Oxford Common File Layout)",
+  "score": 96,
+  "classification": "STRATEGIC_ADOPT",
+  "license": "CC-BY 4.0 / Open Standard",
+  "recommended_action": "ADOPT",
+  "evaluated_at": "2026-09-03T16:35:49.308Z",
+  "hash": "fc883e41b70190a9d009d4f1f46ab606ed542fc96bb6a69fadfc6c0f508880f9"
+}

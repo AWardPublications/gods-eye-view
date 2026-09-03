@@ -1,0 +1,10 @@
+{
+  "tool_id": "tool_viaf_api",
+  "name": "VIAF (Virtual International Authority File)",
+  "score": 88,
+  "classification": "ADAPT",
+  "license": "OCLC Open Data / CC-BY",
+  "recommended_action": "BRIDGE",
+  "evaluated_at": "2026-09-03T16:35:49.329Z",
+  "hash": "9bfc89698fbf0b57e1a937dfab7ecf2aaeafdfb671738ed24ec58c9487413007"
+}

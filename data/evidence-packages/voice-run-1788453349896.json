@@ -1,0 +1,42 @@
+{
+  "evidence_urn": "urn:davincia:evidence:voice:voice-turn-1788453349857",
+  "run_id": "voice-turn-1788453349857",
+  "player_id": "urn:davincia:athlete:alex_wenger",
+  "transcript_input": "Missed three consecutive putts completely, terrible rhythm today!",
+  "canonical_response_text": "[Supportive Pacing] Focus purely on tempo today. Maintain steady 3:1 backswing to downswing ratio. Keep it smooth and fluid.",
+  "canonical_text_hash": "sha256-c4d478b7013ead993cc8f6088c0f7d9be0b3a470213aea96662b2984e9698d8e",
+  "tone_state": "MODULATED",
+  "delivery_modality": "AUDIO_PRIMARY_SUMMARY",
+  "governance_verdict": "SUCCESS",
+  "vad": {
+    "is_speech": false,
+    "speech_probability": 0,
+    "is_barge_in": false,
+    "latency_ms": 1,
+    "provider_metadata": {
+      "engine": "SileroVADv5",
+      "version": "5.1.0",
+      "threshold": 0.5
+    }
+  },
+  "stt": {
+    "engine": "SherpaOnnxSTT",
+    "latency_ms": 1
+  },
+  "tts": {
+    "engine": "Kokoro82mONNX",
+    "latency_ms": 1,
+    "duration_ms": 9545,
+    "rtf": 0.0001
+  },
+  "transport": {
+    "frame_id": 7,
+    "tone_state": "MODULATED",
+    "latency_ms": 0,
+    "within_latency_bound": true,
+    "stream_status": "DISPATCHED"
+  },
+  "total_pipeline_latency_ms": 39,
+  "fallback_engaged": false,
+  "timestamp_utc": "2026-09-03T16:35:49.896Z"
+}

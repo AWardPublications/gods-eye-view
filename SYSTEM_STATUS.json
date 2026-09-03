@@ -1,18 +1,26 @@
 {
   "systemName": "DAVID_OS & DaVinciA⁺ Governed Operating Environment",
   "repository": "https://github.com/AWardPublications/gods-eye-view.git",
-  "canonicalCommitSha": "7bc5cb3dbbcaaad1928bbb64ffd4ca4ec264862e",
-  "latestMilestoneTag": "davincia-governed-marketplace-v0.8.0",
-  "lastAuditedIsoTimestamp": "2026-09-03T18:33:28Z",
+  "canonicalCommitSha": "bbe0f10dac6cdf8711c812d1645ba051cc40f8f9",
+  "latestMilestoneTag": "DAVINCIA-INSTITUTIONAL-INTEROPERABILITY-v1.0",
+  "lastAuditedIsoTimestamp": "2026-09-03T18:35:00Z",
   "conformanceScorecards": {
     "governanceInfrastructure": "10/10",
     "agentConstellation": "13/13",
-    "commercialMarketplace": "15/15"
+    "commercialMarketplace": "15/15",
+    "institutionalInteroperability": "32/32"
   },
   "totalTestCount": {
-    "assertionsPassed": 2702,
+    "assertionsPassed": 2708,
     "passingRatePercent": 100.0,
     "status": "GREEN"
+  },
+  "institutionalRegistry": {
+    "registeredToolsCount": 25,
+    "licenseAuditGreen": 16,
+    "licenseAuditAmber": 9,
+    "licenseAuditRed": 0,
+    "evidencePackagesGenerated": 25
   },
   "maturityLevels": {
     "production": [
@@ -20,12 +28,17 @@
       "GAMP 5 ALCOA+ Audit Ledgering",
       "GPG Electronic Signature Engine (0x80D0ADA1)",
       "21 CFR Part 11 Audit Trail",
-      "Domain Policy Linting & Fail-Closed Boundaries"
+      "Domain Policy Linting & Fail-Closed Boundaries",
+      "Institutional Interoperability Contract Engine",
+      "SPDX License & IP Firewall Engine"
     ],
     "demonstrated": [
       "64-Agent Master Swarm Ecosystem",
       "16 Named Domain Character Agents",
-      "9-Portal Sovereign Application Surface",
+      "10-Portal Sovereign Application Surface",
+      "Cultural Translation Engine & Corkonian Domain Pack",
+      "ArchivesSpace, IIIF 3.0 & Europeana Adapters",
+      "GRANT GEDHI LibrePM Lifecycle Adapter",
       "Neural Voice Stack (Kokoro/Piper/Sherpa/Silero + WebRTC)",
       "Mobile Spotter PWA & Telemetry Streaming",
       "GRANT GEDHI Sub-12s Capital Provisioner",
@@ -39,19 +52,21 @@
     ],
     "nextFrontierFieldValidation": [
       "Alpine On-Course Physical Spotter Trial",
+      "Institutional Museum & Archival Live Interoperability Pilot",
       "Institutional Investor Live Sandbox Demonstration",
       "Cantonal Tax & Audit Repeatability Review"
     ]
   },
   "portals": [
-    { "id": "PORTAL_01", "name": "DAVID_OS Landing Hub", "route": "/david-os", "status": "LIVE_DEMONSTRATED" },
-    { "id": "PORTAL_02", "name": "Sovereign Embassy Master Gateway", "route": "/embassy_master_gateway.html", "status": "LIVE_DEMONSTRATED" },
-    { "id": "PORTAL_03", "name": "Executive Business Deal Room", "route": "/portal/business", "status": "LIVE_DEMONSTRATED" },
-    { "id": "PORTAL_04", "name": "A.Ward Publications Wooden Library", "route": "/library_shelves.html", "status": "LIVE_DEMONSTRATED" },
-    { "id": "PORTAL_05", "name": "COP ON: The Corkonian Game", "route": "/cop_on_corkonian_game.html", "status": "LIVE_DEMONSTRATED" },
-    { "id": "PORTAL_06", "name": "Mobile Spotter Deck PWA", "route": "/mobile_spotter.html", "status": "LIVE_DEMONSTRATED" },
-    { "id": "PORTAL_07", "name": "God's Eye 3D Flight Deck", "route": "/gods_eye_3d_flight_deck.html", "status": "LIVE_DEMONSTRATED" },
-    { "id": "PORTAL_08", "name": "Course Map Visualizer", "route": "/course_map_visualizer.html", "status": "LIVE_DEMONSTRATED" },
-    { "id": "PORTAL_09", "name": "BAIR Recruitment Portal", "route": "/bair_recruitment_portal.html", "status": "LIVE_DEMONSTRATED" }
+    { "id": "PORTAL_01", "name": "Institutional Adaptation Bridge", "route": "/institutional_bridge.html", "status": "LIVE_DEMONSTRATED" },
+    { "id": "PORTAL_02", "name": "DAVID_OS Landing Hub", "route": "/david-os", "status": "LIVE_DEMONSTRATED" },
+    { "id": "PORTAL_03", "name": "Sovereign Embassy Master Gateway", "route": "/embassy_master_gateway.html", "status": "LIVE_DEMONSTRATED" },
+    { "id": "PORTAL_04", "name": "Executive Business Deal Room", "route": "/portal/business", "status": "LIVE_DEMONSTRATED" },
+    { "id": "PORTAL_05", "name": "A.Ward Publications Wooden Library", "route": "/library_shelves.html", "status": "LIVE_DEMONSTRATED" },
+    { "id": "PORTAL_06", "name": "COP ON: The Corkonian Game", "route": "/cop_on_corkonian_game.html", "status": "LIVE_DEMONSTRATED" },
+    { "id": "PORTAL_07", "name": "Mobile Spotter Deck PWA", "route": "/mobile_spotter.html", "status": "LIVE_DEMONSTRATED" },
+    { "id": "PORTAL_08", "name": "God's Eye 3D Flight Deck", "route": "/gods_eye_3d_flight_deck.html", "status": "LIVE_DEMONSTRATED" },
+    { "id": "PORTAL_09", "name": "Course Map Visualizer", "route": "/course_map_visualizer.html", "status": "LIVE_DEMONSTRATED" },
+    { "id": "PORTAL_10", "name": "BAIR Recruitment Portal", "route": "/bair_recruitment_portal.html", "status": "LIVE_DEMONSTRATED" }
   ]
 }

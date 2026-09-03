@@ -1,0 +1,10 @@
+{
+  "tool_id": "tool_atom",
+  "name": "AtoM (Access to Memory)",
+  "score": 85,
+  "classification": "ADAPT",
+  "license": "GPL-3.0",
+  "recommended_action": "BRIDGE",
+  "evaluated_at": "2026-09-03T16:35:49.262Z",
+  "hash": "c271fc20cd735f869d9f5c5637717892db05d38ff01c64dfec656077397a3336"
+}
