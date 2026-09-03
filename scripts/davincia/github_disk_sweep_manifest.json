@@ -1,0 +1,1194 @@
+[
+  {
+    "repoName": "plugins",
+    "path": "C:\\Users\\David\\.codex\\.tmp\\plugins",
+    "branch": "master",
+    "remote": "",
+    "lastCommit": "d6169be Update Picsart .app.json to use new org app ID (#375)",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "skills",
+    "path": "C:\\Users\\David\\.codex\\vendor_imports\\skills",
+    "branch": "main",
+    "remote": "origin\thttps://github.com/openai/skills.git (fetch) [blob:none]\norigin\thttps://github.com/openai/skills.git (push)",
+    "lastCommit": "49f948f [codex] Update skill installer post-install guidance (#507)",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "2bf493ed-cf6d-4728-91fd-df1f0107eb62",
+    "path": "C:\\Users\\David\\.gemini\\antigravity\\brain\\2bf493ed-cf6d-4728-91fd-df1f0107eb62",
+    "branch": "master",
+    "remote": "",
+    "lastCommit": "d7f557a Snapshot",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "3ce860c2-4cd7-461c-b277-260165ca4e80",
+    "path": "C:\\Users\\David\\.gemini\\antigravity\\brain\\3ce860c2-4cd7-461c-b277-260165ca4e80",
+    "branch": "master",
+    "remote": "",
+    "lastCommit": "5155e05 Snapshot",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "d17502b5-2ee4-4a9c-80cb-8e60dbacbc4a",
+    "path": "C:\\Users\\David\\.gemini\\antigravity\\brain\\d17502b5-2ee4-4a9c-80cb-8e60dbacbc4a",
+    "branch": "master",
+    "remote": "",
+    "lastCommit": "765cbae Snapshot",
+    "uncommittedChanges": 2
+  },
+  {
+    "repoName": "d8f72393-af04-4c24-92c6-73ec4eea8bbd",
+    "path": "C:\\Users\\David\\.gemini\\antigravity\\brain\\d8f72393-af04-4c24-92c6-73ec4eea8bbd",
+    "branch": "master",
+    "remote": "",
+    "lastCommit": "d046b13 Snapshot",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "ee00bac8-edca-4f05-96dc-d8e44e5a90b5",
+    "path": "C:\\Users\\David\\.gemini\\antigravity\\brain\\ee00bac8-edca-4f05-96dc-d8e44e5a90b5",
+    "branch": "master",
+    "remote": "",
+    "lastCommit": "0e250f4 Snapshot",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "david-os-app",
+    "path": "C:\\Users\\David\\.gemini\\antigravity\\scratch\\david-os-app",
+    "branch": "main",
+    "remote": "origin\thttps://github.com/AWardPublications/david-os-app.git (fetch)\norigin\thttps://github.com/AWardPublications/david-os-app.git (push)",
+    "lastCommit": "6948472 Correct D-23 scope definitions, state machine states, and asset-promotion test cases",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "gods-eye-view",
+    "path": "C:\\Users\\David\\.gemini\\antigravity\\scratch\\gods-eye-view",
+    "branch": "main",
+    "remote": "origin\thttps://github.com/AWardPublications/gods-eye-view.git (fetch)\norigin\thttps://github.com/AWardPublications/gods-eye-view.git (push)",
+    "lastCommit": "65d9888 feat(voice): validate real acoustic WAV audio and model inference pipeline with T0-T13 latency benchmarks and barge-in state machine",
+    "uncommittedChanges": 1015
+  },
+  {
+    "repoName": "tuath-one",
+    "path": "C:\\Users\\David\\.gemini\\antigravity\\scratch\\tuath-one",
+    "branch": "master",
+    "remote": "",
+    "lastCommit": "5fdd174 style: replace mockup marketplace code with the official production canonical engine",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "alcoholic-robot",
+    "path": "C:\\Users\\David\\alcoholic-robot",
+    "branch": "master",
+    "remote": "",
+    "lastCommit": "d44f722 Add .gitignore and .gitattributes; drop committed bytecode",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "cm",
+    "path": "C:\\Users\\David\\AppData\\Local\\Temp\\claude\\C--Users-David\\5ec0853a-d590-4359-93ee-0d026a632634\\scratchpad\\cm",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "evidence-templates",
+    "path": "C:\\Users\\David\\AppData\\Local\\Temp\\claude\\C--Users-David\\5ec0853a-d590-4359-93ee-0d026a632634\\scratchpad\\gh\\evidence-templates",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "vfinal",
+    "path": "C:\\Users\\David\\AppData\\Local\\Temp\\claude\\C--Users-David\\b474991c-6134-4946-81d7-12d40dc56fac\\scratchpad\\vfinal",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "vtest",
+    "path": "C:\\Users\\David\\AppData\\Local\\Temp\\claude\\C--Users-David\\b474991c-6134-4946-81d7-12d40dc56fac\\scratchpad\\vtest",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "gittest",
+    "path": "C:\\Users\\David\\AppData\\Local\\Temp\\claude\\C--Users-David\\ca439a46-09d2-422c-abd3-585a096d0b4b\\scratchpad\\gittest",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "clean",
+    "path": "C:\\Users\\David\\AppData\\Local\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\clean",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "clean2",
+    "path": "C:\\Users\\David\\AppData\\Local\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\clean2",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "clean3",
+    "path": "C:\\Users\\David\\AppData\\Local\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\clean3",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "david-os-app",
+    "path": "C:\\Users\\David\\AppData\\Local\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\david-os-app",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "app",
+    "path": "C:\\Users\\David\\AppData\\Local\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\demo\\app",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "g7-verifier",
+    "path": "C:\\Users\\David\\AppData\\Local\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\g7-verifier",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "g8-clone",
+    "path": "C:\\Users\\David\\AppData\\Local\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\g8-clone",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "g8c",
+    "path": "C:\\Users\\David\\AppData\\Local\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\g8c",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "g8d",
+    "path": "C:\\Users\\David\\AppData\\Local\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\g8d",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "g8e",
+    "path": "C:\\Users\\David\\AppData\\Local\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\g8e",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "oldgold",
+    "path": "C:\\Users\\David\\AppData\\Local\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\oldgold",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "app",
+    "path": "C:\\Users\\David\\AppData\\Local\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\prog\\app",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "verify",
+    "path": "C:\\Users\\David\\AppData\\Local\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\prog\\verify",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "verifygov",
+    "path": "C:\\Users\\David\\AppData\\Local\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\prog\\verifygov",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "vpdiff2",
+    "path": "C:\\Users\\David\\AppData\\Local\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\vpdiff2",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "ARIOS",
+    "path": "C:\\Users\\David\\ARIOS",
+    "branch": "feat/agent-gateway-v0.10",
+    "remote": "origin\thttps://github.com/AWardPublications/ARIOS.git (fetch)\norigin\thttps://github.com/AWardPublications/ARIOS.git (push)",
+    "lastCommit": "dc9bd05 docs(gateway): staging provisioning kit + staging.env template (paste-and-go) (Issue #25)",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "brehon-ai-recruitment-os",
+    "path": "C:\\Users\\David\\brehon-ai-recruitment-os",
+    "branch": "main",
+    "remote": "origin\thttps://github.com/AWardPublications/brehon-ai-recruitment-os.git (fetch)\norigin\thttps://github.com/AWardPublications/brehon-ai-recruitment-os.git (push)",
+    "lastCommit": "a888ba2 feat(parser): Add CandidateIntakeParser and parse_questionnaire_to_json for BAIR-FORM-CAND-2026-01 markdown questionnaires",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "brehon-matrix-os",
+    "path": "C:\\Users\\David\\brehon-matrix-os",
+    "branch": "main",
+    "remote": "origin\thttps://github.com/AWardPublications/brehon-matrix-os.git (fetch)\norigin\thttps://github.com/AWardPublications/brehon-matrix-os.git (push)",
+    "lastCommit": "679abb1 Add Element Desktop deployment checklist",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "ceo-cookbook-sales-site",
+    "path": "C:\\Users\\David\\ceo-cookbook-sales-site",
+    "branch": "main",
+    "remote": "sites\thttps://git.chatgpt-team.site/3d4074bd-ae73-4232-a4cd-c4cf1c4ac49e/appgprj_6a7e7ce12e848191835af0af3c89e0c3.git (fetch)\nsites\thttps://git.chatgpt-team.site/3d4074bd-ae73-4232-a4cd-c4cf1c4ac49e/appgprj_6a7e7ce12e848191835af0af3c89e0c3.git (push)",
+    "lastCommit": "35233ed Add invoice recipient to cookbook offer",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "DAVID_OS_APP",
+    "path": "C:\\Users\\David\\DAVID_OS_APP",
+    "branch": "main",
+    "remote": "origin\thttps://github.com/AWardPublications/david-os-app.git (fetch)\norigin\thttps://github.com/AWardPublications/david-os-app.git (push)",
+    "lastCommit": "582aaa7 Merge pull request #5 from AWardPublications/claude/d23-presentation-correction",
+    "uncommittedChanges": 1
+  },
+  {
+    "repoName": "DAVID_OS_CASE_STUDIES",
+    "path": "C:\\Users\\David\\DAVID_OS_CASE_STUDIES",
+    "branch": "case-study/2026-08-02-first-24-hours",
+    "remote": "origin\thttps://github.com/AWardPublications/david-os-case-studies.git (fetch)\norigin\thttps://github.com/AWardPublications/david-os-case-studies.git (push)",
+    "lastCommit": "aa76976 Case study: first 24 hours of governance (2026-08-02)",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "DAVID_OS_KERNEL",
+    "path": "C:\\Users\\David\\DAVID_OS_KERNEL",
+    "branch": "claude/d25-responsive-visual-prototype",
+    "remote": "origin\thttps://github.com/AWardPublications/david-os-kernel.git (fetch)\norigin\thttps://github.com/AWardPublications/david-os-kernel.git (push)",
+    "lastCommit": "b36ddd3 govern: kernel D-24 and D-25 are adopted pending integration, not effective",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "DAVID_OS_SITE",
+    "path": "C:\\Users\\David\\DAVID_OS_SITE",
+    "branch": "davincia-interface-slice-001",
+    "remote": "origin\thttps://github.com/AWardPublications/david-os-front-gate.git (fetch)\norigin\thttps://github.com/AWardPublications/david-os-front-gate.git (push)",
+    "lastCommit": "43487f4 The shop is now built by the allowlist, and a failed build no longer destroys dist/",
+    "uncommittedChanges": 5
+  },
+  {
+    "repoName": "davincia-orchestration",
+    "path": "C:\\Users\\David\\davincia-orchestration",
+    "branch": "main",
+    "remote": "origin\thttps://github.com/AWardPublications/davincia-orchestration.git (fetch)\norigin\thttps://github.com/AWardPublications/davincia-orchestration.git (push)",
+    "lastCommit": "b6cca8c Activate PUBLIC_SOURCE_GOVERNED_RESEARCH_MODE for Cork Events Canon source-vault task",
+    "uncommittedChanges": 19
+  },
+  {
+    "repoName": "_PRODUCTION_LINE",
+    "path": "C:\\Users\\David\\Desktop\\A.Ward Publications\\_PRODUCTION_LINE",
+    "branch": "master",
+    "remote": "",
+    "lastCommit": "eacb936 Gate v2: narrow {{ASSUMED}} allowlist per founder ruling 2026-08-04, plus six self-test controls",
+    "uncommittedChanges": 7
+  },
+  {
+    "repoName": "ATLAS_GOLF_SOURCES",
+    "path": "C:\\Users\\David\\Desktop\\Alex Wenger Office\\ATLAS_GOLF_SOURCES",
+    "branch": "master",
+    "remote": "",
+    "lastCommit": "5fcafd0 The Atlas Golf build chain, written down for the first time",
+    "uncommittedChanges": 3
+  },
+  {
+    "repoName": "AWARD_BOOKS_2026-08-04",
+    "path": "C:\\Users\\David\\Desktop\\AWP_BUILD\\AWARD_1000_PRODUCT_FACTORY_2026-08-04\\AWARD_BOOKS_2026-08-04",
+    "branch": "master",
+    "remote": "",
+    "lastCommit": "05d1ab8 Books under version control, with the review bindings that were only on disk",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "brehon-ai-recruitment-os",
+    "path": "C:\\Users\\David\\Desktop\\AWP_BUILD\\AWARD_1000_PRODUCT_FACTORY_2026-08-04\\AWARD_EXTRACTED_PROJECTS_2026-08-04\\brehon-ai-recruitment-os-git-initialised\\brehon-ai-recruitment-os",
+    "branch": "main",
+    "remote": "",
+    "lastCommit": "b373fc5 BAIR v0.1 possession lock",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "DAVID_OS_PRODUCT_FOUNDRY_CLAUDE_HANDOFF_2026-07-21",
+    "path": "C:\\Users\\David\\Desktop\\AWP_BUILD\\AWARD_1000_PRODUCT_FACTORY_2026-08-04\\AWARD_EXTRACTED_PROJECTS_2026-08-04\\DAVID_OS_PRODUCT_FOUNDRY_CLAUDE_HANDOFF_2026-07-21__1_\\DAVID_OS_PRODUCT_FOUNDRY_CLAUDE_HANDOFF_2026-07-21",
+    "branch": "main",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "ARIOS",
+    "path": "C:\\Users\\David\\Desktop\\BAIG\\Brehon Ai Projects\\ARIOS",
+    "branch": "main",
+    "remote": "origin\thttps://github.com/AWardPublications/ARIOS.git (fetch)\norigin\thttps://github.com/AWardPublications/ARIOS.git (push)",
+    "lastCommit": "c420761 Merge pull request #4 from AWardPublications/codex/find-information-on-dms-of-arios-365dr9",
+    "uncommittedChanges": 60
+  },
+  {
+    "repoName": "CORKMAN",
+    "path": "C:\\Users\\David\\Desktop\\BAIG\\Brehon Ai Projects\\CORKMAN",
+    "branch": "governance-postgres-threshold",
+    "remote": "origin\thttps://github.com/AWardPublications/CORKMAN.git (fetch)\norigin\thttps://github.com/AWardPublications/CORKMAN.git (push)",
+    "lastCommit": "33e4ba0 chore(corkonian): achieve 100% launch state across all layers and UI showcases",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "CORKONIAN",
+    "path": "C:\\Users\\David\\Desktop\\BAIG\\Brehon Ai Projects\\CORKMAN\\CORKONIAN",
+    "branch": "feat/experience-evidence",
+    "remote": "origin\thttps://github.com/AWardPublications/corkonian-portal.git (fetch)\norigin\thttps://github.com/AWardPublications/corkonian-portal.git (push)",
+    "lastCommit": "09eb34c feat(launch): wire 99 canonical assets into UI showcases, LangGraph workflow, and queue MCP tools",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "brehon-ai-recruitment-os",
+    "path": "C:\\Users\\David\\Desktop\\BAIG\\Brehon Ai RecruitmentEngine\\brehon-ai-recruitment-os",
+    "branch": "main",
+    "remote": "origin\thttps://github.com/AWardPublications/brehon-ai-recruitment-os.git (fetch)\norigin\thttps://github.com/AWardPublications/brehon-ai-recruitment-os.git (push)",
+    "lastCommit": "caf4330 Initial commit",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "brehon-ai-storybook-academy",
+    "path": "C:\\Users\\David\\Desktop\\BAIG\\brehon-ai-storybook-academy",
+    "branch": "master",
+    "remote": "",
+    "lastCommit": "52abdec Initial scaffold for Brehon AI Storybook Academy",
+    "uncommittedChanges": 396
+  },
+  {
+    "repoName": "Books & Writing Room",
+    "path": "C:\\Users\\David\\Desktop\\Books & Writing Room",
+    "branch": "master",
+    "remote": "",
+    "lastCommit": "d5dd997 Books & Writing Room under version control, as an allowlist",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "A_WARD_PUBLICATIONS",
+    "path": "C:\\Users\\David\\Desktop\\Books & Writing Room\\Projects\\A_WARD_PUBLICATIONS",
+    "branch": "master",
+    "remote": "",
+    "lastCommit": "a74a71f 54-4 reassigned: Grosjean EN ebook -> Grosjean FR print paperback",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "brehon-europe-corridor",
+    "path": "C:\\Users\\David\\Desktop\\brehon-europe-corridor",
+    "branch": "main",
+    "remote": "",
+    "lastCommit": "c29385d Europe corridor: two methods, two territories, 63 register rows",
+    "uncommittedChanges": 1
+  },
+  {
+    "repoName": "brehon-web",
+    "path": "C:\\Users\\David\\Desktop\\brehon-web",
+    "branch": "master",
+    "remote": "",
+    "lastCommit": "3b8b7b6 init(monorepo): scaffold brehon-web workspaces and packages",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "corkonian-media",
+    "path": "C:\\Users\\David\\Desktop\\corkonian-media",
+    "branch": "master",
+    "remote": "",
+    "lastCommit": "b047f68 legal/print: commit AWP-PRINT-002 print manifesto, SPV terms, and cross-border tax flowchart",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "GCAI",
+    "path": "C:\\Users\\David\\Desktop\\Desktop Review Required\\DAVID_WARD\\02_VENTURES\\CORKONIAN\\GCAI",
+    "branch": "main",
+    "remote": "",
+    "lastCommit": "c2709e5 Pin world-first claim in audit_log row 17",
+    "uncommittedChanges": 12
+  },
+  {
+    "repoName": "ARIOS",
+    "path": "C:\\Users\\David\\Desktop\\Desktop Review Required\\DAVID_WARD\\99_QUARANTINE\\failed_move_skeletons_2026-06-06\\CorkMan_dest_skeleton\\ARIOS",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "brehon-ai-recruitment-os",
+    "path": "C:\\Users\\David\\Desktop\\Desktop Review Required\\DAVID_WARD\\99_QUARANTINE\\failed_move_skeletons_2026-06-06\\CorkMan_dest_skeleton\\brehon-ai-recruitment-os",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "brehon-ai-storybook-academy",
+    "path": "C:\\Users\\David\\Desktop\\Desktop Review Required\\DAVID_WARD\\99_QUARANTINE\\failed_move_skeletons_2026-06-06\\CorkMan_dest_skeleton\\brehon-ai-storybook-academy",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "CORKMAN",
+    "path": "C:\\Users\\David\\Desktop\\Desktop Review Required\\DAVID_WARD\\99_QUARANTINE\\failed_move_skeletons_2026-06-06\\CorkMan_dest_skeleton\\CORKMAN",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "CORKONIAN",
+    "path": "C:\\Users\\David\\Desktop\\Desktop Review Required\\DAVID_WARD\\99_QUARANTINE\\failed_move_skeletons_2026-06-06\\CorkMan_dest_skeleton\\CORKONIAN",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "_ALIGNMENT_dest_skeleton",
+    "path": "C:\\Users\\David\\Desktop\\Desktop Review Required\\DAVID_WARD\\99_QUARANTINE\\failed_move_skeletons_2026-06-06\\_ALIGNMENT_dest_skeleton",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "PUBLISHING_PIPELINE",
+    "path": "C:\\Users\\David\\Desktop\\PUBLISHING_PIPELINE",
+    "branch": "master",
+    "remote": "",
+    "lastCommit": "34a1811 Grosjean FR gets a print edition and a pre-order; 54-4 reassigned",
+    "uncommittedChanges": 2
+  },
+  {
+    "repoName": "SHOP_2026-08-19",
+    "path": "C:\\Users\\David\\Desktop\\SHOP_2026-08-19",
+    "branch": "feat/community-zone",
+    "remote": "",
+    "lastCommit": "1a19557 Atlas Golf: live edition replaced from source, re-signed",
+    "uncommittedChanges": 19
+  },
+  {
+    "repoName": "_ALIGNMENT",
+    "path": "C:\\Users\\David\\Desktop\\_ALIGNMENT",
+    "branch": "feat/address-book",
+    "remote": "origin\thttps://github.com/AWardPublications/david-os-alignment.git (fetch)\norigin\thttps://github.com/AWardPublications/david-os-alignment.git (push)",
+    "lastCommit": "68a8321 feat(nodes): registry, scaffolds and auth harness for 10 new accounts",
+    "uncommittedChanges": 112
+  },
+  {
+    "repoName": "pdx-cs-sound-wavs",
+    "path": "C:\\Users\\David\\Desktop\\_ALIGNMENT\\DAVID_OS\\DAVID_OS_AUDIO_QUARRY\\_SOURCE_REPOS\\pdx-cs-sound-wavs",
+    "branch": "main",
+    "remote": "origin\thttps://github.com/pdx-cs-sound/wavs (fetch)\norigin\thttps://github.com/pdx-cs-sound/wavs (push)",
+    "lastCommit": "ed5ebcb Add `hindrance-of-a-fish.wav`",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "rse-soundfx",
+    "path": "C:\\Users\\David\\Desktop\\_ALIGNMENT\\DAVID_OS\\DAVID_OS_AUDIO_QUARRY\\_SOURCE_REPOS\\rse-soundfx",
+    "branch": "master",
+    "remote": "origin\thttps://github.com/rse/soundfx (fetch)\norigin\thttps://github.com/rse/soundfx (push)",
+    "lastCommit": "ca23429 release version 1.1.3",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "stargate-sample-pack",
+    "path": "C:\\Users\\David\\Desktop\\_ALIGNMENT\\DAVID_OS\\DAVID_OS_AUDIO_QUARRY\\_SOURCE_REPOS\\stargate-sample-pack",
+    "branch": "main",
+    "remote": "origin\thttps://github.com/stargatedaw/stargate-sample-pack (fetch)\norigin\thttps://github.com/stargatedaw/stargate-sample-pack (push)",
+    "lastCommit": "dbfd6ec Fix formatting",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "brehon-ai-recruitment-os",
+    "path": "C:\\Users\\David\\Desktop\\_ALIGNMENT\\STAGING\\brehon-ai-recruitment-os-git-initialised\\brehon-ai-recruitment-os",
+    "branch": "main",
+    "remote": "",
+    "lastCommit": "b373fc5 BAIR v0.1 possession lock",
+    "uncommittedChanges": 15
+  },
+  {
+    "repoName": "alex-wenger-golf",
+    "path": "C:\\Users\\David\\Documents\\AWardPublications\\alex-wenger-golf",
+    "branch": "main",
+    "remote": "origin\thttps://github.com/AWardPublications/alex-wenger-golf.git (fetch)\norigin\thttps://github.com/AWardPublications/alex-wenger-golf.git (push)",
+    "lastCommit": "4c2d4e7 feat(registry): Registry Layer v1 \u00e2\u20ac\u201d 7 canonical registries \u00c2\u00b7 doctrine + schemas + empty instances",
+    "uncommittedChanges": 5
+  },
+  {
+    "repoName": "alex-wenger-increment",
+    "path": "C:\\Users\\David\\Documents\\AWardPublications\\alex-wenger-increment",
+    "branch": "feat/governed-onboarding",
+    "remote": "origin\thttps://github.com/AWardPublications/alex-wenger-increment.git (fetch)\norigin\thttps://github.com/AWardPublications/alex-wenger-increment.git (push)",
+    "lastCommit": "b1f375f feat: governed onboarding gate (consent-first intake)",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "bair-platform",
+    "path": "C:\\Users\\David\\Documents\\AWardPublications\\bair-platform",
+    "branch": "main",
+    "remote": "origin\thttps://github.com/AWardPublications/bair-platform.git (fetch)\norigin\thttps://github.com/AWardPublications/bair-platform.git (push)",
+    "lastCommit": "909dcac feat(registry): Registry Layer v1 \u00e2\u20ac\u201d 6 canonical registries \u00c2\u00b7 doctrine + schemas + empty instances",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "corkonian-media",
+    "path": "C:\\Users\\David\\Documents\\AWardPublications\\corkonian-media",
+    "branch": "main",
+    "remote": "origin\thttps://github.com/AWardPublications/corkonian-media.git (fetch)\norigin\thttps://github.com/AWardPublications/corkonian-media.git (push)",
+    "lastCommit": "398ea4c feat(registry): Registry Layer v1 \u00e2\u20ac\u201d 7 canonical registries \u00c2\u00b7 doctrine + schemas + empty instances",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "DAVID_OS",
+    "path": "C:\\Users\\David\\Documents\\DAVID_OS",
+    "branch": "master",
+    "remote": "",
+    "lastCommit": "5355890 Phase 1.1: ARIOS Core Policy Engine - PolicyEngine, PolicyContext, PolicyEvaluator with 19 comprehensive tests",
+    "uncommittedChanges": 48
+  },
+  {
+    "repoName": "DAVID_OS_PRODUCT_FOUNDRY_CLAUDE_HANDOFF_2026-07-21",
+    "path": "C:\\Users\\David\\Documents\\DAVID_OS_PRODUCT_FOUNDRY_CLAUDE_HANDOFF_2026-07-21\\DAVID_OS_PRODUCT_FOUNDRY_CLAUDE_HANDOFF_2026-07-21",
+    "branch": "main",
+    "remote": "",
+    "lastCommit": "b4c8aec Add reusable DAVID_OS Commercial Desk",
+    "uncommittedChanges": 18
+  },
+  {
+    "repoName": "Monday Morning BoardRoom",
+    "path": "C:\\Users\\David\\Documents\\Monday Morning BoardRoom",
+    "branch": "master",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 4
+  },
+  {
+    "repoName": "CORKMAN",
+    "path": "C:\\Users\\David\\Documents\\Monday Morning BoardRoom\\CORKMAN",
+    "branch": "main",
+    "remote": "origin\thttps://github.com/AWardPublications/CORKMAN.git (fetch)\norigin\thttps://github.com/AWardPublications/CORKMAN.git (push)",
+    "lastCommit": "0bb00b9 docs(referee-watch): align Cork Ban with Ward batch record doctrine",
+    "uncommittedChanges": 3
+  },
+  {
+    "repoName": "strategic-intelligence-engine",
+    "path": "C:\\Users\\David\\Documents\\Monday Morning BoardRoom\\strategic-intelligence-engine",
+    "branch": "feature/david_os-substrate-v1.0",
+    "remote": "origin\thttps://github.com/AWardPublications/strategic-intelligence-engine.git (fetch)\norigin\thttps://github.com/AWardPublications/strategic-intelligence-engine.git (push)",
+    "lastCommit": "dfc2b80 Qualify supervised autonomy gate controls",
+    "uncommittedChanges": 369
+  },
+  {
+    "repoName": "Playground",
+    "path": "C:\\Users\\David\\Documents\\Playground",
+    "branch": "master",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "publishing-master-programme",
+    "path": "C:\\Users\\David\\Documents\\publishing-master-programme",
+    "branch": "master",
+    "remote": "origin\thttps://github.com/AWardPublications/publishing-master-programme.git (fetch)\norigin\thttps://github.com/AWardPublications/publishing-master-programme.git (push)",
+    "lastCommit": "31ab6cf Add expected pagination overflow result",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "video-marketing-pipelines",
+    "path": "C:\\Users\\David\\Documents\\video-marketing-pipelines",
+    "branch": "main",
+    "remote": "origin\thttps://github.com/AWardPublications/video-marketing-pipelines.git (fetch)\norigin\thttps://github.com/AWardPublications/video-marketing-pipelines.git (push)",
+    "lastCommit": "1c22d93 feat: revenue spine \u00e2\u20ac\u201d wire SKU buy-links into platform packs",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "_PRODUCTION_LINE",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2210\\A.Ward Publications\\_PRODUCTION_LINE",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "brehon-ai-recruitment-os",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2210\\AWARD_EXTRACTED_PROJECTS_2026-08-04\\brehon-ai-recruitment-os-git-initialised\\brehon-ai-recruitment-os",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "DAVID_OS_PRODUCT_FOUNDRY_CLAUDE_HANDOFF_2026-07-21",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2210\\AWARD_EXTRACTED_PROJECTS_2026-08-04\\DAVID_OS_PRODUCT_FOUNDRY_CLAUDE_HANDOFF_2026-07-21__1_\\DAVID_OS_PRODUCT_FOUNDRY_CLAUDE_HANDOFF_2026-07-21",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "ARIOS",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2210\\BAIG\\ARIOS",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "brehon-ai-recruitment-os",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2210\\BAIG\\brehon-ai-recruitment-os",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "brehon-ai-storybook-academy",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2210\\BAIG\\brehon-ai-storybook-academy",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "CORKMAN",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2210\\BAIG\\CORKMAN",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "CORKONIAN",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2210\\BAIG\\CORKONIAN",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "GCAI",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2210\\Desktop Review Required\\DAVID_WARD\\02_VENTURES\\CORKONIAN\\GCAI",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "ARIOS",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2210\\Desktop Review Required\\DAVID_WARD\\99_QUARANTINE\\failed_move_skeletons_2026-06-06\\CorkMan_dest_skeleton\\ARIOS",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "brehon-ai-recruitment-os",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2210\\Desktop Review Required\\DAVID_WARD\\99_QUARANTINE\\failed_move_skeletons_2026-06-06\\CorkMan_dest_skeleton\\brehon-ai-recruitment-os",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "brehon-ai-storybook-academy",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2210\\Desktop Review Required\\DAVID_WARD\\99_QUARANTINE\\failed_move_skeletons_2026-06-06\\CorkMan_dest_skeleton\\brehon-ai-storybook-academy",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "CORKMAN",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2210\\Desktop Review Required\\DAVID_WARD\\99_QUARANTINE\\failed_move_skeletons_2026-06-06\\CorkMan_dest_skeleton\\CORKMAN",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "CORKONIAN",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2210\\Desktop Review Required\\DAVID_WARD\\99_QUARANTINE\\failed_move_skeletons_2026-06-06\\CorkMan_dest_skeleton\\CORKONIAN",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "_ALIGNMENT_dest_skeleton",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2210\\Desktop Review Required\\DAVID_WARD\\99_QUARANTINE\\failed_move_skeletons_2026-06-06\\_ALIGNMENT_dest_skeleton",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "_ALIGNMENT",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2210\\_ALIGNMENT",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "pdx-cs-sound-wavs",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2210\\_ALIGNMENT\\DAVID_OS\\DAVID_OS_AUDIO_QUARRY\\_SOURCE_REPOS\\pdx-cs-sound-wavs",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "rse-soundfx",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2210\\_ALIGNMENT\\DAVID_OS\\DAVID_OS_AUDIO_QUARRY\\_SOURCE_REPOS\\rse-soundfx",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "stargate-sample-pack",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2210\\_ALIGNMENT\\DAVID_OS\\DAVID_OS_AUDIO_QUARRY\\_SOURCE_REPOS\\stargate-sample-pack",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "brehon-ai-recruitment-os",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2210\\_ALIGNMENT\\STAGING\\brehon-ai-recruitment-os-git-initialised\\brehon-ai-recruitment-os",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "_PRODUCTION_LINE",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2217\\A.Ward Publications\\_PRODUCTION_LINE",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "brehon-ai-recruitment-os",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2217\\AWARD_EXTRACTED_PROJECTS_2026-08-04\\brehon-ai-recruitment-os-git-initialised\\brehon-ai-recruitment-os",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "DAVID_OS_PRODUCT_FOUNDRY_CLAUDE_HANDOFF_2026-07-21",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2217\\AWARD_EXTRACTED_PROJECTS_2026-08-04\\DAVID_OS_PRODUCT_FOUNDRY_CLAUDE_HANDOFF_2026-07-21__1_\\DAVID_OS_PRODUCT_FOUNDRY_CLAUDE_HANDOFF_2026-07-21",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "ARIOS",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2217\\BAIG\\ARIOS",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "brehon-ai-recruitment-os",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2217\\BAIG\\brehon-ai-recruitment-os",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "brehon-ai-storybook-academy",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2217\\BAIG\\brehon-ai-storybook-academy",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "CORKMAN",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2217\\BAIG\\CORKMAN",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "CORKONIAN",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2217\\BAIG\\CORKONIAN",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "GCAI",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2217\\Desktop Review Required\\DAVID_WARD\\02_VENTURES\\CORKONIAN\\GCAI",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "ARIOS",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2217\\Desktop Review Required\\DAVID_WARD\\99_QUARANTINE\\failed_move_skeletons_2026-06-06\\CorkMan_dest_skeleton\\ARIOS",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "brehon-ai-recruitment-os",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2217\\Desktop Review Required\\DAVID_WARD\\99_QUARANTINE\\failed_move_skeletons_2026-06-06\\CorkMan_dest_skeleton\\brehon-ai-recruitment-os",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "brehon-ai-storybook-academy",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2217\\Desktop Review Required\\DAVID_WARD\\99_QUARANTINE\\failed_move_skeletons_2026-06-06\\CorkMan_dest_skeleton\\brehon-ai-storybook-academy",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "CORKMAN",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2217\\Desktop Review Required\\DAVID_WARD\\99_QUARANTINE\\failed_move_skeletons_2026-06-06\\CorkMan_dest_skeleton\\CORKMAN",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "CORKONIAN",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2217\\Desktop Review Required\\DAVID_WARD\\99_QUARANTINE\\failed_move_skeletons_2026-06-06\\CorkMan_dest_skeleton\\CORKONIAN",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "_ALIGNMENT_dest_skeleton",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2217\\Desktop Review Required\\DAVID_WARD\\99_QUARANTINE\\failed_move_skeletons_2026-06-06\\_ALIGNMENT_dest_skeleton",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "_ALIGNMENT",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2217\\_ALIGNMENT",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "pdx-cs-sound-wavs",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2217\\_ALIGNMENT\\DAVID_OS\\DAVID_OS_AUDIO_QUARRY\\_SOURCE_REPOS\\pdx-cs-sound-wavs",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "rse-soundfx",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2217\\_ALIGNMENT\\DAVID_OS\\DAVID_OS_AUDIO_QUARRY\\_SOURCE_REPOS\\rse-soundfx",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "stargate-sample-pack",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2217\\_ALIGNMENT\\DAVID_OS\\DAVID_OS_AUDIO_QUARRY\\_SOURCE_REPOS\\stargate-sample-pack",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "brehon-ai-recruitment-os",
+    "path": "C:\\Users\\David\\ESTATE_BACKUP\\ESTATE_2026-08-18_2217\\_ALIGNMENT\\STAGING\\brehon-ai-recruitment-os-git-initialised\\brehon-ai-recruitment-os",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "evidence-templates",
+    "path": "C:\\Users\\David\\evidence-templates",
+    "branch": "master",
+    "remote": "origin\thttps://github.com/AWardPublications/evidence-templates.git (fetch)\norigin\thttps://github.com/AWardPublications/evidence-templates.git (push)",
+    "lastCommit": "c467eb1 bair: review the two-product go-to-market",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "founder-landrace-control-room",
+    "path": "C:\\Users\\David\\founder-landrace-control-room",
+    "branch": "main",
+    "remote": "origin\thttps://git.chatgpt-team.site/3d4074bd-ae73-4232-a4cd-c4cf1c4ac49e/appgprj_6a7c003b93348191bd57563d85bba7fa.git (fetch)\norigin\thttps://git.chatgpt-team.site/3d4074bd-ae73-4232-a4cd-c4cf1c4ac49e/appgprj_6a7c003b93348191bd57563d85bba7fa.git (push)",
+    "lastCommit": "d3cb4c1 Add media intake run console",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "GAA_OS",
+    "path": "C:\\Users\\David\\GAA_OS",
+    "branch": "feat/governed-clubhouse-shell",
+    "remote": "origin\thttps://github.com/AWardPublications/GAA_OS.git (fetch)\norigin\thttps://github.com/AWardPublications/GAA_OS.git (push)",
+    "lastCommit": "7146e66 docs(hitl): record confirmed integration contract from PR #3",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "gods-eye-view",
+    "path": "C:\\Users\\David\\gods-eye-view",
+    "branch": "main",
+    "remote": "origin\thttps://github.com/bilawalsidhu/gods-eye-view.git (fetch)\norigin\thttps://github.com/bilawalsidhu/gods-eye-view.git (push)",
+    "lastCommit": "ec5e4b7 feat(chatgpt_pro): Ingest actual ChatGPT Pro Hotel App Canvas, Vault Document & Campaign Reply Register into DAVID_OS (\u00e2\u201a\u00ac20.0M Capital Stack, 298/298 Tests Green)",
+    "uncommittedChanges": 11
+  },
+  {
+    "repoName": "governed-golf-intelligence",
+    "path": "C:\\Users\\David\\governed-golf-intelligence",
+    "branch": "integration/llm-001",
+    "remote": "origin\thttps://github.com/AWardPublications/governed-golf-intelligence.git (fetch)\norigin\thttps://github.com/AWardPublications/governed-golf-intelligence.git (push)\nsites-bundle\tC:\\Users\\David\\Downloads\\governed-golf-intelligence-sites-history-adc170d.bundle (fetch)\nsites-bundle\tC:\\Users\\David\\Downloads\\governed-golf-intelligence-sites-history-adc170d.bundle (push)",
+    "lastCommit": "2c875d1 Clear stale governed answer results",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "HOUSE_CONTROLS",
+    "path": "C:\\Users\\David\\HOUSE_CONTROLS",
+    "branch": "master",
+    "remote": "",
+    "lastCommit": "6cd4a19 quarantine_fr12: isolate the restricted client material on the live Drives",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "LEESIDE_HUB",
+    "path": "C:\\Users\\David\\LEESIDE_HUB",
+    "branch": "master",
+    "remote": "",
+    "lastCommit": "32ecdae Leeside Hub v0.1 \u00e2\u20ac\u201d Brain 2 surface over the Primary Source Archive",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "cm",
+    "path": "C:\\Users\\David\\Local Settings\\Temp\\claude\\C--Users-David\\5ec0853a-d590-4359-93ee-0d026a632634\\scratchpad\\cm",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "evidence-templates",
+    "path": "C:\\Users\\David\\Local Settings\\Temp\\claude\\C--Users-David\\5ec0853a-d590-4359-93ee-0d026a632634\\scratchpad\\gh\\evidence-templates",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "vfinal",
+    "path": "C:\\Users\\David\\Local Settings\\Temp\\claude\\C--Users-David\\b474991c-6134-4946-81d7-12d40dc56fac\\scratchpad\\vfinal",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "vtest",
+    "path": "C:\\Users\\David\\Local Settings\\Temp\\claude\\C--Users-David\\b474991c-6134-4946-81d7-12d40dc56fac\\scratchpad\\vtest",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "gittest",
+    "path": "C:\\Users\\David\\Local Settings\\Temp\\claude\\C--Users-David\\ca439a46-09d2-422c-abd3-585a096d0b4b\\scratchpad\\gittest",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "clean",
+    "path": "C:\\Users\\David\\Local Settings\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\clean",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "clean2",
+    "path": "C:\\Users\\David\\Local Settings\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\clean2",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "clean3",
+    "path": "C:\\Users\\David\\Local Settings\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\clean3",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "david-os-app",
+    "path": "C:\\Users\\David\\Local Settings\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\david-os-app",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "app",
+    "path": "C:\\Users\\David\\Local Settings\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\demo\\app",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "g7-verifier",
+    "path": "C:\\Users\\David\\Local Settings\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\g7-verifier",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "g8-clone",
+    "path": "C:\\Users\\David\\Local Settings\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\g8-clone",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "g8c",
+    "path": "C:\\Users\\David\\Local Settings\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\g8c",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "g8d",
+    "path": "C:\\Users\\David\\Local Settings\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\g8d",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "g8e",
+    "path": "C:\\Users\\David\\Local Settings\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\g8e",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "oldgold",
+    "path": "C:\\Users\\David\\Local Settings\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\oldgold",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "app",
+    "path": "C:\\Users\\David\\Local Settings\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\prog\\app",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "verify",
+    "path": "C:\\Users\\David\\Local Settings\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\prog\\verify",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "verifygov",
+    "path": "C:\\Users\\David\\Local Settings\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\prog\\verifygov",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "vpdiff2",
+    "path": "C:\\Users\\David\\Local Settings\\Temp\\claude\\C--Users-David\\f9be876b-c27f-4830-904a-4fff46573c81\\scratchpad\\vpdiff2",
+    "branch": "",
+    "remote": "",
+    "lastCommit": "",
+    "uncommittedChanges": 0
+  },
+  {
+    "repoName": "remove-background-web",
+    "path": "C:\\Users\\David\\remove-background-web",
+    "branch": "main",
+    "remote": "origin\thttps://huggingface.co/spaces/Xenova/remove-background-web (fetch)\norigin\thttps://huggingface.co/spaces/Xenova/remove-background-web (push)",
+    "lastCommit": "b1179e9 Update README.md",
+    "uncommittedChanges": 0
+  }
+]
