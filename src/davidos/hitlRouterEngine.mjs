@@ -1,66 +1,109 @@
 import { createHash } from 'node:crypto';
-import { HitlConstitutionEngine } from './hitlConstitutionEngine.mjs';
 
 /**
- * HITL ROUTER ENGINE (DAVINCIA-HITL-ROUTER-v1.0)
- * Operates under Vice / HITL Master Adrian Daly to route agent actions to the correct human domain & expert panel.
+ * GOVERNANCE EXECUTION STACK (GXS): DAVINCIA-HITL-ROUTER-v1.0
+ * Programmatic Asynchronous Escalation Engine.
+ * Enforces the Spatial Separation Doctrine: When confidence < 0.85 or risk gate triggers,
+ * halts execution, packages a static escalation bundle, and awaits asynchronous HITL sign-off,
+ * producing hitl_decision.json and hitl_rationale.md.
  */
 export class HitlRouterEngine {
   constructor() {
-    this.constitution = new HitlConstitutionEngine();
+    this.confidenceFloor = 0.85;
   }
 
   routeAgentAction(agentId, actionName, riskTier = 'MEDIUM', financialAmountEur = 0) {
+    if (financialAmountEur > 50000 || riskTier === 'CRITICAL') {
+      return {
+        assigned_domain: { id: 'dom_07', name: 'Finance / Capital / Commercial' },
+        required_authority_level: 'LEVEL_0_SOVEREIGN',
+        assigned_human_reviewer: 'David Ward (Founder / Sovereign Ambassador)'
+      };
+    }
+    return {
+      assigned_domain: { id: 'dom_01', name: 'AI Governance & Agent Authority' },
+      required_authority_level: 'LEVEL_1_VICE_MASTER',
+      assigned_human_reviewer: 'Adrian Daly (Vice / HITL Master)'
+    };
+  }
+
+  evaluateExecutionForEscalation(agentId, workflowStep, confidenceScore, riskClass = 'MEDIUM', normalizedInputs = {}) {
     const timestamp = new Date().toISOString();
-    const routeId = `route_${createHash('md5').update(`${agentId}:${actionName}:${timestamp}`).digest('hex').substring(0, 10)}`;
+    const isConfidenceBreach = confidenceScore < this.confidenceFloor;
+    const isHighRiskBreach = (riskClass === 'HIGH' || riskClass === 'CRITICAL');
+    const requiresEscalation = isConfidenceBreach || isHighRiskBreach;
 
-    let targetDomainId = 'dom_01'; // Default AI Governance
-    let requiredAuthorityLevel = 'LEVEL_3_EXPERT_PANEL';
-    let assignedReviewer = 'Adrian Daly (HITL Master)';
-
-    // Domain Mapping Logic
-    if (financialAmountEur > 5000 || actionName.includes('GRANT') || actionName.includes('CAPITAL')) {
-      targetDomainId = 'dom_07'; // Finance / Capital
-    } else if (actionName.includes('LEGAL') || actionName.includes('LICENSE') || actionName.includes('GDPR')) {
-      targetDomainId = 'dom_06'; // Legal / Regulatory
-    } else if (actionName.includes('SECURITY') || actionName.includes('ACCESS')) {
-      targetDomainId = 'dom_04'; // Cybersecurity
-    } else if (actionName.includes('CULTURE') || actionName.includes('HERITAGE') || actionName.includes('BOOK')) {
-      targetDomainId = 'dom_09'; // Cultural / Heritage
-    } else if (actionName.includes('GOLF') || actionName.includes('AERO') || actionName.includes('BALLISTICS')) {
-      targetDomainId = 'dom_11'; // Professional Domain Practice
+    if (!requiresEscalation) {
+      return {
+        status: 'GOVERNED_EXECUTION_PERMITTED',
+        requires_escalation: false,
+        confidence_score: confidenceScore,
+        risk_class: riskClass
+      };
     }
 
-    // High Risk or Large Capital Escalation to David Ward (Sovereign Level 0)
-    if (riskTier === 'CRITICAL' || financialAmountEur >= 50000) {
-      requiredAuthorityLevel = 'LEVEL_0_SOVEREIGN';
-      assignedReviewer = 'David Ward (Founder / Sovereign Ambassador)';
-    } else if (riskTier === 'HIGH' || financialAmountEur >= 10000) {
-      requiredAuthorityLevel = 'LEVEL_1_EXECUTIVE';
-      assignedReviewer = 'Adrian Daly (Vice / HITL Master)';
-    }
+    // Programmatic System Halt & Static Package Assembly
+    const escalationId = `esc_${createHash('md5').update(`${agentId}:${workflowStep}:${timestamp}`).digest('hex').substring(0, 10)}`;
 
-    const domainInfo = this.constitution.getDomain(targetDomainId);
-
-    const routingRecord = {
-      route_id: routeId,
+    const staticEscalationPackage = {
+      escalation_id: escalationId,
       agent_id: agentId,
-      action_name: actionName,
-      risk_tier: riskTier,
-      financial_amount_eur: financialAmountEur,
-      assigned_domain: {
-        id: domainInfo.id,
-        name: domainInfo.name,
-        chair: domainInfo.chair,
-        availableSeats: domainInfo.seats
-      },
-      required_authority_level: requiredAuthorityLevel,
-      assigned_human_reviewer: assignedReviewer,
-      approval_status: 'PENDING_HUMAN_SIGNATURE',
+      workflow_step: workflowStep,
+      confidence_score: confidenceScore,
+      risk_class: riskClass,
+      halt_reason: isConfidenceBreach ? 'CONFIDENCE_BELOW_0.85_FLOOR' : 'HIGH_RISK_CLASS_TRIGGER',
+      normalized_inputs: normalizedInputs,
       timestamp,
-      route_hash: createHash('sha256').update(agentId + actionName + riskTier).digest('hex')
+      package_hash: createHash('sha256').update(agentId + workflowStep + confidenceScore).digest('hex')
     };
 
-    return routingRecord;
+    return {
+      status: 'SYSTEM_HALTED_AWAITING_ASYNC_HITL',
+      requires_escalation: true,
+      escalation_id: escalationId,
+      static_package: staticEscalationPackage
+    };
+  }
+
+  processAsyncHitlSignoff(escalationPackage, hitlSeatId, approved, rationaleText, gpgSignature = '0x80D0ADA1') {
+    const timestamp = new Date().toISOString();
+
+    const hitlDecisionJson = {
+      escalation_id: escalationPackage.escalation_id,
+      hitl_seat_id: hitlSeatId,
+      decision: approved ? 'APPROVED_BY_HUMAN_AUTHORITY' : 'REJECTED_BY_HUMAN_AUTHORITY',
+      confidence_override: true,
+      gpg_signature: gpgSignature,
+      timestamp,
+      decision_hash: createHash('sha256').update(escalationPackage.escalation_id + hitlSeatId + approved).digest('hex')
+    };
+
+    const hitlRationaleMd = `# EMBASSY HITL GOVERNED DECISION RATIONALE
+**Escalation ID:** \`${escalationPackage.escalation_id}\`  
+**HITL Seat:** \`${hitlSeatId}\`  
+**Decision:** \`${hitlDecisionJson.decision}\`  
+**Timestamp:** \`${timestamp}\`  
+**GPG Signature:** \`${gpgSignature}\`  
+
+---
+
+### **1. Executive Summary & Rationale**
+${rationaleText}
+
+### **2. Evidence & Risk Boundaries**
+- Agent ID: \`${escalationPackage.agent_id}\`
+- Workflow Step: \`${escalationPackage.workflow_step}\`
+- Confidence Score: \`${escalationPackage.confidence_score}\` (Floor: 0.85)
+- Risk Class: \`${escalationPackage.risk_class}\`
+
+### **3. Audit Attributability**
+- Immutable Hash: \`${hitlDecisionJson.decision_hash}\`
+`;
+
+    return {
+      status: approved ? 'GOVERNED_EXECUTION_RESUMED' : 'EXECUTION_REJECTED_HALTED',
+      hitl_decision: hitlDecisionJson,
+      hitl_rationale: hitlRationaleMd
+    };
   }
 }
