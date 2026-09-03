@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DAVID_OS Embassy | Human Authority Corps & HITL Master Router</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --panel: #131c2e;
+      --accent: #38bdf8;
+      --gold: #fbbf24;
+      --green: #22c55e;
+      --purple: #c084fc;
+      --pink: #ec4899;
+      --text: #f8fafc;
+      --sub: #94a3b8;
+    }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 32px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .header h1 {
+      font-size: 2.8rem;
+      background: linear-gradient(to right, var(--gold), var(--accent), var(--purple), var(--pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+    .hierarchy-container {
+      background: var(--panel);
+      border-radius: 16px;
+      padding: 32px;
+      border: 1px solid #1e293b;
+      margin-bottom: 40px;
+    }
+    .level-box {
+      border-radius: 12px;
+      padding: 16px 24px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .level-0 { background: rgba(251, 191, 36, 0.15); border-color: var(--gold); }
+    .level-1 { background: rgba(56, 189, 248, 0.15); border-color: var(--accent); }
+    .level-2 { background: rgba(192, 132, 252, 0.15); border-color: var(--purple); }
+
+    .domains-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .domain-card {
+      background: var(--panel);
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid #1e293b;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
+    }
+    .domain-card h3 {
+      margin-top: 0;
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
+    .seat-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      background: #065f46;
+      color: #34d399;
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>🏛️ EMBASSY HUMAN AUTHORITY CORPS</h1>
+    <p>50 Core Human Authorities • 12 Expert Domains • 48 Specialist Seats • HITL Master Router</p>
+  </div>
+
+  <!-- CONSTITUTIONAL AUTHORITY HIERARCHY -->
+  <div class="hierarchy-container">
+    <h2 style="margin-top: 0; color: var(--gold);">👑 CONSTITUTIONAL HUMAN AUTHORITY HIERARCHY</h2>
+
+    <div class="level-box level-0">
+      <h3 style="margin: 0; color: var(--gold);">LEVEL 0 — SOVEREIGN AUTHORITY</h3>
+      <p style="margin: 4px 0 0 0; font-weight: bold;">David Ward (Founder / Ambassador / Final Acceptance Authority)</p>
+    </div>
+
+    <div class="level-box level-1">
+      <h3 style="margin: 0; color: var(--accent);">LEVEL 1 — EXECUTIVE HUMAN AUTHORITY</h3>
+      <p style="margin: 4px 0 0 0; font-weight: bold;">Adrian Daly (Vice Ambassador & Master of Human-Agent Governance • HITL-5 Master)</p>
+    </div>
+
+    <div class="level-box level-2">
+      <h3 style="margin: 0; color: var(--purple);">LEVEL 2 — HUMAN GOVERNANCE COUNCIL</h3>
+      <p style="margin: 4px 0 0 0;">12 Domain Chairs & 48 Specialist HITL Expert Seats (4 Seats per Domain)</p>
+    </div>
+  </div>
+
+  <!-- 12 HUMAN EXPERT DOMAINS -->
+  <h2 style="color: var(--accent); border-bottom: 2px solid var(--accent); padding-bottom: 8px; margin-bottom: 24px;">🏛️ 12 HUMAN EXPERT DOMAINS (48 SPECIALIST SEATS)</h2>
+
+  <div class="domains-grid">
+
+    <div class="domain-card">
+      <span class="seat-badge">4 SEATS • COVERED</span>
+      <h3>01. AI Governance & Agent Authority</h3>
+      <p style="font-size: 0.85rem; color: var(--sub);">Chief AI Governance, Agent Authority, AI Safety/Risk, AI Governance Auditor</p>
+    </div>
+
+    <div class="domain-card">
+      <span class="seat-badge">4 SEATS • COVERED</span>
+      <h3>02. Human-Agent Symbiosis</h3>
+      <p style="font-size: 0.85rem; color: var(--sub);">Human-AI Interaction, Cognitive Systems, Human Factors, Automation Bias</p>
+    </div>
+
+    <div class="domain-card">
+      <span class="seat-badge">4 SEATS • COVERED</span>
+      <h3>03. Data, Evidence & Provenance</h3>
+      <p style="font-size: 0.85rem; color: var(--sub);">Data Governance, Evidence & Provenance, Knowledge Mgmt, Info Integrity Auditor</p>
+    </div>
+
+    <div class="domain-card">
+      <span class="seat-badge">4 SEATS • COVERED</span>
+      <h3>04. Cybersecurity & Digital Trust</h3>
+      <p style="font-size: 0.85rem; color: var(--sub);">Chief Cybersecurity, Application Security, Identity & Access, Threat/Red-Team</p>
+    </div>
+
+    <div class="domain-card">
+      <span class="seat-badge">4 SEATS • COVERED</span>
+      <h3>05. Software / Systems Architecture</h3>
+      <p style="font-size: 0.85rem; color: var(--sub);">Chief Systems Architect, Distributed Systems, Software Assurance, Infrastructure</p>
+    </div>
+
+    <div class="domain-card">
+      <span class="seat-badge">4 SEATS • COVERED</span>
+      <h3>06. Regulatory / Legal / Compliance</h3>
+      <p style="font-size: 0.85rem; color: var(--sub);">AI & Tech Law, Regulatory Compliance, Privacy/GDPR, Contract/IP Expert</p>
+    </div>
+
+    <div class="domain-card">
+      <span class="seat-badge">4 SEATS • COVERED</span>
+      <h3>07. Finance / Capital / Commercial</h3>
+      <p style="font-size: 0.85rem; color: var(--sub);">Investment/Capital, Corporate Finance, Financial Controls, Commercial Authority</p>
+    </div>
+
+    <div class="domain-card">
+      <span class="seat-badge">4 SEATS • COVERED</span>
+      <h3>08. Institutional / Public-Sector</h3>
+      <p style="font-size: 0.85rem; color: var(--sub);">Institutional Governance, Public Admin, European Institutions, Diplomacy</p>
+    </div>
+
+    <div class="domain-card">
+      <span class="seat-badge">4 SEATS • COVERED</span>
+      <h3>09. Cultural / Heritage / Humanities</h3>
+      <p style="font-size: 0.85rem; color: var(--sub);">Cultural Heritage, Archivist/Records, Museum/Collections, Cultural Ethics</p>
+    </div>
+
+    <div class="domain-card">
+      <span class="seat-badge">4 SEATS • COVERED</span>
+      <h3>10. Science / Research / Epistemics</h3>
+      <p style="font-size: 0.85rem; color: var(--sub);">Scientific Methodology, Research Integrity, Statistics/Evidence, Research Translation</p>
+    </div>
+
+    <div class="domain-card">
+      <span class="seat-badge">4 SEATS • ROTATING</span>
+      <h3>11. Domain Expertise / Practice</h3>
+      <p style="font-size: 0.85rem; color: var(--sub);">Golf Coaches, MedTech Validation, Education Experts, Aerospace Engineers</p>
+    </div>
+
+    <div class="domain-card">
+      <span class="seat-badge">4 SEATS • COVERED</span>
+      <h3>12. Ethics, Society & Consequences</h3>
+      <p style="font-size: 0.85rem; color: var(--sub);">AI Ethics, Social Impact, Human Rights, Ethical Review / Public Interest</p>
+    </div>
+
+  </div>
+
+</body>
+</html>
