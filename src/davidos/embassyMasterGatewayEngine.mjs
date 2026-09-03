@@ -16,6 +16,7 @@ export class EmbassyMasterGatewayEngine {
       { id: 'PORTAL_ALEX_WENGER', name: 'ALEX WENGER OS', theme: 'Alpine Golf Resort & Aero Physics', route: '/golf-resort', hitl: 'Resort Director (Alex Wenger)' },
       { id: 'PORTAL_BAIR', name: 'BAIR (Brehon AI Research)', theme: 'BAIR Storybook Academy & Contractor Onboarding', route: '/bair-academy', hitl: 'PGA Master Contractor Chair' },
       { id: 'PORTAL_DAVINCIA_DVA', name: 'DAVINCIA DVA (DaVinciA⁺)', theme: '15-Agent Capital Constellation & Governed Kernel', route: '/davincia-dva', hitl: 'DaVinciA⁺ Circuit Breaker' },
+      { id: 'PORTAL_LIBRARY_SHELVES', name: 'DAVID_OS LIBRARY SHELVES', theme: 'Visual Wooden Bookshelf & Publishing Vaults', route: '/library_shelves.html', hitl: 'A.Ward Publications Archivist' },
       { id: 'PORTAL_DAVID_EMBASSY', name: 'DAVID_OS EMBASSY', theme: 'Master Sovereign Embassy & Series A Deal Rooms', route: '/portal/business', hitl: 'Embassy Ambassador (David Ward)' }
     ];
   }
