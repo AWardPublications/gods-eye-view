@@ -1,0 +1,50 @@
+{
+  "mission_id": "IIIF-CULTURAL-BRIDGE-001",
+  "executed_by_squads": [
+    "Squad 01 — ARCHITECT",
+    "Squad 02 — RESEARCH",
+    "Squad 03 — BUILDER",
+    "Squad 04 — TESTER",
+    "Squad 05 — CHALLENGE",
+    "Squad 06 — EVIDENCE",
+    "Squad 07 — INTEGRATOR"
+  ],
+  "ingested_assets": [
+    {
+      "asset_id": "iiif_asset_kells_01",
+      "title": "The Book of Kells (MS 58)",
+      "institution": "Trinity College Library Dublin",
+      "manifest_url": "https://digitalcollections.tcd.ie/manifests/ms58",
+      "rights": "http://rightsstatements.org/vocab/NoC-NC/1.0/",
+      "license": "CC-BY-NC 4.0",
+      "pages_ingested": 680,
+      "annotations_count": 142,
+      "governance_status": "GOVERNED_BY_DAVINCIA",
+      "gpg_signature": "0x80D0ADA1"
+    },
+    {
+      "asset_id": "iiif_asset_harley_02",
+      "title": "The Harley Golden Gospels (Harley MS 2788)",
+      "institution": "The British Library",
+      "manifest_url": "https://api.bl.uk/metadata/iiif/harley2788",
+      "rights": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+      "license": "Public Domain",
+      "pages_ingested": 208,
+      "annotations_count": 56,
+      "governance_status": "GOVERNED_BY_DAVINCIA",
+      "gpg_signature": "0x80D0ADA1"
+    },
+    {
+      "asset_id": "iiif_asset_valais_03",
+      "title": "Valais Alpine Hydro Archives (Bisse du Ro Codex)",
+      "institution": "Cantonal Archives of Valais & A.Ward Publications Archive",
+      "manifest_url": "https://archives.valais.ch/manifests/bisseduro_01",
+      "rights": "http://rightsstatements.org/vocab/InC/1.0/",
+      "license": "CC-BY-SA 4.0",
+      "pages_ingested": 114,
+      "annotations_count": 88,
+      "governance_status": "GOVERNED_BY_DAVINCIA",
+      "gpg_signature": "0x80D0ADA1"
+    }
+  ]
+}
