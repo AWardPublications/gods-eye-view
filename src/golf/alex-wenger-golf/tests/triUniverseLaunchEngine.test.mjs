@@ -9,6 +9,7 @@ test('1. TriUniverseLaunchEngine launches all 3 applications and integrated revi
   assert.equal(res.status, 'ALL_3_APPLICATIONS_AND_REVIEW_PLATFORMS_LIVE');
   assert.equal(res.applicationsCount, 3);
   assert.equal(res.applications[0].appUrl, '/embassy');
+  assert.equal(res.applications[0].portalBusinessUrl, '/portal/business');
   assert.equal(res.applications[1].appUrl, '/golf-resort');
   assert.equal(res.applications[2].appUrl, '/corkonian-island');
   assert.ok(res.launchHash.length === 64);

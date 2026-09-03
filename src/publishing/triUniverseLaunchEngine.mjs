@@ -14,6 +14,7 @@ export class TriUniverseLaunchEngine {
         id: 'APP_DAVID_OS_EMBASSY',
         name: 'DAVID_OS: The Sovereign Embassy',
         appUrl: '/embassy',
+        portalBusinessUrl: '/portal/business',
         reviewPlatformUrl: '/embassy/review-dealroom',
         targetAudience: 'Founding Patrons, VCs, Executive Board Chairs',
         reviewType: 'Series A Investor Diligence & Sovereign Grant Review',
