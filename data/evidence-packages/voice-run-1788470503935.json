@@ -1,0 +1,35 @@
+{
+  "evidence_urn": "urn:davincia:evidence:voice:voice-turn-1788470503834",
+  "run_id": "voice-turn-1788470503834",
+  "player_id": "urn:davincia:athlete:alex_wenger",
+  "transcript_input": "Pitching onto green.",
+  "canonical_response_text": "Maintain steady 3:1 backswing to downswing ratio.",
+  "canonical_text_hash": "sha256-d204a9b0196bda5e6f60edce7b5ffbb29327bb959fc38fd6f408bfad5066190d",
+  "tone_state": "BASELINE",
+  "delivery_modality": "TEXT_AND_AUDIO",
+  "governance_verdict": "SUCCESS",
+  "vad": {
+    "is_speech": true,
+    "is_barge_in": false
+  },
+  "stt": {
+    "engine": "SherpaOnnxSTT_RealEngine",
+    "latency_ms": 0
+  },
+  "tts": {
+    "engine": "PiperONNX_RealEngine",
+    "latency_ms": 0,
+    "duration_ms": 2110,
+    "rtf": 0.0074
+  },
+  "transport": {
+    "frame_id": 1,
+    "tone_state": "BASELINE",
+    "latency_ms": 0,
+    "within_latency_bound": true,
+    "stream_status": "DISPATCHED"
+  },
+  "total_pipeline_latency_ms": 100,
+  "fallback_engaged": true,
+  "timestamp_utc": "2026-09-03T21:21:43.934Z"
+}

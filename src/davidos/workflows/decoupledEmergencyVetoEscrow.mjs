@@ -57,3 +57,77 @@ export class DecoupledEmergencyVetoEscrow {
     };
   }
 }
+
+export class DecoupledEmergencyVetoEscrowEngine {
+  constructor() {
+    this.tenantId = 'TENANT-BAIS-SOCIETY';
+    this.systemState = 'HEALTHY';
+    this.spatialZones = { 'RM-05': 'ACTIVE', 'RM-10': 'READY' };
+    this.processVelocity = 1.0;
+    this.principals = {
+      DP_WARD_001: { name: 'David Ward', role: 'FOUNDER', gpg_key: '0x80D0ADA1_WARD' },
+      ST_MILLS_002: { name: 'Gary Mills', role: 'BOARD_MEMBER', gpg_key: '0x44B0FDE2_MILLS', group: 'COORDINATOR' },
+      ST_DALY_003: { name: 'Adrian Daly', role: 'BOARD_MEMBER', gpg_key: '0x80D0ADA1_DALY', group: 'CORK_BAN' },
+      ST_MCCARTHY_004: { name: 'David McCarthy', role: 'BOARD_MEMBER', gpg_key: '0x55E9FBA3_MCCARTHY', group: 'CORK_RI' },
+      ST_SAMMY_005: { name: 'Sammy D', role: 'CONTRACTOR', gpg_key: '0xAA44B8C1_SAMMY', group: 'SAMMY_D' }
+    };
+    this.ledger = [];
+  }
+
+  triggerPhysicalLever(targetZone, assetOwner, targetAssetId) {
+    this.spatialZones[targetZone] = 'LOCKED_FAIL_CLOSED';
+    this.processVelocity = 0.0;
+    this.systemState = 'EMERGENCY_HALTED';
+
+    let stewardsPool = ['ST_DALY_003', 'ST_MCCARTHY_004', 'ST_SAMMY_005'];
+    let conflictDetected = false;
+    if (stewardsPool.includes(assetOwner)) {
+      conflictDetected = true;
+      stewardsPool = stewardsPool.filter(s => s !== assetOwner);
+      stewardsPool.push('ST_MILLS_002');
+    }
+
+    return {
+      status: 'PHYSICAL_LEVER_TRIPPED_FAIL_CLOSED',
+      target_zone: targetZone,
+      process_velocity: 0.0,
+      conflict_check: { conflict_detected: conflictDetected },
+      assembled_stewards: stewardsPool
+    };
+  }
+
+  runEscrowChamber(stewards, simulatedVotes, elapsedMinutes) {
+    if (elapsedMinutes > 15) {
+      this.spatialZones['RM-05'] = 'PERMANENT_ISOLATED';
+      this.systemState = 'PERMANENT_FAIL_CLOSED_TIMEOUT';
+      return {
+        status: 'FAIL_CLOSED_SLA_TIMEOUT',
+        escalation_target: 'GLOBAL_BREHON_TRIBUNAL',
+        system_state: this.systemState
+      };
+    }
+
+    const isVetoed = Object.values(simulatedVotes).some(v => v === 'VETO');
+    if (isVetoed || Object.keys(simulatedVotes).length === 0) {
+      this.systemState = 'SYSTEM_HALTED_BY_HUMAN_VETO';
+      this.spatialZones['RM-05'] = 'HARD_HALTED_BY_VETO';
+      const receiptHash = createHash('sha256').update(`VETO:${Date.now()}`).digest('hex');
+
+      return {
+        verdict: 'VETO_CARRIED',
+        system_state: this.systemState,
+        receipt_hash: receiptHash
+      };
+    } else {
+      this.systemState = 'HEALTHY';
+      this.spatialZones['RM-05'] = 'ACTIVE';
+      this.processVelocity = 1.0;
+
+      return {
+        verdict: 'RESOLUTION_UNANIMOUSLY_APPROVED',
+        restored_velocity: 1.0,
+        system_state: this.systemState
+      };
+    }
+  }
+}
