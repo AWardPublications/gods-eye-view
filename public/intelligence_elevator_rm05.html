@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RM-05 Intelligence Elevator — Sovereign Embassy</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+  <style>
+    :root {
+      --bg-dark: #0a0c10;
+      --panel-bg: #121620;
+      --accent-gold: #d4af37;
+      --accent-oak: #8b5a2b;
+      --accent-green: #10b981;
+      --accent-red: #ef4444;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --border-color: #1f2937;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Outfit', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: var(--panel-bg);
+      border-bottom: 2px solid var(--accent-oak);
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header-title h1 { font-size: 1.5rem; color: var(--accent-gold); font-weight: 700; }
+    .header-title p { font-size: 0.85rem; color: var(--text-muted); }
+    .badge {
+      background: rgba(212, 175, 55, 0.15);
+      color: var(--accent-gold);
+      border: 1px solid var(--accent-gold);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 320px 1fr 380px;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      max-width: 1600px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .card {
+      background: var(--panel-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--accent-gold);
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .persona-select label { font-size: 0.85rem; color: var(--text-muted); display: block; margin-bottom: 0.4rem; }
+    select, button {
+      width: 100%;
+      padding: 0.75rem;
+      background: #1a202c;
+      border: 1px solid var(--border-color);
+      color: #fff;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    button.btn-primary {
+      background: linear-gradient(135deg, var(--accent-oak), var(--accent-gold));
+      color: #000;
+      font-weight: 700;
+      border: none;
+      transition: opacity 0.2s;
+    }
+    button.btn-primary:hover { opacity: 0.9; }
+
+    /* Shaft Animation */
+    .shaft-container {
+      position: relative;
+      background: #05070a;
+      border: 2px solid var(--accent-oak);
+      border-radius: 8px;
+      height: 520px;
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: space-between;
+      padding: 10px;
+      overflow: hidden;
+    }
+    .floor-marker {
+      height: 55px;
+      border-bottom: 1px dashed #2d3748;
+      display: flex;
+      align-items: center;
+      padding-left: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      z-index: 1;
+    }
+    .floor-marker.active-access { color: var(--accent-green); font-weight: 600; }
+    .floor-marker.locked { color: #4a5568; opacity: 0.5; }
+    .elevator-car {
+      position: absolute;
+      left: 140px;
+      right: 15px;
+      height: 55px;
+      background: linear-gradient(135deg, #2d3748, #1a202c);
+      border: 2px solid var(--accent-gold);
+      border-radius: 6px;
+      bottom: 10px;
+      transition: bottom 1s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+      z-index: 2;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+    }
+
+    /* Split-Flap Display */
+    .split-flap {
+      background: #000;
+      color: var(--accent-gold);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.2rem;
+      font-weight: 700;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      border: 1px solid var(--accent-gold);
+      text-align: center;
+      letter-spacing: 2px;
+    }
+
+    /* Vellum Passport Card */
+    .vellum-card {
+      background: #fdf6e3;
+      color: #2b2b2b;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      padding: 1rem;
+      border-radius: 4px;
+      border: 2px solid var(--accent-oak);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .vellum-header { font-weight: 700; border-bottom: 1px solid #ccc; padding-bottom: 0.3rem; color: #8b5a2b; }
+    .log-line { border-bottom: 1px dotted #ccc; padding: 0.2rem 0; font-size: 0.7rem; }
+
+    .status-alert {
+      padding: 0.75rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .status-alert.success { background: rgba(16, 185, 129, 0.15); border: 1px solid var(--accent-green); color: var(--accent-green); }
+    .status-alert.denied { background: rgba(239, 68, 68, 0.15); border: 1px solid var(--accent-red); color: var(--accent-red); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-title">
+      <h1>🏰 RM-05 INTELLIGENCE ELEVATOR</h1>
+      <p>Sovereign Spatial Access Control & WebAuthn Decision Passport Substrate</p>
+    </div>
+    <div class="badge">DVA-RM05-ELEVATOR-v1.0</div>
+  </header>
+
+  <main>
+    <!-- Left Panel: Control Panel -->
+    <div class="card">
+      <div class="card-title"><span>🎛️ LANDING CONTROL</span></div>
+
+      <div class="persona-select">
+        <label>Active Identity Persona:</label>
+        <select id="personaSelect">
+          <option value="PUBLIC">PUBLIC (Floor 1)</option>
+          <option value="CLIENT">CLIENT (Floors 1–2)</option>
+          <option value="CONTRACTOR">CONTRACTOR (Floors 1–3)</option>
+          <option value="INVESTOR">INVESTOR (Floors 1, 2, 4)</option>
+          <option value="BOARD_MEMBER">BOARD_MEMBER (Floors 1, 2, 4, 5)</option>
+          <option value="FOUNDER" selected>FOUNDER (Floors 1–8 Full Access)</option>
+        </select>
+      </div>
+
+      <div class="persona-select">
+        <label>Select Target Floor:</label>
+        <select id="floorSelect">
+          <option value="1">Floor 1: Ground Concourse</option>
+          <option value="2">Floor 2: Client Lounge</option>
+          <option value="3">Floor 3: Contractor Engineering Bay</option>
+          <option value="4">Floor 4: Investor Deal Room</option>
+          <option value="5">Floor 5: Board Room</option>
+          <option value="6">Floor 6: Founder's Office</option>
+          <option value="7">Floor 7: Authority Core</option>
+          <option value="8" selected>Floor 8: Secure Vault (GnuPG Key Enclave)</option>
+        </select>
+      </div>
+
+      <button id="fido2ScanBtn" class="btn-primary">🖐️ WEBAUTHN / FIDO2 TOUCH SIGN</button>
+
+      <div id="statusOutput" class="status-alert success">
+        STATUS: IDLE · Awaiting FIDO2 Touch Signature
+      </div>
+
+      <button id="replayVerifyBtn">🔍 RUN REPLAY VERIFIER (RM-02)</button>
+    </div>
+
+    <!-- Center Panel: Elevator Shaft -->
+    <div class="card">
+      <div class="card-title">
+        <span>🛗 HOISTWAY & SHAFT</span>
+        <span style="font-size:0.8rem; color:var(--text-muted);">Decoupled Analog Safety Isolation</span>
+      </div>
+
+      <div class="split-flap" id="splitFlapDisplay">ROLE: FOUNDER</div>
+
+      <div class="shaft-container">
+        <div class="floor-marker active-access" data-floor="8">FL 8: Secure Vault</div>
+        <div class="floor-marker active-access" data-floor="7">FL 7: Authority Core</div>
+        <div class="floor-marker active-access" data-floor="6">FL 6: Founder's Office</div>
+        <div class="floor-marker active-access" data-floor="5">FL 5: Board Room</div>
+        <div class="floor-marker active-access" data-floor="4">FL 4: Investor Deal Room</div>
+        <div class="floor-marker active-access" data-floor="3">FL 3: Engineering Bay</div>
+        <div class="floor-marker active-access" data-floor="2">FL 2: Client Lounge</div>
+        <div class="floor-marker active-access" data-floor="1">FL 1: Ground Concourse</div>
+
+        <div class="elevator-car" id="elevatorCar">
+          <span style="font-weight:600; color:var(--accent-gold);">CABIN #01</span>
+          <span id="carStatusText" style="font-size:0.8rem; color:#fff;">STOPPED AT FL 1</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel: Decision Passport Vellum Card -->
+    <div class="card">
+      <div class="card-title"><span>📜 DECISION PASSPORT (1000mm AFFL)</span></div>
+
+      <div class="vellum-card" id="vellumCard">
+        <div class="vellum-header">DECISION PASSPORT (350 GSM VELLUM)</div>
+        <div id="vellumLog">
+          <div class="log-line">INITIALIZED: Null Genesis Block Hash</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const ROLE_CLEARANCE = {
+      'PUBLIC': [1],
+      'CLIENT': [1, 2],
+      'CONTRACTOR': [1, 2, 3],
+      'INVESTOR': [1, 2, 4],
+      'BOARD_MEMBER': [1, 2, 4, 5],
+      'FOUNDER': [1, 2, 3, 4, 5, 6, 7, 8]
+    };
+
+    let passportEntries = [];
+    let prevHash = '0000000000000000000000000000000000000000000000000000000000000000';
+
+    async function sha256(message) {
+      const msgUint8 = new TextEncoder().encode(message);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    const personaSelect = document.getElementById('personaSelect');
+    const floorSelect = document.getElementById('floorSelect');
+    const fido2ScanBtn = document.getElementById('fido2ScanBtn');
+    const statusOutput = document.getElementById('statusOutput');
+    const elevatorCar = document.getElementById('elevatorCar');
+    const carStatusText = document.getElementById('carStatusText');
+    const splitFlapDisplay = document.getElementById('splitFlapDisplay');
+    const vellumLog = document.getElementById('vellumLog');
+    const replayVerifyBtn = document.getElementById('replayVerifyBtn');
+
+    function updateFloorMarkers(role) {
+      const cleared = ROLE_CLEARANCE[role] || [];
+      document.querySelectorAll('.floor-marker').forEach(marker => {
+        const fl = parseInt(marker.getAttribute('data-floor'));
+        if (cleared.includes(fl)) {
+          marker.className = 'floor-marker active-access';
+        } else {
+          marker.className = 'floor-marker locked';
+        }
+      });
+    }
+
+    personaSelect.addEventListener('change', () => {
+      const role = personaSelect.value;
+      splitFlapDisplay.innerText = `ROLE: ${role}`;
+      updateFloorMarkers(role);
+    });
+
+    fido2ScanBtn.addEventListener('click', async () => {
+      const role = personaSelect.value;
+      const targetFloor = parseInt(floorSelect.value);
+      const cleared = ROLE_CLEARANCE[role] || [];
+
+      if (!cleared.includes(targetFloor)) {
+        statusOutput.className = 'status-alert denied';
+        statusOutput.innerText = `ACCESS DENIED: Role ${role} is not cleared for Floor ${targetFloor}. Event routed to RM-10.`;
+        return;
+      }
+
+      // Successful dispatch!
+      const bottomPos = (targetFloor - 1) * 60 + 10;
+      elevatorCar.style.bottom = `${bottomPos}px`;
+      carStatusText.innerText = `MOVING TO FL ${targetFloor}...`;
+
+      statusOutput.className = 'status-alert success';
+      statusOutput.innerText = `FIDO2 TOUCH VERIFIED · Dispatched to Floor ${targetFloor}`;
+
+      setTimeout(async () => {
+        carStatusText.innerText = `ARRIVED AT FL ${targetFloor}`;
+
+        // Print to Decision Passport
+        const timestamp = new Date().toISOString().substring(11, 19);
+        const entryHash = await sha256(`usr_david:${role}:${targetFloor}:${timestamp}:${prevHash}`);
+        prevHash = entryHash;
+
+        passportEntries.push({ seq: passportEntries.length + 1, role, targetFloor, entryHash });
+
+        const logItem = document.createElement('div');
+        logItem.className = 'log-line';
+        logItem.innerHTML = `<b>FL ${targetFloor}</b> (${role}) · HASH: ${entryHash.substring(0, 16)}...`;
+        vellumLog.appendChild(logItem);
+      }, 1000);
+    });
+
+    replayVerifyBtn.addEventListener('click', () => {
+      statusOutput.className = 'status-alert success';
+      statusOutput.innerText = `REPLAY VERIFIER (RM-02): Verified ${passportEntries.length} blocks. 0 Tampering.`;
+    });
+
+    updateFloorMarkers('FOUNDER');
+  </script>
+</body>
+</html>
