@@ -21,6 +21,7 @@ console.log("\n  [4/4] Launching Vite Dev-Server & Opening Review Control Portal
 const portals = [
   'http://localhost:4173/david-os/index.html',
   'http://localhost:4173/embassy_master_gateway.html',
+  'http://localhost:4173/bair_recruitment_portal.html',
   'http://localhost:4173/gods_eye_3d_flight_deck.html',
   'http://localhost:4173/course_map_visualizer.html',
   'http://localhost:4173/mobile_spotter.html',
