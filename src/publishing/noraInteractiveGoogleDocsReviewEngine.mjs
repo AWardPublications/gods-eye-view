@@ -3,16 +3,19 @@ import { mkdirSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
 /**
- * NORA Interactive Google Docs Review Engine (Bilingual EN / FR)
- * Generates personalized, beautifully styled interactive Google Docs review templates
- * for Nora to fill in across David's 7 Flagship Volumes in Google Drive folder:
- * https://drive.google.com/drive/folders/1ZrjOVi_kNPQxAHVynaPgEw821hVm8nb5
+ * NORA Interactive Google Docs Review Engine (Natural Botanical Theme)
+ * Implements David's poetic nature aesthetic for Nora:
+ * - Top Header: Sky Blue (#e0f2fe / #0284c7)
+ * - Headings: Flower Blossom Pink (#ec4899 / #db2777)
+ * - Text Boxes & Borders: Lush Vine Green (#16a34a / #f0fdf4)
+ * - Footer: Earth Ground Brown (#78350f / #fef3c7)
  */
 export class NoraInteractiveGoogleDocsReviewEngine {
   constructor() {
     this.publisher = 'A.Ward Publications (Nielsen Publisher Prefix 978-1-918501)';
     this.targetReviewer = 'Nora';
     this.author = 'David Ward';
+    this.themeName = 'Natural Botanical (Sky Blue, Flower Pink, Vine Green, Earth Brown)';
     this.desktopExportDir = 'C:\\Users\\David\\Desktop\\NORA_BOOK_REVIEW_COMMUNICATIONS_VAULT\\04_GOOGLE_DRIVE_SYNC_READY';
     this.grantGedhiExportDir = 'C:\\Users\\David\\Desktop\\GRANT GEDHI\\06 Google Docs Export';
 
@@ -32,62 +35,203 @@ export class NoraInteractiveGoogleDocsReviewEngine {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>NORA BOOK REVIEW DOC - VOL ${vol.id} - ${vol.titleEn}</title>
+  <title>NORA NATURAL BOTANICAL REVIEW DOC - VOL ${vol.id} - ${vol.titleEn}</title>
   <style>
-    body { font-family: 'Georgia', serif; line-height: 1.6; color: #111827; background-color: #f9fafb; padding: 40px; max-width: 900px; margin: 0 auto; }
-    .header { text-align: center; border-bottom: 3px double #1e3a8a; padding-bottom: 20px; margin-bottom: 30px; }
-    .publisher { font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #1e3a8a; font-weight: bold; }
-    h1 { color: #0f172a; font-size: 26px; margin: 10px 0 5px; }
-    .subtitle { font-style: italic; color: #475569; font-size: 16px; margin-bottom: 10px; }
-    .meta-table { width: 100%; border-collapse: collapse; margin-bottom: 25px; font-size: 14px; }
-    .meta-table td { padding: 8px 12px; border: 1px solid #cbd5e1; }
-    .meta-label { font-weight: bold; background-color: #e2e8f0; width: 30%; }
-    .section-box { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 20px; margin-bottom: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-    h2 { color: #1e3a8a; font-size: 18px; border-bottom: 1px solid #cbd5e1; padding-bottom: 5px; margin-top: 0; }
-    .fill-box { border: 2px dashed #94a3b8; background-color: #f8fafc; border-radius: 6px; padding: 15px; min-height: 80px; margin-top: 10px; font-family: 'Helvetica Neue', sans-serif; font-size: 14px; color: #64748b; }
-    .bilingual-tag { font-size: 12px; font-weight: bold; color: #2563eb; text-transform: uppercase; margin-bottom: 4px; }
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap');
+    
+    body {
+      font-family: 'Outfit', sans-serif;
+      line-height: 1.6;
+      color: #1e293b;
+      background: linear-gradient(180deg, #e0f2fe 0%, #ffffff 25%, #ffffff 85%, #fef3c7 100%);
+      padding: 0;
+      margin: 0;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 920px;
+      margin: 30px auto;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(2, 132, 199, 0.08), 0 1px 3px rgba(0,0,0,0.05);
+      overflow: hidden;
+      border: 1px solid #bae6fd;
+    }
+
+    /* TOP HEADER: SKY BLUE */
+    .sky-header {
+      background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%);
+      color: #ffffff;
+      padding: 35px 40px;
+      text-align: center;
+      position: relative;
+    }
+    .sky-header::after {
+      content: "🌸 🌿 🌸 🌿 🌸";
+      display: block;
+      font-size: 16px;
+      margin-top: 10px;
+      letter-spacing: 6px;
+      opacity: 0.9;
+    }
+    .publisher-tag {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 700;
+      color: #e0f2fe;
+    }
+    .sky-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      margin: 10px 0 5px;
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+    .subtitle {
+      font-style: italic;
+      color: #f0f9ff;
+      font-size: 16px;
+    }
+
+    .content-body {
+      padding: 40px;
+    }
+
+    .meta-card {
+      background-color: #f0fdf4;
+      border-left: 5px solid #16a34a;
+      border-radius: 8px;
+      padding: 15px 20px;
+      margin-bottom: 30px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      font-size: 14px;
+    }
+    .meta-item { color: #166534; }
+    .meta-item strong { color: #14532d; }
+
+    /* HEADINGS: FLOWER PINK */
+    h2 {
+      font-family: 'Playfair Display', serif;
+      color: #db2777;
+      font-size: 20px;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    h2::before {
+      content: "🌸";
+      font-size: 18px;
+    }
+
+    /* VINE GREEN TEXT BOXES */
+    .section-box {
+      background: #ffffff;
+      border: 2px solid #86efac;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 12px rgba(22, 163, 74, 0.04);
+      transition: border-color 0.2s ease;
+    }
+    .section-box:hover {
+      border-color: #22c55e;
+    }
+
+    .bilingual-pill {
+      display: inline-block;
+      background: #fce7f3;
+      color: #be185d;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .fill-box-vine {
+      border: 2px dashed #4ade80;
+      background-color: #f0fdf4;
+      border-radius: 8px;
+      padding: 18px;
+      min-height: 90px;
+      margin-top: 12px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      color: #15803d;
+      outline: none;
+    }
+    .fill-box-vine:focus {
+      background-color: #ffffff;
+      border-color: #16a34a;
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
+    }
+
+    /* FOOTER: EARTH BROWN */
+    .earth-footer {
+      background: linear-gradient(135deg, #78350f 0%, #92400e 100%);
+      color: #fef3c7;
+      padding: 25px 40px;
+      text-align: center;
+      font-size: 13px;
+    }
+    .earth-footer strong { color: #ffffff; }
   </style>
 </head>
 <body>
-  <div class="header">
-    <div class="publisher">${this.publisher}</div>
-    <h1>VOLUME ${vol.id}: ${vol.titleEn}</h1>
-    <div class="subtitle">${vol.titleFr}</div>
-    <div style="font-size: 13px; color: #64748b;">Nora's Personal Editorial & Review Document · Synced for Google Drive ID: 1ZrjOVi_kNPQxAHVynaPgEw821hVm8nb5</div>
-  </div>
+  <div class="container">
+    <div class="sky-header">
+      <div class="publisher-tag">${this.publisher}</div>
+      <h1>VOLUME ${vol.id}: ${vol.titleEn}</h1>
+      <div class="subtitle">${vol.titleFr}</div>
+    </div>
 
-  <table class="meta-table">
-    <tr><td class="meta-label">Author / Auteur</td><td>${this.author}</td></tr>
-    <tr><td class="meta-label">Reviewer / Relectrice</td><td><strong>Nora</strong></td></tr>
-    <tr><td class="meta-label">ISBN / Identifiant</td><td>${vol.isbn}</td></tr>
-    <tr><td class="meta-label">Theme / Thème</td><td>${vol.theme}</td></tr>
-  </table>
+    <div class="content-body">
+      <div class="meta-card">
+        <div class="meta-item"><strong>Author / Auteur:</strong> ${this.author}</div>
+        <div class="meta-item"><strong>Reviewer / Relectrice:</strong> Nora</div>
+        <div class="meta-item"><strong>ISBN:</strong> ${vol.isbn}</div>
+        <div class="meta-item"><strong>Theme / Thème:</strong> ${vol.theme}</div>
+      </div>
 
-  <div class="section-box">
-    <h2>1. Overall Narrative Resonance & Emotional Rating (1 - 10) / Note d'Évaluation Narrative</h2>
-    <div class="bilingual-tag">English & Français</div>
-    <p style="font-size: 13px; color: #475569;">Nora, please rate the narrative strength and write your overall impression below / Nora, donnez votre note et vos impressions ci-dessous :</p>
-    <div class="fill-box" contenteditable="true">[ Click to type your rating and thoughts here / Cliquez ici pour écrire vos remarques ]</div>
-  </div>
+      <div class="section-box">
+        <span class="bilingual-pill">English & Français</span>
+        <h2>1. Overall Narrative Rating (1 - 10) / Note Narrative Globale</h2>
+        <p style="font-size: 13px; color: #475569; margin-bottom: 5px;">Nora, give your emotional rating & general impression / Donnez votre note et vos impressions globales :</p>
+        <div class="fill-box-vine" contenteditable="true">[ Click to type your rating & thoughts here / Cliquez ici pour écrire vos remarques ]</div>
+      </div>
 
-  <div class="section-box">
-    <h2>2. Favorite Passages & Chapter Highlights / Passages Préférés et Points Forts</h2>
-    <div class="bilingual-tag">English & Français</div>
-    <p style="font-size: 13px; color: #475569;">Which chapters or ideas resonated most strongly with you? / Quels chapitres ou idées vous ont le plus marquée ?</p>
-    <div class="fill-box" contenteditable="true">[ Click to type favorite passages here / Cliquez ici pour noter vos passages préférés ]</div>
-  </div>
+      <div class="section-box">
+        <span class="bilingual-pill">English & Français</span>
+        <h2>2. Favorite Passages & Chapter Highlights / Passages Préférés</h2>
+        <p style="font-size: 13px; color: #475569; margin-bottom: 5px;">Which moments, stories, or ideas bloomed for you? / Quels passages ou idées vous ont marquée ?</p>
+        <div class="fill-box-vine" contenteditable="true">[ Click to type favorite moments / Cliquez ici pour vos passages préférés ]</div>
+      </div>
 
-  <div class="section-box">
-    <h2>3. Suggested Revisions or Editorial Polish / Suggestions de Révision et Remarques</h2>
-    <div class="bilingual-tag">English & Français</div>
-    <p style="font-size: 13px; color: #475569;">Any areas you would streamline, clarify, or expand? / Des passages à clarifier ou développer ?</p>
-    <div class="fill-box" contenteditable="true">[ Click to type editorial notes here / Cliquez ici pour vos conseils éditoriaux ]</div>
-  </div>
+      <div class="section-box">
+        <span class="bilingual-pill">English & Français</span>
+        <h2>3. Editorial Polish & Suggestions / Remarques et Conseils Éditoriaux</h2>
+        <p style="font-size: 13px; color: #475569; margin-bottom: 5px;">Where can we polish or deepen the narrative? / Des passages à clarifier ou approfondir ?</p>
+        <div class="fill-box-vine" contenteditable="true">[ Click to type editorial notes / Cliquez ici pour vos conseils ]</div>
+      </div>
 
-  <div class="section-box">
-    <h2>4. Final Guidance & Publication Recommendation / Recommandation Finale pour Publication</h2>
-    <div class="bilingual-tag">English & Français</div>
-    <div class="fill-box" contenteditable="true">[ Final opinion & sign-off by Nora / Avis final et signature de Nora ]</div>
+      <div class="section-box">
+        <span class="bilingual-pill">English & Français</span>
+        <h2>4. Final Guidance & Sign-Off / Avis Final et Recommandation</h2>
+        <div class="fill-box-vine" contenteditable="true">[ Final guidance and publication recommendation by Nora / Avis final et signature de Nora ]</div>
+      </div>
+    </div>
+
+    <div class="earth-footer">
+      <strong>A.Ward Publications Master Review Vault</strong> · Grounded in Earth & Bound for Sky<br>
+      Synced for Google Drive Folder ID: <code>1ZrjOVi_kNPQxAHVynaPgEw821hVm8nb5</code>
+    </div>
   </div>
 </body>
 </html>`;
@@ -105,7 +249,7 @@ export class NoraInteractiveGoogleDocsReviewEngine {
 
     for (const vol of this.volumes) {
       const htmlContent = this.generateInteractiveHtmlDoc(vol);
-      const filename = `VOL_${vol.id}_NORA_REVIEW_DOC_${vol.titleEn.split(':')[0].replace(/[^a-zA-Z0-9]/g, '_').toUpperCase()}.html`;
+      const filename = `VOL_${vol.id}_NORA_BOTANICAL_REVIEW_DOC_${vol.titleEn.split(':')[0].replace(/[^a-zA-Z0-9]/g, '_').toUpperCase()}.html`;
 
       const path1 = join(this.desktopExportDir, filename);
       const path2 = join(this.grantGedhiExportDir, filename);
@@ -117,11 +261,12 @@ export class NoraInteractiveGoogleDocsReviewEngine {
     }
 
     const timestamp = new Date().toISOString();
-    const hash = createHash('sha256').update(`NORA_DOCS:${generatedFiles.length}:${timestamp}`).digest('hex');
+    const hash = createHash('sha256').update(`NORA_BOTANICAL_DOCS:${generatedFiles.length}:${timestamp}`).digest('hex');
 
     return {
-      status: 'NORA_INTERACTIVE_GOOGLE_DOCS_GENERATED_AND_EXPORTED',
+      status: 'NORA_NATURAL_BOTANICAL_REVIEW_DOCS_GENERATED_AND_EXPORTED',
       reviewer: this.targetReviewer,
+      themeName: this.themeName,
       totalDocsGenerated: generatedFiles.length,
       desktopExportDir: this.desktopExportDir,
       grantGedhiExportDir: this.grantGedhiExportDir,
