@@ -1,0 +1,69 @@
+{
+  "foundry_version": "0.1.0",
+  "milestone": "DAVINCIA-AGENT-FOUNDRY-v0.1",
+  "updated_at": "2026-09-03T18:41:35Z",
+  "governance_rule": "AGENCY_WITHOUT_SOVEREIGNTY",
+  "human_authority": {
+    "name": "David Ward",
+    "role": "Mission Authority, Strategic Architect & Final Acceptance Chair",
+    "gpg_key": "0x80D0ADA1"
+  },
+  "squads": [
+    {
+      "squad_id": "squad_01_architect",
+      "name": "Squad 01 — ARCHITECT",
+      "role": "Architecture, Interfaces, Dependencies & Integration Points",
+      "lead_agent": "agent_davincia_architect",
+      "allowed_actions": ["DECOMPOSE_MISSION", "DEFINE_INTERFACES", "CREATE_BUILD_CONTRACT"],
+      "sandbox_access": "agent-build-space/foundry/03_ARCHITECTURE/"
+    },
+    {
+      "squad_id": "squad_02_research",
+      "name": "Squad 02 — RESEARCH",
+      "role": "Open-Source Discovery, Standards Mapping & License Firewalls",
+      "lead_agent": "agent_davincia_researcher",
+      "allowed_actions": ["DISCOVER_TOOLS", "AUDIT_LICENSES", "EVALUATE_STANDARDS"],
+      "sandbox_access": "agent-build-space/foundry/02_RESEARCH/"
+    },
+    {
+      "squad_id": "squad_03_builder",
+      "name": "Squad 03 — BUILDER",
+      "role": "Code, Schemas, Adapters, UIs & Documentation Construction",
+      "lead_agent": "agent_davincia_builder",
+      "allowed_actions": ["WRITE_LOCAL_CODE", "BUILD_SCHEMAS", "CREATE_ADAPTERS", "DRAFT_DOCS"],
+      "sandbox_access": "agent-build-space/foundry/05_BUILD/"
+    },
+    {
+      "squad_id": "squad_04_tester",
+      "name": "Squad 04 — TESTER",
+      "role": "Unit, Integration, Conformance & Failure Testing",
+      "lead_agent": "agent_davincia_tester",
+      "allowed_actions": ["RUN_UNIT_TESTS", "EXECUTE_FAIL_CLOSED_SIMULATION"],
+      "sandbox_access": "agent-build-space/foundry/06_TEST/"
+    },
+    {
+      "squad_id": "squad_05_challenge",
+      "name": "Squad 05 — ADVERSARIAL / CHALLENGE",
+      "role": "Red Team, Provenance Challenge & Automation Bias Prevention",
+      "lead_agent": "agent_davincia_challenger",
+      "allowed_actions": ["CHALLENGE_AUTHORITY", "AUDIT_RIGHTS", "PREVENT_DRIFT"],
+      "sandbox_access": "agent-build-space/foundry/07_CHALLENGE/"
+    },
+    {
+      "squad_id": "squad_06_evidence",
+      "name": "Squad 06 — EVIDENCE",
+      "role": "Manifests, Hashes, Provenance Lineage & ALCOA+ Logs",
+      "lead_agent": "agent_davincia_auditor",
+      "allowed_actions": ["HASH_ARTIFACTS", "COMPILE_EVIDENCE_PACKAGE"],
+      "sandbox_access": "agent-build-space/foundry/08_EVIDENCE/"
+    },
+    {
+      "squad_id": "squad_07_integrator",
+      "name": "Squad 07 — INTEGRATOR",
+      "role": "Sandbox Inspection & Promotion Request to Human Authority",
+      "lead_agent": "agent_davincia_integrator",
+      "allowed_actions": ["INSPECT_SANDBOX", "REQUEST_PROMOTION"],
+      "sandbox_access": "agent-build-space/foundry/09_REVIEW/"
+    }
+  ]
+}
