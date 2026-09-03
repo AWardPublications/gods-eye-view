@@ -11,6 +11,10 @@ import { createHash } from 'node:crypto';
  */
 export class TriUniverseSubscriptionEngine {
   constructor() {
+    this.licensingEntity = 'Brehon AI Solutions Ltd (BAIS) — Commercial Licensee';
+    this.ipHoldcoEntity = 'A.Ward Publications / D&A.Ward Editions Ltd — Sovereign IP Holdco';
+    this.stripeRoutingAccount = 'acct_bais_eu_valais_primary';
+
     this.tiers = [
       {
         id: 'TIER_CORK_CIVIC',
@@ -19,6 +23,7 @@ export class TriUniverseSubscriptionEngine {
         universeTarget: 'CORKONIAN_OS',
         monthlyAgentTokens: 1000,
         monthlyHitlCredits: 5,
+        targetAudience: 'Adult Civic Citizens & Local History Enthusiasts (18+)',
         features: [
           'Access to CorkSwam Civic Intelligence & Cultural Lore Agent',
           'Lee Side Alpine-Atlantic Hydrology Telemetry Access',
@@ -27,13 +32,14 @@ export class TriUniverseSubscriptionEngine {
       },
       {
         id: 'TIER_ALEX_GOLF',
-        name: 'Tier 2: Alex Wenger Golf & Resort Member Tier',
+        name: 'Tier 2: Alex Wenger Golf & Resort Member Tier (B2B Professional)',
         priceEurMonthly: 290,
         universeTarget: 'ALEX_WENGER_OS',
         monthlyAgentTokens: 10000,
         monthlyHitlCredits: 25,
+        targetAudience: 'B2B PGA Professional Coaches & Adult Competitors Only (18+ Strict)',
         features: [
-          'PGA Master Coaching Agent & Swing Video Auditing',
+          'PGA Master Coaching Agent & Swing Video Auditing (Adult Competitors)',
           'RK4 WASM Aerodynamic Ballistics & Wind Vector Simulator',
           'Links Fescue Turf Friction & Soil Thermodynamics Lab'
         ]
@@ -45,6 +51,7 @@ export class TriUniverseSubscriptionEngine {
         universeTarget: 'DAVID_OS',
         monthlyAgentTokens: 100000,
         monthlyHitlCredits: 100,
+        targetAudience: 'Founding Patrons, VCs, Corporate Board Chairs',
         features: [
           'Sovereign Executive Deal Rooms & Series A Data Vaults',
           'GRANT GEDHI Sub-12s Capital Acquisition Operating System',
@@ -59,6 +66,7 @@ export class TriUniverseSubscriptionEngine {
         universeTarget: 'ALL_THREE_UNIVERSES',
         monthlyAgentTokens: 1000000,
         monthlyHitlCredits: 1000,
+        targetAudience: 'Resort Operators, Municipalities & Enterprise Networks',
         features: [
           'Full White-Label Multi-Tenant Deployment across all 3 Universes',
           'Dedicated n8n Workflow Swarm & Custom Adapter Agent Engineering',
@@ -67,6 +75,22 @@ export class TriUniverseSubscriptionEngine {
         ]
       }
     ];
+  }
+
+  evaluatePol003RiskGate(tenantTokensRemaining, actionSafetyFlag) {
+    // POL-003 Doctrinal Rule: Zero tokens or active safety flag MUST ALWAYS trigger HITL pause gate.
+    if (tenantTokensRemaining <= 0 || actionSafetyFlag) {
+      return {
+        gateStatus: 'PAUSED_FOR_HITL_AUTHORISATION',
+        reason: tenantTokensRemaining <= 0 ? 'ZERO_TOKENS_REMAINING' : 'SAFETY_FLAG_RAISED',
+        bypassAllowed: false
+      };
+    }
+    return {
+      gateStatus: 'AUTONOMOUS_EXECUTION_APPROVED',
+      reason: 'TOKENS_HEALTHY_AND_NO_SAFETY_FLAG',
+      bypassAllowed: false
+    };
   }
 
   processSubscriptionBilling(tenantId, tierId, paymentMethodToken) {
