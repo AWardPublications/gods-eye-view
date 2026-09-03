@@ -297,7 +297,16 @@ export class NoraSionCbdCodexLargePortalEngine {
     const htmlContent = this.generateLargePortalHtml();
     const portalFilePath = join(this.desktopTargetDir, 'LARGE_CBD_CODEX_MASTER_BILINGUAL_REVIEW_PORTAL_FOR_NORA.html');
 
-    writeFileSync(portalFilePath, htmlContent, 'utf-8');
+    try {
+      writeFileSync(portalFilePath, htmlContent, 'utf-8');
+    } catch (e) {
+      if (e.code === 'EBUSY') {
+        const altPath = join(this.desktopTargetDir, 'LARGE_CBD_CODEX_MASTER_BILINGUAL_REVIEW_PORTAL_FOR_NORA_RUN.html');
+        writeFileSync(altPath, htmlContent, 'utf-8');
+      } else {
+        throw e;
+      }
+    }
 
     const timestamp = new Date().toISOString();
     const hash = createHash('sha256').update(`NORA_SION_LARGE_PORTAL:${portalFilePath}:${timestamp}`).digest('hex');
