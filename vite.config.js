@@ -33,6 +33,7 @@ import { createHash, randomUUID } from 'node:crypto';
 import path from 'node:path';
 import { Readable } from 'node:stream';
 import https from 'node:https';
+import http from 'node:http';
 import { lookup as lookupDns } from 'node:dns/promises';
 import { directionToHeading } from './src/data/directionText.js';
 import {
@@ -7447,6 +7448,241 @@ function shotEventsSinkProxy() {
 
   return {
     name: 'shot-events-sink-proxy',
+function davinciaProxy() {
+  function install(middlewares) {
+    middlewares.use('/api/davincia/tuath', (req, res) => {
+      const targetUrl = `http://127.0.0.1:8000/api/tuath${req.url}`;
+      
+      const parsedUrl = new URL(targetUrl);
+      const options = {
+        hostname: parsedUrl.hostname,
+        port: parsedUrl.port,
+        path: parsedUrl.pathname + parsedUrl.search,
+        method: req.method,
+        headers: req.headers
+      };
+      
+      options.headers.host = parsedUrl.host;
+      
+      const proxyReq = http.request(options, (proxyRes) => {
+        res.statusCode = proxyRes.statusCode;
+        Object.keys(proxyRes.headers).forEach(key => {
+          res.setHeader(key, proxyRes.headers[key]);
+        });
+        proxyRes.pipe(res, { end: true });
+      });
+      
+      proxyReq.on('error', (err) => {
+        res.statusCode = 502;
+        res.setHeader('Content-Type', 'application/json');
+        res.end(JSON.stringify({ error: 'Tuath-One offline or connection failed', details: err.message }));
+      });
+      
+      req.pipe(proxyReq, { end: true });
+    });
+
+    middlewares.use('/api/davincia/records', async (req, res) => {
+      try {
+        const recordsPath = path.join(__dirname, 'public/corklan_records.json');
+        if (!fs.existsSync(recordsPath)) {
+          res.statusCode = 404;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({ error: 'Records file not found' }));
+          return;
+        }
+        
+        const data = fs.readFileSync(recordsPath, 'utf8');
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json; charset=utf-8');
+        res.setHeader('Cache-Control', 'no-store');
+        res.end(data);
+      } catch (error) {
+        res.statusCode = 500;
+        res.setHeader('Content-Type', 'application/json');
+        res.end(JSON.stringify({ error: error.message || 'Server error reading records' }));
+      }
+    });
+
+    middlewares.use('/api/davincia/knowledge/assets', async (req, res) => {
+      try {
+        const { listRegisteredAssets } = await import('./src/knowledge/registry.js');
+        const assets = listRegisteredAssets();
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json; charset=utf-8');
+        res.setHeader('Cache-Control', 'no-store');
+        res.end(JSON.stringify(assets));
+      } catch (error) {
+        res.statusCode = 500;
+        res.setHeader('Content-Type', 'application/json');
+        res.end(JSON.stringify({ error: error.message }));
+      }
+    });
+
+    middlewares.use('/api/davincia/knowledge/refine', async (req, res) => {
+      try {
+        const { runEntireRefinery } = await import('./src/knowledge/refinery.js');
+        const results = await runEntireRefinery();
+
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json; charset=utf-8');
+        res.end(JSON.stringify({ status: "SUCCESS", assets: results }));
+      } catch (error) {
+        res.statusCode = 500;
+        res.setHeader('Content-Type', 'application/json');
+        res.end(JSON.stringify({ error: error.message }));
+      }
+    });
+
+    middlewares.use('/api/davincia/knowledge/request', (req, res) => {
+      let body = '';
+      req.on('data', chunk => { body += chunk; });
+      req.on('end', async () => {
+        try {
+          const request = JSON.parse(body || '{}');
+          const { processAccessRequest } = await import('./src/knowledge/api.js');
+          const result = await processAccessRequest(request);
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/json; charset=utf-8');
+          res.end(JSON.stringify(result));
+        } catch (error) {
+          res.statusCode = 500;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({ error: error.message }));
+        }
+      });
+    });
+
+    middlewares.use('/api/davincia/passport/issue', (req, res) => {
+      let body = '';
+      req.on('data', chunk => { body += chunk; });
+      req.on('end', async () => {
+        try {
+          const { identity, capabilities, provenance, verificationState } = JSON.parse(body || '{}');
+          const { issuePassport } = await import('./src/platform/client.js');
+          const passport = issuePassport(identity, capabilities, provenance, verificationState);
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/json; charset=utf-8');
+          res.end(JSON.stringify({ passport }));
+        } catch (error) {
+          res.statusCode = 500;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({ error: error.message }));
+        }
+      });
+    });
+
+    middlewares.use('/api/davincia/passport/verify', (req, res) => {
+      let body = '';
+      req.on('data', chunk => { body += chunk; });
+      req.on('end', async () => {
+        try {
+          const { passport, action, actor } = JSON.parse(body || '{}');
+          const { verifyPassport } = await import('./src/platform/client.js');
+          const decision = await verifyPassport(passport, action, actor);
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/json; charset=utf-8');
+          res.end(JSON.stringify(decision));
+        } catch (error) {
+          res.statusCode = 500;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({ error: error.message }));
+        }
+      });
+    });
+
+    middlewares.use('/api/davincia/agent/delegate', (req, res) => {
+      let body = '';
+      req.on('data', chunk => { body += chunk; });
+      req.on('end', async () => {
+        try {
+          const { humanPassport, agentPassport, scopes, durationSecs } = JSON.parse(body || '{}');
+          const { issueDelegationToken } = await import('./src/agent-economy/delegation.js');
+          const token = issueDelegationToken(humanPassport, agentPassport, scopes, durationSecs);
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/json; charset=utf-8');
+          res.end(JSON.stringify({ token }));
+        } catch (error) {
+          res.statusCode = 500;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({ error: error.message }));
+        }
+      });
+    });
+
+    middlewares.use('/api/davincia/agent/execute', (req, res) => {
+      let body = '';
+      req.on('data', chunk => { body += chunk; });
+      req.on('end', async () => {
+        try {
+          const request = JSON.parse(body || '{}');
+          const { processAgentRequest } = await import('./src/agent-economy/api.js');
+          const result = await processAgentRequest(request);
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/json; charset=utf-8');
+          res.end(JSON.stringify(result));
+        } catch (error) {
+          res.statusCode = 500;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({ error: error.message }));
+        }
+      });
+    });
+
+    middlewares.use('/api/davincia/commerce/license/create', (req, res) => {
+      let body = '';
+      req.on('data', chunk => { body += chunk; });
+      req.on('end', async () => {
+        try {
+          const request = JSON.parse(body || '{}');
+          const { createAgreementApi } = await import('./src/governed-commerce/api.js');
+          const agreement = createAgreementApi(request);
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/json; charset=utf-8');
+          res.end(JSON.stringify({ agreement }));
+        } catch (error) {
+          res.statusCode = 500;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({ error: error.message }));
+        }
+      });
+    });
+
+    middlewares.use('/api/davincia/commerce/transact', (req, res) => {
+      let body = '';
+      req.on('data', chunk => { body += chunk; });
+      req.on('end', async () => {
+        try {
+          const request = JSON.parse(body || '{}');
+          const { transactApi } = await import('./src/governed-commerce/api.js');
+          const tx = transactApi(request);
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/json; charset=utf-8');
+          res.end(JSON.stringify({ transaction: tx }));
+        } catch (error) {
+          res.statusCode = 500;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({ error: error.message }));
+        }
+      });
+    });
+
+    middlewares.use('/api/davincia/commerce/ledger', async (req, res) => {
+      try {
+        const { getLedgerApi } = await import('./src/governed-commerce/api.js');
+        const ledger = getLedgerApi();
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json; charset=utf-8');
+        res.end(JSON.stringify(ledger));
+      } catch (error) {
+        res.statusCode = 500;
+        res.setHeader('Content-Type', 'application/json');
+        res.end(JSON.stringify({ error: error.message }));
+      }
+    });
+  }
+
+  return {
+    name: 'davincia-records-proxy',
     configureServer(server) {
       install(server.middlewares);
     },
@@ -7754,6 +7990,7 @@ export default defineConfig(({ mode }) => {
       googlePlacesContextProxy(),
       shotEventsSinkProxy(),
       keySetupEndpoint(),
+      davinciaProxy(),
     ],
     server: {
       host: env.HOST || 'localhost',

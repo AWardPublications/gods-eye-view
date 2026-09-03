@@ -1,0 +1,31 @@
+{
+  "$schema": "https://davincia.awardpublications.com/schemas/manifest-v1.json",
+  "system": "corklan",
+  "version": "1.1.0",
+  "domain": ["culture", "language"],
+  "governance_profile": ["cultural_data", "geospatial", "public_restricted"],
+  "objects": [
+    {
+      "name": "linguistic_record",
+      "sensitivity": "PUBLIC_RESTRICTED"
+    },
+    {
+      "name": "audio_recording",
+      "sensitivity": "SENSITIVE_HOLD"
+    }
+  ],
+  "actions": [
+    {
+      "name": "translate",
+      "impact": "MODERATE"
+    },
+    {
+      "name": "publish",
+      "impact": "HIGH"
+    }
+  ],
+  "required_controls": [
+    "provenance_audit",
+    "evidence_verification"
+  ]
+}

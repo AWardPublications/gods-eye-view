@@ -1,0 +1,22 @@
+{
+  "system": "arios",
+  "required_capabilities": [
+    "regulated",
+    "evidence_critical"
+  ],
+  "required_actions": [
+    "READ",
+    "INFER",
+    "EXPORT",
+    "EXECUTE"
+  ],
+  "required_controls": [
+    "auditor_sig",
+    "immutable_ledger"
+  ],
+  "minimum_conformance": [
+    "fail_closed",
+    "audit",
+    "policy_precedence"
+  ]
+}

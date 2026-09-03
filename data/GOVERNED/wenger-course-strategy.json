@@ -1,0 +1,61 @@
+{
+  "asset_id": "urn:davincia:knowledge:asset:wenger-course-strategy",
+  "asset_type": "knowledge_asset_governed",
+  "title": "Alex Wenger Course Strategy & Tactical Planning",
+  "domain": "alex-wenger",
+  "owner": "urn:davincia:identity:organization:wenger_golf",
+  "source": "urn:davincia:raw:wenger-course-strategy",
+  "provenance": {
+    "source_type": "TACTICAL_GUIDE",
+    "collected_at": "2026-08-30T12:00:00Z",
+    "source_reference": "Alex Wenger Golf OS Strategy Manual",
+    "geographic_origin": {
+      "latitude": 51.8985,
+      "longitude": -8.4756
+    },
+    "source_urn": "urn:davincia:raw:wenger-course-strategy",
+    "extracted_at": "2026-09-01T09:32:35.544Z",
+    "checksum": "sha256-derived-wenger-course-strategy"
+  },
+  "facts": [
+    {
+      "id": "F1",
+      "statement": "Alex Wenger Course Strategy & Tactical Planning outlines core concepts of domain alex-wenger."
+    },
+    {
+      "id": "F2",
+      "statement": "The asset is owned by the organization: urn:davincia:identity:organization:wenger_golf."
+    }
+  ],
+  "licensing": {
+    "commercial_available": true,
+    "pricing": {
+      "model": "USAGE_BASED",
+      "price": 0.05,
+      "currency": "USD"
+    },
+    "permitted_actions": [
+      "SEARCH",
+      "READ",
+      "TRANSLATE",
+      "EXECUTE",
+      "SHARE",
+      "INFER"
+    ],
+    "prohibited_actions": [
+      "TRANSFORM"
+    ]
+  },
+  "lifecycle_state": "AUTHORIZED",
+  "issuer": "urn:davincia:identity:organization:brehon_ai",
+  "verification": {
+    "state": "VERIFIED",
+    "reviewer_role": "SYSTEM_GOVERNOR",
+    "verified_at": "2026-09-01T09:32:35.549Z",
+    "evidence_ref": "urn:davincia:evidence:refinery:wenger-course-strategy"
+  },
+  "governance_passport": {
+    "authorized_at": "2026-09-01T09:32:35.549Z",
+    "decision_ref": "urn:davincia:decision:pw7iwcby6q"
+  }
+}

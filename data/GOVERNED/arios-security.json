@@ -1,0 +1,61 @@
+{
+  "asset_id": "urn:davincia:knowledge:asset:arios-security",
+  "asset_type": "knowledge_asset_governed",
+  "title": "ARIOS Execution Security Guidelines",
+  "domain": "arios",
+  "owner": "urn:davincia:identity:organization:arios_corp",
+  "source": "urn:davincia:raw:arios-security",
+  "provenance": {
+    "source_type": "OPERATING_SYSTEM_SPEC",
+    "collected_at": "2026-08-29T11:00:00Z",
+    "source_reference": "ARIOS OS Manual v1.2",
+    "geographic_origin": {
+      "latitude": 51.8985,
+      "longitude": -8.4756
+    },
+    "source_urn": "urn:davincia:raw:arios-security",
+    "extracted_at": "2026-09-01T09:32:35.505Z",
+    "checksum": "sha256-derived-arios-security"
+  },
+  "facts": [
+    {
+      "id": "F1",
+      "statement": "ARIOS Execution Security Guidelines outlines core concepts of domain arios."
+    },
+    {
+      "id": "F2",
+      "statement": "The asset is owned by the organization: urn:davincia:identity:organization:arios_corp."
+    }
+  ],
+  "licensing": {
+    "commercial_available": true,
+    "pricing": {
+      "model": "USAGE_BASED",
+      "price": 0.05,
+      "currency": "USD"
+    },
+    "permitted_actions": [
+      "SEARCH",
+      "READ",
+      "TRANSLATE",
+      "EXECUTE",
+      "SHARE",
+      "INFER"
+    ],
+    "prohibited_actions": [
+      "TRANSFORM"
+    ]
+  },
+  "lifecycle_state": "AUTHORIZED",
+  "issuer": "urn:davincia:identity:organization:brehon_ai",
+  "verification": {
+    "state": "VERIFIED",
+    "reviewer_role": "SYSTEM_GOVERNOR",
+    "verified_at": "2026-09-01T09:32:35.514Z",
+    "evidence_ref": "urn:davincia:evidence:refinery:arios-security"
+  },
+  "governance_passport": {
+    "authorized_at": "2026-09-01T09:32:35.515Z",
+    "decision_ref": "urn:davincia:decision:et6xvr2di3"
+  }
+}

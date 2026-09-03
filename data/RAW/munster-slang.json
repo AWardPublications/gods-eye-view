@@ -1,0 +1,16 @@
+{
+  "object_id": "urn:davincia:raw:munster-slang",
+  "title": "Munster Slang Slips",
+  "domain": "corklan",
+  "owner": "urn:davincia:identity:organization:award_publications",
+  "content": "Slang terms like 'gowl' and 'langer' are community-owned assets suitable for comedic/humorous contexts, but are prohibited from formal profiling.",
+  "provenance": {
+    "source_type": "COMMUNITY_ARCHIVE",
+    "collected_at": "2026-08-29T10:00:00Z",
+    "source_reference": "CorkLan Community Dictionary",
+    "geographic_origin": {
+      "latitude": 51.8985,
+      "longitude": -8.4756
+    }
+  }
+}

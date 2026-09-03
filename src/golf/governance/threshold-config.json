@@ -1,0 +1,44 @@
+{
+  "system": "Alex Wenger Article 19 Threshold Configuration",
+  "version": "1.0.0",
+  "authoritative_patent_ref": "PCT/IE2025/050001",
+  "thresholds": [
+    {
+      "id": "TH-SENTIMENT-DROP-01",
+      "version": "1.0.0",
+      "claim_ref": "Claim 7",
+      "metric": "sentiment_polarity",
+      "operator": "LT",
+      "critical_value": -0.1,
+      "divergence_delta": 0.4,
+      "description": "Triggered when sentiment polarity drops below 0 or diverges by >0.4 below athlete baseline."
+    },
+    {
+      "id": "TH-COMPLIANCE-MIN-02",
+      "version": "1.0.0",
+      "claim_ref": "Claim 7, Claim 9",
+      "metric": "compliance_score",
+      "operator": "LT",
+      "critical_value": 0.6,
+      "description": "Triggered when natural-language compliance score drops below 0.60."
+    },
+    {
+      "id": "TH-PERSISTENT-DEVIATION-03",
+      "version": "1.0.0",
+      "claim_ref": "Claim 8",
+      "metric": "consecutive_divergence_count",
+      "operator": "GTE",
+      "critical_value": 3,
+      "description": "Triggered when non-compliant or negative divergence persists for 3 or more consecutive interactions."
+    },
+    {
+      "id": "TH-RECOVERY-STABILITY-04",
+      "version": "1.0.0",
+      "claim_ref": "Claim 8",
+      "metric": "sentiment_polarity",
+      "operator": "GTE",
+      "critical_value": 0.2,
+      "description": "Triggered when sentiment returns positive (>0.20) and compliance stabilizes (>0.70)."
+    }
+  ]
+}

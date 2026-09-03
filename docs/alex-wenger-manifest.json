@@ -1,0 +1,61 @@
+{
+  "manifest_id": "urn:davincia:manifest:alex-wenger",
+  "system_identity": {
+    "urn": "urn:davincia:identity:system:alex-wenger-golf",
+    "name": "Alex Wenger Golf OS System",
+    "type": "AUTONOMOUS_SYSTEM"
+  },
+  "owner": "urn:davincia:identity:organization:wenger_golf",
+  "domain": "alex-wenger",
+  "policy_version": "1.0.0",
+  "knowledge_assets": [
+    "urn:davincia:knowledge:asset:wenger-swing-mechanics",
+    "urn:davincia:knowledge:asset:wenger-drills-database",
+    "urn:davincia:knowledge:asset:wenger-course-strategy"
+  ],
+  "permitted_capabilities": [
+    "READ",
+    "ANALYSE",
+    "COACH",
+    "TRAIN"
+  ],
+  "prohibited_capabilities": [
+    "TRANSFORM",
+    "DELETE"
+  ],
+  "human_authority_requirements": {
+    "operator_verification": true,
+    "human_in_the_loop_escalation": "urn:davincia:identity:user:david"
+  },
+  "ai_agent_roles": [
+    {
+      "role": "urn:davincia:identity:agent:wenger-golf-coach",
+      "name": "Wenger AI Golf Coach",
+      "delegation_scopes": ["READ", "COACH"]
+    }
+  ],
+  "provenance_requirements": {
+    "enforce_checksum_alignment": true,
+    "geographic_origin": {
+      "latitude": 51.8985,
+      "longitude": -8.4756
+    }
+  },
+  "player_consent_requirements": {
+    "athlete_consent_field": "athlete_consent",
+    "requires_opt_in": true
+  },
+  "evidence_requirements": {
+    "mandatory_receipt": true,
+    "audit_ledger_archive": true
+  },
+  "commercial_permissions": {
+    "price_per_inference": 0.05,
+    "currency": "USD",
+    "clearing_boundary": "SANDBOX"
+  },
+  "drift_detection": {
+    "check_frequency_seconds": 3600,
+    "drift_action": "SUSPEND"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://davincia.awardpublications.com/schemas/manifest-v1.json",
+  "system": "david-os",
+  "version": "1.0.0",
+  "domain": ["system"],
+  "governance_profile": ["system", "confidential"],
+  "objects": [
+    {
+      "name": "system_command",
+      "sensitivity": "SENSITIVE_PROTECTED"
+    }
+  ],
+  "actions": [
+    { "name": "EXECUTE", "impact": "HIGH" },
+    { "name": "DELETE", "impact": "CRITICAL" }
+  ],
+  "required_controls": [
+    "mfa_auth",
+    "system_lock"
+  ]
+}

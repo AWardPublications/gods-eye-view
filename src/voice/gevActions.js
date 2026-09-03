@@ -922,6 +922,130 @@ export function createGevActionRunner({ viewer, styleManager, dataManager, scene
       return clearAnnotations(annotations);
     }
 
+    if (name === 'wenger_coaching_turn') {
+      const input = String(args.input || args.natural_language_input || '').trim();
+      const mode = String(args.mode || 'TRAIN').toUpperCase();
+      const athleteConsent = args.athlete_consent !== false;
+      const humanSupervision = Boolean(args.human_supervision);
+      const careerOptIn = Boolean(args.career_opt_in);
+
+      const { AlexWengerSubsystem } = await import('../golf/index.js');
+      const subsystem = new AlexWengerSubsystem({ storageFilePath: 'data/athlete_sessions.jsonl' });
+      
+      const result = await subsystem.executeCoachingTurn(input, {
+        mode,
+        athlete_consent: athleteConsent,
+        human_supervision: humanSupervision,
+        career_opt_in: careerOptIn,
+        run_id: `voice-run-${Date.now()}`
+      });
+
+      return {
+        ok: result.status === 'SUCCESS',
+        action: 'wenger_coaching_turn',
+        status: result.status,
+        mode: result.mode,
+        tone_state: result.tone_state || 'NEUTRAL',
+        response_text: result.output?.text || result.output?.message || '',
+        delivery_modality: result.output?.delivery_modality || 'TEXT_ONLY',
+        pacing_units: result.output?.pacing_units || 1.0,
+        evidence_ref: result.evidence?.evidence_ref || null,
+        evidence_hash: result.evidence?.evidence_hash || null,
+        governance_blocked: result.status === 'DENIED'
+      };
+    }
+
+    if (name === 'compile_product_format') {
+      const format = String(args.format || args.product_key || 'tcg_playing_card').toLowerCase();
+      const headline = String(args.headline || args.title || 'Alpine Masterpiece').trim();
+      const { MultiFormatProductCompiler } = await import('../compiler/productCompiler.js');
+      const compiler = new MultiFormatProductCompiler();
+
+      const inputData = {
+        headline,
+        character_name: args.character_name || headline,
+        stats: args.stats || { sound: 6, cop_on: 6, neck: 6, rebel: 6 },
+        text: args.text || args.narrative_text || "The legend of the alpine fairways echoed across the Swiss peaks."
+      };
+
+      try {
+        const result = compiler.compileProduct(format, inputData, {}, {
+          run_id: `voice-prod-${Date.now()}`
+        });
+
+        return {
+          ok: true,
+          action: 'compile_product_format',
+          status: 'SUCCESS',
+          product_code: result.product_code,
+          product_type: result.product_type,
+          title: result.artifact.title,
+          dimensions: result.artifact.dimensions,
+          evidence_ref: result.evidence?.evidence_ref,
+          evidence_hash: result.evidence?.evidence_hash
+        };
+      } catch (err) {
+        return {
+          ok: false,
+          action: 'compile_product_format',
+          status: 'FAILED',
+          error: err.message
+        };
+      }
+    }
+
+    if (name === 'open_marketplace') {
+      const { createMarketplaceHud } = await import('../marketplace/marketplace-hud.js');
+      const hud = createMarketplaceHud();
+      if (typeof window !== 'undefined') {
+        hud.mount();
+      }
+      return {
+        ok: true,
+        action: 'open_marketplace',
+        status: 'OPENED',
+        catalog_count: 5,
+        currency: 'EUR'
+      };
+    }
+
+    if (name === 'show_trade_corridors') {
+      const { EMBASSY_NODES, TRADE_CORRIDORS } = await import('../data/embassyTradeCorridors.js');
+      return {
+        ok: true,
+        action: 'show_trade_corridors',
+        nodes: EMBASSY_NODES.map(n => n.name),
+        corridors: TRADE_CORRIDORS.map(c => c.title)
+      };
+    }
+
+    if (name === 'fly_to_embassy_node') {
+      const { flyToEmbassyNode, EMBASSY_NODES } = await import('../data/embassyTradeCorridors.js');
+      const nodeId = args?.node_id || args?.node || 'node-sion';
+      const flown = flyToEmbassyNode(viewer, nodeId, args?.duration_seconds || 3);
+      const node = EMBASSY_NODES.find(n => n.id === nodeId || n.name.toLowerCase().includes(String(nodeId).toLowerCase()));
+      return {
+        ok: true,
+        action: 'fly_to_embassy_node',
+        flown,
+        target_node: node?.name || nodeId,
+        country: node?.country || 'Unknown'
+      };
+    }
+
+    if (name === 'fly_trade_corridor') {
+      const { flyTradeCorridor, TRADE_CORRIDORS } = await import('../data/embassyTradeCorridors.js');
+      const from = args?.from || 'node-cork';
+      const to = args?.to || 'node-sion';
+      const flown = flyTradeCorridor(viewer, from, to, args?.duration_seconds || 6);
+      return {
+        ok: true,
+        action: 'fly_trade_corridor',
+        flown,
+        corridor: `${from} -> ${to}`
+      };
+    }
+
     throw new Error(`Unknown GEV tool: ${name}`);
   };
 }

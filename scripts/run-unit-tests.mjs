@@ -35,6 +35,12 @@ export function discoverUnitTestFiles(root = process.cwd()) {
     }
   };
   visit(sourceRoot);
+  const testsRoot = path.join(root, 'tests');
+  try {
+    visit(testsRoot);
+  } catch (e) {
+    // tests folder might not exist in all checkouts, skip safely
+  }
   return files.sort();
 }
 

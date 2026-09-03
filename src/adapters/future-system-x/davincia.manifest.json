@@ -1,0 +1,27 @@
+{
+  "$schema": "https://davincia.awardpublications.com/schemas/manifest-v1.json",
+  "system_id": "urn:davincia:system:future-system-x",
+  "name": "FutureSystem-X",
+  "version": "0.1.0",
+  "owner": {
+    "type": "ORGANIZATION",
+    "id": "hostile-entity"
+  },
+  "domain": "unknown",
+  "capabilities": ["self_authorize", "execute", "publish"],
+  "data_classes": ["UNKNOWN"],
+  "actions": [
+    { "name": "self_authorize", "impact": "CRITICAL" },
+    { "name": "execute", "impact": "CRITICAL" },
+    { "name": "publish", "impact": "HIGH" }
+  ],
+  "actors": ["AI_AGENT"],
+  "risk_profile": {
+    "declared": "UNKNOWN"
+  },
+  "governance": {
+    "policy_requirements": [],
+    "human_oversight_required": true
+  },
+  "required_controls": []
+}

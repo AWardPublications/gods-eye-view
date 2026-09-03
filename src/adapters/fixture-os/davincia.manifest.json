@@ -1,0 +1,28 @@
+{
+  "$schema": "https://davincia.awardpublications.com/schemas/manifest-v1.json",
+  "system_id": "urn:davincia:system:fixture-os",
+  "name": "FixtureOS",
+  "version": "1.0.0",
+  "owner": {
+    "type": "ORGANIZATION",
+    "id": "gaa-sports-board"
+  },
+  "domain": "fixture-os",
+  "capabilities": ["SCHEDULE", "READ"],
+  "data_classes": ["community"],
+  "actions": [
+    { "name": "SCHEDULE", "impact": "LOW" },
+    { "name": "READ", "impact": "LOW" }
+  ],
+  "actors": ["HUMAN", "AI_AGENT"],
+  "risk_profile": {
+    "declared": "LOW"
+  },
+  "governance": {
+    "policy_requirements": ["DAVINCIA-SPORTS-005"],
+    "human_oversight_required": false
+  },
+  "required_controls": [
+    "secretary_signature"
+  ]
+}

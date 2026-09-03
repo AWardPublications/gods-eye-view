@@ -1,0 +1,39 @@
+{
+  "policy_id": "DAVINCIA-SYSTEM-007",
+  "name": "DAVID_OS Secure Command Rules",
+  "version": "1.0.0",
+  "domain": "david-os",
+  "rules": [
+    {
+      "id": "RULE-OS-EXECUTE-MFA",
+      "target": {
+        "mfa_verified": true
+      },
+      "conditions": {
+        "action": ["EXECUTE"]
+      },
+      "outcome": "ALLOW",
+      "reason_code": "APPROVED"
+    },
+    {
+      "id": "RULE-OS-EXECUTE-NO-MFA",
+      "target": {
+        "mfa_verified": false
+      },
+      "conditions": {
+        "action": ["EXECUTE"]
+      },
+      "outcome": "DENY",
+      "reason_code": "EXECUTION_DENIED"
+    },
+    {
+      "id": "RULE-OS-DELETE-DENY",
+      "target": {},
+      "conditions": {
+        "action": ["DELETE"]
+      },
+      "outcome": "DENY",
+      "reason_code": "EXECUTION_DENIED"
+    }
+  ]
+}

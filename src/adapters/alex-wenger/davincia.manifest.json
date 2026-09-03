@@ -1,0 +1,22 @@
+{
+  "$schema": "https://davincia.awardpublications.com/schemas/manifest-v1.json",
+  "system": "alex-wenger",
+  "version": "1.0.0",
+  "domain": ["golf", "telemetry"],
+  "governance_profile": ["biometric", "geospatial", "personal_data"],
+  "objects": [
+    {
+      "name": "telemetry_session",
+      "sensitivity": "PUBLIC_RESTRICTED"
+    }
+  ],
+  "actions": [
+    { "name": "ANALYSE", "impact": "LOW" },
+    { "name": "COACH", "impact": "MODERATE" },
+    { "name": "PUBLISH", "impact": "HIGH" }
+  ],
+  "required_controls": [
+    "consent_gate",
+    "provenance_audit"
+  ]
+}

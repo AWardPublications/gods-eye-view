@@ -1,0 +1,20 @@
+{
+  "system": "david-os",
+  "required_capabilities": [
+    "system",
+    "confidential"
+  ],
+  "required_actions": [
+    "EXECUTE",
+    "DELETE"
+  ],
+  "required_controls": [
+    "mfa_auth",
+    "system_lock"
+  ],
+  "minimum_conformance": [
+    "fail_closed",
+    "audit",
+    "policy_precedence"
+  ]
+}

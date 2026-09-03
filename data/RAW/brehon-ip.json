@@ -1,0 +1,16 @@
+{
+  "object_id": "urn:davincia:raw:brehon-ip",
+  "title": "Brehon Decentralized Governance IP Model",
+  "domain": "corklan",
+  "owner": "urn:davincia:identity:organization:brehon_ai",
+  "content": "This research outlines the sovereign authority of machine-enforceable constitutions where commercial transactions remain strictly downstream of governance decisions.",
+  "provenance": {
+    "source_type": "RESEARCH_NOTE",
+    "collected_at": "2026-08-28T12:00:00Z",
+    "source_reference": "A. Ward Research Archive Vol 4",
+    "geographic_origin": {
+      "latitude": 51.8985,
+      "longitude": -8.4756
+    }
+  }
+}

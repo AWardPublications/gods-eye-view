@@ -1,0 +1,39 @@
+{
+  "policy_id": "DAVINCIA-ARIOS-002",
+  "name": "ARIOS Regulatory Compliance Rules",
+  "version": "1.0.0",
+  "domain": "arios",
+  "rules": [
+    {
+      "id": "RULE-ARIOS-EXPORT-VERIFIED",
+      "target": {
+        "lifecycle_state": "VERIFIED"
+      },
+      "conditions": {
+        "action": ["EXPORT"]
+      },
+      "outcome": "ALLOW",
+      "reason_code": "APPROVED"
+    },
+    {
+      "id": "RULE-ARIOS-EXPORT-UNVERIFIED",
+      "target": {
+        "lifecycle_state": "SUBMITTED"
+      },
+      "conditions": {
+        "action": ["EXPORT"]
+      },
+      "outcome": "DENY",
+      "reason_code": "REGULATORY_COMPLIANCE_HOLD"
+    },
+    {
+      "id": "RULE-ARIOS-EXECUTE-CONTROL",
+      "target": {},
+      "conditions": {
+        "action": ["EXECUTE"]
+      },
+      "outcome": "DENY",
+      "reason_code": "REGULATORY_COMPLIANCE_HOLD"
+    }
+  ]
+}

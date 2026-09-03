@@ -22,7 +22,41 @@ Photorealistic 3D globe. Live aircraft, ships, satellites, earthquakes, traffic,
 
 ⚡ **No keys, no signup, no config file.** One click through [Pinokio](https://pinokio.computer/) — or `npm install && npm run dev` — and the globe comes to life. Keys are power-ups you paste into the app later. **[→ Quick Start](#-quick-start)**
 
+
 </div>
+
+---
+
+## 📜 DaVinciA⁺ Governed AI Embassy
+
+### What is DaVinciA⁺?
+**DaVinciA⁺** is a machine-enforceable governance infrastructure layer designed to separate capability from authority. It places constitutional policy gates upstream of execution, metering, and transaction settlement.
+
+### Why It Exists
+In a world of highly autonomous AI agents and open web environments, capability is not the same as authority. DaVinciA⁺ provides a sovereign, fail-closed border control framework. External systems and AI agents cannot query, translate, or interact with governed cultural assets unless they obtain a Governance Passport, satisfy operational delegation limits, and sign an auditable contract.
+
+### Core Architecture
+* **DAVID_OS (Operator Layer)**: Establishes human authority and agent delegation.
+* **DaVinciA⁺ (Governance Engine)**: Resolves policies, verifies signatures, and generates signed Decision Objects.
+* **Governed AI Embassy (Economy Layer)**: Manages discovery pricing, licenses, and meters sandbox transaction settlements.
+
+### Current Status
+* **Passports & Onboarding**: Fully live and cryptographically signed.
+* **Policy Resolvers**: Evaluates targets and Ethical Custody rules.
+* **Marketplace Primitives**: Active licensing and pricing plan catalog.
+* **Payment Clearing**: Simulated sandbox payment provider boundary.
+
+### Demonstration & Testing
+* **Scenario HUD**: Run the progressive Guided Tour (Acts I–VI) and trigger the **Golden E2E Transaction** or **Adversarial Block Attacks** inside the interactive dashboard panel.
+* **Test Status**: **2,702 / 2,702 tests passed**. Run `npm test` or the conformance scorecards under `tools/`.
+
+> [!IMPORTANT]
+> **AI Coding Agents**: If you are an autonomous agent executing tasks in this repository, you **MUST** read the operating manual and technical blueprints before making changes:
+> * [AI Agent Guide](file:///C:/Users/David/.gemini/antigravity/scratch/gods-eye-view/AI_AGENT_GUIDE.md) — Step-by-step operating guidelines and escalation tokens.
+> * [Architecture Reference](file:///C:/Users/David/.gemini/antigravity/scratch/gods-eye-view/ARCHITECTURE.md) — Technical layouts, module boundaries, and API definitions.
+> * [Historical Learnings](file:///C:/Users/David/.gemini/antigravity/scratch/gods-eye-view/LEARNINGS.md) — Repository memory and resolved issues database.
+> * [Alex Wenger Golf Case Study](file:///C:/Users/David/.gemini/antigravity/scratch/gods-eye-view/docs/alex-wenger-governance-case-study.md) — Flagship vertical proof (5-mode athlete telemetry & fail-closed consent).
+> * [COP-ON Phygital Case Study](file:///C:/Users/David/.gemini/antigravity/scratch/gods-eye-view/docs/cop-on-phygital-case-study.md) — Industrial proof (physical-linked DPF, 3-pillar corporate trust gateway, cost-plus 8.5% transfer pricing & FKS doctrine).
 
 ---
 

@@ -1,0 +1,141 @@
+{
+  "evidence_urn": "urn:davincia:evidence:package:svwep2ls",
+  "transaction_id": "urn:davincia:transaction:svwep2ls",
+  "timestamp": "2026-08-30T15:20:15.508Z",
+  "chain": {
+    "request_ref": "urn:davincia:request:svwep2ls",
+    "passport_ref": "urn:davincia:passport:human:p1-human",
+    "asset_ref": "urn:davincia:knowledge:asset:brehon-ip",
+    "policy_ref": "DAVINCIA-CORE-001",
+    "decision_ref": "urn:davincia:decision:zfmi919n8ip",
+    "entitlement_ref": "urn:davincia:entitlement:m3r4b4zt",
+    "usage_refs": [
+      "urn:davincia:usage:record:lngdcm6u"
+    ],
+    "settlement_ref": "urn:pay:svwep2ls",
+    "allocation_reconciled": true
+  },
+  "payload": {
+    "request": {
+      "request_id": "urn:davincia:request:svwep2ls",
+      "humanPassport": {
+        "passport_id": "urn:davincia:passport:human:p1-human",
+        "passport_version": "1.0.0",
+        "participant_type": "HUMAN",
+        "identity": {
+          "id": "urn:id:user:p1",
+          "name": "P1 Human"
+        },
+        "issuer": "urn:davincia:identity:organization:brehon_ai",
+        "owner": "urn:davincia:identity:organization:p1",
+        "controller": "urn:id:user:p1",
+        "domain": "core",
+        "declared_capabilities": [
+          "READ"
+        ],
+        "declared_actions": [
+          "READ",
+          "TRANSLATE"
+        ],
+        "data_classifications": [
+          "PUBLIC"
+        ],
+        "risk_profile": {
+          "risk_level": "LOW"
+        },
+        "provenance": {
+          "source_type": "SYSTEM",
+          "source_urn": "urn:id:user:p1",
+          "checksum": "sha256-mock-passport-checksum",
+          "collected_at": "2026-08-30T15:20:15.501Z",
+          "geographic_origin": {
+            "latitude": 51.8985,
+            "longitude": -8.4756
+          }
+        },
+        "verification": {
+          "state": "VERIFIED",
+          "reviewer_role": "SYSTEM_GOVERNOR",
+          "evidence_ref": "urn:davincia:passport:human:p1-human"
+        },
+        "governance": {
+          "conformance_state": "CONFORMANT",
+          "drift_hash": "sha256-no-drift"
+        },
+        "policy_references": [
+          "DAVINCIA-CORE-001"
+        ],
+        "evidence_references": [],
+        "manifest_hash": "sha256-mock-manifest",
+        "issued_at": "2026-08-30T15:20:15.501Z",
+        "expires_at": "2027-03-02T16:20:15.501Z",
+        "status": "AUTHORIZED",
+        "signature": "DEVELOPMENT_SIGNATURE-sig-6o59qwc3"
+      },
+      "assetId": "urn:davincia:knowledge:asset:brehon-ip",
+      "action": "READ",
+      "paymentToken": "MOCK_CHECKOUT",
+      "payload": {}
+    },
+    "decision": {
+      "decision_id": "urn:davincia:decision:zfmi919n8ip",
+      "participant_id": "urn:davincia:passport:human:p1-human",
+      "action": "READ",
+      "decision": "ALLOW",
+      "reason_code": "PASSPORT_VERIFIED",
+      "policy_reference": "DAVINCIA-CORE-001",
+      "timestamp": "2026-08-30T15:20:15.508Z"
+    },
+    "entitlement": {
+      "entitlement_id": "urn:davincia:entitlement:m3r4b4zt",
+      "asset_id": "urn:davincia:knowledge:asset:brehon-ip",
+      "buyer_id": "urn:davincia:passport:human:p1-human",
+      "decision_id": "urn:davincia:decision:zfmi919n8ip",
+      "licence_id": "urn:davincia:license:auth-1788103215508",
+      "scope": "READ",
+      "purpose": "COMMERCIAL_USE",
+      "usage_limit": 100,
+      "usage_count": 1,
+      "price": 0.05,
+      "currency": "USD",
+      "issued_at": "2026-08-30T15:20:15.508Z",
+      "expires_at": "2026-08-30T16:20:15.508Z",
+      "status": "ACTIVE",
+      "revocation_state": "NONE",
+      "provenance_hash": "prov-sig-1788103215508",
+      "policy_hash": "DAVINCIA-CORE-001",
+      "decision_hash": "urn:davincia:decision:zfmi919n8ip"
+    },
+    "usage_records": [
+      {
+        "usage_id": "urn:davincia:usage:record:lngdcm6u",
+        "entitlement_id": "urn:davincia:entitlement:m3r4b4zt",
+        "consumed_units": 1,
+        "measurement_type": "API_CALL",
+        "timestamp": "2026-08-30T15:20:15.508Z"
+      }
+    ],
+    "settlement": {
+      "settlement_urn": "urn:pay:svwep2ls",
+      "transaction_id": "urn:davincia:transaction:svwep2ls",
+      "asset_id": "urn:davincia:knowledge:asset:brehon-ip",
+      "buyer_id": "urn:davincia:passport:human:p1-human",
+      "owner_id": "urn:davincia:identity:organization:brehon_ai",
+      "entitlement_id": "urn:davincia:entitlement:m3r4b4zt",
+      "usage_id": "urn:davincia:usage:record:lngdcm6u",
+      "gross_amount": 0.05,
+      "settlement_status": "SETTLED",
+      "payout_type": "SIMULATED_SETTLEMENT",
+      "platform_fee": 0.01,
+      "owner_amount": 0.04
+    },
+    "allocation": {
+      "gross_amount": 0.05,
+      "platform_amount": 0.01,
+      "owner_amount": 0.04,
+      "partner_amount": 0,
+      "rules_version": "1.0.0",
+      "reconciled": true
+    }
+  }
+}

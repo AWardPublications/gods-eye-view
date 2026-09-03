@@ -1,0 +1,16 @@
+{
+  "object_id": "urn:davincia:raw:wenger-course-strategy",
+  "title": "Alex Wenger Course Strategy & Tactical Planning",
+  "domain": "alex-wenger",
+  "owner": "urn:davincia:identity:organization:wenger_golf",
+  "content": "Wind offsets, hazard clearances, and putting line geometries for major championship venues.",
+  "provenance": {
+    "source_type": "TACTICAL_GUIDE",
+    "collected_at": "2026-08-30T12:00:00Z",
+    "source_reference": "Alex Wenger Golf OS Strategy Manual",
+    "geographic_origin": {
+      "latitude": 51.8985,
+      "longitude": -8.4756
+    }
+  }
+}

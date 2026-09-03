@@ -1,0 +1,16 @@
+{
+  "object_id": "urn:davincia:raw:arios-security",
+  "title": "ARIOS Execution Security Guidelines",
+  "domain": "arios",
+  "owner": "urn:davincia:identity:organization:arios_corp",
+  "content": "AI agent operations executing on ARiOS systems must default to deny-all boundaries when a required human supervisor is offline.",
+  "provenance": {
+    "source_type": "OPERATING_SYSTEM_SPEC",
+    "collected_at": "2026-08-29T11:00:00Z",
+    "source_reference": "ARIOS OS Manual v1.2",
+    "geographic_origin": {
+      "latitude": 51.8985,
+      "longitude": -8.4756
+    }
+  }
+}

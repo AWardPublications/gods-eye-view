@@ -1,0 +1,28 @@
+{
+  "policy_id": "DAVINCIA-CORE-001",
+  "name": "DaVinciA+ Universal Core Rules",
+  "version": "1.0.0",
+  "domain": "core",
+  "rules": [
+    {
+      "id": "RULE-CORE-UNKNOWN-DENY",
+      "target": {
+        "status": "UNKNOWN"
+      },
+      "conditions": {},
+      "outcome": "DENY",
+      "reason_code": "UNKNOWN_OBJECT_STATE"
+    },
+    {
+      "id": "RULE-CORE-EXECUTE-DENY",
+      "target": {
+        "sensitivity": "SENSITIVE_PROTECTED"
+      },
+      "conditions": {
+        "action": ["EXECUTE"]
+      },
+      "outcome": "DENY",
+      "reason_code": "EXECUTION_DENIED"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "system": "alex-wenger",
+  "required_capabilities": [
+    "biometric",
+    "geospatial",
+    "personal_data"
+  ],
+  "required_actions": [
+    "ANALYSE",
+    "COACH",
+    "PUBLISH"
+  ],
+  "required_controls": [
+    "consent_gate",
+    "provenance_audit"
+  ],
+  "minimum_conformance": [
+    "fail_closed",
+    "audit",
+    "policy_precedence"
+  ]
+}

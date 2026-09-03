@@ -1,0 +1,68 @@
+[
+  {
+    "asset_id": "urn:davincia:knowledge:asset:wenger-swing-mechanics",
+    "title": "Alex Wenger Swing Mechanics & Kinematics",
+    "owner": "urn:davincia:identity:organization:wenger_golf",
+    "version": "1.0.0",
+    "provenance_hash": "sha256-wenger-swing-mechanics-prov-hash-88c2f1",
+    "classification": "SENSITIVE_PROTECTED",
+    "permitted_actions": ["READ", "ANALYSE", "COACH"],
+    "prohibited_actions": ["TRANSFORM", "DELETE"],
+    "license": "urn:davincia:license:wenger-commercial-v1",
+    "pricing": {
+      "model": "USAGE_BASED",
+      "currency": "USD",
+      "price_per_unit": 0.05
+    },
+    "evidence_requirements": {
+      "log_level": "FULL_AUDIT",
+      "signature_required": true
+    },
+    "policy_version": "1.0.0",
+    "status": "ACTIVE"
+  },
+  {
+    "asset_id": "urn:davincia:knowledge:asset:wenger-drills-database",
+    "title": "Alex Wenger Practice & Swing Correction Drills",
+    "owner": "urn:davincia:identity:organization:wenger_golf",
+    "version": "1.1.0",
+    "provenance_hash": "sha256-wenger-drills-database-prov-hash-3c829e",
+    "classification": "PUBLIC_RESTRICTED",
+    "permitted_actions": ["READ", "SEARCH", "COACH"],
+    "prohibited_actions": ["PUBLISH", "TRANSFORM"],
+    "license": "urn:davincia:license:wenger-educational-v1",
+    "pricing": {
+      "model": "FIXED",
+      "currency": "USD",
+      "price_per_unit": 0.02
+    },
+    "evidence_requirements": {
+      "log_level": "SUMMARY_ONLY",
+      "signature_required": false
+    },
+    "policy_version": "1.0.0",
+    "status": "ACTIVE"
+  },
+  {
+    "asset_id": "urn:davincia:knowledge:asset:wenger-course-strategy",
+    "title": "Alex Wenger Course Strategy & Tactical Planning",
+    "owner": "urn:davincia:identity:organization:wenger_golf",
+    "version": "1.0.0",
+    "provenance_hash": "sha256-wenger-course-strategy-prov-hash-99a31b",
+    "classification": "SENSITIVE_PROTECTED",
+    "permitted_actions": ["READ", "ANALYSE", "TRAIN"],
+    "prohibited_actions": ["DELETE", "PUBLISH"],
+    "license": "urn:davincia:license:wenger-commercial-v1",
+    "pricing": {
+      "model": "USAGE_BASED",
+      "currency": "USD",
+      "price_per_unit": 0.05
+    },
+    "evidence_requirements": {
+      "log_level": "FULL_AUDIT",
+      "signature_required": true
+    },
+    "policy_version": "1.0.0",
+    "status": "ACTIVE"
+  }
+]

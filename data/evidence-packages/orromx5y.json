@@ -1,0 +1,144 @@
+{
+  "evidence_urn": "urn:davincia:evidence:package:orromx5y",
+  "transaction_id": "urn:davincia:transaction:orromx5y",
+  "timestamp": "2026-08-30T15:39:42.389Z",
+  "chain": {
+    "request_ref": "urn:davincia:request:orromx5y",
+    "passport_ref": "urn:davincia:passport:human:p2-org",
+    "asset_ref": "urn:davincia:knowledge:asset:munster-slang",
+    "policy_ref": "DAVINCIA-CORE-001",
+    "decision_ref": "urn:davincia:decision:rrqjw9jijfs",
+    "entitlement_ref": "urn:davincia:entitlement:o0z5xoqz",
+    "usage_refs": [
+      "urn:davincia:usage:record:cgdcu8d5"
+    ],
+    "settlement_ref": "urn:pay:orromx5y",
+    "allocation_reconciled": true
+  },
+  "payload": {
+    "request": {
+      "request_id": "urn:davincia:request:orromx5y",
+      "humanPassport": {
+        "passport_id": "urn:davincia:passport:human:p2-org",
+        "passport_version": "1.0.0",
+        "participant_type": "HUMAN",
+        "identity": {
+          "id": "urn:id:user:p2",
+          "name": "P2 Org"
+        },
+        "issuer": "urn:davincia:identity:organization:brehon_ai",
+        "owner": "urn:davincia:identity:organization:p2",
+        "controller": "urn:id:user:p2",
+        "domain": "core",
+        "declared_capabilities": [
+          "READ"
+        ],
+        "declared_actions": [
+          "READ",
+          "TRANSLATE"
+        ],
+        "data_classifications": [
+          "PUBLIC"
+        ],
+        "risk_profile": {
+          "risk_level": "LOW"
+        },
+        "provenance": {
+          "source_type": "SYSTEM",
+          "source_urn": "urn:id:user:p2",
+          "checksum": "sha256-mock-passport-checksum",
+          "collected_at": "2026-08-30T15:39:42.377Z",
+          "geographic_origin": {
+            "latitude": 51.8985,
+            "longitude": -8.4756
+          }
+        },
+        "verification": {
+          "state": "VERIFIED",
+          "reviewer_role": "SYSTEM_GOVERNOR",
+          "evidence_ref": "urn:davincia:passport:human:p2-org"
+        },
+        "governance": {
+          "conformance_state": "CONFORMANT",
+          "drift_hash": "sha256-no-drift"
+        },
+        "policy_references": [
+          "DAVINCIA-CORE-001"
+        ],
+        "evidence_references": [],
+        "manifest_hash": "sha256-mock-manifest",
+        "issued_at": "2026-08-30T15:39:42.377Z",
+        "expires_at": "2027-03-02T16:39:42.377Z",
+        "status": "AUTHORIZED",
+        "signature": "DEVELOPMENT_SIGNATURE-sig-8v9pkqce"
+      },
+      "assetId": "urn:davincia:knowledge:asset:munster-slang",
+      "action": "TRANSLATE",
+      "paymentToken": "MOCK_CHECKOUT",
+      "payload": {
+        "language_lane": "Cork Slang",
+        "routing_rule": "casual_context_only"
+      }
+    },
+    "decision": {
+      "decision_id": "urn:davincia:decision:rrqjw9jijfs",
+      "participant_id": "urn:davincia:passport:human:p2-org",
+      "action": "TRANSLATE",
+      "decision": "ALLOW",
+      "reason_code": "PASSPORT_VERIFIED",
+      "policy_reference": "DAVINCIA-CORE-001",
+      "timestamp": "2026-08-30T15:39:42.389Z"
+    },
+    "entitlement": {
+      "entitlement_id": "urn:davincia:entitlement:o0z5xoqz",
+      "asset_id": "urn:davincia:knowledge:asset:munster-slang",
+      "buyer_id": "urn:davincia:passport:human:p2-org",
+      "decision_id": "urn:davincia:decision:rrqjw9jijfs",
+      "licence_id": "urn:davincia:license:auth-1788104382389",
+      "scope": "TRANSLATE",
+      "purpose": "COMMERCIAL_USE",
+      "usage_limit": 100,
+      "usage_count": 1,
+      "price": 0.05,
+      "currency": "USD",
+      "issued_at": "2026-08-30T15:39:42.389Z",
+      "expires_at": "2026-08-30T16:39:42.389Z",
+      "status": "ACTIVE",
+      "revocation_state": "NONE",
+      "provenance_hash": "prov-sig-1788104382389",
+      "policy_hash": "DAVINCIA-CORE-001",
+      "decision_hash": "urn:davincia:decision:rrqjw9jijfs"
+    },
+    "usage_records": [
+      {
+        "usage_id": "urn:davincia:usage:record:cgdcu8d5",
+        "entitlement_id": "urn:davincia:entitlement:o0z5xoqz",
+        "consumed_units": 1,
+        "measurement_type": "API_CALL",
+        "timestamp": "2026-08-30T15:39:42.389Z"
+      }
+    ],
+    "settlement": {
+      "settlement_urn": "urn:pay:orromx5y",
+      "transaction_id": "urn:davincia:transaction:orromx5y",
+      "asset_id": "urn:davincia:knowledge:asset:munster-slang",
+      "buyer_id": "urn:davincia:passport:human:p2-org",
+      "owner_id": "urn:davincia:identity:organization:award_publications",
+      "entitlement_id": "urn:davincia:entitlement:o0z5xoqz",
+      "usage_id": "urn:davincia:usage:record:cgdcu8d5",
+      "gross_amount": 0.05,
+      "settlement_status": "SETTLED",
+      "payout_type": "SIMULATED_SETTLEMENT",
+      "platform_fee": 0.01,
+      "owner_amount": 0.04
+    },
+    "allocation": {
+      "gross_amount": 0.05,
+      "platform_amount": 0.01,
+      "owner_amount": 0.04,
+      "partner_amount": 0,
+      "rules_version": "1.0.0",
+      "reconciled": true
+    }
+  }
+}

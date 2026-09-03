@@ -1,0 +1,17 @@
+{
+  "name": "God's Eye View",
+  "short_name": "God's Eye View",
+  "description": "Real-time intelligence console for planet Earth",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0b0d",
+  "theme_color": "#0a0b0d",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
