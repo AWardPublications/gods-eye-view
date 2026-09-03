@@ -1,0 +1,82 @@
+{
+  "dossier_id": "DVA-OVERNIGHT-PIPELINE-2026",
+  "timestamp": "2026-09-03T21:46:12.074Z",
+  "commit_sha": "ba909612205c466338b41ac6975826005707befa",
+  "signatory_key": "0x80D0ADA1 (David Ward)",
+  "valuation": {
+    "status": "VALUATION_CALCULATED_SOVEREIGN_AUDITED",
+    "currency": "EUR / CHF",
+    "base_asset_floor_eur": 75000000,
+    "operational_synergistic_value_eur": 197368417.5,
+    "sovereign_monopoly_value_eur": 375000000,
+    "applied_multiplier": 5,
+    "valuation_range": {
+      "min_eur": 375000000,
+      "max_eur": 600000000
+    }
+  },
+  "spatial_rooms_count": 20,
+  "link_rot_audit": {
+    "status": "SPANNING_CHAIN_PERFECT_INTEGRITY",
+    "total_rows_audited": 3,
+    "broken_rows_count": 0,
+    "link_rot_percentage": 0,
+    "diagnostics": [
+      {
+        "seq": 1,
+        "entry_id": 1,
+        "tenant_id": "TENANT-AWPUB",
+        "principal_id": "usr_david_001",
+        "status": "CHAIN_INTACT_REPLAYABLE",
+        "prev_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "expected_prev_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "seq": 2,
+        "entry_id": 2,
+        "tenant_id": "TENANT-AWPUB",
+        "principal_id": "usr_david_001",
+        "status": "CHAIN_INTACT_REPLAYABLE",
+        "prev_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "expected_prev_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      {
+        "seq": 3,
+        "entry_id": 3,
+        "tenant_id": "TENANT-AWPUB",
+        "principal_id": "usr_david_001",
+        "status": "CHAIN_INTACT_REPLAYABLE",
+        "prev_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "expected_prev_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      }
+    ]
+  },
+  "registered_ip_assets": [
+    {
+      "asset_code": "AWP-IP-64-AGENT-SWARM",
+      "name": "64-Agent Swarm Intelligence Ecosystem",
+      "status": "REGISTERED_AWPUB_IP"
+    },
+    {
+      "asset_code": "AWP-IP-COP-ON-TCG",
+      "name": "COP ON: Cop On Phygital TCG Engine & Layouts",
+      "status": "REGISTERED_AWPUB_IP"
+    },
+    {
+      "asset_code": "AWP-IP-GAMP5-CSV-SUITE",
+      "name": "GAMP 5 Category 5 CSV Validation Protocol Suite",
+      "status": "REGISTERED_AWPUB_IP"
+    },
+    {
+      "asset_code": "AWP-IP-MERKLE-FOREST-50K",
+      "name": "50,000-User Concurrency Merkle Forest Scaling Engine",
+      "status": "REGISTERED_AWPUB_IP"
+    },
+    {
+      "asset_code": "AWP-IP-ARIOS-L1-TRUTH",
+      "name": "ARIOS Layer 1 Truth Layer & Spanning Chain Triggers",
+      "status": "REGISTERED_AWPUB_IP"
+    }
+  ],
+  "package_hash": "4ffe1b0d5fed756d072ea9ee6ecec68b28058119a498629d8f392fa9aa868e75"
+}
